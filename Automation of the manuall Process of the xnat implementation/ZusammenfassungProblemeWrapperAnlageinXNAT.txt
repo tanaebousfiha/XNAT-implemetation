@@ -1,109 +1,13 @@
-Zusammenfassung: Probleme & Lösungen bei der Automatisierung von Command-/Wrapper-Anlage in XNAT
-
-1. Unerwartete Fehlerquellen
-
-a) Fehlerhafte/falsche IDs beim Wrapper-POST
+Was war also schwer am Fixieren des Wrappers?
 
 
-Symptom: "Failed to convert value of type 'java.lang.String' to required type 'long'" oder "command not found"
+Richtig zu erkennen, dass die API in URLs und Payloads den Namen erwartet und nicht die ID.
 
-Ursache: Es wurde dem API-Endpunkt nicht die numerische/UUID-ID des Commands übergeben, sondern ein String (z.B. „wrappers“ oder ein Name), weil die JSON-Auswertung beim Ermitteln der ID falsch war.
+In JSONs und Aufrufen immer genau nachzuvollziehen, welche Werte in welchem Feld gebraucht werden (name vs. id, case sensitivity!).
 
-Lösung:
-Die Funktion zum Holen der Command-ID (get_command_id_by_name) und der Wrapper-ID (get_wrapper_id_by_command_name) wurde so angepasst, dass sie immer die numerische/UUID-id liefern und keine Namen-Strings.
+Sicherzustellen, dass der Wrapper nicht nur existiert, sondern auch korrekt für das Projekt aktiviert und mit passenden Ressourcen gematcht werden kann.
 
+Den Überblick über bereits existierende Wrapper zu behalten und konsequent mit dem passenden weiterzuarbeiten (statt Chaos durch viele doppelte Wrapper zu erzeugen).
 
+Fehlermeldungen richtig zu deuten und systematisch nach logischen Fehlern in der Chain (Command → Wrapper → Activation → Launch → Input-Ressourcen) zu suchen.
 
-
-b) Output-Handler-Fehler ("output not handled" oder "not referred to a known output")
-
-
-Symptom: API-Meldung wie „command output "result_file" is not handled by any output handler.“, „output handler does not refer to a known output“ oder vergleichbare Meldungen.
-
-Ursache:
-Die outputs des Commands und die Handler im Wrapper waren nicht synchron.
-Beim Wrapper-POST wurden keine oder falsche outputs, external-inputs, derived-inputs mitgesendet.
-
-Lösung:
-Beim Anlegen des Wrappers wurden jetzt immer auch die outputs, external-inputs und derived-inputs per API aus dem Command geholt und beim Wrapper-POST im Payload mitgegeben. Die Output-Handler benennen genau den Output, der auch im Command/Wrapper als Output geführt wird.
-
-
-
-
-c) Mehrfache/doppelte Commands oder Wrapper
-
-
-Symptom: Es entstehen bei jedem Skript-Lauf neue Commands oder Wrapper im System, was zu Inkonsistenz und Enable-/Start-Fehlern führt.
-
-Ursache:
-Das Skript schickte bei jedem Durchlauf einen neuen Command und neuen (ggf. zeitgestempelten) Wrapper.
-Beim Erstellen des Commands waren mehrfach Wrapper-Einträge im "xnat"-Array.
-
-Lösung:
-Vor dem Erstellen/Upload eines Commands wird jetzt geprüft, ob er existiert (command_exists). Die JSON-Erstellung (create_json_file) wurde so angepasst, dass immer nur ein Wrapper (aktueller/gewünschter) im "xnat"-Array landet. Keine Mehrfacheinträge mehr!
-
-
-
-
-d) API-Timing/Indexierungsprobleme („404 not found“ beim Enable/Launch direkt nach Erstellen)
-
-
-Symptom: Enable oder Launch schlagen mit 404 fehl, obwohl der Wrapper soeben erfolgreich angelegt wurde.
-
-Ursache:
-Nach dem POST von Command/Wrapper kann es in XNAT (und verteilten Systemen generell) kleine Verzögerungen geben, bis intern alle Indizes & Caches aktualisiert sind.
-
-
-Lösung:
-Nach dem Command-Upload und nach der Wrapper-Erstellung ein kurzes sleep (z.B. 2 Sekunden) eingefügt, um XNAT „Zeit zu geben“.
-
-
-
-
-2. Zusammengefasster, bewährter Workflow für die Command- und Wrapper-Erstellung
-
-
-User gibt alle Parameter ein (Name, Description, Script etc.).
-
-Dockerfile wird gebaut und das Image lokal erstellt.
-
-Command-JSON wird nur geschrieben, falls es den Command nicht schon gibt (inkl. immer nur einem Wrapper im "xnat"-Array).
-
-Command-Upload erfolgt nur bei nicht vorhandenem Command (Prüfung per API).
-
-Vor/bei jedem Wrapper Aufruf
-Beim API-POST werden die zum Command passenden outputs, external-inputs, derived-inputs aus dem Command abgerufen und IMMER mit in das Wrapper-POST genutzt.
-Output-Handler stimmt mit Output überein.
-
-Nach der Wrapper-Erstellung (und ggf. nach Command-Upload) kleine Pause (sleep(2)) einbauen, bevor enable/launch aufgerufen wird.
-
-Enable- und Launch-Aufrufe nutzen exakt die Command-Namen und Wrapper-IDs, wie XNAT sie zurückgibt. Debug-Ausgaben helfen, Fehler (wie 404) zu analysieren.
-
-
-
-3. Resultat
-
-Mit diesen Anpassungen ist dein Skript jetzt:
-
-
-
-formal korrekt (XNAT-API-konform, keine doppelten/mehrfachen Wrapper/Commands),
-
-robust gegen Timing-Probleme,
-
-transparent (durch Debug-Ausgaben),
-
-skalierbar für wissenschaftliche Produktiv-Workflows!
-
-
-
-4. Empfehlungen für künftige Entwicklung
-
-
-Bei Fehlern immer alle relevanten API-Resourcen (Commands, Wrapper) per API abfragen und Strukturen prüfen.
-
-Namensgebung (Whitespace/Case-Sensitivität) extrem genau handhaben!
-
-Generische Lösch-/Cleaning-Funktion für alte Test-Commands und Wrapper anbieten.
-
-Das Erkennen und Behandeln von 409, 404, 201-Statuscodes weiter „idiomatisch“ nutzen!
