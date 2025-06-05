@@ -9,5 +9,5 @@ Sicherzustellen, dass der Wrapper nicht nur existiert, sondern auch korrekt für
 
 Den Überblick über bereits existierende Wrapper zu behalten und konsequent mit dem passenden weiterzuarbeiten (statt Chaos durch viele doppelte Wrapper zu erzeugen).
 
-Fehlermeldungen richtig zu deuten und systematisch nach logischen Fehlern in der Chain (Command → Wrapper → Activation → Launch → Input-Ressourcen) zu suchen.
+Fehlermeldungen richtig zu deuten und systematisch nach logischen Fehlern in der Chain (Command>Wrapper>Activation>Launch → Input-Ressourcen) zu suchen.
 
