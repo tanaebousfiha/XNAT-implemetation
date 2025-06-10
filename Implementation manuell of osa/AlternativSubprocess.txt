@@ -1,0 +1,61 @@
+Import os 
+for filename in os.listdir(output_dir):
+        file_path = os.path.join(output_dir, filename)
+        if os.path.isfile(file_path):
+            print(file_path)x
+----------------------------------------------------------------------------------
+
+from pathlib import Path
+
+for file in Path(output_dir).iterdir():
+    if file.is_file():
+        print(file) 
+Beschreibung: Gibt ein Iterator-Objekt über die direkten Inhalte eines Verzeichnisses zurück.
+
+Verwendung: Pythonischer Weg, um Dateien in einem Ordner zu durchlaufen.
+----------------------------------------------------------------------------------------
+import glob
+for file in glob.glob(f"{output_dir}/*"):
+    print(file)
+
+Beschreibung: Sucht nach Pfaden, die einem bestimmten Muster entsprechen.
+
+Verwendung: Flexibel für Muster wie *.csv, *.txt usw.
+------------------------------------------------------------------------------------------
+import os
+
+with os.scandir(output_dir) as entries:
+    for entry in entries:
+        if entry.is_file():
+            print(entry.name, entry.stat().st_size)
+
+Beschreibung: Gibt einen Iterator über Einträge im Verzeichnis zurück, effizienter als os.listdir().
+
+Verwendung: Liefert zusätzliche Metadaten (z. B. entry.stat().st_size).
+
+
+---------------------------------------------------------------------------------------------
+from pathlib import Path
+
+for file in Path(output_dir).rglob("*"):
+    if file.is_file():
+        print(file)
+
+Beschreibung: Rekursive Suche nach Dateien und Verzeichnissen unterhalb von output_dir.
+
+Verwendung: Ideal zum Auffinden von Dateien in Unterordnern.
+-----------------------------------------------------------------------------------------------
+Alle diese Methoden sind geeignet, Dateilisten für nachgelagerte Prozessierungen oder Uploads (z.B. an XNAT) bereitzustellen, je nach Bedarf:
+
+glob: für Muster/Zusatzfilter
+
+os.scandir: performant und mit Metadaten
+
+os.walk/rglob: rekursiv über Unterverzeichnisse
+
+pandas: wenn tabellarische Auswertungen gewünscht sind
+--------------------------------------------------------------------------------------------------------------------------------------------
+https://docs.python.org/3/library/pathlib.html#pathlib.Path.iterdir
+https://docs.python.org/3/library/glob.html#glob.glob
+https://docs.python.org/3/library/os.html#os.scandir
+https://docs.python.org/3/library/pathlib.html#pathlib.Path.rglob

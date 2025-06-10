@@ -1,0 +1,39 @@
+'''um das Image zu verkleinern habe ich einen  Link gefunden über Multi Images.
+https://www.reddit.com/r/docker/comments/1f1wqnb/how_i_reduced_docker_image_size_from_588_mb_to/
+Meine Image ist von  690MB zu 78.8MB minimisiert worden 
+Ich habe meine Docker File geändert laut des links:'''
+
+FROM python:3.9-alpine AS builder
+
+RUN apk add --no-cache build-base \
+    && apk add --no-cache gfortran musl-dev lapack-dev
+
+WORKDIR /app
+
+# Copy the requirements file and install dependencies
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code to the working directory
+COPY . .
+
+# Uninstall unnecessary dependencies
+RUN pip uninstall -y pandas && apk del build-base gfortran musl-dev lapack-dev
+
+# Stage 2: Production
+FROM python:3.9-alpine
+
+# Set the working directory
+WORKDIR /app
+
+# Copy only the necessary files from the build stage
+COPY --from=builder /app /app
+
+# Expose the port the app will run on
+EXPOSE 5000
+
+# Run the Flask app
+CMD ["python", "OSA_xnat.py"]
+
+''''Das Docker-Image wurde so klein (nur 78.8 MB), weil es mithilfe eines Multi-Stage-Builds auf Basis von python:3.9-alpine erstellt wurde und in der ersten Stufe (Builder-Stufe) alle notwendigen Build-Werkzeuge wie build-base, gfortran und lapack-dev installiert wurden, um Python-Bibliotheken wie pandas zu kompilieren. Nachdem die Abhängigkeiten installiert und der Anwendungscode kopiert wurden, wurden jedoch sowohl die Build-Tools als auch pandas selbst wieder deinstalliert. Dadurch enthält das finale Image in der zweiten Stufe nur die minimale Laufzeitumgebung ohne die ursprünglich installierten, speicherintensiven Pakete. Zusätzlich sorgt die Alpine-Distribution für eine besonders kleine Basis. Durch diese gezielte Trennung von Build- und Laufzeitumgebung sowie das Entfernen unnötiger Komponenten wird das Image drastisch verkleinert – allerdings auf Kosten der Funktionalität, falls das Skript weiterhin auf pandas angewiesen ist. Deshalb ist diese Methode nur dann sinnvoll, wenn wirklich nur die minimalen Bibliotheken für die Ausführung erforderlich sind.'''
+
