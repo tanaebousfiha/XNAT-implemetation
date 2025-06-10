@@ -1,0 +1,13 @@
+Was war also schwer am Fixieren des Wrappers?
+
+
+Richtig zu erkennen, dass die API in URLs und Payloads den Namen erwartet und nicht die ID.
+
+In JSONs und Aufrufen immer genau nachzuvollziehen, welche Werte in welchem Feld gebraucht werden (name vs. id, case sensitivity!).
+
+Sicherzustellen, dass der Wrapper nicht nur existiert, sondern auch korrekt für das Projekt aktiviert und mit passenden Ressourcen gematcht werden kann.
+
+Den Überblick über bereits existierende Wrapper zu behalten und konsequent mit dem passenden weiterzuarbeiten (statt Chaos durch viele doppelte Wrapper zu erzeugen).
+
+Fehlermeldungen richtig zu deuten und systematisch nach logischen Fehlern in der Chain (Command>Wrapper>Activation>Launch → Input-Ressourcen) zu suchen.
+
