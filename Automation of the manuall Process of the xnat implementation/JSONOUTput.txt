@@ -32,10 +32,7 @@
       "label": "command",
       "description": "command",
       "contexts": [
-        "xnat:projectData",
-        "xnat:subjectData",
-        "xnat:mrSessionData",
-        "xnat:imageScanData"
+        "xnat:projectData"
       ],
       "external-inputs": [
         {
