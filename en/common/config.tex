@@ -1,0 +1,59 @@
+%
+% general configuration
+%
+
+% Palatino font as serif font
+\usepackage{palatino}
+\linespread{1.05}
+% Helvatica font as sans-serif
+\usepackage{helvet}
+% Use microtype to improve typesetting
+\usepackage{microtype}
+
+%set page margin for DIN A4
+\geometry{a4paper, left=2.5cm, right=2.5cm, top=4cm, 
+          bottom=5cm, bindingoffset=1cm}
+
+%makes TeX less fussy about line breaking
+\sloppy
+
+% Replacement for changing parskip and parindent directly
+\usepackage{parskip}
+
+%1.5 spacing
+\onehalfspacing
+{}
+
+% Make chapter heading smaller
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\LARGE\bf}{\chaptertitlename\ \thechapter}{10pt}{\huge\bf}
+
+%define some colors
+\definecolor{darkblue}{rgb}{0.0,0.0,0.5}
+\definecolor{grey}{rgb}{0.8,0.8,0.8}
+\definecolor{lightgrey}{rgb}{0.95,0.95,0.95}
+
+%set listing style properties for python
+\lstset{language=Python,
+    basicstyle=\footnotesize\ttfamily,
+    captionpos=b,
+    frame=tb,
+    commentstyle=\color{gray} \bfseries,
+    stringstyle=\color{green}\ttfamily,
+    keywordstyle=\color{darkblue}\bfseries,
+    breaklines=true,
+    aboveskip=10mm,
+    belowskip=10mm,
+    showstringspaces=false
+    numbers=left,
+    %stepnumber=5,
+    numberstyle=\tiny,
+    numbersep=5pt
+}
+
+
+%override reference title and listings title
+\renewcommand \bibname{References}
+\renewcommand{\lstlistlistingname}{List of Listings}
+
