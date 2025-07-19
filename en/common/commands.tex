@@ -1,0 +1,21 @@
+%
+% own commands
+%
+
+%double empty page
+\newcommand \myemptypage {
+    \clearpage
+    \thispagestyle{empty}
+    \null
+    \cleardoublepage
+}
+
+%create abstract environment that is not available in latex book style
+\newcommand\abstractname{Abstract}
+\newenvironment{abstract}{%
+    \begin{center}%
+        \normalfont\Large\bfseries \abstractname
+    \end{center}%
+    \it%
+    }
+    {}
