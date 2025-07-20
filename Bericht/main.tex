@@ -1,43 +1,159 @@
-\documentclass{article}
-\usepackage{graphicx} % Required for inserting images
+\documentclass[10pt]{book}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[pdfa=true]{hyperref}
+\usepackage{cite}
+\usepackage{listings}
+\usepackage[printonlyused,withpage]{acronym}
+\usepackage{siunitx}
+\usepackage{multirow}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{tabularx}
+\usepackage{marvosym}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{pythontex}
 
 
-\title{The Automatisation of implementation of Docker Container in XNAT}
-\author{Tanae Bousfiha matriculation number: 850528 \\ Course: Bachelor Praxis Project\\ Supervisors:\\Prof. Dr. Roman Grothausmann\\
-Philip Zaschke, MSc.}
+
+%--- pdf/a format ----
+% insert metadata about the document here
+\RequirePackage{filecontents}
+\begin{filecontents*}{\jobname.xmpdata}
+\Title{Document’s title}
+\Author{Author’s name}
+\Language{en-US}
+\Subject{The abstract, or short description.}
+\Keywords{keyword1\sep keyword2\sep keyword3}
+\end{filecontents*}
+\usepackage{colorprofiles}
+\usepackage[a-1b,mathxmp]{pdfx}[2018/12/22]
+\usepackage[T1]{fontenc}
+\hypersetup{pdfstartview=}
 
 
-\date{July 2025}
+%
+% This is the official thesis template of
+% the Institute of Computer Science at the
+% Georg-August-University of Göttingen
+%
+%      author: kellner@cs.uni-goettingen.de
+% last update: 17/02/2015
+%
+% If you find any sort of mistake please let me know
+% so that it can be fixed in future releases.
+%
+
+
+%--- include custom commands ---
+\input{common/commands}
+
+%--- include general configuration ---
+\input{common/config}
+
+
+%--- basic document configuration ---
+\newcommand{\mytype}{Bachelor}
+%\newcommand{\mytype}{Master's Thesis}
+
+\newcommand{\mycourse}{}
+%\newcommand{\mycourse}{Internet Technologies and Information Systems}
+
+\newcommand{\mytitle}{Automation of Docker Container in Xnat}
+\newcommand{\myauthor}{Tanae Bousfiha}
+\newcommand{\mydepartment}{Institute of Computer Science}
+\newcommand{\mysubmissiondate}{xx. July 2025}
+%\newcommand{\mythesisid}{201x-xx} %assigned by examination office
+\newcommand{\myfirstsupervisor}{Prof.Dr. Roman Grothausmann}
+\newcommand{\mysecondsupervisor}{Philip Zaschke, MSc.}
+
 
 \begin{document}
 
-\maketitle
-\newpage
+ \pagenumbering{roman}
+    \setcounter{page}{1}
 
-\section{Abstract:}
-The area of the automatisation of implementation of Docker Container in xnat (eXtensible Neuroimaging Archive Toolkit) is attracting considerable interest in the Somnolink Project. This paper provides an overview of the automatisation of implementation of Docker Container in xnat. It was hypothesized that a Container could be implemented in a Project in xnat and to rework all the files out and to reupload the result files back to their places. The approach is partly based on using a Python Script that worked with REST API and create a Dockerfile and askes the user for an external/ Container Script and extract all the files from the Open source Xnat and upon the conclusion of the experience, the Docker Container in xnat should be in ‘Complete’ turned and the result files should be uploaded. Experimental application of the methods demonstrated that the container could not receive the extracted files via REST API, which led to a not feasible neither processing nor uploading files. Results revealed a significant correlation between the workflow data of xnat and the Mounting of data in the Docker container. These findings demonstrate that the extraction of all the files from all the levels of xnat leads to a problem Mounting in the Container. And the fact that the Container has no access to Data Bank of xnat conducts that the effectiveness of the method proved to be context dependent and thus limited.
- \newpage
+   %--- cover page ---
+   \input{content/coverpage}
+   \myemptypage
 
- \section{Table of Contents:}
-1.	Cover page \\
-2.	Abstract \\
-3.	Table of contents\\
-4.	Introduction \\
-5.	Project Description \\
-6.	System \\
-7.	Implementation / Realisation \\
-8.	Testing and Results\\
-9.	Discussion \\
-10.	Conclusion and Reflection \\
-11.	References \\
-12.	Appendices \\
-\newpage
+    %--- statement page ---
+    \input{content/statement}
+    \myemptypage
 
-\section{Introduction:}
+    %--- abstract ---
+    \clearpage\phantomsection\pdfbookmark{\abstractname}{abstract}
+    \thispagestyle{empty}
+    \input{content/abstract}
+    \myemptypage
 
-The automatisation of the implementation of the Docker container serves as a core foundation enabling scalability, security, ´reproducibility and rapid innovation. In the Context of the project like Somnolink provides not only an efficient service operation but also provides the foundation for evidence-based development, regulatory compliance, and effective research collaboration.\\
-Docker streamlines the development lifecycle by allowing developers to work in the standardized environments using local containers which provide your applications and services. Container are great for continuous delivery (CI/CD) workflow.
-This work contributes meaningfully to the field of medical informatics, through this approach, it can be used in automated patient data processing, medical AI Workflow, and secure data integration. It also provides a fast and efficient way to create new operations or updates, which can have positively a huge impact of the patient diagnosis or on the patient care in general.\\Automation is the application of technology, programs, robotics or processes to achieve outcomes with minimal human input, and in the case of the implementation of the Docker container it describes the process of the Deployment, the Configuration and the actualisation of the Software use and their dependencies with the help of the Docker Container and REST APIS based technologies with reduced human assistance. 
+    %reset acronyms after abstract
+    \acresetall
+
+    %--- table of contents ---
+    \clearpage\phantomsection\pdfbookmark{\contentsname}{toc}
+    \tableofcontents
+    \myemptypage
+
+    %--- list of figures ---
+    %\listoffigures
+    %\myemptypage
+
+    %--- list of tables ---
+    %\listoftables
+    %\myemptypage
+
+    %--- list of listings ---
+    %\lstlistoflistings
+    %\myemptypage
+
+    %--- list of acronyms ---
+    %\input{content/acronyms}
+    %\myemptypage
 
 
+    %arabic page numbers
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+    
+    %--- chaper 1..n ---
+    \input{content/ch1_introduction}
+    
+    
+    \input{en/content/ch2.Fundamentals}
+    \myemptypage
+
+    \input{en/content/ch3.System}
+    \myemptypage
+
+    \input{en/content/ch4.Realisation}
+    \myemptypage
+
+    \input{en/content/ch5_Testingandresult}
+    \myemptypage
+
+    \input{en/content/ch6.Discussion}
+    \myemptypage
+
+    \input{en/content/ch7.appendix_a}
+    \myemptypage
+
+    %--- references ---
+    \bibliographystyle{IEEEtran}
+    \bibliography{content/references}
+    \addcontentsline{toc}{chapter}{\bibname}
+    \myemptypage
+
+    %--- appendix ---
+    \begin{appendix}
+        \input{en/content/ch7.appendix_a}
+        \myemptypage
+    \end{appendix}
+    
 \end{document}
