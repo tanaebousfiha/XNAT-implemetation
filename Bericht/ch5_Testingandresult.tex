@@ -1,0 +1,63 @@
+\chapter{Testing and results}
+\section{Testing the Code:}
+After testing the Code those are the results the we came to. 
+\begin{lstlisting}
+tanae@mi0082n:~/dockerfile/xnat-osa/Ziel2_osaAutomatisation$ python Projekt.py
+XNAT Username: tanae
+XNAT Password:
+Project ID:  tanae_osa_Predct
+Path to the Python script: test.py
+Name des Commands: Realistaion
+Beschreibung des Commands: describes the Realistaion Process
+Dockerfile written to ./Dockerfile
+Docker Hub username (to push the image): tanaebousfiha
+Building Docker image 'realistaion:latest'...
+Image 'realistaion:latest' built successfully.
+Tagging image as 'tanaebousfiha/realistaion:latest'...
+Pushing image to Docker Hub as 'tanaebousfiha/realistaion:latest'...
+Image successfully pushed: tanaebousfiha/realistaion:latest
+Corrected command.json created.
+Uploading command to https://xnat-dev.gwdg.de/xapi/commands
+Command created successfully.
+Command-ID: 637
+Wrapper-ID: 674
+Wrapper 'realistaion_wrapper' wurde global aktiviert.
+Wrapper 'realistaion_wrapper' wurde im Projekt 'tanae_osa_Predct' aktiviert.
+Start the Container.:
+Dateien: ['test.csv', 'DemandPlan_v1.csv', 'Inventory_v2.csv', 'Location_v3.csv', 'LocationGroup_v2.csv', 'OrderLine_v4.csv', 'result_patient.csv', 'result.csv', 'test_result.txt', 'patient.csv', 'Catalog_v2.csv', 'DemandPlan_v1.csv', 'InventoryLot_v4.csv', 'Order_v3.csv', 'test.csv', 'result.csv', 'Catalog_v2.csv', 'DemandPlan_v1.csv', 'Inventory_v2.csv', 'Location_v3.csv', 'test.csv', 'test.csv', '1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-258-j8alyh.dcm', '1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-77-1x6bqi9.dcm', '1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-272-1t87pe2.dcm', '1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-340-1rjxebe.dcm', '1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-176-1eof89w.dcm', '1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-49-1nrm2vj.dcm', '1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-6-30atfy.dcm', '1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-346-1qzaf3d.dcm', '1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-94-c9lu7j.dcm', '1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-191-13d408m.dcm', '1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-247-pe3iv0.dcm', '1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-306-uj0rk0.dcm', '1..............mor than 700 files
+Container succesfully launched with all files!
+\end{lstlisting}
+ As we can see in the beginning  the process actively requests input from the user  in order to proceed the implementation. it started by asking the user about his login credentials and then the Project ID that the user want to process, lastly before proceeding the creation and the command sending to XNAT, it asked the user about the command name and the description.
+ After receiving  all the  informations the script commence building the image, tagging, pushing, writing the JSON Command, enabling the Command, and lastly launch the container with all files.
+
+
+ 
+ \section{Results on XNAT:}
+ The result that we came to after testing the code is that all the steps are working amazingly except that the container couldn't receive any files. with the STDerout view we found out that the Container received zero files. 
+ 
+ \begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{en/content/STDOUT view.png}
+    \caption{The STDout view of the Container on XNAT}
+    \label{fig:enter-label}
+\end{figure}
+
+but weirdly after searching in the Container information, we noticed that the container in fact received the files and the file are listed in the input part of the container Input. 
+
+
+ \begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{en/content/Container informatin 1.png}
+    \caption{Conatiner Information }
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{en/content/Container information 2.png}
+    \caption{Conatiner Information }
+    \label{fig:enter-label}
+\end{figure}
+
+
+The results demonstrate two things.  First, the automation script with the REST API worked correctly. Second, there is an issue with the container accessing the input files, despite them being listed as received.
