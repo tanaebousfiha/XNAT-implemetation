@@ -1,0 +1,149 @@
+\documentclass[openany]{book}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[pdfa=true]{hyperref}
+\usepackage{cite}
+\usepackage{listings}
+\usepackage[printonlyused,withpage]{acronym}
+\usepackage{siunitx}
+\usepackage{multirow}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{tabularx}
+\usepackage{marvosym}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{pythontex}
+
+
+
+
+%--- pdf/a format ----
+% insert metadata about the document here
+\RequirePackage{filecontents}
+\begin{filecontents*}{\jobname.xmpdata}
+\Title{Document’s title}
+\Author{Author’s name}
+\Language{en-US}
+\Subject{The abstract, or short description.}
+\Keywords{keyword1\sep keyword2\sep keyword3}
+\end{filecontents*}
+\usepackage{colorprofiles}
+\usepackage[a-1b,mathxmp]{pdfx}[2018/12/22]
+\usepackage[T1]{fontenc}
+\hypersetup{pdfstartview=}
+\usepackage{lipsum}
+
+
+
+
+%--- include custom commands ---
+\input{common/commands}
+
+%--- include general configuration ---
+\input{common/config}
+
+
+%--- basic document configuration ---
+\newcommand{\mytype}{Bachelor}
+%\newcommand{\mytype}{Master's Thesis}
+
+\newcommand{\mycourse}{}
+%\newcommand{\mycourse}{Internet Technologies and Information Systems}
+
+\newcommand{\mytitle}{Automation of Docker Container in Xnat}
+\newcommand{\myauthor}{Tanae Bousfiha}
+\newcommand{\mydepartment}{HAWK }
+\newcommand{\mysubmissiondate}{xx. July 2025}
+%\newcommand{\mythesisid}{201x-xx} %assigned by examination office
+\newcommand{\myfirstsupervisor}{Prof.Dr. Roman Grothausmann}
+\newcommand{\mysecondsupervisor}{Philip Zaschke, MSc.}
+
+
+\begin{document}
+
+ \pagenumbering{roman}
+    \setcounter{page}{1}
+
+   %--- cover page ---
+   \input{content/coverpage}
+   
+
+    %--- statement page ---
+    \input{content/statement}
+    
+
+    %--- abstract ---
+    \clearpage\phantomsection\pdfbookmark{\abstractname}{abstract}
+    \thispagestyle{empty}
+    \input{content/abstract}
+    
+
+    %reset acronyms after abstract
+    \acresetall
+
+    %--- table of contents ---
+    \clearpage\phantomsection\pdfbookmark{\contentsname}{toc}
+    \tableofcontents
+    
+
+    %--- list of figures ---
+    %\listoffigures
+    %\myemptypage
+
+    %--- list of tables ---
+    %\listoftables
+    %\myemptypage
+
+    %--- list of listings ---
+    %\lstlistoflistings
+    %\myemptypage
+
+    %--- list of acronyms ---
+    %\input{content/acronyms}
+    %\myemptypage
+
+
+    %arabic page numbers
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+    
+    %--- chaper 1..n ---
+    \input{content/ch1_introduction}
+    
+    
+    \input{en/content/ch2.Fundamentals}
+    
+
+    \input{en/content/ch3.System}
+    
+
+    
+
+    \input{en/content/ch5_Testingandresult}
+    
+
+    \input{en/content/ch6.Discussion}
+    
+
+    \input{en/content/ch7.appendix_a}
+    
+
+    %--- references ---
+    \bibliographystyle{IEEEtran}
+    \bibliography{content/references}
+    \addcontentsline{toc}{chapter}{\bibname}
+    
+
+    %--- appendix ---
+    \begin{appendix}
+        \input{en/content/ch7.appendix_a}
+        
+    \end{appendix}
+    
+\end{document}
