@@ -1,10 +1,10 @@
 \chapter{System}
 
-The purpose of this chapter is to introduce the System in more details, Overall we are using for this work a Python script. The library  used in this work are: Request,JSON,Os,Subprocess,Getpass,Sys,Urllib3.
+The purpose of this chapter is to introduce the System in more details, Overall we are using for this work a Python script. The library  used in this work are: Request, JSON, O, Subprocess, Getpass, Sys, Urllib3.
 The use of the The Request library was for creating the interaction with the Web services of XNAT. The Python Requests library is the go-to solution for making HTTP requests in Python, thanks to its elegant and intuitive API that simplifies the process of interacting with web services and consuming data in the application.\footnote{https://www.datacamp.com/tutorial/python-subprocess} The sys module in Python provides access to variables and functions that interact closely with the Python interpreter and runtime environment. 
 
-The fact that a JSON command is written the use of the JSON library was necessary. JSON is a syntax for storing and exchanging data.it a text, written with JavaScript object notation.\footnote{schoolW3, Phython JSON}
-The Python subprocess module is a tool that allows to run other programs or commands from your Python code. Using the Python subprocess module is like giving commands to your computer using Python instead of typing them directly into the command prompt. This module makes it easy to automate the Python code.\footnote{https://www.datacamp.com/tutorial/python-subprocess}. Getpass() prompts the user for a password without echoing. The getpass module provides a secure way to handle the password prompts where programs interact with the users via the terminal.\footnote{https://www.geeksforgeeks.org/python/getpass-and-getuser-in-python-password-without-echo/}
+The fact that a JSON command is written, the use of the JSON library was necessary. JSON is a syntax for storing and exchanging data.it a text, written with JavaScript object notation.\footnote{schoolW3, Phython JSON}
+The Python Subprocess module is a tool that allows to run other programs or commands from your Python code. Using the Python Subprocess module is like giving commands to your computer using Python instead of typing them directly into the command prompt. This module makes it easy to automate the Python code.\footnote{https://www.datacamp.com/tutorial/python-subprocess}. Getpass() prompts the user for a password without echoing. The getpass module provides a secure way to handle the password prompts where programs interact with the users via the terminal.\footnote{https://www.geeksforgeeks.org/python/getpass-and-getuser-in-python-password-without-echo/}
  The import of urllib3 was to disable the InsecureRequestWarning, which is normally shown when requests connects to a site with an unverified SSL certificate. This approach helps keep the output clean and free of unnecessary warnings during the run of the Script.
  Currently the System is running Docker Engine 28.3.0,The Docker Client version in use is 20.10.5+dfsg1, which communicates with the Docker Engine to issue commands and manage images and containers. The XNAT web application is running on version 1.9.1.1, as verified through the web interface. 
  
@@ -23,8 +23,8 @@ The Python subprocess module is a tool that allows to run other programs or comm
  
  \section{The Dockerfile:}
  
-The first function is responsible for writing the dockerfile, the function is called \texttt{def write\_dockerfile} and it takes three arguments the target directory for the dockerfile, the name of the Python script to include, and an optional base Docker image (defaulting to python:3.10-slim, currently the fastest and the slimest image of docker). The function creates the necessary folder (if it doesn't already exist), constructs the Dockerfile content, and writes it. The content of the dockerfile is introduced with a string interpolation and it containts the base image and numerous commands like WORKDIR /app (A working directory ) \texttt{COPY \{script\_filename\} /app/\{script\_filename\}} to copy the user skript inside of the image. The line  RUN pip install \texttt{--no-cache-dir pandas} tells Docker to install the pandas Python library using pip during the build process of the Docker image.  which helps reduce the overall image size and avoids unnecessary layers in the building process. The last component of the dockerfile is the \texttt{COPY requirements.txt /app/requirements.txt}, in this part it gives the opportunity for the user to write in a separate text file all the libraries used in the container script, which can be used later in the image build process.
-i removed the CMD instruction from the Dockerfile because it caused errors when running the container in XNAT. The issue was due to a conflict between the CMD instruction in the Dockerfile and the command.json configuration, as both included the python3 prefix. This led to a duplicate command execution, which caused the container to fail. By removing CMD in the Dockerfile, the execution logic is now fully controlled by XNAT through the command.json, ensuring proper behavior during container launch.
+The first function is responsible for writing the dockerfile, the function is called \texttt{def write\_dockerfile} and it takes three arguments the target directory for the dockerfile, the name of the Python script to include, and an optional base Docker image (defaulting to python:3.10-slim, currently the fastest and the slimmest image of docker). The function creates the necessary folder (if it doesn't already exist), constructs the Dockerfile content, and writes it. The content of the dockerfile is introduced with a string interpolation and it containts the base image and numerous commands like WORKDIR /app (A working directory ) \texttt{COPY \{script\_filename\} /app/\{script\_filename\}} to copy the user skript inside of the image. The line  RUN pip install \texttt{--no-cache-dir pandas} tells Docker to install the pandas Python library using pip during the build process of the Docker image.  which helps reduce the overall image size and avoids unnecessary layers in the building process. The last component of the dockerfile is the \texttt{COPY requirements.txt /app/requirements.txt}, in this part it gives the opportunity for the user to write in a separate text file all the libraries used in the container script, which can be used later in the image build process.
+I removed the CMD instruction from the Dockerfile because it caused errors when running the container in XNAT. The issue was due to a conflict between the CMD instruction in the Dockerfile and the command.json configuration, as both included the python3 prefix. This led to a duplicate command execution, which caused the container to fail. By removing CMD in the Dockerfile, the execution logic is now fully controlled by XNAT through the JSON Command, ensuring a successful launch of the Container.
 
 \begin{lstlisting}[language=bash]
 FROM python:3.10-slim
@@ -60,7 +60,7 @@ This function ensure that the dockerfile will be written in a appropriate way an
 
 \section{Building, Pushing and Tagging the image :}
 
-when a command is deployed in XNAT and a container is being launched, the first thing that XNAT is controlling if the docker image is available in the DockerHub. Which means the user has to have essentially a account in the Docker hub, and preferably to log himself before using the following script.  consequently its essential to push and tag the image created.
+When a command is deployed in XNAT and a container is being launched, the first thing that XNAT is controlling if the docker image is available in the DockerHub. Which means the user has to have essentially a account in the Docker hub, and preferably to log himself before using the following script.  consequently its essential to push and tag the image created.
 The function responsible for the build is the \texttt{def build\_docker\_image}. and its expecting two parameters: 
 \texttt{dockerfile\_path } for the Dockerfile path and the the name/tag for the Docker image to be built \texttt{docker\_image\_name}. For the build we used subprocess.run to call the external docker build command.
 usually when we want to build an image in docker we use the basic command \texttt{docker built  .} 
@@ -334,18 +334,72 @@ deflaunch_container_with_all_files(xnat_host,project_id,command_id,wrapper_name,
 
 
 
+\section{User Guide and usage Instructions:}
+
+To better understand the system created and mostly the motivation behind this automation project. We have inserted a table to list how the the Workflow is working and what are the requirement that the user needs to have in order to run the script.
+
+\newpage
+\makeatletter
+\newcommand\justify{%
+  \let\\\@centercr
+  \rightskip\z@skip
+  \leftskip\z@skip}
+\makeatother
+\begin{center}
+\begin{tabular}{|l>{\justify}p{5cm}|}
+\hline
+System Requirement :&  - Python\\
+                     - Requirement List .txt in the same folder as the automatic script.
+                    - XNAT server\\
+                    - Docker Engine installed and running\\
+                    - Docker Hub Account logged in 
+      \tabularnewline[3mm]
+      \hline
+Script  Name : &   automatic.py
+      \tabularnewline
+\hline
+Required Libraries& requests, json, subprocess, getpass, os, sys, urllib3
+      \tabularnewline
+\hline
+User Inputs (Prompted) :& - XNAT Username\\
+                        - XNAT Password \\
+                        - Project ID \\
+                        - Docker Hub Username\\
+                        - Container Script .py\\
+                        - Command Name and Description\\
+                        - Wrapper Laber and Description 
+                         \tabularnewline
+                          \hline
+      Steps to Follow : & 1. Run the Automatic.py Script\\
+                        2.Enter Prompt\\
+                        3. Wait untill the Conatiner is launched.  \tabularnewline
+\hline
+    What happens Automatically : & - Dockerfile is written\\
+                                 - Docker image is built and Tagged and Pushed.\\
+                                 - Command JSON is generated.\\
+                                 - Command is uploaded to XNAT\\
+                                 - Wrapper is activated side wide and project wide\\
+                                 -Container is launched via REST API
+                                 \tabularnewline
+\hline
+Problems/ Scenarios and Troubleshooting:  & - Pushed failed : Check the logging to Doker Hub\\
+                        - Wrapper not found or failed upload JSON Command: Check the naming.\\
+                        - Command already exists: delete manually the old Command. 
+      \tabularnewline
+
+      
+\hline
+\end{tabular}
+\end{center}
+
+This Diagram explain how the Automation script facilitate the process of deploying a Container. 
 
 
-
-
-
-
-
-
-
-
-
-
-
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{en/content/o.png}
+    \caption{Diagram illustrate the difference between the manual and the automatic process }
+    \label{fig:enter-label}
+\end{figure}
 
 
