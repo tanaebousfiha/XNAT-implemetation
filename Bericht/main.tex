@@ -1,5 +1,5 @@
 \documentclass[openany]{book}
-
+\usepackage{svg}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -19,6 +19,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{pythontex}
+\usepackage{fancyhdr}
 
 
 
@@ -50,7 +51,7 @@
 
 
 %--- basic document configuration ---
-\newcommand{\mytype}{Bachelor}
+\newcommand{\mytype}{Project Report}
 %\newcommand{\mytype}{Master's Thesis}
 
 \newcommand{\mycourse}{}
@@ -58,7 +59,8 @@
 
 \newcommand{\mytitle}{Automation of Docker Container in Xnat}
 \newcommand{\myauthor}{Tanae Bousfiha}
-\newcommand{\mydepartment}{HAWK }
+\newcommand{\mydepartment}{HAWK Hochschule für angewandte wissenschaft und kunst 
+\\Institut für Medizinische Informatik der Universitätsmedizin Göttingen}
 \newcommand{\mysubmissiondate}{xx. July 2025}
 %\newcommand{\mythesisid}{201x-xx} %assigned by examination office
 \newcommand{\myfirstsupervisor}{Prof.Dr. Roman Grothausmann}
@@ -121,7 +123,7 @@
     
 
     \input{en/content/ch3.System}
-    
+  
 
     
 
@@ -131,19 +133,19 @@
     \input{en/content/ch6.Discussion}
     
 
-    \input{en/content/ch7.appendix_a}
+   
     
 
-    %--- references ---
+   %--- references ---
     \bibliographystyle{IEEEtran}
     \bibliography{content/references}
     \addcontentsline{toc}{chapter}{\bibname}
-    
+    \myemptypage
 
-    %--- appendix ---
-    \begin{appendix}
-        \input{en/content/ch7.appendix_a}
+    
+\end{document}
+
         
-    \end{appendix}
+  
     
 \end{document}
