@@ -1,0 +1,6 @@
+Um den Localhost zu starten muss man diese Befehl im Terminal eingeben :
+
+ 1) cd ~/dockerfile/xnat-osa/xnat-docker-compose
+
+2) docker-compose up -d
+3) docker ps
