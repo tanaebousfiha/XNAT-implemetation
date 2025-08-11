@@ -1,0 +1,38 @@
+\appendix
+\section{Test Protocol and Results}
+\label{app:test}
+
+\noindent\textbf{Author:} Tanae Bousfiha  
+\noindent\textbf{Date:} August 2025  
+
+\noindent This appendix documents the full terminal output of the automated Docker–XNAT integration script
+\texttt{Projekt.py}.  
+It includes the complete build, push, and wrapper activation process, as well as the execution log showing the files processed by the container.  
+This section serves as a reproducibility record for the workflow described in Section~X.X of the main text.
+
+\begin{lstlisting}
+tanae@mi0082n:~/dockerfile/xnat-osa/Ziel2_osaAutomatisation$ python Projekt.py
+XNAT Username: tanae
+XNAT Password:
+Project ID:  tanae_osa_Predct
+Path to the Python script: test.py
+Name des Commands: Realisation
+Beschreibung des Commands: describes the Realistaion Process
+Dockerfile written to ./Dockerfile
+Docker Hub username (to push the image): tanaebousfiha
+Building Docker image 'realistaion:latest'...
+Image 'realistaion:latest' built successfully.
+Tagging image as 'tanaebousfiha/realistaion:latest'...
+Pushing image to Docker Hub as 'tanaebousfiha/realistaion:latest'...
+Image successfully pushed: tanaebousfiha/realistaion:latest
+Corrected command.json created.
+Uploading command to https://xnat-dev.gwdg.de/xapi/commands
+Command created successfully.
+Command-ID: 637
+Wrapper-ID: 674
+Wrapper 'realistaion_wrapper' wurde global aktiviert.
+Wrapper 'realistaion_wrapper' wurde im Projekt 'tanae_osa_Predct' aktiviert.
+Start the Container.:
+Dateien: ['test.csv', 'DemandPlan_v1.csv', 'Inventory_v2.csv', ... more than 700 files]
+Container succesfully launched with all files!
+\end{lstlisting}
