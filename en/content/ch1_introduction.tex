@@ -1,14 +1,37 @@
 \chapter{Introduction}
+\begin{comment}
+...
+\end{comment}
 
-The automation of the implementation of the Docker container serves as a core foundation enabling scalability, security, ´reproducibility and rapid innovation. In the Context of the project like Somnolink provides not only an efficient service operation but also provides the foundation for evidence-based development, regulatory compliance, and effective research collaboration.\\
-Docker streamlines the development lifecycle by allowing developers to work in the standardized environments using local containers which provide your applications and services. Container are great for continuous delivery workflow.
-This work contributes meaningfully to the field of medical informatics, through this approach, it can be used in automated patient data processing, medical AI Workflow, and secure data integration. It also provides a fast and efficient way to create new operations or updates, which can have positively a huge impact of the patient diagnosis or on the patient care in general.\\Automation is the application of technology, programs, robotics or processes to achieve outcomes with minimal human input, and in the case of the implementation of the Docker container it describes the process of the Deployment, the Configuration and the actualisation of the Software use and their dependencies with the help of the Docker Container and REST APIS based technologies with reduced human assistance. 
-while a large scale of previous studies has used the methods of the Docker Container the  in the field of neuro-imaging,telemedicine applications and in the electronic health record systems.\footnote{Collabnix, 5 benefits of Docker for the healthcare industry, 09.10.2023, https://collabnix.com/5-benefits-of-docker-for-the-healthcare-industry (Zugriff am 17.07.2025)}.One considerable study in this context we can recite the study of the integration of the artificial intelligence tools in the Clinical Research Setting: The Ovarian Cancer Use Case by Lorena Escudero Sanchez\footnote{Lorena Escudero Sanchez et al., Integrating Artificial Intelligence Tools in the Clinical Research Setting: The Ovarian Cancer Use Case, in: Diagnostics, Vol. 13(17), 2023, Article 2813, https://doi.org/10.3390/diagnostics13172813 (Zugriff am 17.07.2025)}. In their 2023 study they proposed using a integration of the AI tool and one of the methods used were the Docker-Xnat pipeline. the developed tool were very powerful and were able to find tumors and precily. In addition by Satrajit Chakrabarty \footnote{et al., Deep learning‑based end‑to‑end scan‑type classification, pre‑processing, and segmentation of clinical neuro‑oncology studies, in: Proceedings of SPIE, Vol.12469 (2023), Article 124690N, https://doi.org/10.1117/12.2647656 (Zugriff am 17.07.2025)} who implemented a  AI based framework that can automate a MRI scan tumor segmentation and characterization using the  Docker Containers in xnat.\\ 
-The Docker Container has a huge rule for the devolopment and integration of virtuell imaging platforms\footnote{Satrajit Chakrabarty et al., Container applications for the development and integration of virtual imaging trials, in: Medical Physics, 2025, https://doi.org/10.1002/mp.17777 (Zugriff am 17.07.2025)} they allow the the abstraction, installation, and configuration of environments so that software can be both distributed in self-contained images and used repeatably by tool consumers.\footnote{SatrajitChakrabarty et al., Container applications for the development and integration of virtual imaging trials, in: Medical Physics, 2025, https://doi.org/10.1002/mp.17777 (Zugriff am17.07.2025)}\\ Despite the flexibility of xnat of integrating external tool (AI, pipelines or plugins) the process of integrating the Docker Containers remains a challenge and requires often steps and manual scripting. Several studies has been using the implementation  of Docker Containerization but few of them have addressed  the idea to automatize the idea of the implementation on xnat, in order to address this gaps limits the current study propose a Docker-Container-based framework integrated in xnat that enable the fully automation of the Docker implementation in xnat. 
-\\
- This project is about  to provide a automation for the process of the implementation of the docker container in xnat. therefore in order to achieve this goal a significant workload remains.
-Most of the cases if we want to implement a docker container in xnat we proceed by writing a external script that the container will then contain, assuming that we are  working on xnat  with the Container Service plugin already installed. Afterward we start writting a dockerfile.\footnote{https://docs.docker.com/reference/dockerfile/} Before deploying the container in xnat a JSON Command must be written. After this the container can be without any problem in xnat deployed launched. The primary goal of the the automation is to to summarize all of these steps into  a single script which receives an external script from the user for each creation of a container.\\
- 
+ All over the world the clinical data, is a part of the surrounding area of so called Health data. it is assembled and archived as a patients files or other formats. Thus far, this data has not been used for medical Research, or just to a very minor extent. Storing this data in one place and analyzing it promises great potential for biomedical discoveries. Studies by Jensen et al. (2012) and Rumsfeld et al. (2016) have shown that, despite its richness, clinical data is often stored in fragmented systems and used for research only sparingly.~\cite{jensen_mining_2012} ~\cite{rumsfeld_big_2016} Shah(2012) underlined that analyzing this data base could accelerate biomedical discoveries \cite{shah_coming_2012}.
+
+
+An available method for archiving the data is XNAT(An available method for archiving the data is the Extensible Neuroimaging Archive Toolkit (XNAT). ~\cite{marcus_extensible_2007} Which enables the central storage of medical data and biosignals. Its expandable capabilities and modular architecture support a wide range of extensions and integrations. 
+
+
+An occurance related to the Somnolink Project where the Diagnose of the Obstructive sleeping apnea \ac{OSA} is required. namely a improved diagnosis for patients suffering from this Sleep condition are greatly needed. Working in combination with \ac{AI} systems, OSA patients can be identified at an early stage, therefore a suitable treatment plan could be easily planned and compliance issues can also be identified. For this purpose the Somnolink project uses XNAT to make clinical sleep data centrally usable.~\cite{internetredaktion_somnolink_nodate}   
+
+
+Medical imaging platforms such as XNAT are commonly adopted for the consolidated collection, storage, and visualization of patient data. With integrated tools like Jupyter notebooks and \ac{DICOM} viewers, researchers are able to access and inspect datasets. However, whereas these competencies support investigation and exhibition, they underperformed when it comes to deeper, automated data analysis above all in the context of machine learning. Currently, executing ML models requires extracting data, processing it externally, and then manually reintegrating the results. This disjointed workflow leads to inefficiencies and hinders the smooth deployment of models within the platform. To address this limitation, the present research investigates methods for embedding automated component integrations within XNAT.
+
+
+While many studies have explored the integration of artificial intelligence tools in clinical research, the focus has often been on specific technical infrastructures rather than on generalizable implementation strategies within data platforms. A notable example is the study by Lorena Escudero Sanchez et al.~\cite{escudero_sanchez_integrating_2023}, who demonstrated the integration of AI-based tumor detection in a clinical setting for ovarian cancer research. Their implementation showed that AI models can significantly enhance data-driven diagnostics when embedded into structured research workflows. Similarly, Satrajit Chakrabarty et al.~\cite{chakrabarty_deep_2023} presented an end-to-end framework capable of automating \ac{MRI} scan classification and tumor segmentation using AI-based methods in neuro-oncology studies. These works underline the potential of machine learning components to support advanced clinical applications and research workflows.
+
+Despite the flexibility of platforms like XNAT to integrate external tools including AI modules, pipelines, or plugins the process often remains complex and manually intensive. While technical integration has been demonstrated in individual use cases, few studies have focused on automating the implementation and execution of machine learning models within XNAT itself. To address this gap, the current work investigates and prototypes possible approaches to make \ac{ML} models directly executable in XNAT, aiming to simplify their deployment and increase accessibility for clinical and research use.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  

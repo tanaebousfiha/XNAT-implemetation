@@ -1,5 +1,5 @@
-\documentclass[10pt]{book}
-
+\documentclass[openany]{book}
+\usepackage{svg}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -18,6 +18,11 @@
 \usepackage{marvosym}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{pythontex}
+\usepackage{fancyhdr}
+\usepackage{comment}
+\usepackage{rotating}
+
 
 
 
@@ -35,39 +40,33 @@
 \usepackage[a-1b,mathxmp]{pdfx}[2018/12/22]
 \usepackage[T1]{fontenc}
 \hypersetup{pdfstartview=}
+\usepackage{lipsum}
 
 
-%
-% This is the official thesis template of
-% the Institute of Computer Science at the
-% Georg-August-University of Göttingen
-%
-%      author: kellner@cs.uni-goettingen.de
-% last update: 17/02/2015
-%
-% If you find any sort of mistake please let me know
-% so that it can be fixed in future releases.
-%
+
 
 
 %--- include custom commands ---
-\input{common/commands}
+\input{commands.tex}
+
+
 
 %--- include general configuration ---
 \input{common/config}
 
 
 %--- basic document configuration ---
-\newcommand{\mytype}{Bachelor}
+\newcommand{\mytype}{Investigation and Prototypical Implementation of Automated Component Integrations in XNAT}
 %\newcommand{\mytype}{Master's Thesis}
 
-\newcommand{\mycourse}{}
+\newcommand{\mycourse}{Bachelor}
 %\newcommand{\mycourse}{Internet Technologies and Information Systems}
 
-\newcommand{\mytitle}{Automation of Docker Container in Xnat}
+
 \newcommand{\myauthor}{Tanae Bousfiha}
-\newcommand{\mydepartment}{Institute of Computer Science}
-\newcommand{\mysubmissiondate}{xx. July 2025}
+\newcommand{\mydepartment}{HAWK Hochschule für angewandte wissenschaft und kunst 
+\\Institut für Medizinische Informatik der Universitätsmedizin Göttingen}
+\newcommand{\mysubmissiondate}{xx. August 2025}
 %\newcommand{\mythesisid}{201x-xx} %assigned by examination office
 \newcommand{\myfirstsupervisor}{Prof.Dr. Roman Grothausmann}
 \newcommand{\mysecondsupervisor}{Philip Zaschke, MSc.}
@@ -80,17 +79,17 @@
 
    %--- cover page ---
    \input{content/coverpage}
-   \myemptypage
+   
 
     %--- statement page ---
     \input{content/statement}
-    \myemptypage
+    
 
     %--- abstract ---
     \clearpage\phantomsection\pdfbookmark{\abstractname}{abstract}
     \thispagestyle{empty}
     \input{content/abstract}
-    \myemptypage
+    
 
     %reset acronyms after abstract
     \acresetall
@@ -98,11 +97,11 @@
     %--- table of contents ---
     \clearpage\phantomsection\pdfbookmark{\contentsname}{toc}
     \tableofcontents
-    \myemptypage
+    
 
     %--- list of figures ---
-    %\listoffigures
-    %\myemptypage
+    \listoffigures
+    \myemptypage
 
     %--- list of tables ---
     %\listoftables
@@ -113,8 +112,8 @@
     %\myemptypage
 
     %--- list of acronyms ---
-    %\input{content/acronyms}
-    %\myemptypage
+    \input{content/acronyms}
+    \myemptypage
 
 
     %arabic page numbers
@@ -126,33 +125,39 @@
     
     
     \input{en/content/ch2.Fundamentals}
-    \myemptypage
+    
 
     \input{en/content/ch3.System}
-    \myemptypage
+  
 
-    \input{en/content/ch4.Realisation}
-    \myemptypage
+    
 
     \input{en/content/ch5_Testingandresult}
-    \myemptypage
+    
 
     \input{en/content/ch6.Discussion}
-    \myemptypage
+    
 
-    \input{en/content/ch7.appendix_a}
-    \myemptypage
+\input{en/content/ch7.Conclusion}    
 
-    %--- references ---
+   %--- references ---
     \bibliographystyle{IEEEtran}
     \bibliography{content/references}
     \addcontentsline{toc}{chapter}{\bibname}
     \myemptypage
-
-    %--- appendix ---
+    
+   %--- appendix ---
     \begin{appendix}
-        \input{en/content/ch7.appendix_a}
+        \input{en/content/appendix}
         \myemptypage
     \end{appendix}
-    
 \end{document}
+
+
+
+\end{document}
+
+        
+
+
+
