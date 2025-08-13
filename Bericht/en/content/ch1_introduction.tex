@@ -1,16 +1,19 @@
 
 \chapter{Introduction}
 \begin{comment}
-...
+test222
 \end{comment}
+ In healthcare, massive amounts of data is generated~\cite{https://doi.org/10.1038/s41591-019-0727-5}. We use the data in machine learning tasks (\ac{ML}) to get an insight. However, preparation of this ML-data science workflows is crucial in order to ensure a correct trained model. Further, the challenge remains to deploy finished ML-models in an appropriate environment.
 
- All over the world the clinical data, is a part of the surrounding area of so called Health data. it is assembled and archived as a patients files or other formats. Thus far, this data has not been used for medical Research, or just to a very minor extent. Storing this data in one place and analyzing it promises great potential for biomedical discoveries. Studies by Jensen et al. (2012) and Rumsfeld et al. (2016) have shown that, despite its richness, clinical data is often stored in fragmented systems and used for research only sparingly.~\cite{jensen_mining_2012} ~\cite{rumsfeld_big_2016} Shah(2012) underlined that analyzing this data base could accelerate biomedical discoveries \cite{shah_coming_2012}.
+ \begin{comment}
+      All over the world the clinical data, is a part of the surrounding area of so called Health data. It is assembled and archived as a patients files or other formats. Thus far, this data has not been used for medical Research, or just to a very minor extent. Storing this data in one place and analyzing it promises great potential for biomedical discoveries. Studies by Jensen et al. (2012) and Rumsfeld et al. (2016) have shown that, despite its richness, clinical data is often stored in fragmented systems and used for research only sparingly.~\cite{jensen_mining_2012} ~\cite{rumsfeld_big_2016} Shah(2012) underlined that analyzing this data base could accelerate biomedical discoveries \cite{shah_coming_2012}.
+ \end{comment}
 
 
-An available method for archiving the data is XNAT(An available method for archiving the data is the Extensible Neuroimaging Archive Toolkit (XNAT). ~\cite{marcus_extensible_2007} Which enables the central storage of medical data and biosignals. Its expandable capabilities and modular architecture support a wide range of extensions and integrations. 
 
+An available open-source system for archiving data is the Extensible Neuroimaging Archive Toolkit (XNAT). ~\cite{marcus_extensible_2007} which enables the central storage of medical data and biosignals. Its expandable capabilities and modular architecture support a wide range of extensions and integrations. 
 
-An occurance related to the Somnolink Project where the Diagnose of the Obstructive sleeping apnea \ac{OSA} is required. namely a improved diagnosis for patients suffering from this Sleep condition are greatly needed. Working in combination with \ac{AI} systems, OSA patients can be identified at an early stage, therefore a suitable treatment plan could be easily planned and compliance issues can also be identified. For this purpose the Somnolink project uses XNAT to make clinical sleep data centrally usable.~\cite{internetredaktion_somnolink_nodate}   
+XNAT is used in the Somnolink Project, where the improvement of diagnosis and therapy of the obstructive sleeping apnea \ac{OSA} is aimed while ensuring an interoperable sleep data exchange. Working in combination with \ac{AI} systems, OSA patients can be identified at an early stage, therefore a suitable treatment plan could be easily planned and compliance issues can also be identified. For this purpose the Somnolink project uses XNAT to make clinical sleep data centrally usable with the ability to use the ML-systems directly in XNAT~\cite{internetredaktion_somnolink_nodate}   
 
 
 Medical imaging platforms such as XNAT are commonly adopted for the consolidated collection, storage, and visualization of patient data. With integrated tools like Jupyter notebooks and \ac{DICOM} viewers, researchers are able to access and inspect datasets. However, whereas these competencies support investigation and exhibition, they underperformed when it comes to deeper, automated data analysis above all in the context of machine learning. Currently, executing ML models requires extracting data, processing it externally, and then manually reintegrating the results. This disjointed workflow leads to inefficiencies and hinders the smooth deployment of models within the platform. To address this limitation, the present research investigates methods for embedding automated component integrations within XNAT.
