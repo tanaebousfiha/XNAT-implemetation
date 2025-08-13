@@ -1,4 +1,5 @@
-\chapter{Discussion}
+
+
 This Chapter presents a overview of the implementation solution, the technical encountered challenges during integration with XNAT and the methods employed to overcome the issues. Several issues emerged throughout development, including data transmission failures, REST API inconsistencies, JSON configuration mismatches.
 
 The initial Problem was that the Container did not appear to receive any input files. To confirm this, a test was realized by adding a script within the Container. The script was designed to write a file named no\_file.txt if no input file was detected at runtime. The successful upload of this no file confirmed that while the container was running, it was not receiving actual input data.
