@@ -1,0 +1,3801 @@
+%PDF-1.3
+%ºß¬à
+3 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 4 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 3662
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(Exportiert aus HAWKI am: 4.6.2025 von Bousfiha, Tanae) Tj
+ET
+BT
+/F2 18 Tf
+20.6999999999999993 TL
+0 g
+70.8661417322834666 728.5041732283464171 Td
+(Zusammenfassung) Tj
+ET
+BT
+/F3 14 Tf
+16.0999999999999979 TL
+0 g
+240.9448818897637921 728.5041732283464171 Td
+( \(automatisiert erstellt\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 700.15771653543311 Td
+(Um eine App zu erstellen, hängt vom Typ ab: Web-Apps mit Flask oder Django in) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 681.7577165354330191 Td
+(Python, Desktop-Apps mit Tkinter, Mobile-Apps mit Android Studio oder Flutter, oder) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 663.3577165354330418 Td
+(Docker-basierte Services für wissenschaftliche Anwendungen. Wichtig sind Schritte) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 644.9577165354330646 Td
+(wie Wahl der Programmiersprache, Grundstruktur aufbauen, Funktionen hinzufügen,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 626.5577165354330873 Td
+(testen und deployment. Für wissenschaftliche Anwendungen kann eine) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 608.15771653543311 Td
+(Docker-Umgebung mit klarer Input/Output-Dokumentation sinnvoll sein. Best) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 589.7577165354330191 Td
+(Practices umfassen Versionierung mit Git, Dokumentation, Testen und nachhaltige) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 571.3577165354330418 Td
+(Entwicklung. Besonders bei ersten Schritten empfiehlt sich ein Minimalbeispiel, das) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 552.9577165354330646 Td
+(nach und nach erweitert wird. Bei konkretem Ziel oder Plattform kann ich spezifischer) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 534.5577165354330873 Td
+(helfen.) Tj
+ET
+BT
+/F2 18 Tf
+20.6999999999999993 TL
+0 g
+70.8661417322834666 459.4648031496062686 Td
+(Systemprompt) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 416.9451181102361943 Td
+(Du bist ein intelligentes und unterstützendes KI-Assistenzsystem für alle) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.545118110236217 Td
+(Hochschulangehörigen der HAWK Hildesheim/Holzminden/Göttingen. Dein Ziel ist es,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.1451181102361829 Td
+(Studierende, Lehrende, Forschende und Mitarbeitende in ihrer akademischen Arbeit,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.7451181102362057 Td
+(beim Lernen, Forschen, Lehren und verwalterischen Aufgaben zu unterstützen. Dabei) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.3451181102362284 Td
+(förderst du kollaboratives Arbeiten, wissenschaftliches Denken und eine kreative) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 324.9451181102361943 Td
+(Problemlösung. Beziehe dich auf wissenschaftliche Methoden und Theorien,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.545118110236217 Td
+(argumentiere sachlich und reflektiere kritisch. Sei objektiv und verzichte auf) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 288.1451181102362398 Td
+(unbegründete Meinungen. Fördere akademische Integrität und unterstütze keine) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 269.7451181102362625 Td
+(Plagiate. Sei inklusiv, wertschätzend und respektiere Vielfalt.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 6 0 R
+>>
+endobj
+6 0 obj
+<<
+/Length 4504
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F2 18 Tf
+20.6999999999999993 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(Verlauf:) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 756.8506299212598378 Td
+(Bousfiha, Tanae:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 728.5041732283464171 Td
+({) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 710.1041732283464398 Td
+(  &quot;name&quot;: &quot;osa_predictor&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 691.7041732283464626 Td
+(  &quot;description&quot;: &quot;Berechnet das) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 673.3041732283463716 Td
+(OSA-Risiko aus einer CSV-, TSV- oder TXT-Datei.&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 654.904173228346508 Td
+(  &quot;version&quot;: &quot;1.0&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 636.5041732283464171 Td
+(  &quot;image&quot;:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 618.1041732283464398 Td
+(&quot;tanaebousfiha/osa-predictor:finalfix&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 599.7041732283464626 Td
+(  &quot;type&quot;: &quot;docker&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 581.3041732283463716 Td
+(  &quot;command-line&quot;: &quot;python) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 562.904173228346508 Td
+(/app/OSA_xnat.py /app/input/#INPUT_FILE#) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 544.5041732283464171 Td
+(/app/output&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 526.1041732283464398 Td
+(  &quot;mounts&quot;: [) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 507.7041732283464626 Td
+(    {) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 489.3041732283464853 Td
+(      &quot;name&quot;: &quot;output_mount&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 470.9041732283464512 Td
+(      &quot;writable&quot;: true,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 452.5041732283464739 Td
+(      &quot;path&quot;: &quot;/app/output&quot;) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 434.1041732283464398 Td
+(    },) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 415.7041732283464626 Td
+(    {) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 397.3041732283464853 Td
+(      &quot;name&quot;: &quot;input_mount&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 378.9041732283464512 Td
+(      &quot;writable&quot;: false,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 360.5041732283464739 Td
+(      &quot;path&quot;: &quot;/app/input&quot;) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 342.1041732283464967 Td
+(    }) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 323.7041732283464626 Td
+(  ],) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 305.3041732283464853 Td
+(  &quot;environment-variables&quot;: {},) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 286.904173228346508 Td
+(  &quot;ports&quot;: {},) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 268.5041732283465308 Td
+(  &quot;inputs&quot;: [) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 250.1041732283464398 Td
+(    {) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 231.7041732283464626 Td
+(      &quot;name&quot;: &quot;INPUT_FILE&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 213.3041732283464853 Td
+(      &quot;description&quot;: &quot;Name der) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 194.904173228346508 Td
+(Eingabedatei&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 176.5041732283465308 Td
+(      &quot;type&quot;: &quot;string&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 158.1041732283464398 Td
+(      &quot;required&quot;: true,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 139.7041732283464626 Td
+(      &quot;select-values&quot;: []) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 121.3041732283464853 Td
+(    }) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 102.904173228346508 Td
+(  ],) Tj
+ET
+endstream
+endobj
+7 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 8 0 R
+>>
+endobj
+8 0 obj
+<<
+/Length 4776
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(  &quot;outputs&quot;: [) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(    {) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(      &quot;name&quot;: &quot;result_file&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(      &quot;description&quot;: &quot;Die berechneten) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(OSA-Risikodaten&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+(      &quot;required&quot;: true,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(      &quot;mount&quot;: &quot;output_mount&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(      &quot;path&quot;: &quot;osa_result.csv&quot;) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(    }) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 619.5970866141732358 Td
+(  ],) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(  &quot;xnat&quot;: [) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(    {) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(      &quot;name&quot;: &quot;osa_wrapper_final&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 545.9970866141732131 Td
+(      &quot;label&quot;: &quot;OSA Predictor&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 527.5970866141732358 Td
+(      &quot;description&quot;: &quot;OSA Risk) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(Calculation.&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(      &quot;contexts&quot;: [) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 472.3970866141732472 Td
+(        &quot;xnat:mrSessionData&quot;) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 453.9970866141732699 Td
+(      ],) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 435.5970866141732358 Td
+(      &quot;external-inputs&quot;: [) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 417.1970866141732586 Td
+(        {) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.7970866141732245 Td
+(          &quot;name&quot;: &quot;session&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.3970866141732472 Td
+(          &quot;type&quot;: &quot;Session&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+(          &quot;required&quot;: true,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.5970866141732358 Td
+(          &quot;load-children&quot;: true) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 325.1970866141732586 Td
+(        }) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.7970866141732813 Td
+(      ],) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 288.397086614173304 Td
+(      &quot;derived-inputs&quot;: [) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 269.9970866141732131 Td
+(        {) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 251.5970866141732358 Td
+(          &quot;name&quot;: &quot;csv_resource&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 233.1970866141732586 Td
+(          &quot;type&quot;: &quot;Resource&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 214.7970866141732813 Td
+(          &quot;matcher&quot;: &quot;@.label ==) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 196.397086614173304 Td
+(&#039;CSV&#039;&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 177.9970866141733268 Td
+(          &quot;required&quot;: true,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 159.5970866141732358 Td
+(          &quot;provides-files-for-command-mount&quot;:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 141.1970866141732586 Td
+(&quot;input_mount&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 122.7970866141732813 Td
+(          &quot;load-children&quot;: true,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 104.3970866141734177 Td
+(          &quot;derived-from-wrapper-input&quot;:) Tj
+ET
+endstream
+endobj
+9 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 10 0 R
+>>
+endobj
+10 0 obj
+<<
+/Length 4886
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(&quot;session&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(          &quot;multiple&quot;: false) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(        },) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(        {) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(          &quot;name&quot;: &quot;input_file&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+(          &quot;type&quot;: &quot;File&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(          &quot;matcher&quot;: &quot;@.name =~) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(/.*\\\\.\(csv|tsv|txt\)$/&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(          &quot;required&quot;: true,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 619.5970866141732358 Td
+(          &quot;load-children&quot;: true,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(          &quot;derived-from-wrapper-input&quot;:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(&quot;csv_resource&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(          &quot;multiple&quot;: false) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 545.9970866141732131 Td
+(        },) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 527.5970866141732358 Td
+(        {) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(          &quot;name&quot;: &quot;input_file_name&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(          &quot;type&quot;: &quot;string&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 472.3970866141732472 Td
+(          &quot;required&quot;: true,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 453.9970866141732699 Td
+(          &quot;provides-value-for-command-input&quot;:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 435.5970866141732358 Td
+(&quot;INPUT_FILE&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 417.1970866141732586 Td
+(          &quot;user-settable&quot;: false,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.7970866141732245 Td
+(          &quot;load-children&quot;: false,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.3970866141732472 Td
+(          &quot;derived-from-wrapper-input&quot;:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+(&quot;input_file&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.5970866141732358 Td
+(          &quot;derived-from-xnat-object-property&quot;:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 325.1970866141732586 Td
+(&quot;name&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.7970866141732813 Td
+(          &quot;multiple&quot;: false) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 288.397086614173304 Td
+(        }) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 269.9970866141732131 Td
+(      ],) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 251.5970866141732358 Td
+(      &quot;output-handlers&quot;: [) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 233.1970866141732586 Td
+(        {) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 214.7970866141732813 Td
+(          &quot;name&quot;: &quot;osa_output&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 196.397086614173304 Td
+(          &quot;accepts-command-output&quot;:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 177.9970866141733268 Td
+(&quot;result_file&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 159.5970866141732358 Td
+(          &quot;as-a-child-of&quot;: &quot;session&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 141.1970866141732586 Td
+(          &quot;type&quot;: &quot;Resource&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 122.7970866141732813 Td
+(          &quot;label&quot;: &quot;OSA Result&quot;,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 104.3970866141734177 Td
+(          &quot;format&quot;: &quot;csv&quot;,) Tj
+ET
+endstream
+endobj
+11 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 12 0 R
+>>
+endobj
+12 0 obj
+<<
+/Length 4434
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(          &quot;tags&quot;: []) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(        }) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(      ]) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(    }) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(  ],) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+(  &quot;container-labels&quot;: {},) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(  &quot;generic-resources&quot;: {},) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(  &quot;ulimits&quot;: {},) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(  &quot;secrets&quot;: []) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 619.5970866141732358 Td
+(}) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(ist das richtig) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 554.4506299212598606 Td
+(HAWKI) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0 g
+128.9763779527559109 554.4506299212598606 Td
+(\(gpt-4.1\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 526.1041732283464398 Td
+(Deine JSON-Definition ist **konzeptionell schlüssig** und entspricht weitgehend den) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 507.7041732283464626 Td
+(üblichen Anforderungen für XNAT-Container-Services und -Wrappers. Die) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 489.3041732283464853 Td
+(Kommandostruktur, Inputs, Outputs sowie die Festlegungen für Mountpoints wirken) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 470.9041732283464512 Td
+(richtig implementiert. Dennoch empfiehlt sich eine **kritische Durchsicht mit Fokus) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 452.5041732283464739 Td
+(auf folgende Aspekte**:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 415.7041732283464626 Td
+(### 1. Inputs und Mounts) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 397.3041732283464853 Td
+(- Die Mountpoints `input_mount` und `output_mount` sind korrekt eingebunden und) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 378.9041732283464512 Td
+(mit den richtigen Zugriffsrechten versehen.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 360.5041732283464739 Td
+(- Das Pattern für `input_file` \(Regulärer Ausdruck\) schließt CSV, TSV und TXT) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 342.1041732283464967 Td
+(sinnvoll ein.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 323.7041732283464626 Td
+(- Die Verbindung der `input_file_name` zum Kommando ist schlüssig.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 286.904173228346508 Td
+(### 2. Kommandostruktur) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 268.5041732283465308 Td
+(- Das Kommando ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 250.1041732283464398 Td
+(  ```python) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 231.7041732283464626 Td
+(  python /app/OSA_xnat.py /app/input/#INPUT_FILE# /app/output) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 213.3041732283464853 Td
+(  ```) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 194.904173228346508 Td
+(  wird zur Laufzeit korrekt mit dem tatsächlich übergebenen Dateinamen ausgeführt.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 158.1041732283464398 Td
+(### 3. Output) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 139.7041732283464626 Td
+(- Das Output-File heißt immer `osa_result.csv` und wird nach `/app/output`) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 121.3041732283464853 Td
+(geschrieben, was zum Output-Handler passt. Falls der Python-Code abweichende) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 102.904173228346508 Td
+(Dateinamen produziert, müsste dies abgeglichen werden.) Tj
+ET
+endstream
+endobj
+13 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 14 0 R
+>>
+endobj
+14 0 obj
+<<
+/Length 3298
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(### 4. XNAT-spezifische Wrapper/Verbindungen) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(- Die Ableitung der Ressourcen, Children und Matcher ist logisch konsistent.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(- Die Output-Handler-Zuordnung zu einer XNAT-Session und die Label-Vergabe) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(passen.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(### 5. Potenzielle Verbesserungen / Hinweise) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(**a\) Input Validation**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(- Stelle sicher, dass die Erzeugung der Eingabedatei zuverlässig mit jedem) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(Allow-Pattern funktioniert \(Encoding der Dateinamen, Umlaute etc.\).) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 545.9970866141732131 Td
+(**b\) Output-Handling**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(- Falls mehrere Sessions gleichzeitig berechnet werden, wäre ein unique) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(Outputfilename \(im Code\) wichtig, um Kollisionen zu vermeiden.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 453.9970866141732699 Td
+(**c\) Dokumentation**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 417.1970866141732586 Td
+(- In der Beschreibung \(`description`\) der Inputs/Outputs eventuell darauf eingehen,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.7970866141732245 Td
+(welche Variablen, Spalten oder Formate die Eingangstabellen besitzen müssen.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+(**d\) Fehlerbehandlung und Logging \(im Docker-Container selbst\)**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 325.1970866141732586 Td
+(- Empfohlen: Logging-Ausgaben in der Applikation, damit bei Fehlschlägen) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.7970866141732813 Td
+(transparent ist, an welcher Stelle in der Datenpipeline/welcher Datei es gescheitert) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 288.397086614173304 Td
+(ist.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 251.5970866141732358 Td
+(**e\) Reproduzierbarkeit**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 214.7970866141732813 Td
+(- Dokumentation zu verwendeter Python-, Moduls- und Docker-Version für langfristige) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 196.397086614173304 Td
+(Wartbarkeit im XNAT-System.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 159.5970866141732358 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 122.7970866141732813 Td
+(### Zusammenfassung) Tj
+ET
+endstream
+endobj
+15 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 16 0 R
+>>
+endobj
+16 0 obj
+<<
+/Length 3952
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(**Dein Ansatz ist technisch korrekt und grundsätzlich sofort lauffähig** \(sofern das) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(Python-Skript und die Mounted-Volumes richtig funktionieren\). Die Details hängen) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(dann entscheidend vom tatsächlichen Verhalten deines Skripts und der zu) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(prozessierenden XNAT-Ressourcen ab.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+(#### Empfehlung:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(Vor dem Deployment zunächst einen Testlauf mit echten Beispieldaten und typischen) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(Userwegen wagen \(sowohl mit validen als auch invaliden Daten\), um die robuste) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(Funktionalität zu bestätigen.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(**Falls du bestimmte Fehlermeldungen, Anforderungen an das Input-File oder) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(Output-Format hast, kann ich gerne noch gezielter bei der Feinspezifikation helfen!**) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 536.0506299212597696 Td
+(Bousfiha, Tanae:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 507.7041732283464626 Td
+(meine container läuft abre lädt keine Datei hoch) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 460.9577165354330646 Td
+(HAWKI) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0 g
+128.9763779527559109 460.9577165354330646 Td
+(\(gpt-4.1\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 432.6112598425197007 Td
+(Das Problem, dass der Container **läuft**, aber **keine Datei hochgeladen wird**,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 414.2112598425196666 Td
+(kann verschiedene Ursachen haben. Hier ist eine strukturierte Vorgehensweise zur) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 395.8112598425196893 Td
+(Fehlersuche und hilfreiche Hinweise speziell für den Einsatz mit **XNAT-Container) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 377.411259842519712 Td
+(Services**:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 340.6112598425197007 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 303.8112598425196893 Td
+(### 1. **Prüfe die XNAT-Ressource und den Wrapper**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 267.0112598425197348 Td
+(- **Ist am MR-Session-Objekt wirklich ein „CSV“-Ressourcenordner mit einer) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 248.6112598425196438 Td
+(passenden Datei \(csv, tsv, txt\) angelegt?**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 230.2112598425196666 Td
+(- **Stimmt der Ressourcenname exakt mit „CSV“ überein?** \(Achte auf) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 211.8112598425196893 Td
+(Groß-/Kleinschreibung! Achte auch darauf, dass es nicht „Csv“ oder „csv“ ist.\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 175.0112598425197348 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 138.2112598425196666 Td
+(### 2. **Prüfe die gemounteten Daten im Container**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 101.4112598425195984 Td
+(- **Logge dich ggf. interaktiv in den laufenden Container ein** \(z. B. mit `docker exec) Tj
+ET
+endstream
+endobj
+17 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 18 0 R
+>>
+endobj
+18 0 obj
+<<
+/Length 3835
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(-it <container-id> /bin/bash`\) und überprüfe, ob die Datei im Verzeichnis `/app/input`) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(liegt.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(- **Beispiel:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(  ```) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(  ls -l /app/input) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+(  cat /app/input/<deine_datei.csv>) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(  ```) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(- **Wenn das Verzeichnis leer ist:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(  => Die Datei wurde vermutlich nicht vom Wrapper übergeben \(z. B.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 619.5970866141732358 Td
+(Ressourcen-Label falsch, Datei nicht als Resource angehängt, Matcher Fehler\).) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 545.9970866141732131 Td
+(### 3. **Matcher Fehler?**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(- **Der Matcher verlangt Dateinamen-Endungen `.csv`, `.tsv`, `.txt`.**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(  Prüfe, ob die Datei genau so heißt. Z. B. funktioniert eine Datei `.CSV`) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 472.3970866141732472 Td
+(\(Großbuchstaben\) oder `.csv.bak` NICHT.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 453.9970866141732699 Td
+(- **XNAT führt Matcher serverseitig aus und ist sensibel gegenüber kleinen) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 435.5970866141732358 Td
+(Unstimmigkeiten!**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.7970866141732245 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+(### 4. **Output: Resource-Handling**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 325.1970866141732586 Td
+(- Schau in deiner XNAT-GUI nach, ob unter der MR-Session ein „OSA Result“-Ordner) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.7970866141732813 Td
+(erstellt wurde bzw. ob dort eine CSV hinterlegt ist.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 288.397086614173304 Td
+(- Kommt ein Output-File im gewünschten Ziel an? Wird vielleicht gar kein Output) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 269.9970866141732131 Td
+(erzeugt, weil ein Fehler im Python-Skript auftritt \(fehlende Input-Datei etc.\)?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 233.1970866141732586 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 196.397086614173304 Td
+(### 5. **Container-Logfile prüfen**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 159.5970866141732358 Td
+(- Lasse dir die Container-Logs ausgeben, z. B.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 141.1970866141732586 Td
+(  ```) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 122.7970866141732813 Td
+(  docker logs <container-id>) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 104.3970866141734177 Td
+(  ```) Tj
+ET
+endstream
+endobj
+19 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 20 0 R
+>>
+endobj
+20 0 obj
+<<
+/Length 3860
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(- Gibt das Python-Skript Fehlermeldungen im Falle fehlender Datei-Eingaben aus?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(- Typische Fehlermeldungen lauten z. B.:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(  ```) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(  FileNotFoundError: [Errno 2] No such file or directory: '/app/input/<dateiname>') Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(  ```) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(### 6. **XNAT Docker-Service: Benutzungsfehler/GUI?**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(- **Beim Ausführen des Wrappers in XNAT:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(  Hast du beim Start des Containers für die gewählte MR-Session auch wirklich das) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(richtige Resource File ausgewählt?  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 545.9970866141732131 Td
+(- Wird dir die Datei in der Auswahlmaske überhaupt angeboten?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 527.5970866141732358 Td
+(- Wird der Fortschritt/Fehlerstatus korrekt angezeigt oder steht der Service auf) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(„running/pending/failed“?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 472.3970866141732472 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 435.5970866141732358 Td
+(### 7. **Warum keine Datei hochgeladen?**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 417.1970866141732586 Td
+(Mögliche Ursachen \(zusammengefasst\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.3970866141732472 Td
+(- **Ressourcen-LABEL stimmt nicht** \(`"CSV"` vs `"Csv"` oder `"csv"`\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+(- **Dateiname mit falscher Endung**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.5970866141732358 Td
+(- **Input-File am falschen XNAT-Objekt** \(z. B. nicht bei MR-Session, sondern Scan\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 325.1970866141732586 Td
+(- **Fehler im Python-Skript verhindert Output-File-Erzeugung**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.7970866141732813 Td
+(- **Keine Schreibberechtigung auf Output-Mount**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 288.397086614173304 Td
+(- **Fehlende `provides-files-for-command-mount` oder) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 269.9970866141732131 Td
+(`provides-value-for-command-input` Zuordnung**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 233.1970866141732586 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 196.397086614173304 Td
+(## Checkliste für dich) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 159.5970866141732358 Td
+(1. **Im XNAT-Webinterface:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 141.1970866141732586 Td
+(   - Existiert eine „CSV“ Resource beim MR-Session-Objekt?  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 122.7970866141732813 Td
+(   - Ist dort eine passende Datei hinterlegt?) Tj
+ET
+endstream
+endobj
+21 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 22 0 R
+>>
+endobj
+22 0 obj
+<<
+/Length 4467
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(2. **Im Docker-Container:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(   - Kommt die Datei als `/app/input/DEINEDATEI.csv` wirklich an?  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(   - Wird ein Output-File `/app/output/osa_result.csv` erzeugt?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(3. **Im XNAT:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+(   - Wird das Output-File als neue Resource angezeigt?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(4. **Im Logfile:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(   - Existieren Fehlermeldungen? \(z. B. „file not found“\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(**Wenn du die Ausgabe von `ls /app/input` und die wichtigsten Zeilen aus dem) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 545.9970866141732131 Td
+(Container-Log bereitstellen kannst, kann ich gezielter weiterhelfen!**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 527.5970866141732358 Td
+(Melde dich gern mit konkreten Logs oder Dateinamen, dann können wir das Problem) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(genau einkreisen.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 462.4506299212598606 Td
+(Bousfiha, Tanae:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 434.1041732283464398 Td
+(ja er findet die Datei ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 415.7041732283464626 Td
+(so sind meine STDout ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 397.3041732283464853 Td
+(Ø=ßâ   S t a r t   O S A - A n a l y s e) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 378.9041732283464512 Td
+(Ø=ÜÁ   I n h a l t   v o n   I N P U T _ D I R :   [ & # 0 3 9 ; C S V _ c a t a l o g . x m l & # 0 3 9 ; ,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 360.5041732283464739 Td
+(&#039;correct_patient.csv&#039;]) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 342.1041732283464967 Td
+(Ø=ÜÄ   G e f u n d e n e   E i n g a b e d a t e i e n :   [ & # 0 3 9 ; c o r r e c t _ p a t i e n t . c s v & # 0 3 9 ; ]) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 323.7041732283464626 Td
+(Ø=Ý   V e r a r b e i t e   D a t e i :   c o r r e c t _ p a t i e n t . c s v) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 305.3041732283464853 Td
+(Ø=ÜÊ   G e l e s e n e   D a t e n :) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 286.904173228346508 Td
+(   snoring  tired  stop_breath  ...  older_than_50  neck  gender) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 268.5041732283465308 Td
+(0        0      0            1  ...              1     1       m) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 250.1041732283464398 Td
+([1 rows x 8 columns]) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 231.7041732283464626 Td
+(Ø=Ü¾   S p e i c h e r e   E r g e b n i s   n a c h :   / a p p / o u t p u t / o s a _ r e s u l t . c s v) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 213.3041732283464853 Td
+('   D a t e i   e r f o l g r e i c h   g e s p e i c h e r t .) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 194.904173228346508 Td
+('   c h m o d   e r f o l g r e i c h   g e s e t z t .) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 176.5041732283465308 Td
+(Ø=ÜÁ   I n h a l t   v o n   O U T P U T _ D I R :   [ & # 0 3 9 ; o s a _ r e s u l t . c s v & # 0 3 9 ; ]) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 129.7577165354331328 Td
+(HAWKI) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0 g
+128.9763779527559109 129.7577165354331328 Td
+(\(gpt-4.1\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 101.4112598425195984 Td
+(Deine Logausgabe zeigt ganz eindeutig:  ) Tj
+ET
+endstream
+endobj
+23 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 24 0 R
+>>
+endobj
+24 0 obj
+<<
+/Length 4411
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(**Die Eingabedatei wird gefunden, verarbeitet und ein Ergebnis \(`osa_result.csv`\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(korrekt im Output-Ordner gespeichert.**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(**Das Problem liegt also NICHT am Container oder Skript, sondern sehr) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(wahrscheinlich an der XNAT-Seite** \(Resource-Upload/Zuordnung\). Hier sind die) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+(nächsten, systematischen Prüfschritte:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 619.5970866141732358 Td
+(### 1. **Prüfe die Output-Resource in XNAT**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(- Erscheint unter deiner **Session** ein Ordner „OSA Result“?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(- Wird dort eine Datei angezeigt?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(  - Falls **nein**: Der Output-Handler könnte einen Fehler haben.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 545.9970866141732131 Td
+(  - Falls **ja, aber leer**: Die Datei wurde zwar als Resource angelegt, aber kein) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 527.5970866141732358 Td
+(Inhalt wurde hochgeladen.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(### 2. **Überprüfe Wrapping und Output-Handler**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 453.9970866141732699 Td
+(#### Dein Output-Handler-Eintrag sieht so aus:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 435.5970866141732358 Td
+(```json) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 417.1970866141732586 Td
+("output-handlers": [) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.7970866141732245 Td
+(  {) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.3970866141732472 Td
+(    "name": "osa_output",) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+(    "accepts-command-output": "result_file",) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.5970866141732358 Td
+(    "as-a-child-of": "session",) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 325.1970866141732586 Td
+(    "type": "Resource",) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.7970866141732813 Td
+(    "label": "OSA Result",) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 288.397086614173304 Td
+(    "format": "csv",) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 269.9970866141732131 Td
+(    "tags": []) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 251.5970866141732358 Td
+(  }) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 233.1970866141732586 Td
+(]) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 214.7970866141732813 Td
+(```) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 196.397086614173304 Td
+(- **Path** der Datei musst exakt stimmen:  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 177.9970866141733268 Td
+(    !’   I m   C o n t a i n e r   w i r d   s i e   a l s   ` / a p p / o u t p u t / o s a _ r e s u l t . c s v `   g e s p e i c h e r t .    ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 159.5970866141732358 Td
+(    !’   I m   O u t p u t - H a n d l e r   i s t   ` " p a t h " :   " o s a _ r e s u l t . c s v " `   g e s e t z t .    ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 141.1970866141732586 Td
+(- Falls du versehentlich z.B. `"path": "/app/output/osa_result.csv"` im Handler) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 122.7970866141732813 Td
+(verwendest, **funktioniert das nicht** – der Pfad muss relativ zum Output-Mount sein.) Tj
+ET
+endstream
+endobj
+25 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 26 0 R
+>>
+endobj
+26 0 obj
+<<
+/Length 4221
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(### 3. **Checke Folder- und Permissions**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(- Hat der Service-User auf dem XNAT-Server Schreibrechte auf den) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(Output-Resource-Ordner?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(- Wird im XNAT-Log eine Fehlermeldung zum Resource-Upload ausgegeben? Prüfe) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+(das Server-Admin-Panel oder frage den XNAT-Admin.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(### 4. **Automatischer Refresh/Anzeige**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(- XNAT zeigt neu angelegte Resources manchmal **erst nach Refresh** oder beim) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 619.5970866141732358 Td
+(nächsten Öffnen an. Versuche, die Session-Ansicht neu zu laden.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(- Prüfe, ob die Datei zumindest über die REST-API oder als Download verfügbar ist.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(### 5. **Versteckte Fehler beim Run**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 545.9970866141732131 Td
+(- Manchmal bleiben Output-Handler stumm, wenn ein Problem in der XNAT-Engine) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 527.5970866141732358 Td
+(vorliegt \(fehlende /tmp-Rechte, Storage-Voll, …\).) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(- **XNAT Admin-Logs** können helfen: `/data/xnat/home/logs/catalina.out` oder) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(ähnlich, je nach Setup.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 453.9970866141732699 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 417.1970866141732586 Td
+(## **Was kannst du jetzt tun?**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.3970866141732472 Td
+(### Schrittweise Diagnose) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+(1. **Logge dich im XNAT-Webinterface als Admin ein**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.5970866141732358 Td
+(   - Kontrolliere die Resource-Ordner/Dateien an der betroffenen Session.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 325.1970866141732586 Td
+(   - Suche nach dem Label „OSA Result“.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 288.397086614173304 Td
+(2. **Prüfe den Output-Handler**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 269.9970866141732131 Td
+(   - Stelle sicher, dass der Dateiname exakt `osa_result.csv` heißt und nicht z.B. mit) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 251.5970866141732358 Td
+(Leerzeichen oder Sonderzeichen versehen ist.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 233.1970866141732586 Td
+(   - Kontrolliere, ob der Output-Handler wirklich auf `result_file` \(so benannt im) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 214.7970866141732813 Td
+(Container-Output\) referenziert.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 177.9970866141733268 Td
+(3. **Teste gegebenenfalls mit einer Beispiel-Resource**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 159.5970866141732358 Td
+(   - Lege eine Testdatei manuell als Resource an – wird sie angezeigt?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 122.7970866141732813 Td
+(4. **XNAT-Server-Log prüfen** \(Admin-Zugang nötig\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 104.3970866141734177 Td
+(   - Gibt es Meldungen wie „File upload failed“?) Tj
+ET
+endstream
+endobj
+27 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 28 0 R
+>>
+endobj
+28 0 obj
+<<
+/Length 3948
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(## **Typische Ursachen für dieses Verhalten**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(- Output-Handler referenziert falschen Namen.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+(- Resource wird wegen Storage-Quotas oder Schreibrechten nicht ordentlich) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(geschrieben.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(- XNAT „vergisst“ das Resource-Refresh \(selten, aber möglich\).) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(- Die Datei ist im Container, wird aber beim Hochladen nicht übergeben \(falsche) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 619.5970866141732358 Td
+(Path-Zuordnung\).) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 545.9970866141732131 Td
+(### **Zusammenfassung**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(> **Dein Container funktioniert, aber der Output wird nicht in XNAT angezeigt.**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(>) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 472.3970866141732472 Td
+(> Prüfe den Output-Handler im Wrapper, den genauen Dateinamen/-pfad und die) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 453.9970866141732699 Td
+(Result-Resource in XNAT!  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 435.5970866141732358 Td
+(> Ggf. Logs mit Adminrechten einsehen.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.7970866141732245 Td
+(**Soll ich dir konkret bei der Prüfung des Output-Handler-Abschnitts oder der) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.3970866141732472 Td
+(XNAT-Resource-Struktur weiterhelfen?**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+(Gerne kannst du auch einen Screenshot deiner XNAT-Session-Ressourcen oder die) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.5970866141732358 Td
+(Ausgabe des Container-Service-Runs posten.) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 296.8506299212598378 Td
+(Bousfiha, Tanae:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 268.5041732283465308 Td
+(wie kann ich eine App creiieren) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 221.7577165354331328 Td
+(HAWKI) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0 g
+128.9763779527559109 221.7577165354331328 Td
+(\(gpt-4.1\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 193.411259842519712 Td
+(Gerne erläutere ich dir, wie du eine „App“ erstellen kannst! Da der Begriff „App“) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 175.0112598425197348 Td
+( v e r s c h i e d e n e   B e d e u t u n g e n   h a t   \( z . / B .   M o b i l e - A p p ,   W e b - A p p ,   D e s k t o p - A n w e n d u n g ,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 156.6112598425197575 Td
+(wissenschaftliches Skript oder auch einen XNAT-/Docker-Service wie oben) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 138.2112598425196666 Td
+(beschrieben\), gehe ich auf die wichtigsten akademisch relevanten Varianten ein. Falls) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 119.8112598425196893 Td
+(du eine spezifische Art von App meinst, konkretisiere das gern!) Tj
+ET
+endstream
+endobj
+29 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 30 0 R
+>>
+endobj
+30 0 obj
+<<
+/Length 4412
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+( * * 1 .   W e b - A p p   \( z . / B .   m i t   P y t h o n   u n d   F l a s k   o d e r   D j a n g o \) * *) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+( -   * * Z i e l : * *   I n t e r a k t i v e   A n w e n d u n g   i m   B r o w s e r   \( z . / B .   D a t e n a n a l y s e ,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(Benutzerverwaltung\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+(- **Schritte:**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(  1. **Entwicklungssprache wählen:** Häufig Python \(Flask, Django\), JavaScript) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(\(Node.js\), oder R \(Shiny\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(  2. **Grundstruktur aufsetzen:** Beispiel Flask:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 619.5970866141732358 Td
+(      ```python) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(      from flask import Flask) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(      app = Flask\(__name__\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 527.5970866141732358 Td
+(      @app.route\('/'\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(      def home\(\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(          return "Hallo, HAWK!") Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 472.3970866141732472 Td
+(      ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 453.9970866141732699 Td
+(      if __name__ == '__main__':) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 435.5970866141732358 Td
+(          app.run\(debug=True\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 417.1970866141732586 Td
+(      ```) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.7970866141732245 Td
+(     3 .   * * F u n k t i o n e n   h i n z u f ü g e n : * *   z . / B .   F o r m u l a r e ,   D a t e n b a n k a n b i n d u n g ,   V i s u a l i s i e r u n g) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.3970866141732472 Td
+(  4. **Testen und dokumentieren:** Funktioniert alles? Ist die Bedienung plausibel?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+(     5 .   * * D e p l o y m e n t : * *   A u f   S e r v e r   o d e r   a l s   D o c k e r - C o n t a i n e r   \( z . / B .   f ü r   X N A T \)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.5970866141732358 Td
+(bereitstellen) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.7970866141732813 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 269.9970866141732131 Td
+( * * 2 .   D e s k t o p - A p p   \( z . / B .   m i t   P y t h o n   u n d   T k i n t e r \) * *) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 251.5970866141732358 Td
+(- **Ziel:** Kleine Werkzeuge/Fenster-Anwendungen unter Windows/Mac/Linux) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 233.1970866141732586 Td
+(- **Beispiel:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 214.7970866141732813 Td
+(  ```python) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 196.397086614173304 Td
+(  import tkinter as tk) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 159.5970866141732358 Td
+(  root = tk.Tk\(\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 141.1970866141732586 Td
+(  root.title\("Meine erste App"\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 122.7970866141732813 Td
+(  label = tk.Label\(root, text="Hallo, HAWK!"\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 104.3970866141734177 Td
+(  label.pack\(\)) Tj
+ET
+endstream
+endobj
+31 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 32 0 R
+>>
+endobj
+32 0 obj
+<<
+/Length 4381
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(  root.mainloop\(\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(  ```) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+(**3. Mobile-App \(Android, iOS\)**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+( -   * * M i t   L o w - C o d e / N o - C o d e   \( z . / B .   A p p G y v e r ,   T h u n k a b l e ,   M I T   A p p   I n v e n t o r \) : * *) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(  - Ohne viel Programmierkenntnis, grafische Erstellung per Drag-and-drop) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(- **Mit Programmiersprache:**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 619.5970866141732358 Td
+(  - Kotlin/Java \(Android Studio\) für Android, Swift \(Xcode\) für iOS, Flutter oder React) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(Native für beide) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 527.5970866141732358 Td
+(**4. Wissenschaftliche „App“: Workflow-Automatisierung oder Docker-basierte) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(Service**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(- **Eine App im Sinne universitärer Datenservices \(wie dein Container oben\):**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 472.3970866141732472 Td
+(  - Fasse Skripte, Libraries, Umgebungen in einem Docker-Image zusammen) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 453.9970866141732699 Td
+(     -   D e f i n i e r e   e i n   I n t e r f a c e   \( z . / B .   p e r   R E S T - A P I   o d e r   X N A T - W r a p p e r \)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 435.5970866141732358 Td
+(  - Dokumentiere klar die benötigte Inputstruktur und Outputformate) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 417.1970866141732586 Td
+(  - **Werkzeuge:** Docker, Python, Bash, ggf. XNAT-Konnektoren) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.3970866141732472 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.5970866141732358 Td
+(**5. Best Practices für das App-Projekt**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 325.1970866141732586 Td
+( -   * * V e r s i o n i e r u n g : * *   V e r w e n d e   z . / B .   G i t   f ü r   C o d e v e r w a l t u n g) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.7970866141732813 Td
+(- **Dokumentation:** Lege in einer README die Funktionsweise und die) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 288.397086614173304 Td
+(Installationsschritte dar) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 269.9970866141732131 Td
+(- **Testen:** Schreibe einfache Testfälle, prüfe Randfälle) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 251.5970866141732358 Td
+(- **Nachhaltigkeit:** Konzipiere so, dass andere die App nachnutzen und) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 233.1970866141732586 Td
+(weiterentwickeln können \(Open Science!\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 196.397086614173304 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 159.5970866141732358 Td
+(**Beispiel-Szenario „Datenanalyse-App als Webanwendung für die HAWK“**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 141.1970866141732586 Td
+(- Du möchtest einen CSV-Upload und eine anschließende statistische Auswertung) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 122.7970866141732813 Td
+(per Klick anbieten) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 104.3970866141734177 Td
+(- Vorschlag: Web-App \(Flask + Bootstrap\), Upload-Formular,) Tj
+ET
+endstream
+endobj
+33 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 34 0 R
+>>
+endobj
+34 0 obj
+<<
+/Length 1360
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(  - Analyse in Python \(mit pandas, scipy\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(  - Ausgabe als Download) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+(**Tipp:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(Am Anfang hilft es, sehr klein zu starten \(Minimalbeispiel\), dann Schritt für Schritt) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(Funktionen hinzuzufügen und zwischendurch häufig zu testen.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 619.5970866141732358 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(**Hast du schon eine bestimmte Programmiersprache, Zielplattform oder) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(Anwendungsfall im Kopf? Dann kann ich dir gezielt eine passende Mini-Anleitung) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 545.9970866141732131 Td
+(oder ein Startprojekt geben!**) Tj
+ET
+endstream
+endobj
+1 0 obj
+<</Type /Pages
+/Kids [3 0 R 5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R 21 0 R 23 0 R 25 0 R 27 0 R 29 0 R 31 0 R 33 0 R ]
+/Count 16
+>>
+endobj
+35 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+36 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+37 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+38 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+39 0 obj
+<<
+/Type /Font
+/BaseFont /Courier
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+40 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+41 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+42 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+43 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Roman
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+44 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+45 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+46 0 obj
+<<
+/Type /Font
+/BaseFont /Times-BoldItalic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+47 0 obj
+<<
+/Type /Font
+/BaseFont /ZapfDingbats
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+48 0 obj
+<<
+/Type /Font
+/BaseFont /Symbol
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+2 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/F1 35 0 R
+/F2 36 0 R
+/F3 37 0 R
+/F4 38 0 R
+/F5 39 0 R
+/F6 40 0 R
+/F7 41 0 R
+/F8 42 0 R
+/F9 43 0 R
+/F10 44 0 R
+/F11 45 0 R
+/F12 46 0 R
+/F13 47 0 R
+/F14 48 0 R
+>>
+/XObject <<
+>>
+>>
+endobj
+49 0 obj
+<<
+/Producer (jsPDF 2.5.2)
+/CreationDate (D:20250604141156+02'00')
+>>
+endobj
+50 0 obj
+<<
+/Type /Catalog
+/Pages 1 0 R
+/OpenAction [3 0 R /FitH null]
+/PageLayout /OneColumn
+>>
+endobj
+xref
+0 51
+0000000000 65535 f 
+0000067484 00000 n 
+0000069409 00000 n 
+0000000015 00000 n 
+0000000152 00000 n 
+0000003866 00000 n 
+0000004003 00000 n 
+0000008559 00000 n 
+0000008696 00000 n 
+0000013524 00000 n 
+0000013662 00000 n 
+0000018601 00000 n 
+0000018740 00000 n 
+0000023227 00000 n 
+0000023366 00000 n 
+0000026717 00000 n 
+0000026856 00000 n 
+0000030861 00000 n 
+0000031000 00000 n 
+0000034888 00000 n 
+0000035027 00000 n 
+0000038940 00000 n 
+0000039079 00000 n 
+0000043599 00000 n 
+0000043738 00000 n 
+0000048202 00000 n 
+0000048341 00000 n 
+0000052615 00000 n 
+0000052754 00000 n 
+0000056755 00000 n 
+0000056894 00000 n 
+0000061359 00000 n 
+0000061498 00000 n 
+0000065932 00000 n 
+0000066071 00000 n 
+0000067644 00000 n 
+0000067770 00000 n 
+0000067901 00000 n 
+0000068035 00000 n 
+0000068173 00000 n 
+0000068297 00000 n 
+0000068426 00000 n 
+0000068558 00000 n 
+0000068694 00000 n 
+0000068822 00000 n 
+0000068949 00000 n 
+0000069078 00000 n 
+0000069211 00000 n 
+0000069313 00000 n 
+0000069662 00000 n 
+0000069748 00000 n 
+trailer
+<<
+/Size 51
+/Root 50 0 R
+/Info 49 0 R
+/ID [ <5727F304B462411A47F7C05F146D0DD7> <5727F304B462411A47F7C05F146D0DD7> ]
+>>
+startxref
+69852
+%%EOF

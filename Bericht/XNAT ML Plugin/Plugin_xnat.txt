@@ -1,0 +1,32 @@
+Plugin :
+
+SDKMAN:
+sdk install java 8.0.382-tem
+sdk install gradle 6.9
+sdk install groovy
+
+sdk use java 8.0.382-tem
+sdk use gradle 6.9
+
+sudo apt update
+sudo apt install zip unzip
+
+curl -s "https://get.sdkman.io" | bash
+
+./gradlew clean jar
+
+
+
+ git clone https://bitbucket.org/xnatx/xnat-template-plugin.git
+
+gradle init
+ ls -l
+ nano settings.gradle
+
+
+mkdir -p src/main/java
+mkdir -p src/main/resources
+mkdir -p schemas
+
+
+

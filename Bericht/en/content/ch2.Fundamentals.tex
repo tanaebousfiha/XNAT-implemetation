@@ -1,0 +1,30 @@
+
+\chapter{Fundamentals}
+
+Before proceeding to examine the automation script more in details, the used systems and approaches will be explained in this chapter.
+
+\section{The Extensible Neuroimaging Archive Toolkit}
+The Extensible Neuroimaging Archive Toolkit (XNAT)~\cite{marcus_extensible_2007} is an open source imaging informatics platform developed by the Neuroinformatics Research Group at Washington University. It facilitates common management, productivity, and quality assurance tasks for imaging and associated data. Thanks to its extensibility, XNAT can be used to support a wide range of imaging-based projects.\footnote{\url{https://www.xnat.org/about/}(accessed on 10 August 2025)}, Due to the fact that XNAT is offering the opportunity to use the power of high-performance computing on your data~\cite{zaschke_extending_2024}, 
+subsequently pipeline processing is one of the option that can be done on XNAT. As well as the deployment of the docker container.
+\\
+Additionally XNAT has a structured web site that is composed from a Dashboard that gives a overview over the web site, a Project list that browses or search available projects, and a Project page where all subjects and their data in this project are. Along with Subject/Session pages where all details for are given , imaging session, scan-level detail.
+As well as the part of the scans where all the scans of the patient are found. 
+This Structure of XNAT provides the information where the patients file are stored including the composed URL for the REST API use. A REST API is a type of application programming interface that adheres to the principles of the REST architecture. REST, which stands for Representational State Transfer, defines a set of conventions for designing web APIs in a consistent and scalable way.\footnote{\url{https://www.redhat.com/en/topics/api/what-is-a-rest-api}(accessed on 10 August 2025)}
+\\
+\section{The Container}
+A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.\footnote{\url{https://www.docker.com/resources/what-container/}accessed on 10 August 2025}
+Docker is a platform that allows certain applications to run in software containers. It was launched in 2013.\footnote{\url{https://fr.wikipedia.org/wiki/Docker\_(logiciel)}accessed on 10 August 2025}, and a docker container allows the user to deploy any applications in any environment without worrying about incompatible issues regardless of the machine’s configuration settings.\footnote{\url{https://sematext.com/glossary/docker/}accessed on 10 August 2025} Although there is some associate terms that will always be needed when it comes to using or learning about Docker container.
+One the top of them is the Dockerfile, the Dockerfile is a file that contains the build instruction for the image that the Docker Engine( Docker Engine is an open source containerization technology for building and containerizing your applications.\footnote{\url{https://docs.docker.com/engine/}accessed on 10 August 2025}) will run. Conversely there is numerous commands that must be written in the Dockerfile in order to create the image. After proceeding with building the image we can Tag and push the image to the docker hub. for the purpose of doing that we just have to run some basic simple commands on a Terminal.\\
+Another element to consider is the REST APIS. A REST API is an application programming interface (API) that follows the design principles of the REST architectural style. REST is short for representational state transfer, and is a set of rules and guidelines about how you should build a web API.\footnote{\url{https://www.redhat.com/en/topics/api/what-is-a-rest-api}accessed on 10 August 2025} Luckily xnat is providing his users with a list of XNAT REST APIS that make the exchange between the user an the web site possible. 
+
+\section{The JSON Command}
+At the same time if we want to XNAT to execute my created docker image and run a command a \ac{JSON} Command is needed. The JSON  Command is a collection of properties that describes the docker image, which lied XNAT to understand what the command  is about. In other word the JSON command is a sort of configuration for XNAT. it answers the following  questions for XNAT: What kind of image is it? Does it have a human-friendly name we can use for it? What does the command-line string look like? Does it need files? Where should they go? How do you want to get those out of XNAT? Does it produce any files at the end? Those have to get back into XNAT, so where should they go?\footnote{\url{https://wiki.xnat.org/container-service/json-command-definition}accessed on 10 August 2025} Those are the fundamentals knowledge needed in order to achieve a automation of the process. 
+
+
+
+
+
+
+
+
+
