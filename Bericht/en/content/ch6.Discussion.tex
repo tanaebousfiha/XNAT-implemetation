@@ -1,5 +1,5 @@
 
-
+\chapter{Discussion}
 This Chapter presents a overview of the implementation solution, the technical encountered challenges during integration with XNAT and the methods employed to overcome the issues. Several issues emerged throughout development, including data transmission failures, REST API inconsistencies, JSON configuration mismatches.
 
 The initial Problem was that the Container did not appear to receive any input files. To confirm this, a test was realized by adding a script within the Container. The script was designed to write a file named no\_file.txt if no input file was detected at runtime. The successful upload of this no file confirmed that while the container was running, it was not receiving actual input data.
@@ -20,11 +20,15 @@ Assuming  that the Container has the ability to proceed huge amount of files and
 The idea that XNAT mounts or copies the data to a temporary directory within the host system, reveals a important insights into the underlying problem. Copying the data in the host system and mounting her into a volume means that the Container has no access to the Data Bank of XNAT, which can potentially lead to issues related to memory or disk space on the host. This approach may result in resource constraints, This issue can become particularly problematic when large datasets are involved; Although my specific test case involved a relatively small number of files, the container still failed to process the data successfully. This suggests that the problem may not be solely related to dataset size or resource limits.
 
 The Diagram above illustrates the workflow data for a clearer understanding...\\
+
+
 \begin{figure}
     \centering
-    \includegraphics[width=1\linewidth]{en/content/bb.png}
+    \includegraphics[width=1\linewidth]{en/content/bb.svg}
     \caption{XNAT Workflow Data with the Container  }
     \label{fig:enter-label}
 \end{figure}
+
+
 
 
