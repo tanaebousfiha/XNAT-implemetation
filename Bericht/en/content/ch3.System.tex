@@ -10,14 +10,19 @@ The fact that a JSON command is written, the use of the JSON library was necessa
 The Python Subprocess module is a tool that allows to run other programs or commands from your Python code. Using the Python Subprocess module resembles executing commands directly on the system computer using Python instead of typing them directly into the command prompt. This module makes it easy to automate the Python code.\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess}accessed on 10 August 2025}. Getpass() prompts the user for a password without echoing. The getpass module provides a secure way to handle the password prompts where programs interact with the users via the terminal.\footnote{\url{https://www.geeksforgeeks.org/python/getpass-and-getuser-in-python-password-without-echo/}accessed on 10 August 2025}
  The urllib3 was used to disable the InsecureRequestWarning, which is normally shown when requests connects to a site with an unverified SSL certificate. This approach helps keeping the output clean and free of unnecessary warnings during the run of the Script.
  Currently the System is running Docker Engine 28.3.0,The Docker Client version in use is 20.10.5+dfsg1, which communicates with the Docker Engine to issue commands and manage images and containers. The XNAT web application is running on version 1.9.1.1, as verified through the web interface. 
- 
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.7\linewidth]{en/content/lp.png}
-    \caption{Schema: Core Libraries for Python Scripting in System Integration }
-    \label{fig:enter-label}
+
+\begin{figure}[ht]
+  \centering
+  \def\svgwidth{0.8\linewidth}
+  \input{lib.pdf_tex}
+  \caption{Schema: Core Libraries for Python Scripting in System Integration}
+  \label{fig:diagram-core-libraries}
 \end{figure}
+
+
+
+
 
 
 \section{Architecture and organization of the Code:}
@@ -292,13 +297,13 @@ After receiving the Command ID and the Wrapper ID we proceed by enabling the com
 \section{The Extraction of all files from all Project structures}
 The function used in this part is \texttt{def get\_all\_files\_all\_levels}, and it collects all the files in the Project data hierarchy (project, subjects, experiments/sessions, and scans) from an XNAT system using its REST API. We used the REST API Endpoint PUT for the extraction and it proceeds by authenticating with the XNAT server using the provided user credentials and starts by gathering project-level files, querying all resource folders at the project root and listing every file found within them.At every step, the function structures each file into a dictionary containing hierarchical information (such as the level—project, subject, experiment, scan—and the relevant IDs), the file name, the resource folder it was found in, and an absolute URI for straightforward retrieval. By the end, it returns a comprehensive list of all file records across all levels in the project. 
 
-\begin{figure}
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=0.9\linewidth]{en/content/edf1.png}
+    \def\svgwidth{0.9\linewidth}
+    \input{extraction.pdf_tex}
     \caption{Diagram: The Extraction of files from all the project structure}
     \label{fig:enter-label}
 \end{figure}
-
 
 
 \section{Launch the Container}
@@ -334,12 +339,14 @@ deflaunch_container_with_all_files(xnat_host,project_id,command_id,wrapper_name,
         print("failure :", response.status_code, response.text)
 \end{lstlisting}
 
-\begin{figure}
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=0.9\linewidth]{en/content/Screenshot 2025-07-18 122044.png}
-    \caption{Diagram: Implementation of Docker Container in XNAT}
-    \label{fig:Implementation of Docker Container in XNAT}
+    \def\svgwidth{0.9\linewidth}
+    \input{steps.pdf_tex}
+   \caption{Diagram: Workflow Steps for the Implementation}
+    \label{fig:workflow-steps}
 \end{figure}
+
 
 
 
@@ -348,10 +355,11 @@ deflaunch_container_with_all_files(xnat_host,project_id,command_id,wrapper_name,
 The Figure illustrates how the Automation script facilitate the process of deploying a Container in XNAt; It reduces all the steps. 
 
 
-\begin{figure}
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=0.6\linewidth]{en/content/o.png}
-    \caption{Diagram illustrate the difference between the manual and the automatic process }
+    \def\svgwidth{0.9\linewidth}
+    \input{compare.pdf_tex}
+    \caption{Diagram: Diagram illustrate the difference between the manual and the automatic process}
     \label{fig:enter-label}
 \end{figure}
 
