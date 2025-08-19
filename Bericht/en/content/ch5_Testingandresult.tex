@@ -9,28 +9,40 @@ After receiving all the information, the script commenced building the image, ta
 \section{Results on XNAT}
 The result that we came to after testing the code is that all the steps are working correctly, except that the container could not receive any files. With the \ac{STDout} view we found out that the container received zero files. 
  
-\begin{figure}
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=0.9\textwidth]{en/content/STDOUT view.png}
+    \def\svgwidth{0.9\linewidth}
+   \input{STDOUT_view.pdf_tex}
     \caption{The STDout view of the container on XNAT}
     \label{fig:enter-label}
 \end{figure}
 
 But interestingly, after searching in the container information, we noticed that the container in fact received the files and that the files are listed in the input part of the container input. 
 
-\begin{figure}[p]
+\begin{figure}[ht]
     \centering
-    \rotatebox{90}{\includegraphics[width=0.95\textheight]{en/content/Container informatin 1.png}}
+    \def\svgwidth{0.9\linewidth}
+    \input{Container_informatin_1.pdf_tex}
     \caption{Container Information 1}
     \label{fig:container-info-1}
 \end{figure}
 
-\begin{figure}
+
+
+
+
+
+
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=0.9\linewidth]{en/content/Container information 2.png}
+    \def\svgwidth{0.9\linewidth}
+    \input{Container_information_2.pdf_tex}
     \caption{Container Information 2}
-    \label{fig:enter-label}
+    \label{fig:container-info-1}
 \end{figure}
+
+
+
 
 Details of the test procedure are described in Appendix A \cite{bousfiha2025appendix}.
 
