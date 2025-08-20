@@ -9,41 +9,16 @@ After receiving all the information, the script commenced building the image, ta
 \section{Results on XNAT}
 The result that we came to after testing the code is that all the steps are working correctly, except that the container could not receive any files. With the \ac{STDout} view we found out that the container received zero files. 
  
-\begin{figure}[ht]
-    \centering
-    \def\svgwidth{0.9\linewidth}
-   \input{STDOUT_view.pdf_tex}
-    \caption{The STDout view of the container on XNAT}
-    \label{fig:enter-label}
-\end{figure}
+
+\begin{lstlisting}[numbers=none]
+View stdout (from file)
+Inhalt von /input (rekursiv):
+/input: []
+Keine CSV-Datei in /input gefunden.
+\end{lstlisting}
+
 
 But interestingly, after searching in the container information, we noticed that the container in fact received the files and that the files are listed in the input part of the container input. 
-
-\begin{figure}[ht]
-    \centering
-    \def\svgwidth{0.9\linewidth}
-    \input{Container_informatin_1.pdf_tex}
-    \caption{Container Information 1}
-    \label{fig:container-info-1}
-\end{figure}
-
-
-
-
-
-
-
-\begin{figure}[ht]
-    \centering
-    \def\svgwidth{0.9\linewidth}
-    \input{Container_information_2.pdf_tex}
-    \caption{Container Information 2}
-    \label{fig:container-info-1}
-\end{figure}
-
-
-
-
 Details of the test procedure are described in Appendix A \cite{bousfiha2025appendix}.
 
 The results demonstrate two things. First, the automation script with the REST API worked correctly. Second, there is an issue with the container accessing the input files, despite them being listed as received.
