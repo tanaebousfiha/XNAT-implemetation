@@ -1,0 +1,23 @@
+https://wiki.xnat.org/documentation/installing-pipelines-in-xnat#InstallingPipelinesinXNAT-EnablingthePipelineBuildActiononyourXNATDataType
+
+Enabling the Pipeline Build Action on your XNAT Data Type
+
+This step only needs to be performed once for each data type, and does not need to be redone for any new pipelines.
+
+In order for your users to run pipelines on an image session through the XNAT UI, an XNAT Administrator must explicitly add the PipelineScreen_launch_pipeline action to the actions menu of the report page for that image session's data type.
+
+1. Go to Administer > Data Types to get started.
+
+2. Click on the data type element ID that you wish to modify. (For an MR Session, click on xnat:mrSessionData)
+
+3. A modal screen will open displaying all of the XNAT configuration, report, and security settings for that data type. Click Edit in the top right corner of the modal.
+
+4. The modal will now display editable fields for each of these components. Navigate to Available Report Actions and add the following values (other values can be left blank):
+
+Name: PipelineScreen_launch_pipeline
+
+Display Name: Build
+
+Popup: always
+
+Secure Access: edit
