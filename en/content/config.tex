@@ -1,0 +1,68 @@
+% --- Basiskodierung und Fonts (optional, je nach Setup) ---
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+% Palatino als Serif, Helvetica als Sans
+\usepackage{palatino}
+\usepackage{helvet}
+\renewcommand{\sfdefault}{phv} % explizit Helvetica
+\linespread{1.05}
+
+% Mikrotypografie
+\usepackage{microtype}
+
+% Layout / Geometrie
+\usepackage{geometry}
+\geometry{a4paper, left=2.5cm, right=2.5cm, top=4cm,
+          bottom=5cm, bindingoffset=1cm}
+
+% Zeilenabstand
+\usepackage{setspace}
+\onehalfspacing
+
+% Absätze
+\usepackage{parskip}
+\sloppy
+
+% Überschriftenformatierung
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\LARGE\bfseries}{\chaptertitlename\ \thechapter}{10pt}{\huge\bfseries}
+
+% Farben (für listings etc.)
+\usepackage{xcolor}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.5}
+\definecolor{grey}{rgb}{0.8,0.8,0.8}
+\definecolor{lightgrey}{rgb}{0.95,0.95,0.95}
+
+% Listings
+\usepackage{listings}
+\lstset{
+  language=Python,
+  basicstyle=\footnotesize\ttfamily,
+  captionpos=b,
+  frame=tb,
+  commentstyle=\color{gray}\bfseries,
+  stringstyle=\ttfamily,
+  keywordstyle=\color{darkblue}\bfseries,
+  breaklines=true,
+  aboveskip=10mm,
+  belowskip=10mm,
+  showstringspaces=false, % ← hier war bei dir das Komma fehlend
+  numbers=left,
+  % stepnumber=5,
+  numberstyle=\tiny,
+  numbersep=5pt
+}
+
+% comment-Umgebung
+\usepackage{comment}
+
+% Bezeichnungen anpassen
+\renewcommand{\bibname}{References}
+\renewcommand{\lstlistlistingname}{List of Listings}
+
+% Für \url und klickbare Links (falls du DOIs/URLs nutzt)
+\usepackage{hyperref}
+
