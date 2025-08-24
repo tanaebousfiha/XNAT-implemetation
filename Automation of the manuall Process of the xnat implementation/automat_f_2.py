@@ -1,4 +1,5 @@
 
+
 #-----------------Bibliotheken----------------------------------------------------------------------------------------------------------------------------
 
 import json # wir brauchen json für xnat damit er den Command anlegen kann
@@ -55,6 +56,7 @@ def build_and_push_docker_image(dockerfile_path, docker_image_name):
     return full_tag
 #-----------------------------------3)User-Input----------------------------------------- -----------------------------------------   
 
+#prepare the input for the json command :https://www.digitalocean.com/community/tutorials/how-to-receive-user-input-python
 def get_input(prompt):
     while True:
         value = input(prompt)
@@ -74,6 +76,9 @@ def get_input(prompt):
         "command_name": command_name,
         "command_description": command_description
     }
+
+# es wiederholt sich weil in der jsoncommand muss mehr als eine varial geschreiben werden
+#und ich wollte nicht dass der user meher mals etwas ähnliches schreibt, deshalb habe ich es so gemacht
 #-----------------------------------4)json File erstellen------------------------------------------------------------------
 
 def create_json_file(docker_image, script_filename, mod_data):
@@ -121,7 +126,7 @@ def create_json_file(docker_image, script_filename, mod_data):
         "version": "1.5",
         "type": "docker",
         "image": docker_image,
-        "command-line": f"python3 /app/{script_filename} #input_files# /output",
+        "command-line": f"python3 /app/{script_filename} /input",
         "mounts": [
             {"name": "input", "path": "/input", "writable": False},
             {"name": "output", "path": "/output", "writable": True}
@@ -130,10 +135,11 @@ def create_json_file(docker_image, script_filename, mod_data):
   {
     "name": "input_files",
     "description": "Input files ",
-    "type": ".",
+    "type": "files",
     "element_type": "file",
     "required": True,
-    "mount": "input"
+    "mount": "input",
+    "multiple": True,
   }
 ],
     "outputs": [
