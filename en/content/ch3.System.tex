@@ -4,11 +4,20 @@
 
 The purpose of this chapter is to introduce the system in more detail. A Python script is used to combine all the steps into an automated workflow. The libraries used in this work include: \texttt{requests}\footnote{\url{https://www.w3schools.com/python/module_requests.asp} accessed on 10 August 2025}, \texttt{json}\footnote{\url{https://www.w3schools.com/python/python_json.asp} accessed on 10 August 2025}, \texttt{os}\footnote{\url{https://docs.python.org/3/library/os.html} accessed on 10 August 2025}, \texttt{subprocess}\footnote{\url{https://docs.python.org/3/library/subprocess.html} accessed on 10 August 2025}, \texttt{getpass}\footnote{\url{https://docs.python.org/3/library/getpass.html} accessed on 10 August 2025}, \texttt{sys}\footnote{\url{https://docs.python.org/3/library/sys.html} accessed on 10 August 2025}, and \texttt{urllib3}\footnote{\url{https://urllib3.readthedocs.io/en/stable/} accessed on 10 August 2025}.
 
-The use of the Requests library was for creating the interaction with the web services of XNAT. The Python Requests library is the go-to solution for making HTTP requests in Python, thanks to its elegant and intuitive API that simplifies the process of interacting with web services and consuming data in the application.\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} accessed on 10 August 2025} The Sys module in Python provides access to variables and functions that interact closely with the Python interpreter and runtime environment.
+The use of the Requests library was for creating the interaction with the web services of XNAT. The Python Requests library is the go-to solution for making HTTP requests in Python, thanks to its elegant and intuitive API that simplifies the process of interacting with web services and consuming data in the application.\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} accessed on 10 August 2025} 
+The \texttt{sys} module in Python gives programmers access to interpreter-specific variables and functions, allowing interaction with the Python runtime environment.\footnote{Python Software Foundation. \url{https://docs.python.org/3/library/sys.html}, accessed 23 August 2025.}
 
-Since a JSON command is written, the use of the JSON library was necessary. JSON is a syntax for storing and exchanging data. It is text, written with JavaScript Object Notation.\footnote{W3Schools, Python JSON}
+
+
+
+Since a JSON command is written, the use of the JSON library was necessary. 
+JSON (JavaScript Object Notation) is a compact text based
+ format used to structure, store, and exchange data between applications.\footnote{W3Schools. Python JSON. Available at: \url{https://www.w3schools.com/python/python_json.asp} (accessed 23 August 2025).}
+
 The Python Subprocess module is a tool that allows running other programs or commands from your Python code. Using the Python Subprocess module resembles executing commands directly on the system computer using Python instead of typing them directly into the command prompt. This module makes it easy to automate Python code.\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} accessed on 10 August 2025}
-Getpass() prompts the user for a password without echoing. The getpass module provides a secure way to handle password prompts where programs interact with the users via the terminal.\footnote{\url{https://www.geeksforgeeks.org/python/getpass-and-getuser-in-python-password-without-echo/} accessed on 10 August 2025}
+
+The \texttt{getpass} module in Python allows users to enter passwords in the terminal without showing the input, therefore ensuring confidentiality.\footnote{International Journal of Research Publication and Reviews, Vol. 2, Issue 8, 2021. Available at: \url{https://ijrpr.com/uploads/V2ISSUE8/IJRPR1011.pdf} (accessed 23 August 2025).}
+
 
 The urllib3 library was used to disable the InsecureRequestWarning, which is normally shown when Requests connects to a site with an unverified SSL certificate. This approach helps keep the output clean and free of unnecessary warnings during the run of the script.
 
@@ -81,28 +90,30 @@ The function responsible for the build is \texttt{def build\_docker\_image}, and
 
 Usually, when we want to build an image in Docker, we use the basic command \texttt{docker build .}
 
-
 \begin{lstlisting}
- build_result = subprocess.run(["docker", "build", "-f", dockerfile_path, "-t", docker_image_name, "."],  capture_output=True, text=True)
+full_tag = f"{dockerhub_username}/{docker_image_name}"
+    print(f"Building Docker image '{full_tag}'...")
+    build_result = subprocess.run(
+        ["docker", "build", "-f", dockerfile_path, "-t", full_tag, "."],
+        capture_output=True, text=True)
     if build_result.returncode != 0:
         print(f"Build failed:\n{build_result.stderr}")
         sys.exit(1)
+    print(f"Image '{full_tag}' built successfully.")
 \end{lstlisting}
-
 As we can see in this block, \texttt{subprocess.run} was used to call the external \texttt{docker build} command, and the \texttt{-f dockerfile\_path} option tells Docker which Dockerfile to use. The \texttt{-t docker\_image\_name} option sets the name and tag for the image. The point (.) at the end of the command means the current directory will be used as the build context. In addition, \texttt{capture\_output=True} collects both stdout and stderr so the script can handle their output or errors, and \texttt{text=True} ensures that outputs are returned as strings.
 
-
-Now that the image has been successfully built, we can proceed to the next essential step: pushing the image to Docker Hub. To do this, the same method of \texttt{subprocess.run} is used.
+Now that the image has been successfully built and tagged, we can proceed to the next essential step: pushing the image to Docker Hub. To do this, the same method of \texttt{subprocess.run} is used.
 
 
 \begin{lstlisting}
-full_tag = f"{dockerhub_username}/{docker_image_name}"
-print(f"Pushing image to Docker Hub as '{full_tag}'...")
     push_result = subprocess.run(["docker", "push", full_tag], capture_output=True, text=True)
     if push_result.returncode != 0:
         print(f"Push failed:\n{push_result.stderr}")
         sys.exit(1)
 
+    print(f"Image successfully pushed: {full_tag}")
+    return full_tag
 \end{lstlisting}
 
 In normal cases, we use the command \texttt{docker push image\_name}, and this assumes that the user is already logged in to their Docker account. However, in the automation script, we make use of \texttt{subprocess.run}.
