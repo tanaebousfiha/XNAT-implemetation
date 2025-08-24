@@ -4,11 +4,20 @@
 
 The purpose of this chapter is to introduce the system in more detail. A Python script is used to combine all the steps into an automated workflow. The libraries used in this work include: \texttt{requests}\footnote{\url{https://www.w3schools.com/python/module_requests.asp} accessed on 10 August 2025}, \texttt{json}\footnote{\url{https://www.w3schools.com/python/python_json.asp} accessed on 10 August 2025}, \texttt{os}\footnote{\url{https://docs.python.org/3/library/os.html} accessed on 10 August 2025}, \texttt{subprocess}\footnote{\url{https://docs.python.org/3/library/subprocess.html} accessed on 10 August 2025}, \texttt{getpass}\footnote{\url{https://docs.python.org/3/library/getpass.html} accessed on 10 August 2025}, \texttt{sys}\footnote{\url{https://docs.python.org/3/library/sys.html} accessed on 10 August 2025}, and \texttt{urllib3}\footnote{\url{https://urllib3.readthedocs.io/en/stable/} accessed on 10 August 2025}.
 
-The use of the Requests library was for creating the interaction with the web services of XNAT. The Python Requests library is the go-to solution for making HTTP requests in Python, thanks to its elegant and intuitive API that simplifies the process of interacting with web services and consuming data in the application.\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} accessed on 10 August 2025} The Sys module in Python provides access to variables and functions that interact closely with the Python interpreter and runtime environment.
+The use of the Requests library was for creating the interaction with the web services of XNAT. The Python Requests library is the go-to solution for making HTTP requests in Python, thanks to its elegant and intuitive API that simplifies the process of interacting with web services and consuming data in the application.\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} accessed on 10 August 2025} 
+The \texttt{sys} module in Python gives programmers access to interpreter-specific variables and functions, allowing interaction with the Python runtime environment.\footnote{Python Software Foundation. \url{https://docs.python.org/3/library/sys.html}, accessed 23 August 2025.}
 
-Since a JSON command is written, the use of the JSON library was necessary. JSON is a syntax for storing and exchanging data. It is text, written with JavaScript Object Notation.\footnote{W3Schools, Python JSON}
+
+
+
+Since a JSON command is written, the use of the JSON library was necessary. 
+JSON (JavaScript Object Notation) is a compact text based
+ format used to structure, store, and exchange data between applications.\footnote{W3Schools. Python JSON. Available at: \url{https://www.w3schools.com/python/python_json.asp} (accessed 23 August 2025).}
+
 The Python Subprocess module is a tool that allows running other programs or commands from your Python code. Using the Python Subprocess module resembles executing commands directly on the system computer using Python instead of typing them directly into the command prompt. This module makes it easy to automate Python code.\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} accessed on 10 August 2025}
-Getpass() prompts the user for a password without echoing. The getpass module provides a secure way to handle password prompts where programs interact with the users via the terminal.\footnote{\url{https://www.geeksforgeeks.org/python/getpass-and-getuser-in-python-password-without-echo/} accessed on 10 August 2025}
+
+The \texttt{getpass} module in Python allows users to enter passwords in the terminal without showing the input, therefore ensuring confidentiality.\footnote{International Journal of Research Publication and Reviews, Vol. 2, Issue 8, 2021. Available at: \url{https://ijrpr.com/uploads/V2ISSUE8/IJRPR1011.pdf} (accessed 23 August 2025).}
+
 
 The urllib3 library was used to disable the InsecureRequestWarning, which is normally shown when Requests connects to a site with an unverified SSL certificate. This approach helps keep the output clean and free of unnecessary warnings during the run of the script.
 
