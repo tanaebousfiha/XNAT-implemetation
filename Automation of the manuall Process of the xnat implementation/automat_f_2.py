@@ -12,55 +12,38 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)# Deaktiviert
 
 #-----------------------------------1)dockerfile ausfüllen------------------------------------------------------
 
-#hier wird die dockerfile erstellt und mit dem Skript und erfüllt
 def write_dockerfile(docker_dir, script_filename, docker_base_image="python:3.10-slim"):
+    
     dockerfile_content = f"""FROM {docker_base_image}
 
 WORKDIR /app
 COPY {script_filename} /app/{script_filename}
-RUN pip install --no-cache-dir pandas
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
+CMD ["python3", "/app/{script_filename}"]
 """
-    #no cache dir um wenig Platz zu sparen 
-
-    os.makedirs(docker_dir, exist_ok=True)
     dockerfile_path = os.path.join(docker_dir, "Dockerfile")
     with open(dockerfile_path, "w") as f:
         f.write(dockerfile_content)
-    print(f"Dockerfile written to {dockerfile_path}")
+    print(f"Dockerfile geschrieben nach {dockerfile_path}")
     return dockerfile_path
-
-#CMD weglassen>>Fehler entsteht(runing contaienr in xnat),weil im Dockerfile und in der command.json "python3" jeweils als Prefix stehen und es dadurch zu einer doppelten Übergabe kommt.
-#docker_dir> Verzeichniss,in das die Dockerfile geschrieben werden. 
-#Speicher Platz Problem 
 #--------------------------------------2)Image bauen>>pushen>>taggen --------------------------------------
 
 def build_and_push_docker_image(dockerfile_path, docker_image_name):
-
     dockerhub_username = input("Docker Hub username (to push the image): ").strip()
     if not dockerhub_username:
         print("No Docker Hub username provided. Skipping push.")
-        return docker_image_name  
+        return None
 
-    #>>Ersat form zum : docker build -f Dockerfile -t docker_image_name .
-    print(f"Building Docker image '{docker_image_name}'...")
-    build_result = subprocess.run(["docker", "build", "-f", dockerfile_path, "-t", docker_image_name, "."],  capture_output=True, text=True)
+    full_tag = f"{dockerhub_username}/{docker_image_name}"
+    print(f"Building Docker image '{full_tag}'...")
+    build_result = subprocess.run(
+        ["docker", "build", "-f", dockerfile_path, "-t", full_tag, "."],
+        capture_output=True, text=True)
     if build_result.returncode != 0:
         print(f"Build failed:\n{build_result.stderr}")
         sys.exit(1)
-    print(f"Image '{docker_image_name}' built successfully.")
-
-# -f [dockerfile_path]>Gibt den Pfad zum Dockerfile explizit an, falls den Dockerfile nicht Dockerfile heißt
-#docker build -t
-#https://stackoverflow.com/questions/61090027/how-to-run-a-docker-volume-mount-as-a-python-subprocess
-
- #-------------------------------/Tag/Push/--------------------------------------------------------------------------------------------------
- 
-    full_tag = f"{dockerhub_username}/{docker_image_name}"#/>Trennung Benutzername und Image-Name.
-    print(f"Tagging image as '{full_tag}'...")
-    tag_result = subprocess.run(["docker", "tag", docker_image_name, full_tag], capture_output=True, text=True)
-    if tag_result.returncode != 0:
-        print(f"Tagging failed:\n{tag_result.stderr}")
-        sys.exit(1)
+    print(f"Image '{full_tag}' built successfully.")
 
     print(f"Pushing image to Docker Hub as '{full_tag}'...")
     push_result = subprocess.run(["docker", "push", full_tag], capture_output=True, text=True)
@@ -69,13 +52,9 @@ def build_and_push_docker_image(dockerfile_path, docker_image_name):
         sys.exit(1)
 
     print(f"Image successfully pushed: {full_tag}")
-    return full_tag  
-
-#docker tag imagename 
-#docker push imagename 
+    return full_tag
 #-----------------------------------3)User-Input----------------------------------------- -----------------------------------------   
 
-#prepare the input for the json command :https://www.digitalocean.com/community/tutorials/how-to-receive-user-input-python
 def get_input(prompt):
     while True:
         value = input(prompt)
@@ -95,9 +74,6 @@ def get_input(prompt):
         "command_name": command_name,
         "command_description": command_description
     }
-
-# es wiederholt sich weil in der jsoncommand muss mehr als eine varial geschreiben werden
-#und ich wollte nicht dass der user meher mals etwas ähnliches schreibt, deshalb habe ich es so gemacht
 #-----------------------------------4)json File erstellen------------------------------------------------------------------
 
 def create_json_file(docker_image, script_filename, mod_data):
