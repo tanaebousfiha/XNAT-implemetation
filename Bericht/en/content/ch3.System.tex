@@ -37,7 +37,7 @@ Currently, the system is running Docker Engine 28.3.0. The Docker Client version
 
 
 
-\section{Architecture and organization of the Code:}
+\section{Architecture and organization of the Code}
 The automation script is structured into 17 distinct parts, each one responsible for a specific step in the overall workflow.
 During the development of the automation script, I closely followed the steps of the manual process, since I had already tested and completed it manually. This included writing a container script, writing a Dockerfile, building the image, writing a JSON command, and enabling the command first on the website and then on the project, with the last step being the launch of the container. I carefully repeated the same steps during the implementation. In other words, every structured part is composed of a function that is responsible for carrying out a step of the manual process.
  
@@ -331,7 +331,7 @@ After receiving the Command ID and the Wrapper ID, we proceed by enabling the co
 
 \section{The Extraction of All Files from All Project Structures}
 
-The function used in this part is \texttt{def get\_all\_files\_all\_levels}, and it collects all the files in the project data hierarchy (project, subjects, experiments/sessions, and scans) from an XNAT system using its REST API. We used the REST API endpoint \texttt{GET} for the extraction. The function proceeds by authenticating with the XNAT server using the provided user credentials and starts by gathering project-level files, querying all resource folders at the project root and listing every file found within them. At every step, the function structures each file into a dictionary containing hierarchical information (such as the level—project, subject, experiment, scan—and the relevant IDs), the file name, the resource folder it was found in, and an absolute URI for straightforward retrieval. By the end, it returns a comprehensive list of all file records across all levels in the project.
+The function used in this part is \texttt{def get\_all\_files\_all\_levels}, and it collects all the files in the project data hierarchy (project, subjects, experiments/sessions, and scans) from an XNAT system using its REST API. We used the REST API endpoint \texttt{GET} for the extraction. The function proceeds by authenticating with the XNAT server using the provided user credentials and starts by gathering project-level files, querying all resource folders at the project root and listing every file found within them. At every step, the function structures each file into a dictionary containing hierarchical information (such as the level—project, subject, experiment, scan—and the relevant IDs), the file name, the resource folder it was found in, and an absolute URI for straightforward retrieval. By the end, it returns a comprehensive list of all file records across all levels in the project.\footnote{\url{https://wiki.xnat.org/documentation/strategies-for-xnat-image-data-storage}last acced 25.08.2025}
 \begin{figure}[ht]
     \centering
     \def\svgwidth{0.9\linewidth}
@@ -396,16 +396,6 @@ The figure illustrates how the automation script facilitates the process of depl
     https://wiki.xnat.org/documentation/strategies-for-xnat-image-data-storage
 \end{comment}
 
-\section{XNAT ML Plugin and The Pipeline}
 
-For the purpose of investigating and examining the prototypical implementation of automated component integrations in XNAT, it is relevant to cite the XNAT ML Plugin\footnote{\url{https://wiki.xnat.org/ml/} accessed on 10 August 2025}, which was previously an implementation method developed to incorporate machine learning workflows directly into XNAT. It offered capabilities for uploading, configuring, and training AI models. However, this approach was highly interdependent, and the XNAT team officially deprecated the ML Plugin and the associated Datasets Plugin. They are no longer maintained or recommended for production use. Another method that can be cited is the Pipeline method.
-
-Pipeline is a method of implementation for automated data processing in XNAT, using \ac{XML} descriptors and server-side scripts/tools. In XNAT, a pipeline is used to automate data processing workflows on imaging and related data stored in the system. Pipelines allow researchers and developers to define and execute repeatable, structured sequences of tasks such as data conversion, quality control, analysis, and post-processing directly on XNAT-managed data, without manual intervention.
-
-After analyzing the Pipeline implementation method, it was revealed that the architecture exhibits several limitations regarding scalability and flexibility, particularly when integrating new automated components. These pipelines require direct access to the server via SSH in order to manually copy the XML descriptor and associated scripts to a specific directory (\texttt{/data/xnat/pipeline/pipelines/}). This approach is not feasible in secure or restricted settings where developers or researchers do not have shell access to the production server.
-
-Furthermore, following the analysis of the REST API endpoints that XNAT supports, it became apparent that XNAT offers only limited support for this feature. The only supported endpoint in the list is \texttt{POST /pipelines/launch/\{pipelineName\}}, which allows programmatic launching of an already registered pipeline in XNAT. However, for full automation, additional endpoints would be needed, such as one to enable a pipeline globally in XNAT and another to assign or activate a pipeline for a specific project. These functionalities are currently not exposed via the REST API, which means that while the execution of pipelines can be automated, the full deployment and project-level configuration still require manual steps.
-
-In conclusion, a fully automated pipeline workflow using only a Python script is not currently possible. Only the launching of existing, pre-registered pipelines can be automated via REST.
 
 
