@@ -83,50 +83,39 @@ This function ensures that the Dockerfile is written in an appropriate way and s
 
 \section{Building, Pushing and Tagging the Image}
 
-When a command is deployed in XNAT and a container is launched, the first thing that XNAT checks is whether the Docker image is available in DockerHub. This means the user must have an account in DockerHub and preferably log in before using the following script. Consequently, it is essential to push and tag the created image.
+When a command is deployed in XNAT and a container is launched, XNAT first checks whether the required Docker image is available on Docker Hub. This requires the user to have a Docker Hub account and to be logged in before running the script. For this reason, it is essential that the locally built image is correctly tagged and pushed to Docker Hub.
 
-The function responsible for the build is \texttt{def build\_docker\_image}, and it expects two parameters: \texttt{dockerfile\_path} for the Dockerfile path and the name/tag for the Docker image to be built \texttt{docker\_image\_name}. For the build, we used \texttt{subprocess.run} to call the external \texttt{docker build} command.
+The function responsible for this process is \texttt{def build\_docker\_image}, which expects two parameters: the Dockerfile path (dockerfile\_path) and the name of the Docker image to be built (docker\_image\_name). Normally, we build an image in Docker with the command: \texttt{docker build .}
 
 
-Usually, when we want to build an image in Docker, we use the basic command \texttt{docker build .}
-
+In the automation script, the full tag in the format \texttt{dockerhub\_username/image\_name:tag} is provided. This ensures that the image is already linked to the correct Docker Hub name space and can be pushed directly after building.
 \begin{lstlisting}
-full_tag = f"{dockerhub_username}/{docker_image_name}"
-    print(f"Building Docker image '{full_tag}'...")
-    build_result = subprocess.run(
-        ["docker", "build", "-f", dockerfile_path, "-t", full_tag, "."],
-        capture_output=True, text=True)
-    if build_result.returncode != 0:
-        print(f"Build failed:\n{build_result.stderr}")
-        sys.exit(1)
-    print(f"Image '{full_tag}' built successfully.")
-\end{lstlisting}
-As we can see in this block, \texttt{subprocess.run} was used to call the external \texttt{docker build} command, and the \texttt{-f dockerfile\_path} option tells Docker which Dockerfile to use. The \texttt{-t docker\_image\_name} option sets the name and tag for the image. The point (.) at the end of the command means the current directory will be used as the build context. In addition, \texttt{capture\_output=True} collects both stdout and stderr so the script can handle their output or errors, and \texttt{text=True} ensures that outputs are returned as strings.
-
-Now that the image has been successfully built and tagged, we can proceed to the next essential step: pushing the image to Docker Hub. To do this, the same method of \texttt{subprocess.run} is used.
-
-
-\begin{lstlisting}
-    push_result = subprocess.run(["docker", "push", full_tag], capture_output=True, text=True)
-    if push_result.returncode != 0:
-        print(f"Push failed:\n{push_result.stderr}")
-        sys.exit(1)
-
-    print(f"Image successfully pushed: {full_tag}")
-    return full_tag
+full_tag = f"{dockerhub_username}/{docker_image_name}:{tag}"
+print(f"Building Docker image '{full_tag}'...")
+build_result = subprocess.run(
+    ["docker", "build", "-f", dockerfile_path, "-t", full_tag, "."],
+    capture_output=True, text=True
+)
+if build_result.returncode != 0:
+    print(f"Build failed:\n{build_result.stderr}")
+    sys.exit(1)
+print(f"Image '{full_tag}' built successfully.")
 \end{lstlisting}
 
-In normal cases, we use the command \texttt{docker push image\_name}, and this assumes that the user is already logged in to their Docker account. However, in the automation script, we make use of \texttt{subprocess.run}.
+Here, \texttt{subprocess.run} invokes the docker build command. The option \texttt{ -f dockerfile\_path} specifies which Dockerfile to use, while \texttt{-t full\_tag} sets the name and tag of the image. The final dot (.) indicates that the current directory will be used as the build context. The arguments \texttt{capture\_output=True} and text=True ensure that both stdout and stderr are captured and returned as strings, so that the script can handle them properly.
 
-To explain this block, we begin by discussing the reason for using the full image tag. It constructs a complete image tag in the Docker Hub format. Since Docker Hub requires image tags to follow a specific structure, the full image tag uses the format \texttt{dockerhub\_username/image\_name[:tag]}.
-
-This line creates a correctly formatted name for the Docker image, linking the Docker Hub account \texttt{(dockerhub\_username)} with the chosen image name and optional version tag \texttt{(docker\_image\_name)}.
-
-The line of the code: 
+Once the image is built, it must be pushed to Docker Hub. This is done with the following block:
 \begin{lstlisting}
 push_result = subprocess.run(["docker", "push", full_tag], capture_output=True, text=True)
+if push_result.returncode != 0:
+    print(f"Push failed:\n{push_result.stderr}")
+    sys.exit(1)
+print(f"Image successfully pushed: {full_tag}")
+
 \end{lstlisting}
-refers to the push process with the \texttt{subprocess.run} method. And it follows the same concept as building the Docker image. 
+In a manual workflow, the push would be performed with the command:  \texttt{docker push image\_name}. This assumes that the user is already logged in. In the script, the same command is executed through  \texttt{subprocess.run}.
+
+The key point is that the full image tag is constructed in the required Docker Hub format \texttt{(dockerhub\_username/image\_name:tag)}. This guarantees that the built image is correctly associated with the user’s Docker Hub account, and that XNAT will be able to locate it when launching the container.
 
 \section{The Prompt Function for the Required Input}
 
