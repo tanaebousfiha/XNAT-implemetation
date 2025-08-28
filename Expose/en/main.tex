@@ -1,0 +1,139 @@
+\documentclass[a4paper,11pt]{article}
+
+% -------------------------
+% Pakete
+% -------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage{float}
+\usepackage{geometry}
+\geometry{a4paper, left=2.5cm, right=2.5cm, top=4cm, bottom=5cm, bindingoffset=1cm}
+
+\usepackage{graphicx}
+\usepackage{svg}
+\svgsetup{inkscapelatex=true}
+\usepackage{import}
+
+\usepackage{xcolor}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{siunitx}
+\usepackage{rotating}
+\usepackage{comment}
+\usepackage{fancyhdr}
+\usepackage{marvosym}
+\usepackage{listings}
+\lstset{
+  language=Python,
+  basicstyle=\footnotesize\ttfamily,
+  captionpos=b,
+  frame=tb,
+  commentstyle=\bfseries,
+  stringstyle=\ttfamily,
+  keywordstyle=\bfseries,
+  breaklines=true,
+  aboveskip=10mm,
+  belowskip=10mm,
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=5pt
+}
+
+\usepackage[printonlyused,withpage]{acronym}
+\usepackage{cite}
+\usepackage{pdfpages}
+
+% -------------------------
+% PDF/A (pdfx lädt hyperref selbst – kein separates \usepackage{hyperref} nötig)
+% -------------------------
+\RequirePackage{filecontents}
+\begin{filecontents*}{\jobname.xmpdata}
+\Title{Document’s title}
+\Author{Author’s name}
+\Language{en-US}
+\Subject{The abstract, or short description.}
+\Keywords{keyword1\sep keyword2\sep keyword3}
+\end{filecontents*}
+\usepackage{colorprofiles}
+\usepackage[a-1b,mathxmp]{pdfx}[2018/12/22]
+\hypersetup{pdfstartview=} % hyperref ist durch pdfx aktiv
+
+% -------------------------
+% Eigene Kommandos / Konfiguration
+% -------------------------
+\input{commands.tex}      % deine Makros (benutzt u.a. \myemptypage, \Telefon, ...)
+
+% Basis-Konfiguration (falls nötig; ansonsten später wieder aktivieren)
+% \input{en/content/config}
+
+% Dokument-Variablen
+\newcommand{\mytype}{Analytical Study of Automated Component Integrations in XNAT}
+\newcommand{\mycourse}{Bachelor}
+\newcommand{\myauthor}{Tanae Bousfiha}
+\newcommand{\mydepartment}{HAWK Hochschule für angewandte wissenschaft und kunst \\Institut für Medizinische Informatik der Universitätsmedizin Göttingen}
+\newcommand{\mysubmissiondate}{31. August 2025}
+\newcommand{\supervisor}{Philip Zaschke, MSc.}
+
+% -------------------------
+% Start Dokument
+% -------------------------
+\begin{document}
+
+% Vortitel / Römische Seitenzahlen
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+% Titel-/Coverpage (nutzt Variablen oben und ggf. SVG-Logos)
+\input{content/coverpage}
+
+% Abstract (falls du eine Datei einbindest, hier \input{...} einsetzen)
+\clearpage\phantomsection\pdfbookmark{\abstractname}{abstract}
+\thispagestyle{empty}
+% \input{en/content/abstract} % optional
+
+% Abkürzungen nach Abstract zurücksetzen
+\acresetall
+
+% Inhaltsverzeichnis
+\clearpage\phantomsection\pdfbookmark{\contentsname}{toc}
+\tableofcontents
+\clearpage
+
+% (Optional) Abbildungsverzeichnis – nur, wenn du wirklich Abbildungen mit \caption hast
+% \listoffigures
+% \myemptypage
+
+% Arabische Nummerierung ab dem Hauptteil
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% -------------------------
+% Hauptinhalt (NUR hier Kapitel/Sections einbinden!)
+% -------------------------
+\input{en/content/ch1_introduction}
+\input{en/content/ch2_Fundamentals}
+\input{en/content/Research_Questions}
+
+% -------------------------
+% Literatur
+% -------------------------
+\bibliographystyle{IEEEtran}
+\bibliography{content/references}
+\addcontentsline{toc}{section}{\bibname} % article: section (nicht chapter)
+\clearpage
+
+% (Optional) Anhang
+% \appendix
+% \section{Appendix A}
+% ...
+
+\end{document}
+
+
+
