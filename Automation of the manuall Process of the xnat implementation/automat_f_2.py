@@ -2,14 +2,14 @@
 
 #-----------------Bibliotheken----------------------------------------------------------------------------------------------------------------------------
 
-import json # wir brauchen json für xnat damit er den Command anlegen kann
-import requests  # type: ignore # # für die Kommunikation mit der XNAT-API
-import os #Arbeiten mit Dateien und Pfaden
-import subprocess  # # für die Ausführung von Docker-Befehlen
-import getpass #Passwort-Eingabe im Terminal ohne Anzeige
-import sys#Für sys.exit() bei Fehlern
-import urllib3# type: ignore #Wird von requests genutzt – hier zur Abschaltung von Warnungen
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)# Deaktiviert SSL-Warnungen, wenn XNAT ohne gültiges Zertifikat läuft
+import json 
+import requests 
+import os 
+import subprocess  
+import getpass 
+import sys
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 #-----------------------------------1)dockerfile ausfüllen------------------------------------------------------
 
