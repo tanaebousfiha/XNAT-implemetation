@@ -3,9 +3,11 @@
 
 \section{Fundamentals}
 
-During an internship centered on the investigation and prototypical implementation of automated component integrations in XNAT, it was hypothesized that a Container could be implemented in a Project in XNAT to extract all the files and upload the result files back to their places. The approach was partly based on using a Python script that worked with the REST API, created a Dockerfile, and asked the user for an external Container Script to extract all the files from the open-source XNAT. Upon the conclusion of the experience, the Docker Container in XNAT should be marked as ‘Complete’ and the result files should be uploaded. 
+In an internship, a container-based method~\footnote{https://wiki.xnat.org/container-service/introduction {last acceed 01.09.2025 }} was investigated and implemented in XNAT for allowing individual .analyses on stored projects. A Python script was developed that (1) creates a Docker container based on the individual analysis script, (2) uploads the container and (3) connects with XNATs REST API to (4) define and (5) perform the execution of the container on XNAT. The script was developed to generalize on different user requirements like Python extensions and XNATs data layer definition with interactive user input prompts after execution. The workflow feature of XNAT was included for labeling performed actions on the server.
 
-Experimental application of the methods demonstrated that the container could not receive the extracted files via REST API, which made neither processing nor uploading files feasible. For another investigation, attention shifted to the traditional pipeline method. Consequently, an investigation of this method remains inevitable, in order to figure out which methods is the most efficient.
+Experimental application of the methods demonstrated that the container could not receive the extracted files via REST API, which made neither processing nor uploading files feasible. Furthermore, a limitation was identified for processing large file amounts in a XNAT projects, as each project file is requested individually. Additionally, full generalizability of all individual user requests could not be fully achieved due to XNAT restrictions on defining result data. 
+
+The pipeline method~\footnote{https://wiki.xnat.org/documentation/installing-pipelines-in-xnat {last acceed 01.09.2025 }} should be investigated, as this was identified as an alternative approach in an initial analysis.
 
   
 
