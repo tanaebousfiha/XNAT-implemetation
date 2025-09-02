@@ -1,0 +1,2497 @@
+%PDF-1.3
+%ºß¬à
+3 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 4 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 3535
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(Exportiert aus HAWKI am: 2.9.2025 von Bousfiha, Tanae) Tj
+ET
+BT
+/F2 18 Tf
+20.6999999999999993 TL
+0 g
+70.8661417322834666 728.5041732283464171 Td
+(Zusammenfassung) Tj
+ET
+BT
+/F3 14 Tf
+16.0999999999999979 TL
+0 g
+240.9448818897637921 728.5041732283464171 Td
+( \(automatisiert erstellt\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 700.15771653543311 Td
+(Das Problem „launching failed command resolution“ deutet auf einen Fehler bei der) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 681.7577165354330191 Td
+(Vorbereitung des Commands im XNAT-Container-Service hin. Es bedeutet, dass) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 663.3577165354330418 Td
+(XNAT vor der Ausführung prüft, ob alle erforderlichen Inputs, Parameter und) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 644.9577165354330646 Td
+(Ressourcen korrekt vorhanden sind. Häufige Ursachen sind unvollständige) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 626.5577165354330873 Td
+(`command.json`-Definitionen, falsche oder fehlende Session- oder Projekt-IDs,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 608.15771653543311 Td
+(Berechtigungsprobleme oder Inkonsistenzen bei den Eingabedaten. Zur Lösung) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 589.7577165354330191 Td
+(empfiehlt es sich, die Logs im XNAT-Interface genau zu prüfen, das `command.json`) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 571.3577165354330418 Td
+(zu validieren, minimalistische Testjobs durchzuführen und sicherzustellen, dass alle) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 552.9577165354330646 Td
+(Referenzen existieren und die Daten korrekt spezifiziert sind.) Tj
+ET
+BT
+/F2 18 Tf
+20.6999999999999993 TL
+0 g
+70.8661417322834666 477.8648031496063027 Td
+(Systemprompt) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 435.3451181102362284 Td
+(Du bist ein intelligentes und unterstützendes KI-Assistenzsystem für alle) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 416.9451181102361943 Td
+(Hochschulangehörigen der HAWK Hildesheim/Holzminden/Göttingen. Dein Ziel ist es,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.545118110236217 Td
+(Studierende, Lehrende, Forschende und Mitarbeitende in ihrer akademischen Arbeit,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.1451181102361829 Td
+(beim Lernen, Forschen, Lehren und verwalterischen Aufgaben zu unterstützen. Dabei) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.7451181102362057 Td
+(förderst du kollaboratives Arbeiten, wissenschaftliches Denken und eine kreative) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.3451181102362284 Td
+(Problemlösung. Beziehe dich auf wissenschaftliche Methoden und Theorien,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 324.9451181102361943 Td
+(argumentiere sachlich und reflektiere kritisch. Sei objektiv und verzichte auf) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.545118110236217 Td
+(unbegründete Meinungen. Fördere akademische Integrität und unterstütze keine) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 288.1451181102362398 Td
+(Plagiate. Sei inklusiv, wertschätzend und respektiere Vielfalt.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 6 0 R
+>>
+endobj
+6 0 obj
+<<
+/Length 4474
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F2 18 Tf
+20.6999999999999993 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(Verlauf:) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 756.8506299212598378 Td
+(Bousfiha, Tanae:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 728.5041732283464171 Td
+(ich hab eien Skript für Automatisirung der xnat docker) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 710.1041732283464398 Td
+(container implementirung gemacht) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 691.7041732283464626 Td
+(das Ergebnis bis jetzt:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 673.3041732283463716 Td
+(tanae@mi0082n:~/dockerfile/xnat-osa/Ziel1_osaDocker) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 654.904173228346508 Td
+(Container$ python3 tanae.py) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 636.5041732283464171 Td
+(XNAT Username:tanae) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 618.1041732283464398 Td
+(XNAT Password:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 599.7041732283464626 Td
+(Project ID:tanae_osa_Predct) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 581.3041732283463716 Td
+(Session ID:XNAT_E00428) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 562.904173228346508 Td
+(Path to the Python script:Bonjour.py) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 544.5041732283464171 Td
+(What is the name of the command in XNAT:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 526.1041732283464398 Td
+(krankheitdetector) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 507.7041732283464626 Td
+(What is the description of the command in XNAT:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 489.3041732283464853 Td
+(detected krankheit in patient data) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 470.9041732283464512 Td
+(Dockerfile written to ./Dockerfile) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 452.5041732283464739 Td
+(Building Docker image) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 434.1041732283464398 Td
+(&#039;krankheitdetector:latest&#039;...) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 415.7041732283464626 Td
+(Docker image &#039;krankheitdetector:latest&#039; built) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 397.3041732283464853 Td
+(successfully.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 378.9041732283464512 Td
+(JSON file created at command.json) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 360.5041732283464739 Td
+(Uploading command to) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 342.1041732283464967 Td
+(https://xnat-dev.gwdg.de/xapi/commands) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 323.7041732283464626 Td
+(Command created successfully.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 305.3041732283464853 Td
+(Wrapper existiert bereits: 114) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 286.904173228346508 Td
+(Wrapper &#039;krankheitdetector_wrapper&#039; wurde) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 268.5041732283465308 Td
+(global aktiviert.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 250.1041732283464398 Td
+(Wrapper &#039;krankheitdetector_wrapper&#039; wurde) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 231.7041732283464626 Td
+(im Projekt &#039;tanae_osa_Predct&#039; aktiviert.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 213.3041732283464853 Td
+(Launching container with payload: {) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 194.904173228346508 Td
+(  &quot;session&quot;: &quot;XNAT_E00428&quot;) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 176.5041732283465308 Td
+(}) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 158.1041732283464398 Td
+( Container launched successfully.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 121.3041732283464853 Td
+(=== STDOUT ===) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 102.904173228346508 Td
+( &lt;!doctype html&gt;&lt;html) Tj
+ET
+endstream
+endobj
+7 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 8 0 R
+>>
+endobj
+8 0 obj
+<<
+/Length 5223
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(lang=&quot;en&quot;&gt;&lt;head&gt;&lt;title&gt;HTTP) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(Status 404 – Not Found&lt;/title&gt;&lt;style) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(type=&quot;text/css&quot;&gt;body) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+({font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+({color:white;background-color:#525D76;} h1) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+({font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;}) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(p {font-size:12px;} a {color:black;} .line {height:1px;backg) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(round-color:#525D76;border:none;}&lt;/style&gt;&lt;/head) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 – Not) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 619.5970866141732358 Td
+(Found&lt;/h1&gt;&lt;hr class=&quot;line&quot;) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(/&gt;&lt;p&gt;&lt;b&gt;Type&lt;/b&gt; Status) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(Report&lt;/p&gt;&lt;p&gt;&lt;b&gt;Description&lt;/b&gt;) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(The origin server did not find a current representation for) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 545.9970866141732131 Td
+(the target resource or is not willing to disclose that one) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 527.5970866141732358 Td
+(exists.&lt;/p&gt;&lt;hr class=&quot;line&quot;) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(/&gt;&lt;h3&gt;Apache Tomcat/9.0.43) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(\(Debian\)&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 453.9970866141732699 Td
+(=== STDERR ===) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 435.5970866141732358 Td
+( &lt;!doctype html&gt;&lt;html) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 417.1970866141732586 Td
+(lang=&quot;en&quot;&gt;&lt;head&gt;&lt;title&gt;HTTP) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.7970866141732245 Td
+(Status 404 – Not Found&lt;/title&gt;&lt;style) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.3970866141732472 Td
+(type=&quot;text/css&quot;&gt;body) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+({font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.5970866141732358 Td
+({color:white;background-color:#525D76;} h1) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 325.1970866141732586 Td
+({font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;}) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.7970866141732813 Td
+(p {font-size:12px;} a {color:black;} .line {height:1px;backg) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 288.397086614173304 Td
+(round-color:#525D76;border:none;}&lt;/style&gt;&lt;/head) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 269.9970866141732131 Td
+(&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 – Not) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 251.5970866141732358 Td
+(Found&lt;/h1&gt;&lt;hr class=&quot;line&quot;) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 233.1970866141732586 Td
+(/&gt;&lt;p&gt;&lt;b&gt;Type&lt;/b&gt; Status) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 214.7970866141732813 Td
+(Report&lt;/p&gt;&lt;p&gt;&lt;b&gt;Description&lt;/b&gt;) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 196.397086614173304 Td
+(The origin server did not find a current representation for) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 177.9970866141733268 Td
+(the target resource or is not willing to disclose that one) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 159.5970866141732358 Td
+(exists.&lt;/p&gt;&lt;hr class=&quot;line&quot;) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 141.1970866141732586 Td
+(/&gt;&lt;h3&gt;Apache Tomcat/9.0.43) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 122.7970866141732813 Td
+(\(Debian\)&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 104.3970866141734177 Td
+(Container launched successfully. Check XNAT for) Tj
+ET
+endstream
+endobj
+9 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 10 0 R
+>>
+endobj
+10 0 obj
+<<
+/Length 4404
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(results.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(das problem ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(ich sehe nicht auf xnat ob das container tatsächlich in) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(xnat lgaunched ist oder neinun  kein estdout) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 683.2506299212598151 Td
+(HAWKI) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0 g
+128.9763779527559109 683.2506299212598151 Td
+(\(gpt-4.1\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 654.904173228346508 Td
+(Danke für die ausführliche Problembeschreibung! Dein Skript läuft grundsätzlich) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 636.5041732283464171 Td
+(durch, das Deployment und die Registrierung im XNAT klappt offenbar soweit, aber) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 618.1041732283464398 Td
+(du erhältst beim Ausführen des Containers eine **HTTP 404 Not Found**-Meldung) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 599.7041732283464626 Td
+(\(auszugeben durch Apache Tomcat\), und es ist für dich unklar, ob und wie der) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 581.3041732283463716 Td
+(Container tatsächlich läuft bzw. wo deren Ergebnisse landet.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 544.5041732283464171 Td
+(Das sind klassische Herausforderungen beim Arbeiten mit **XNAT Command) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 526.1041732283464398 Td
+(Images/Docker**. Ich schlage folgendes systematisches Vorgehen vor:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 489.3041732283464853 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 452.5041732283464739 Td
+(### **1. Analyse des HTTP 404-Fehlers**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 434.1041732283464398 Td
+(Der Fehler ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 415.7041732283464626 Td
+(```html) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 397.3041732283464853 Td
+(<h1>HTTP Status 404 – Not Found</h1>) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 378.9041732283464512 Td
+(```) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 360.5041732283464739 Td
+(klingt so, als ob du \(bzw. dein Skript\) versucht, eine Ressource per HTTP auf dem) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 342.1041732283464967 Td
+(XNAT-Server abzurufen, die so nicht existiert. Typischerweise heißt das:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 323.7041732283464626 Td
+(- Die angefragte URL ist falsch.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 305.3041732283464853 Td
+(- Der erforderliche REST-Endpunkt ist nicht aktiviert.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 286.904173228346508 Td
+(- Die Session-ID oder das Mapping zur Resource im XNAT existiert nicht, ist) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 268.5041732283465308 Td
+(abgelaufen oder falsch.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 231.7041732283464626 Td
+(**Fragen:**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 213.3041732283464853 Td
+(- Hast du überprüft, ob die Session-ID \(`XNAT_E00428`\) zur Laufzeit tatsächlich) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 194.904173228346508 Td
+(\(noch\) existiert?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 176.5041732283465308 Td
+(- Welche URL baut dein Skript zusammen, um den Container zu starten und/oder) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 158.1041732283464398 Td
+(Ergebnisse abzurufen?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 139.7041732283464626 Td
+(- Liefert der XNAT-Server im Interface einen Fehler beim Starten des Commands?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 121.3041732283464853 Td
+(\(XNAT „Container Service“ Admin-Ansicht prüfen!\)) Tj
+ET
+endstream
+endobj
+11 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 12 0 R
+>>
+endobj
+12 0 obj
+<<
+/Length 4248
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(### **2. Überprüfung, ob der Container läuft**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(XNAT zeigt normalerweise sämtliche gestarteten Commands und deren Status an.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(Das kannst du prüfen unter:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(**Im XNAT-Web-Interface:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+( - >   „ A d m i n i s t e r “  !’   „ C o n t a i n e r   S e r v i c e “  !’   „ A c t i v e   C o n t a i n e r s “   \( o d e r   „ R e c e n t   C o n t a i n e r) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(Executions“\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(Dort solltest du:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(- Deine gestarteten Commands sehen \(Name, Status, Logs\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(- Fehlerlogs \(„stderr/stdout“\) des Containers) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 527.5970866141732358 Td
+(**Tipp:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(Du kannst auch die REST-API nutzen, z.B.  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(`GET /xapi/containers`  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 472.3970866141732472 Td
+(um programmatisch alle Container-Jobs und deren Status abzufragen.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 435.5970866141732358 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.7970866141732245 Td
+(### **3. Fehlerquellen und Debugging**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.3970866141732472 Td
+(**a\) Container läuft nie wirklich an**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+(- Prüfe, **ob ein Fehler beim Erstellen oder Starten** des Containers auftritt \(siehe) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.5970866141732358 Td
+(Status/Logs im XNAT\).) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 325.1970866141732586 Td
+(- Ist dein Dockerfile korrekt, enthält es alle nötigen Abhängigkeiten?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.7970866141732813 Td
+(- Existiert das Python-Skript `Bonjour.py` und ist es im Dockerimage vorhanden?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 269.9970866141732131 Td
+(**b\) STDOUT/STDERR wird nicht angezeigt**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 251.5970866141732358 Td
+(- Stelle sicher, dass dein Skript wirklich auf STDOUT schreibt und z.B. keine) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 233.1970866141732586 Td
+(Exception unterdrückt.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 214.7970866141732813 Td
+(- XNAT leitet, sofern entsprechend konfiguriert, `stdout` und `stderr` ins Webinterface) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 196.397086614173304 Td
+(durch. Oft ist ein Button zu „Container Output“, wo die letzten Logs angezeigt werden.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 177.9970866141733268 Td
+(- Teste dein Dockerimage *außerhalb* von XNAT per  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 159.5970866141732358 Td
+(  `docker run krankheitdetector`  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 141.1970866141732586 Td
+(  und prüfe, ob du eine Ausgabe bekommst.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 104.3970866141734177 Td
+(**c\) Command-Definition \(JSON\)**) Tj
+ET
+endstream
+endobj
+13 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 14 0 R
+>>
+endobj
+14 0 obj
+<<
+/Length 4293
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(- Stelle sicher, dass dein `command.json` alle notwendigen Felder enthält.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(Insbesondere, ob einzulesende und zu speichernde Daten \(Inputs/Outputs\) sauber) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(deklariert sind.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(### **4. Vorschläge zum weiteren Vorgehen**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(- **Führe dein Dockerimage direkt auf deinem System aus** \(siehe oben\), beobachte) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(die Ausgabe und prüfe, ob es funktioniert.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 619.5970866141732358 Td
+(- **Prüfe im XNAT-Webinterface** alle Container-Jobs und Logs auf Hinweise auf) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(Fehler/Misskonfiguration.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(- **Überprüfe die API-Requests und deren URLs** auf Tippfehler, falsche IDs, Pfade) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(usw. \(ggf. mit `curl` testen\).) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 545.9970866141732131 Td
+(- **Lass dir vom Skript zusätzliche Debug-Ausgaben** zeigen:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(    ```python) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(    print\("Launching container at /xapi/commands/{id}/containers \(o.ä.\) ..."\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 472.3970866141732472 Td
+(    print\(f"Payload: {payload}"\) ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 453.9970866141732699 Td
+(    print\("Response:", response.status_code, response.content\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 435.5970866141732358 Td
+(    ```) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.7970866141732245 Td
+(- **Vergleiche dein Vorgehen mit den offiziellen Beispielen zu XNAT Command) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.3970866141732472 Td
+(Images**:  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+(  - [XNAT Command Image Doku \(docker-xnat wiki\)]\(https://wiki.xnat.org/container-ser) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.5970866141732358 Td
+(vice/getting-started-with-command-images-28943945.html\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 325.1970866141732586 Td
+(  - [XNAT API reference]\(https://wiki.xnat.org/xnat-rest-api\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 288.397086614173304 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 251.5970866141732358 Td
+(### **5. Zusammenfassung / Wahrscheinlichste Ursachen**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 233.1970866141732586 Td
+(- **404** meist durch fehlerhafte URL, fehlende Session oder nicht-existierenden) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 214.7970866141732813 Td
+(Endpoint.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 196.397086614173304 Td
+(- **Kein/eingeschränkte Ausgabe**: Container bricht früh ab, produziert keine logs,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 177.9970866141733268 Td
+(oder XNAT zeigt sie nicht an \(Systemlog/Details prüfen!\).) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 159.5970866141732358 Td
+(- **Command-Vermittlung**: Falsche Zuordnung von Session/Project-IDs im Request.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 122.7970866141732813 Td
+(---) Tj
+ET
+endstream
+endobj
+15 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 16 0 R
+>>
+endobj
+16 0 obj
+<<
+/Length 4160
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(#### **Empfohlene nächste Schritte**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(1. Prüfe im XNAT GUI den tatsächlichen Status & Output deines Containers.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(2. Teste dein Dockerimage einzeln auf der Shell \(ohne XNAT\).) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(3. Ergänze dein Skript, um HTTP-Responsecodes und -inhalte beim Starten und) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(Abrufen des Containers auszugeben.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+(4. Stelle sicher, dass dein `command.json` die Prinzipien aus der) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(XNAT-Dokumentation beachtet.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(Wenn du magst, kannst du gerne **konkret deine Skriptteile** \(vor allem die) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(HTTP-Requests\) oder deinen `command.json`-Inhalt posten, dann kann ich gezielter) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(helfen. Ebenso hilfreich wäre ein Auszug aus der XNAT-Log-Seite deines Jobs.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 527.5970866141732358 Td
+(**Hinweis:** Diese Vorgehensweise basiert auf bewährten Methoden der) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(Softwareentwicklung und Problemanalyse sowie der Systemintegration \(Software) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(Engineering, DevOps\).  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 472.3970866141732472 Td
+(**Quellen:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 453.9970866141732699 Td
+(- [XNAT Container Service User Guide]\(https://wiki.xnat.org/container-service\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 435.5970866141732358 Td
+(- [REST-API-Design-Grundsätze]\(https://restfulapi.net/\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.7970866141732245 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+(**Melde dich gern mit mehr Details – dann kann ich noch gezielter unterstützen!**) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 315.2506299212598151 Td
+(Bousfiha, Tanae:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 286.904173228346508 Td
+(ich habe da sproblem gefunden aber es wird mir bie launching failed commad) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 268.5041732283465308 Td
+(resolution) Tj
+ET
+BT
+/F2 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 221.7577165354331328 Td
+(HAWKI) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0 g
+128.9763779527559109 221.7577165354331328 Td
+(\(gpt-4.1\):) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 193.411259842519712 Td
+(Das ist ein wichtiger Fortschritt! Die Meldung **„launching failed command) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 175.0112598425197348 Td
+(resolution“** zeigt an, dass im Schritt der „Command Resolution“ \(also der Zuweisung) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 156.6112598425197575 Td
+(aller notwendigen Input-Parameter und Ressourcen für dein XNAT) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 138.2112598425196666 Td
+(Command/Docker-Image\) ein Fehler auftritt. Das ist ein häufiger Stolperstein beim) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 119.8112598425196893 Td
+(XNAT-Container-Service.) Tj
+ET
+endstream
+endobj
+17 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 18 0 R
+>>
+endobj
+18 0 obj
+<<
+/Length 4325
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(### Was bedeutet „command resolution“ bei XNAT?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(XNAT muss vor dem Ausführen eines Commands prüfen, ob alle Voraussetzungen) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(erfüllt und alle benötigten Daten verfügbar/mappbar sind. Dazu gehört zum Beispiel:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(- Sind alle notwendigen Parameter/Umgebungsvariablen gesetzt?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 693.1970866141732586 Td
+(- Stimmen Input/Output-Definitionen im `command.json` mit den realen) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(Gegebenheiten überein?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(- Gibt es die referenzierten Ressourcen \(z.B. Sessions, Dateien, Projektdaten\)?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(- Kann XNAT auf die notwendigen DICOM- oder Ressourcendaten zugreifen?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 619.5970866141732358 Td
+(- Gibt es Format- und Typ-Fehler in der Kommando-Beschreibung?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 545.9970866141732131 Td
+(## Typische Fehlerursachen & Lösungsansätze) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(### 1. **Falsche oder fehlende Inputs/Parameter**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(- Prüfe dein `command.json` auf vollständige und korrekte **Inputs/Outputs**.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 472.3970866141732472 Td
+(- Stimmen die Typangaben \(`xnat:mrSession`, `file`, etc.\)?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 453.9970866141732699 Td
+(- Sind *alle Pflichtfelder* mit passenden Werten gefüllt?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 417.1970866141732586 Td
+(### 2. **Session- und Project-IDs**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.7970866141732245 Td
+(- Existiert die angegebene **Session-ID** \(z.B. `XNAT_E00428`\) wirklich im) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.3970866141732472 Td
+(angesprochenen Projekt?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+(- Ist sie im richtigen Format? \(`XNAT_E....` ist typisch für MR-Sessions.\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 325.1970866141732586 Td
+(### 3. **Kollisions-/Namensprobleme**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.7970866141732813 Td
+(- Ist der Command-Name wirklich exakt so registriert wie aufgerufen?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 288.397086614173304 Td
+(- Haben Input-Felder eindeutig unterschiedliche Namen?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 269.9970866141732131 Td
+( -   G i b t   e s   e i n   W r a p p e r - K o n f l i k t ?   \( F a l l s   e i n   a l t e r   W r a p p e r   n o c h   a k t i v   i s t  !’   n e u   l a d e n) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 251.5970866141732358 Td
+(oder deaktivieren!\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 214.7970866141732813 Td
+(### 4. **Fehlende Rechte/Permissions**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 196.397086614173304 Td
+(- Hat dein User ausreichend Rechte auf das Projekt und die Session?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 177.9970866141733268 Td
+(- Kann auf „Container Service“/Docker zugegriffen werden?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 141.1970866141732586 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 104.3970866141734177 Td
+(## Systematisches Debugging:) Tj
+ET
+endstream
+endobj
+19 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 20 0 R
+>>
+endobj
+20 0 obj
+<<
+/Length 4205
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(1. **Logfiles in XNAT prüfen:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(       \( W e b i n t e r f a c e  !’   A d m i n  !’   C o n t a i n e r   S e r v i c e  !’   R e c e n t   C o n t a i n e r   E x e c u t i o n s / L o g s \)    ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(   Sehr oft steht dort genauer, *warum* die „command resolution“ schiefging \(z.B.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(„Missing required input X“, „Session not found“\).) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(2. **Logfile des Containers prüfen:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 656.3970866141731904 Td
+(   Manchmal ist das Container-Log schon geschrieben, bevor der Start komplett) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(abgelehnt wird.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(3. **Das aktuelle command.json posten**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(   Gern kannst du \(ggf. anonymisiert\) dein verwendetes `command.json` hier posten –) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(damit kann gezielt auf Syntaxfehler oder Inkonsistenzen geschaut werden.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 527.5970866141732358 Td
+(4. **Test mit minimalem command.json:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 509.1970866141732586 Td
+(   Erleichtert das Debugging. Erstelle – testweise – ein minimal-lauffähiges) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(`command.json` \(z.B. nur mit einem `string`-Input und einfachem `echo`\) und prüfe,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 472.3970866141732472 Td
+(ob der Fehler weiterhin auftritt.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 435.5970866141732358 Td
+(5. **Manueller Test/Simulieren im XNAT-Interface:**  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 417.1970866141732586 Td
+(   Viele XNAT-Instanzen erlauben, den Command direkt im Web-Interface an ein) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.7970866141732245 Td
+(Objekt \(Session/Project\) zu „attachen“ und zu starten. So sieht man in der GUI direkt,) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.3970866141732472 Td
+(welche Inputs verlangt werden und was evtl. fehlt.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.5970866141732358 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.7970866141732813 Td
+(## Beispiel: Häufige Fehler im command.json) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 269.9970866141732131 Td
+(```json) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 251.5970866141732358 Td
+({) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 233.1970866141732586 Td
+(  "inputs": {) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 214.7970866141732813 Td
+(    "session": {) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 196.397086614173304 Td
+(      "type": "xnat:mrSession",) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 177.9970866141733268 Td
+(      "description": "Session to process") Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 159.5970866141732358 Td
+(    }) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 141.1970866141732586 Td
+(  },) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 122.7970866141732813 Td
+(  "command-line": [) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 104.3970866141734177 Td
+(    "python", "script.py", "--input", "{session}") Tj
+ET
+endstream
+endobj
+21 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 22 0 R
+>>
+endobj
+22 0 obj
+<<
+/Length 3382
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 785.1970866141732586 Td
+(  ]) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 766.7970866141731676 Td
+(}) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 748.3970866141731904 Td
+(```) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 729.9970866141732131 Td
+(- PRÜFE: Wird wirklich eine **xnat:mrSession** erwartet und auch geliefert?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 711.5970866141732358 Td
+(- PRÜFE: Heißt der Input genauso wie in der API und im Python-Code referenziert?) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 674.7970866141731676 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 637.9970866141732131 Td
+(## Fazit) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 601.1970866141732586 Td
+(Die Phase der command resolution ist fehleranfällig, weil hier alle) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 582.7970866141731676 Td
+(„Meta-Informationen“ korrekt zusammenpassen müssen. Fast immer liefern die) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 564.397086614173304 Td
+(XNAT-Logs einen genaueren Grund.  ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 545.9970866141732131 Td
+(**Bitte schau in die „Recent Container Executions“ im XNAT-Adminbereich oder sende) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 527.5970866141732358 Td
+(das Log/das `command.json` für eine gezieltere Analyse**, gerne auch anonymisiert! ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 490.7970866141732245 Td
+(So können wir gemeinsam die genaue Schwachstelle finden und beheben.) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 453.9970866141732699 Td
+(---) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 417.1970866141732586 Td
+(**Literatur & Quellen:**) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 398.7970866141732245 Td
+(- [XNAT Command Images \(Dokumentation\)]\(https://wiki.xnat.org/documentation/cont) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 380.3970866141732472 Td
+(ainer-service/command-image\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 361.9970866141732699 Td
+(- [XNAT Container Service – Troubleshooting]\(https://wiki.xnat.org/documentation/cont) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 343.5970866141732358 Td
+(ainer-service/troubleshooting-and-faqs\)) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 325.1970866141732586 Td
+(- Forschungsnaher Artikel zu Fehlerbehandlung in service-orientierten Architekturen:) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 306.7970866141732813 Td
+(Weyns, D. et al. \(2012\): "Self-adaptation of Service-Oriented Systems: A Systematic) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 288.397086614173304 Td
+(Literature Review." ) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 251.5970866141732358 Td
+(Melde dich gerne mit Details oder Logauszügen – gern unterstütze ich dich Schritt für) Tj
+ET
+BT
+/F1 12 Tf
+13.7999999999999989 TL
+0 g
+70.8661417322834666 233.1970866141732586 Td
+(Schritt!) Tj
+ET
+endstream
+endobj
+1 0 obj
+<</Type /Pages
+/Kids [3 0 R 5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R 21 0 R ]
+/Count 10
+>>
+endobj
+23 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+24 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+25 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+26 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+27 0 obj
+<<
+/Type /Font
+/BaseFont /Courier
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+28 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+29 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+30 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+31 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Roman
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+32 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+33 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+34 0 obj
+<<
+/Type /Font
+/BaseFont /Times-BoldItalic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+35 0 obj
+<<
+/Type /Font
+/BaseFont /ZapfDingbats
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+36 0 obj
+<<
+/Type /Font
+/BaseFont /Symbol
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+2 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/F1 23 0 R
+/F2 24 0 R
+/F3 25 0 R
+/F4 26 0 R
+/F5 27 0 R
+/F6 28 0 R
+/F7 29 0 R
+/F8 30 0 R
+/F9 31 0 R
+/F10 32 0 R
+/F11 33 0 R
+/F12 34 0 R
+/F13 35 0 R
+/F14 36 0 R
+>>
+/XObject <<
+>>
+>>
+endobj
+37 0 obj
+<<
+/Producer (jsPDF 2.5.2)
+/CreationDate (D:20250902165347+02'00')
+>>
+endobj
+38 0 obj
+<<
+/Type /Catalog
+/Pages 1 0 R
+/OpenAction [3 0 R /FitH null]
+/PageLayout /OneColumn
+>>
+endobj
+xref
+0 39
+0000000000 65535 f 
+0000044174 00000 n 
+0000046057 00000 n 
+0000000015 00000 n 
+0000000152 00000 n 
+0000003739 00000 n 
+0000003876 00000 n 
+0000008402 00000 n 
+0000008539 00000 n 
+0000013814 00000 n 
+0000013952 00000 n 
+0000018409 00000 n 
+0000018548 00000 n 
+0000022849 00000 n 
+0000022988 00000 n 
+0000027334 00000 n 
+0000027473 00000 n 
+0000031686 00000 n 
+0000031825 00000 n 
+0000036203 00000 n 
+0000036342 00000 n 
+0000040600 00000 n 
+0000040739 00000 n 
+0000044292 00000 n 
+0000044418 00000 n 
+0000044549 00000 n 
+0000044683 00000 n 
+0000044821 00000 n 
+0000044945 00000 n 
+0000045074 00000 n 
+0000045206 00000 n 
+0000045342 00000 n 
+0000045470 00000 n 
+0000045597 00000 n 
+0000045726 00000 n 
+0000045859 00000 n 
+0000045961 00000 n 
+0000046310 00000 n 
+0000046396 00000 n 
+trailer
+<<
+/Size 39
+/Root 38 0 R
+/Info 37 0 R
+/ID [ <174E7EDC8D621D01B5CDBC5910076A07> <174E7EDC8D621D01B5CDBC5910076A07> ]
+>>
+startxref
+46500
+%%EOF
