@@ -21,7 +21,7 @@ The \texttt{getpass} module in Python allows users to enter passwords in the ter
 
 The urllib3 library was used to disable the InsecureRequestWarning, which is normally shown when Requests connects to a site with an unverified SSL certificate. This approach helps keep the output clean and free of unnecessary warnings during the run of the script.
 
-Currently, the system is running Docker Engine 28.3.0. The Docker Client version in use is 20.10.5+dfsg1, which communicates with the Docker Engine to issue commands and manage images and containers. The XNAT web application is running on version 1.9.1.1, as verified through the web interface.
+Currently, the system is running Docker Engine 28.3.0. The Docker Client version in use is 20.10.5+dfsg1, which communicates with the Docker Engine to issue commands and manage images and containers. The XNAT web application is running on version 1.9.1.1, as verified through the web interface. Figure 3.1 shows the core libraries used in the script.
 
 
 \begin{figure}[ht]
@@ -320,7 +320,8 @@ After receiving the Command ID and the Wrapper ID, we proceed by enabling the co
 
 \section{The Extraction of All Files from All Project Structures}
 
-The function used in this part is \texttt{def get\_all\_files\_all\_levels}, and it collects all the files in the project data hierarchy (project, subjects, experiments/sessions, and scans) from an XNAT system using its REST API. We used the REST API endpoint \texttt{GET} for the extraction. The function proceeds by authenticating with the XNAT server using the provided user credentials and starts by gathering project-level files, querying all resource folders at the project root and listing every file found within them. At every step, the function structures each file into a dictionary containing hierarchical information (such as the level—project, subject, experiment, scan—and the relevant IDs), the file name, the resource folder it was found in, and an absolute URI for straightforward retrieval. By the end, it returns a comprehensive list of all file records across all levels in the project.\footnote{\url{https://wiki.xnat.org/documentation/strategies-for-xnat-image-data-storage}last acced 25.08.2025}
+The function used in this part is \texttt{def get\_all\_files\_all\_levels}, and it collects all the files in the project data hierarchy (project, subjects, experiments/sessions, and scans) from an XNAT system using its REST API. We used the REST API endpoint \texttt{GET} for the extraction. The function proceeds by authenticating with the XNAT server using the provided user credentials and starts by gathering project-level files, querying all resource folders at the project root and listing every file found within them. At every step, the function structures each file into a dictionary containing hierarchical information (such as the level—project, subject, experiment, scan—and the relevant IDs), the file name, the resource folder it was found in, and an absolute URI for straightforward retrieval. By the end, it returns a comprehensive list of all file records across all levels in the project.\footnote{\url{https://wiki.xnat.org/documentation/strategies-for-xnat-image-data-storage}last acced 25.08.2025}. Figure 3.2 explains the hierarchy where the files are stored.
+
 \begin{figure}[ht]
     \centering
     \def\svgwidth{0.9\linewidth}
@@ -362,7 +363,7 @@ def launch_container_with_all_files(xnat_host, project_id, command_id, wrapper_n
     else:
         print("failure :", response.status_code, response.text)
 \end{lstlisting}
-
+Figure 3.3 illustrates the steps to implement a container in XNAT.
 \begin{figure}[ht]
     \centering
     \def\svgwidth{0.9\linewidth}
@@ -371,7 +372,7 @@ def launch_container_with_all_files(xnat_host, project_id, command_id, wrapper_n
     \label{fig:workflow-steps}
 \end{figure}
 
-The figure illustrates how the automation script facilitates the process of deploying a container in XNAT. It reduces all the steps.
+The figure 3.4 illustrates how the automation script facilitates the process of deploying a container in XNAT. It reduces all the steps.
 
 \begin{figure}[ht]
     \centering
