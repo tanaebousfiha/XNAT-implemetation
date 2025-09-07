@@ -1,7 +1,8 @@
 
 \begin{abstract}
 
-This work investigates the existing methods for integrating and deploying AI on the Biosignal within the Extensible Neuroimaging Archive Toolkit (XNAT), intending to recognize limitations, best practices, and opportunities for automation. As well as both of the generalization and the Application within the Somnolink project, considering sustainability aspects including the FAIR principles (Findable, Accessible, Interoperable, Reusable). 
+This work investigates the existing methods for integrating and deploying AI on biosignals within the Extensible Neuroimaging Archive Toolkit (XNAT), intending to recognize limitations, best practices, and opportunities for automation, as well as both generalization and application within the Somnolink project, considering sustainability aspects including the FAIR principles (Findable, Accessible, Interoperable, Reusable).
+
 Three approaches were analyzed: the pipeline method, the ML plugin, and a Docker container–based implementation. The pipeline method, despite being functional, was subject to limitations due to the need to repeatedly configure server paths. Additionally, the number of endpoints supported by XNAT was restricted. The ML plugin, previously a promising alternative, is now unsupported in recent XNAT releases. Utilizing a Docker container represented the only practical and conceivable solution. An automated workflow for container-based deployment was developed, combining Dockerfile generation, JSON command configuration, and execution via the REST API. Experimental evaluation showed limitations related to file mounting. However, the Docker container approach proved to be the most effective and sustainable method for integrating ML workflows into XNAT. The study demonstrates that automation via Docker is the most appropriate method for ensuring reproducibility and accessibility in machine learning deployment across clinical and research domains.
 \end{abstract}
 
