@@ -52,12 +52,20 @@ In order to summarize all the REST API needed in the script, a summarizing table
     \hline
     GET  & \path{/data/experiments/{experiment_id}/scans/{scan_id}/resources/{resource_label}/files?format=json} & List files inside a scan resource \\
     \hline
-         & \path{/data/experiments/{experiment_id}/scans/{scan_id}/resources/{resource_label}/files/{file_name}} & Direct file path (download or reference) \\
-    \hline
+      
 \end{longtable}
 
 
+The REST API is a sort of backbone of the automatization in XNAT workflow, it assures a orchestration of the container execution, and at the same time assuring  traceability and reproducibility. The REST API played a crucial role to develop a automatic workflow in the XNAT platform. The figure 3.1 illustrates the role of the REST API in the automatization
 
+
+\begin{figure}[ht]
+    \centering
+    \def\svgwidth{0.9\linewidth}
+    \input{RESTAPI.pdf_tex}
+    \caption{Diagram: illustrates the role of the REST API in the automatization}
+    \label{fig:workflow-steps}
+\end{figure}
 
 
 
