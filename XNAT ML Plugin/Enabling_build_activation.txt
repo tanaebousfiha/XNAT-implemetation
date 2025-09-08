@@ -18,6 +18,6 @@ Name: PipelineScreen_launch_pipeline
 
 Display Name: Build
 
-Popup: always
+Popup: Always 
 
 Secure Access: edit
