@@ -5,7 +5,7 @@ import sys
 import subprocess
 
 
-output_file = "osa_result.csv"# Name der Ausgabedatei
+output_file = "osa_result.csv"
 
 def calculate_osa_risk_single(row):
     positive_answers = {"yes", "ja", "x", "whar", "true", "1", "wahr"}
