@@ -7,10 +7,17 @@ The first method analyzed was the Docker Container, and after reviewed the last 
 
 In order to summarize all the REST API needed in the script, a summarizing table was created.
 
-\begin{tabularx}{\textwidth}{|l|X|X|}
+\begin{longtable}{|l|p{0.4\textwidth}|p{0.4\textwidth}|}
     \hline
     \textbf{Method} & \textbf{Endpoint} & \textbf{Purpose} \\
     \hline
+    \endfirsthead
+
+    \hline
+    \textbf{Method} & \textbf{Endpoint} & \textbf{Purpose} \\
+    \hline
+    \endhead
+
     POST & \path{/xapi/commands} & Upload a Command (JSON) \\
     \hline
     GET  & \path{/xapi/commands} & List all the commands to get the wrapper ID and the command ID \\
@@ -47,9 +54,10 @@ In order to summarize all the REST API needed in the script, a summarizing table
     \hline
          & \path{/data/experiments/{experiment_id}/scans/{scan_id}/resources/{resource_label}/files/{file_name}} & Direct file path (download or reference) \\
     \hline
-\end{tabularx}
+\end{longtable}
 
- \newpage
+
+
 
 
 
