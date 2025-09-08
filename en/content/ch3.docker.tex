@@ -485,8 +485,8 @@ But interestingly, after searching in the container information, we noticed that
 Details of the test procedure are described in Appendix A \cite{bousfiha2025appendix}.
 
 The results demonstrate two things. First, the automation script with the REST API worked correctly. Second, there is an issue with the container accessing the input files, despite them being listed as received.
-\begin{chapter}
 
+\section{Discussion of the results}
 This chapter presents an overview of the implementation solution, the technical challenges encountered during integration with XNAT, and the methods employed to overcome the issues. Several problems emerged throughout development, including data transmission failures, REST API inconsistencies, and JSON configuration mismatches.
 
 The initial problem was that the container did not appear to receive any input files. To confirm this, a test was performed by adding a script within the container. The script was designed to write a file named \texttt{no\_file.txt} if no input file was detected at runtime. The successful upload of this file confirmed that while the container was running, it was not receiving actual input data.
@@ -497,6 +497,15 @@ Attention then shifted to the JSON command that defines the container command st
 
 It was hypothesized that the container execution timing could play a role in the failure. To test this, the automation script was modified to introduce a 10-second delay between each container execution. The assumption was that the host system might be under resource pressure when running multiple containers in rapid succession. However, introducing delays did not resolve the core issue: the container still did not receive input files.
 %-------------------------------------------------------------------------------------------------------------------------
+
+
+
+\section{Analysis of the Docker Approach: Current Limitations}
+
+After analyzing the Docker Container method in both manual and automated scenarios, we identified several limitations, that requires further attention.
+An advantage of using the Docker Container is the ability to automate the implementation workflow and launch either multiple containers or single workflows via scripting.
+
+The Container approach was designed to be applicable on multiple structure of the XNAT. In other word depending on the intended case, users muss configure the container to process files within a specific structure of XNAT. However if the objective as to proceed all the files from all the existed structures in XNAT within a project, additional steps are needed, specifically extracting all the data from all the structures as well as extra work to relocate the processed files to their original directories after processing. 
 
 \section{The Workflow Data in XNAT}
 
@@ -518,4 +527,12 @@ The diagram below illustrates the workflow data for a clearer understanding.
     \label{fig:workflowxnat}
 \end{figure}
 
-\end{chapter}
+
+To recapitulate, the Docker container method proved effective for launching containers within multiple project structures. However, it did not perform well when attempting to process all files across a single project structure. This limitation highlights a clear restriction and reduces the overall usefulness of the approach.
+
+\section{Generalizability of the Docker Automation Method}
+
+
+
+
+
