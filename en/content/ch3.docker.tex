@@ -1,7 +1,70 @@
-
-
 \chapter{The Analysis of the First Method: Docker Container}
 
+\section{Introduction to the Automation Script for the Docker Container Method}
+The first method analyzed was the Docker Container, and after reviewed the last points supported by XNAT Community, a review of the latest updates from the XNAT Community indicated that automation of Docker container implementation is feasible.
+
+\section{Table of the REST API in the Script}
+
+In order to summarize all the REST API needed in the script, a summarizing table was created.
+
+\begin{tabularx}{\textwidth}{|l|X|X|}
+    \hline
+    \textbf{Method} & \textbf{Endpoint} & \textbf{Purpose} \\
+    \hline
+    POST & \path{/xapi/commands} & Upload a Command (JSON) \\
+    \hline
+    GET  & \path{/xapi/commands} & List all the commands to get the wrapper ID and the command ID \\
+    \hline
+    PUT  & \path{/xapi/commands/{command_id}/wrappers/{wrapper}/enabled} & Enable wrapper site-wide \\
+    \hline
+    POST & \path{/xapi/projects/{project_id}/commands/{command_id}/wrappers/{wrapper}/root/project/launch} & Launch container wrapper in project context \\
+    \hline
+    GET  & \path{/data/projects/{project_id}/resources?format=json} & List all project resources \\
+    \hline
+    GET  & \path{/data/projects/{project_id}/resources/{resource_label}/files?format=json} & List files inside a project resource \\
+    \hline
+    GET  & \path{/data/projects/{project_id}/subjects?format=json} & List all subjects in a project \\
+    \hline
+    GET  & \path{/data/subjects/{subject_id}/resources?format=json} & List subject-level resources \\
+    \hline
+    GET  & \path{/data/subjects/{subject_id}/resources/{resource_label}/files?format=json} & List files inside a subject resource \\
+    \hline
+         & \path{/data/subjects/{subject_id}/resources/{resource_label}/files/{file_name}} & Direct file path (download or reference) \\
+    \hline
+    GET  & \path{/data/projects/{project_id}/experiments?format=json} & List sessions (experiments) in a project \\
+    \hline
+    GET  & \path{/data/experiments/{experiment_id}/resources?format=json} & List session-level resources \\
+    \hline
+    GET  & \path{/data/experiments/{experiment_id}/resources/{resource_label}/files?format=json} & List files in a session resource \\
+    \hline
+         & \path{/data/experiments/{experiment_id}/resources/{resource_label}/files/{file_name}} & Direct file path (download or reference) \\
+    \hline
+    GET  & \path{/data/experiments/{experiment_id}/scans?format=json} & List scans within a session \\
+    \hline
+    GET  & \path{/data/experiments/{experiment_id}/scans/{scan_id}/resources?format=json} & List scan-level resources \\
+    \hline
+    GET  & \path{/data/experiments/{experiment_id}/scans/{scan_id}/resources/{resource_label}/files?format=json} & List files inside a scan resource \\
+    \hline
+         & \path{/data/experiments/{experiment_id}/scans/{scan_id}/resources/{resource_label}/files/{file_name}} & Direct file path (download or reference) \\
+    \hline
+\end{tabularx}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{The Automation Script}
 The purpose of this chapter is to introduce the system in more detail. A Python script is used to combine all the steps into an automated workflow. The libraries used in this work include: \texttt{requests}\footnote{\url{https://www.w3schools.com/python/module_requests.asp} accessed on 10 August 2025}, \texttt{json}\footnote{\url{https://www.w3schools.com/python/python_json.asp} accessed on 10 August 2025}, \texttt{os}\footnote{\url{https://docs.python.org/3/library/os.html} accessed on 10 August 2025}, \texttt{subprocess}\footnote{\url{https://docs.python.org/3/library/subprocess.html} accessed on 10 August 2025}, \texttt{getpass}\footnote{\url{https://docs.python.org/3/library/getpass.html} accessed on 10 August 2025}, \texttt{sys}\footnote{\url{https://docs.python.org/3/library/sys.html} accessed on 10 August 2025}, and \texttt{urllib3}\footnote{\url{https://urllib3.readthedocs.io/en/stable/} accessed on 10 August 2025}.
 
 The use of the Requests library was for creating the interaction with the web services of XNAT. The Python Requests library is the go-to solution for making HTTP requests in Python, thanks to its elegant and intuitive API that simplifies the process of interacting with web services and consuming data in the application.\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} accessed on 10 August 2025} The Sys module in Python provides access to variables and functions that interact closely with the Python interpreter and runtime environment.
@@ -22,7 +85,6 @@ Currently, the system is running Docker Engine 28.3.0. The Docker Client version
   \caption{Schema: Core Libraries for Python Scripting in System Integration}
   \label{fig:diagram-core-libraries}
 \end{figure}
-
 
 
 
