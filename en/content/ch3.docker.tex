@@ -541,21 +541,53 @@ the adoption of this method in different environments, institutions and datasets
 For the purpose of creating more accessibility and to generalizability for non technical or experienced users. The Docker automation script developed in this project was visualized as a graphical user interface (GUI) mockup.
 The following mockup does not represent a functional program , but it illustrates how the command line workflow can be illustrated. In other word it a representation of what the result on the Terminal looks like. Consequently it follows the same logical steps as the one on the terminal: (1) configuration of the container, (2)project selection, (3)file discovery,  (4)container launch, and (4) result visualization.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=1.1\textwidth]{mockup1.png}
+  \includegraphics[width=1.1\textwidth]{en/content/mockup0.png}
   \caption{GUI Mockup 1 for Docker Container Automation in XNAT}
 \end{figure}
 
 
-As we can see in the figure 3.7 we have a simple presentation of what could the mockup of the automatization of the Docker Container look like. The advantages of this exmenple is that is extremly userfirendly and the user has a full vieuw of what is going on in the GUI.
+In the Figure 3.7 the screen enables the users to enter their XNAT credentials. It represents a entry point to the Docker automation interface.
+These credentials are used to connect securely the users to the XNAT server.
+Furthermore as illustrated in the figure 3.8, after being logged in the XNAT Server the users find the second screen. this provided second 
+mockup gives a clear and a straightforward representation of the automation of the Docker Container. The main advantage of this representation is that it offers a high friendliness, ensuring to all kind of users a full control of the process within the GUI.
+
+
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1.1\textwidth]{mockup1.png}
+  \caption{GUI Mockup 2 for Docker Container Automation in XNAT}
+\end{figure}
+
+
+The dashboard view, presents a comprehensive summary of all automation scripts and container activities, including key metrics such as the total number of scripts, active containers, queued jobs, and completed tasks for the day.
+This approach is consistent with the current functionality of the underlying script by providing visualization for job monitoring, log access, and container lifecycle management in a manner that prioritizes usability and accessibility.
 
 
 
 
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=1.1\textwidth]{en/content/mockup2.png}
+  \caption{GUI Mockup 3 for Docker Container Automation in XNAT}
+\end{figure}
+In the figure 3.9 illustrates the interface that appears when users select the “+ Script” button. before starting to create the image, users are prompt to specify the path to their scripts by providing a link or file location. 
 
 
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=1.1\textwidth]{en/content/mockup3.png}
+  \caption{GUI Mockup 3 for Docker Container Automation in XNAT}
+\end{figure}
 
+The figure 3.10 illustrate the interface presented after the script path has been specified. On this screen users begin customizing the command by giving it a name and providing a brief description. Additionally, users are required to specify the associated project within XNAT.
 
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=1.1\textwidth]{en/content/mockup4.png}
+  \caption{GUI Mockup 4 for Docker Container Automation in XNAT}
+\end{figure}
 
-
+In the figure 3.11 displays the last screen in the workflow. In this step, a summary of the previous steps are being generated. With the aim to porvid the user with a confirmation that the implementation and deployment have been completed successfully.
