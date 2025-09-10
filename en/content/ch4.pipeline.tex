@@ -1,12 +1,59 @@
 \chapter{The Analysis of the Second Method: The Pipeline}
-\section{XNAT ML Plugin and The Pipeline}
+\section{Pipeline Installation and Configuration in XNAT}
 
-For the purpose of investigating and examining the prototypical implementation of automated component integrations in XNAT, it is relevant to cite the XNAT ML Plugin\footnote{\url{https://wiki.xnat.org/ml/} accessed on 10 August 2025}, which was previously an implementation method developed to incorporate machine learning workflows directly into XNAT. It offered capabilities for uploading, configuring, and training AI models. However, this approach was highly interdependent, and the XNAT team officially deprecated the ML Plugin and the associated Datasets Plugin. They are no longer maintained or recommended for production use. Another method that can be cited is the Pipeline method.
+Pipeline is a method of implementation for automated data processing in XNAT, using \ac{XML} descriptors and server-side scripts/tools. 
+To implement a pipeline in XNAT, an XML descriptor is required, this descriptor serves as a connector between XNAT and the user script including definitions for metadata, execution steps, conditions, iterations, and outputs—and resource descriptors that specify how scripts or executable are launched with necessary parameters.
+During the Pipeline analysis we initially focused on analyzing the implementation process of a OSA prediction based script with the Pipeline method. The Pipeline system requires two components: Pipeline Engine and the XNAT Pipeline Engine Plugin. By default, pipelines are located at /data/home/xnat/pipeline\footnote{\url{https://wiki.xnat.org/documentation/xnat-pipeline-development-schema} last Accessed: 10 September 2025).}   
 
-Pipeline is a method of implementation for automated data processing in XNAT, using \ac{XML} descriptors and server-side scripts/tools. In XNAT, a pipeline is used to automate data processing workflows on imaging and related data stored in the system. Pipelines allow researchers and developers to define and execute repeatable, structured sequences of tasks such as data conversion, quality control, analysis, and post-processing directly on XNAT-managed data, without manual intervention.
+\begin{lstlisting}[language=XML, caption={Example of a pipeline resource descriptor in XNAT}, label={lst:pipeline-xml}]
+<?xml version="1.0" encoding="UTF-8"?>
+<pip:Resource xmlns:pip="http://nrg.wustl.edu/pipeline">
+    <pip:name>run_test_pipeline.py</pip:name>
+    <pip:location>/usr/local/python_scripts</pip:location>
+    <pip:commandPrefix>python</pip:commandPrefix>
+    <pip:type>Executable</pip:type>
+    <pip:description>Generates SOMETHING HERE</pip:description>
+    <pip:input>
+        <pip:argument id="configfilepath">
+            <pip:description>Path to param file</pip:description>
+        </pip:argument>
+        <pip:argument id="host">
+            <pip:description>XNAT Host</pip:description>
+        </pip:argument>
+        <pip:argument id="user">
+            <pip:description>XNAT User</pip:description>
+        </pip:argument>
+        <pip:argument id="passwd" isSensitive="true">
+            <pip:description>XNAT User password</pip:description>
+        </pip:argument>
+        <pip:argument id="pipelineLogFile">
+            <pip:description>Path to pipeline log file</pip:description>
+        </pip:argument>
+    </pip:input>
+</pip:Resource>
+\end{lstlisting}
+The resource descriptor XML for an XNAT pipeline specifies the executable's invocation details and argument handling—such as the location, command prefix, and any argument marked as `isSensitive` to hide credentials.\footnote{Mohana Ramaratnam (2013, July 25). “Re: Running pipeline with parameters from an XML?”, *xnat\_discussion* Google Group. Available at: \url{https://groups.google.com/g/xnat_discussion/c/ewhjL7upJf4} (last accessed 10 September 2025).}
+The  Listing~\ref{lst:pipeline-xml} presents a sample resource descriptor for a Python script, specifying its location, command prefix, and input arguments such as configuration file, XNAT host, user credentials (with password marked as sensitive), and log file path. This example illustrates how the schema integrates execution details with security considerations for sensitive data.
+The commands shown are part of the process of setting up a classic XML-based pipeline in XNAT.
+The first command copies the file my\_pipeline.xml, which contains the XML-based definition of the pipeline
+workflow, into the directory /data/xnat/pipeline/pipelines/my\_pipeline/, where XNAT expects all pipeline
+descriptors to be stored.
+The second command copies the file run.sh—a shell script that performs the actual data processing defined in the
+pipeline into the same directory. This ensures that both the pipeline definition and the script it executes are
+located together in the correct structure required by the XNAT Pipeline Engine. Finally, the third command
+makes the run.sh script executable using chmod +x, which is essential because XNAT will later attempt to run
+this script as a command. Without executable permissions, XNAT would not be able to start the script, and the pipeline execution would fail.
+\footnote{XNAT Documentation (2025): \url{https://wiki.xnat.org/documentation/installing-pipelines-in-xnat} last Accessed 10 September 2025}
 
-After analyzing the Pipeline implementation method, it was revealed that the architecture exhibits several limitations regarding scalability and flexibility, particularly when integrating new automated components. These pipelines require direct access to the server via SSH in order to manually copy the XML descriptor and associated scripts to a specific directory (\texttt{/data/xnat/pipeline/pipelines/}). This approach is not feasible in secure or restricted settings where developers or researchers do not have shell access to the production server.
+\section{Pipeline Development and Integration in XNAT}
+On the contrary, building and enabling a pipeline in XNAT involves considerably more manual steps compared to the Docker-based approach.
+First we have to enter the path to the pipeline in XNAT under Admin>Pipelines>Register new Pipelines> And then, in the appropriate field, we enter the path. Then we have to build the option run the Pipeline.In order for users to execute the Pipeline from the XNAT interface an administrator must configure the relevant data type to include a pipeline launch action. This involves editing the data type settings under Administer >Data Types and adding a new action as PipelineScreen\_launch\_pipeline—in the Available Report Actions section, with a suitable display label like Build or Run Pipeline.\footnote{\url{https://wiki.xnat.org/documentation/installing-pipelines-in-xnat}last accessed 10.09.2025}
 
-Furthermore, following the analysis of the REST API endpoints that XNAT supports, it became apparent that XNAT offers only limited support for this feature. The only supported endpoint in the list is \texttt{POST /pipelines/launch/\{pipelineName\}}, which allows programmatic launching of an already registered pipeline in XNAT. However, for full automation, additional endpoints would be needed, such as one to enable a pipeline globally in XNAT and another to assign or activate a pipeline for a specific project. These functionalities are currently not exposed via the REST API, which means that while the execution of pipelines can be automated, the full deployment and project-level configuration still require manual steps.
+\section{The Pipeline and the REST API}
+With the aim of analyzing the pipeline method more deeply, it is worth noting that XNAT provides several REST API endpoints for managing and running pipelines the most relevant endpoint for automation is \url{POST /pipelines/launch/{pipelineName}} \footnote{\url{://wiki.xnat.org/xnat-api/xnat-pipeline-api} last Accessed 10.09.2025}
+This allows us to programmatically launch an already registered pipeline in XNAT. However, for full
+automation, additional endpoints would be needed, such as one to enable a pipeline globally in XNAT and
+another to assign or activate a pipeline for a specific project. These functionalities are currently not exposed via
+the REST API, which means that while the execution of pipelines can be automated, the full deployment and
+project-level configuration still require manual steps.
 
-In conclusion, a fully automated pipeline workflow using only a Python script is not currently possible. Only the launching of existing, pre-registered pipelines can be automated via REST.
