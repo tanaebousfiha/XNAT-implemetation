@@ -504,8 +504,7 @@ It was hypothesized that the container execution timing could play a role in the
 
 After analyzing the Docker Container method in both manual and automated scenarios, we identified several limitations, that requires further attention.
 An advantage of using the Docker Container is the ability to automate the implementation workflow and launch either multiple containers or single workflows via scripting.
-
-The Container approach was designed to be applicable on multiple structure of the XNAT. In other word depending on the intended case, users muss configure the container to process files within a specific structure of XNAT. However if the objective as to proceed all the files from all the existed structures in XNAT within a project, additional steps are needed, specifically extracting all the data from all the structures as well as extra work to relocate the processed files to their original directories after processing. 
+The Container approach was designed to be applicable on multiple structure of the XNAT. In other word depending on the intended case, users muss configure the container to process files within a specific structure of XNAT. However if the objective as to proceed all the files from all the existed structures in XNAT within a project, additional steps are needed, specifically extracting all the data from all the structures as well as extra work to relocate the processed files to their original directories after processing. Another important aspect is that, through the use of Docker containers, it is possible to selectively filter files based on their formats instance, if only CSV, SVG, TXT, or DICOM files are required. This targeted filtration can be configured within the command JSON, enabling precise data selection and processing according to specific project needs.
 
 \section{The Workflow Data in XNAT}
 
@@ -532,67 +531,52 @@ To recapitulate, the Docker container method proved effective for launching cont
 
 \section{Generalizability of the Docker Automation Method}
 
-Currently the Docker Container is a sort of powerful method to implement AI in the XNAT. it perfoms well on single models and also bound to a specific data type such as CSV,DICOM. However, adapting the workflow to accommodate other data types still requires manual intervention and adjustment. This limitation affects the method’s reusability in varying contexts or projects.
+Currently the Docker Container is a sort of powerful method to implement AI in the XNAT. it performs well on single models and also bound to a specific data type such as CSV,DICOM. However, adapting the workflow to accommodate other data types still requires manual intervention and adjustment. This limitation affects the method’s reusability in varying contexts or projects.
 Generalizability is particularly important in a way that the method should be accessible to users without programming expertise and adaptable for use in different institutions, datasets, and environments.
 One way to enhance the generalizability is through the implementation of a graphical user Interface (GUI). The GUI method can make the Docker Container method more accessible and understandable to all users even without programming experiences. Consequently facilitating
 the adoption of this method in different environments, institutions and datasets.  
+
 \section{GUI Mockup for Docker Container Automation in XNAT}
 
 For the purpose of creating more accessibility and to generalizability for non technical or experienced users. The Docker automation script developed in this project was visualized as a graphical user interface (GUI) mockup.
 The following mockup does not represent a functional program , but it illustrates how the command line workflow can be illustrated. In other word it a representation of what the result on the Terminal looks like. Consequently it follows the same logical steps as the one on the terminal: (1) configuration of the container, (2)project selection, (3)file discovery,  (4)container launch, and (4) result visualization.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=1.1\textwidth]{en/content/mockup0.png}
-  \caption{GUI Mockup 1 for Docker Container Automation in XNAT}
+\section{The Docker Container Approach and the Somnolink Project, sustainability aspects including FAIR criteria}
+
+The Somnolink project is a nationwide initiative to improve the treatment and research of obstructive sleep apnea through better data sharing. The obstructive sleep apnea is the most prevalent disorder in clinical sleep laboratories, Therefore, the main goal of the Somnolink project is to improve the diagnosis and therapy of OSA.
+The objectives of the project are aligned for improving the OSA care with the health data typically collected along the official patient pathway, as defined by the German guidelines. This pathway consists of four stages: (1) assessing pre-test probability through medical history and questionnaires, (2) conducting physical examinations in primary care, (3) performing outpatient sleep diagnostics, and (4) carrying out comprehensive sleep laboratory studies. Based on this structure, which data are relevant at each step is identified and proposed how data-driven methods such as machine learning–based decision support systems could assist clinicians in their decision-making. ~\cite{krefting_somnolink_2025}
+In general, the implementation of Docker container technology is becoming increasingly prevalent within the Somnolink Project, due to It is notable that an OSA prediction model can be implemented with a Docker container within XNAT.
+In this context, automating the Docker Container in XNAT offers a significant advantages. It allows the OSA prediction to be executed in a standardized manner. Such a automation is not only reducing the manual intervention, but also ensuring a consistent  workflow and facilitating  the integration of data-driven decision support into clinical practice. Which contribute to fulfilling the aim and the goals of this project.
+\begin{figure}[ht]
+    \centering
+    \def\svgwidth{\linewidth} 
+    \input{Somnolink.pdf_tex}
+    \caption{Diagram: XNAT Workflow for Container Integration}
+    \label{fig:workflowxnat}
 \end{figure}
 
-
-In the Figure 3.7 the screen enables the users to enter their XNAT credentials. It represents a entry point to the Docker automation interface.
-These credentials are used to connect securely the users to the XNAT server.
-Furthermore as illustrated in the figure 3.8, after being logged in the XNAT Server the users find the second screen. this provided second 
-mockup gives a clear and a straightforward representation of the automation of the Docker Container. The main advantage of this representation is that it offers a high friendliness, ensuring to all kind of users a full control of the process within the GUI.
-
-
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=1.1\textwidth]{mockup1.png}
-  \caption{GUI Mockup 2 for Docker Container Automation in XNAT}
-\end{figure}
-
-
-The dashboard view, presents a comprehensive summary of all automation scripts and container activities, including key metrics such as the total number of scripts, active containers, queued jobs, and completed tasks for the day.
-This approach is consistent with the current functionality of the underlying script by providing visualization for job monitoring, log access, and container lifecycle management in a manner that prioritizes usability and accessibility.
+The figure 3.7 illustrates the structure of the OSA diagnostic pathway in relation to data collection, data driven support, and technical implementation.
+The blue column shows the four steps of the German OSA patient pathway. The middle column summarizes the typical health data collected at each stage. And the last column underline the opportunity where machine learning or decision-support methods can be applied. 
+The yellow banner highlights Docker container automation in XNAT  as the technical foundation that enable standardized and reproducible workflows across the steps.
+Sustainability within Somnolink project covers both the technical stability and scientific traceability. Consequently the use of the Docker Containers contribute by offering reproducible computational environments, reducing maintenance demands, and facilitating collaboration across multiple sites. However, conformity to FAIR principles strengthens the long-term reusability of the developed solutions: The Container images are well stored in the Docker Hub (Findable), they are also accessible via standardized interfaces (Accessible), employ interoperable data formats (Interoperable), and are adaptable for use in new contexts (Reusable). This harmonized approach is essential for ensuring sustainable support of the Somnolink project’s objectives. 
 
 
 
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=1.1\textwidth]{en/content/mockup2.png}
-  \caption{GUI Mockup 3 for Docker Container Automation in XNAT}
-\end{figure}
-In the figure 3.9 illustrates the interface that appears when users select the “+ Script” button. before starting to create the image, users are prompt to specify the path to their scripts by providing a link or file location. 
 
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=1.1\textwidth]{en/content/mockup3.png}
-  \caption{GUI Mockup 3 for Docker Container Automation in XNAT}
-\end{figure}
 
-The figure 3.10 illustrate the interface presented after the script path has been specified. On this screen users begin customizing the command by giving it a name and providing a brief description. Additionally, users are required to specify the associated project within XNAT.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.7\textwidth]{en/content/mockup4.png}
-  \caption{GUI Mockup 4 for Docker Container Automation in XNAT}
-\end{figure}
 
-In the figure 3.11 displays the last screen in the workflow. In this step, a summary of the previous steps are being generated. With the aim to provide the user with a confirmation that the implementation and deployment have been completed successfully.
 
-In summary, the presented mockup demonstrates how the developed docker automation script can be translated into a user friendly graphical interface. While the current implementation operates via a command line in the terminal, those mockups underline the potential for enhanced usability, accessibility, and reproducibility through the use of a GUI. The model based design enable the users without programming expertise to configure, initiate, and monitor containers within XNAT. However this interface has not been implemented within the scope of this thesis. The mockups serve as an intermediary layer between the technical backend and a potential future integration within the XNAT platform. Consequently, they illustrate the generalizability and long-term sustainability of the proposed approach.
 
-\section{The Docker Container Approach and the Somnolink Project}
+
+
+
+
+
+
+
+
+
 
