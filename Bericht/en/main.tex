@@ -22,7 +22,9 @@
 \usepackage{fancyhdr}
 \usepackage{comment}
 \usepackage{rotating}
-
+\usepackage{pdfpages}
+\svgsetup{inkscapelatex=true}
+\usepackage{import}
 
 
 
@@ -52,7 +54,8 @@
 
 
 %--- include general configuration ---
-\input{common/config}
+\input{en/content/config}
+
 
 
 %--- basic document configuration ---
@@ -64,13 +67,13 @@
 
 
 \newcommand{\myauthor}{Tanae Bousfiha}
-\newcommand{\mydepartment}{HAWK Hochschule für angewandte wissenschaft und kunst 
-\\Institut für Medizinische Informatik der Universitätsmedizin Göttingen}
-\newcommand{\mysubmissiondate}{xx. August 2025}
+\newcommand{\mydepartment}{HAWK Hochschule für angewandte Wissenschaft und Kunst\\
+Institut für Medizinische Informatik der Universitätsmedizin Göttingen}
+\newcommand{\mysubmissiondate}{31. August 2025}
 %\newcommand{\mythesisid}{201x-xx} %assigned by examination office
-\newcommand{\myfirstsupervisor}{Prof.Dr. Roman Grothausmann}
+\newcommand{\myexaminer}{Prof .Dr. Roman Grothausmann}
+\newcommand{\myfirstsupervisor}{Prof .Dr. Roman Grothausmann}
 \newcommand{\mysecondsupervisor}{Philip Zaschke, MSc.}
-
 
 \begin{document}
 
@@ -121,7 +124,7 @@
     \setcounter{page}{1}
     
     %--- chaper 1..n ---
-    \input{content/ch1_introduction}
+    \input{en/content/ch1_introduction}
     
     
     \input{en/content/ch2.Fundamentals}
