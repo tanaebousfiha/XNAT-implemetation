@@ -559,7 +559,15 @@ The figure 3.7 illustrates the structure of the OSA diagnostic pathway in relati
 The blue column shows the four steps of the German OSA patient pathway. The middle column summarizes the typical health data collected at each stage. And the last column underline the opportunity where machine learning or decision-support methods can be applied. 
 The yellow banner highlights Docker container automation in XNAT  as the technical foundation that enable standardized and reproducible workflows across the steps.
 Sustainability within Somnolink project covers both the technical stability and scientific traceability. Consequently the use of the Docker Containers contribute by offering reproducible computational environments, reducing maintenance demands, and facilitating collaboration across multiple sites. However, conformity to FAIR principles strengthens the long-term reusability of the developed solutions: The Container images are well stored in the Docker Hub (Findable), they are also accessible via standardized interfaces (Accessible), employ interoperable data formats (Interoperable), and are adaptable for use in new contexts (Reusable). This harmonized approach is essential for ensuring sustainable support of the Somnolink project’s objectives. 
+\section{Sustainability of the Automation Script}
 
+Another key strength for the developed automation script is its sustainability and long-term usability. The implemementation is flexibel and allows at the same time to the developers a reuse of the existing framework and modify only components that may need updating. Potential future changes. The Potential future changes can be :
+- Updates to XNAT REST API endpoints.\\
+- Authentication methods.\\
+-  Alterations to the JSON schema for command and wrapper definitions.\\
+-  Docker base images in case a new better one is deprecated.\\
+- XNAT project structures are extended with new contexts or data types.\\
+However, the core workflow logic remains unaffected. Consequently this promote a efficient maintenance, supports sustainable software development practices.
 
 
 
