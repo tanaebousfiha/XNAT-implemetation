@@ -75,6 +75,21 @@ Execution & the Run Pipeline option must be build via Actions menu  & Triggered 
 Automation & Limited REST API Supported by XNAT Community, many tasks still require manual steps.& Excellent support of the REST API by XNAT Community. Enabling a complete automation of workflows. \\ \hline
 Deployability and flexibility & Pipelines are highly dependent on the specific XNAT environment and server configuration in which they are deployed. & Docker images can be readily reused in various XNAT installations.\\ \hline
 Preservation & Updating necessitates server access and manual reconfiguration.& Updates can be managed through the construction and deployment of a new image, with no need for direct changes to the server configuration.\\ \hline
+
+Maintenance & Updating requires server access and manual reconfiguration.& Updating requires building and pushing a new image; no direct server changes needed.\\ \hline
+Usability& Requires XML schema knowledge and direct server administration.& Requires Docker knowledge, but easier to reuse prebuilt images.\\ \hline
+consistency& Depends on identical server setups and configurations.& High reproducibility is achieved, as all dependencies are within the container.\\ \hline
+Community& limited documentation und less support from XNAT Community& Huge support from XNAT community\\ \hline
+Security& Credentials needed in XML configuration& Isolated container environments\\ \hline
+
+
+
+
+
+
+
+
+
     \end{tabular}
     \caption{Comprehensive comparison of XNAT Pipeline Method and Docker Container Service}
     \label{tab:pipeline-vs-docker}
