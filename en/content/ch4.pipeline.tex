@@ -58,6 +58,52 @@ the REST API, which means that while the execution of pipelines can be automated
 project-level configuration still require manual steps.
 
 \section{Evaluating Pipeline and Docker Approaches in XNAT}
+
+For the purpose of evaluating the two methods, we began by compiling a comparative table to provide a clearer understanding of their respective features. 
+
+
+
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+    \hline
+    \textbf{Aspect} & \textbf{The Pipeline method} & \textbf{Docker Container method}\\ \hline
+     Installation & Requires manual placement of XML descriptors, plugin JARs, and executables on the server& Container image uploaded once (via Docker registry) and configured in XNAT. \\ \hline
+    Configuration & Admin must edit data types, enable actions, and rebuild pipeline engine, require direct access to the server via SSH in order to manually copy the XML
+descriptor and associated scripts to a specific directory (/data/xnat/pipeline/pipelines/)& Minimal configuration through a JSON command; no engine rebuild needed. \\ \hline
+Execution & the Run Pipeline option must be build via Actions menu& Triggered via Actions menu or REST API, image runs in isolated environment. \\ \hline
+Automation & Limited REST API Supported by XNAT Community, many tasks still require manual steps.& Excellent support of the REST API by XNAT Community. Enabling a complete automation of workflows. \\ \hline
+deployability and flexibility & Pipelines are highly dependent on the specific XNAT environment and server configuration in which they are deployed. & Docker images can be readily reused in various XNAT installations.\\ \hline
+preservation & Updating necessitates server access and manual reconfiguration.& Updates can be managed through the construction and deployment of a new image, with no need for direct changes to the server configuration.\\ \hline
+
+
+
+
+
+
+    \end{tabular}
+    \caption{Comprehensive comparison of XNAT Pipeline Method and Docker Container Service}
+    \label{tab:pipeline-vs-docker}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Discussion and Conclusion and future measurements}
 
 
