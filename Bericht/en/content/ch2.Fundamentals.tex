@@ -21,12 +21,12 @@ One of the most important of them is the Dockerfile. A Dockerfile is a text file
 Another important point to consider is that REST APIs correspond to application programming interfaces built in compliance with the Representational State Transfer (REST) principles.
 REST specifies a collection of standard rules and conventions for web API implementation.\footnote{\url{https://www.redhat.com/en/topics/api/what-is-a-rest-api} (accessed on 10 August 2025)} Luckily, XNAT provides its users with a list of REST APIs that make the exchange between the user and the website possible. 
 
-\section{The JSON Command}
-At the same time, if we want XNAT to execute a created Docker image and run a command, a \ac{JSON} command is needed. 
+\section{Command Definition in JSON format}
+At the same time, if we want XNAT to execute a created Docker image and run a command, a \ac{JSON} command definition in JSON format is needed. 
 
-The JSON command is a structured set of properties that defines the Docker image, which enables XNAT to execute the command correctly.\footnote{\url{https://wiki.xnat.org/container-service/json-command-definition}, last accessed 23.08.2025}
+The command definition in JSON format is a structured set of properties that defines the Docker image, which enables XNAT to execute the command correctly.\footnote{\url{https://wiki.xnat.org/container-service/json-command-definition}, last accessed 23.08.2025}
 
-In other words, the JSON command can be seen as a configuration for XNAT. When defining a JSON command for XNAT, the Docker image and a clear, human-readable name are specified, along with the exact command-line invocation, what input files are required and where they are mounted, how those inputs are selected from XNAT, and what outputs are produced and where they should be uploaded back into XNAT.\footnote{\url{https://wiki.xnat.org/container-service/json-command-definition}, accessed 23 August 2025}
+In other words, this command definition in JSON format (written in JSON) can be seen as a configuration for XNAT. When defining a command for XNAT in JSON format, the Docker image and a clear, human-readable name are specified, along with the exact command-line invocation, what input files are required and where they are mounted, how those inputs are selected from XNAT, and what outputs are produced and where they should be uploaded back into XNAT.\footnote{\url{https://wiki.xnat.org/container-service/json-command-definition}, accessed 23 August 2025}
 These are the fundamental elements needed to enable automation of the process.
 
 

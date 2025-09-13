@@ -43,7 +43,7 @@ During the development of the automation script, I closely followed the steps of
  
  \section{The Dockerfile}
  
-The first function responsible for writing the Dockerfile is called \texttt{def write\_dockerfile}, and it takes three arguments: the target directory for the Dockerfile, the name of the Python script to include, and an optional base Docker image (defaulting to \texttt{python:3.10-slim}, currently the fastest and slimmest image of Docker). The function creates the necessary folder (if it does not already exist), constructs the Dockerfile content, and writes it. The content of the Dockerfile is introduced with string interpolation and contains the base image and several commands such as \texttt{WORKDIR /app} (a working directory) and \texttt{COPY \{script\_filename\} /app/\{script\_filename\}} to copy the user script inside the image. The line \texttt{RUN pip install --no-cache-dir pandas} tells Docker to install the pandas Python library using pip during the build process of the Docker image, which helps reduce the overall image size and avoids unnecessary layers in the build process. The last component of the Dockerfile is \texttt{COPY requirements.txt /app/requirements.txt}, which provides the opportunity for the user to write in a separate text file all the libraries used in the container script, to be installed later during the image build process.
+The first function responsible for writing the Dockerfile is called \texttt{def write\_dockerfile}, and it takes three arguments: the target directory for the Dockerfile, the name of the Python script to include, and an optional base Docker image (defaulting to \texttt{python:3.10-slim}, currently the fastest and slimmest image of Docker). The function creates the necessary folder (if it does not already exist), constructs the Dockerfile content, and writes it. The content of the Dockerfile is introduced with string interpolation and contains the base image and several commands such as \texttt{WORKDIR /app} (a working directory) and \texttt{COPY \{script\_filename\} /app/\{script\_filename\}} to copy the user script inside the image. The line \texttt{RUN pip install --no-cache-dir pandas} tells Docker to install the pandas Python library using pip during the build process of the Docker image, which helps reduce the overall image size and avoids unnecessary layers in the build process. The last command of the Dockerfile is \texttt{COPY requirements.txt /app/requirements.txt}, which provides the opportunity for the user to write in a separate text file all the libraries used in the container script, to be installed later during the image build process.
 
 
 The \texttt{CMD} instruction was removed from the Dockerfile because it caused errors when running the container in XNAT. The issue was due to a conflict between the \texttt{CMD} instruction in the Dockerfile and the JSON command configuration, as both included the \texttt{python3} prefix. This led to a duplicate command execution, which caused the container to fail. By removing \texttt{CMD} from the Dockerfile, the execution logic is now fully controlled by XNAT through the JSON command, ensuring a successful launch of the container.
@@ -136,10 +136,10 @@ The function looks like this:
 \end{lstlisting}
 The \texttt{def get\_input} function uses a \texttt{while True} loop to keep asking until the user enters input. The \texttt{value.strip()} removes any whitespace from the user input. If the input is valid, the value is returned; if not, the message \texttt{Cannot be empty} will be printed.
 
-\section{The JSON Command}
+\section{The Command Definition in JSON format}
 
-To communicate the Docker image to XNAT, and consequently to run the container in the website, it is necessary to write a JSON command.\footnote{\url{https://wiki.xnat.org/container-service/json-command-definition}}
-Usually, the JSON command is personalized and customized depending on the main idea of the image. But in the automation case, the JSON command must be generalized for all cases, which means no matter which file is selected, the command will still handle it.
+To communicate the Docker image to XNAT, and consequently to run the container in the website, it is necessary to write a command definition in JSON format.\footnote{\url{https://wiki.xnat.org/container-service/json-command-definition}}
+Usually, the JSON-based command definition is personalized and customized depending on the main idea of the image. But in the automation case, the JSON-based command must be generalized for all cases, which means no matter which file is selected, the command will still handle it.
 
 To achieve that, the function used is called \texttt{create\_json\_file}, which builds the configuration dictionary for a Docker-based XNAT command (for the XNAT Container Service), writes it to a \texttt{command.json} file, and returns the filename.
 
@@ -175,7 +175,7 @@ The command line declares the actual command to run inside the container when in
 The mount configures the directory mappings (as Docker volumes) between XNAT and the Docker container. Most of the time, two are used: the input and the output.
 We specified the path \texttt{/input} in the container and indicated whether the container can only read the files (\texttt{Not writable}) or can also write them (\texttt{Writable}).
 
-The second part of the JSON command:
+The second part of command definition in JSON format:
 
 
 \begin{lstlisting}
@@ -212,7 +212,7 @@ The \texttt{"required": true} flag means that if the input is not provided, the 
 
 The same logic applies to the output part. The only additional point to note is the \texttt{"path": "."}, which means the output file will be placed at the top level of the \texttt{/output} directory. To allow more than one output file, the setting \texttt{"type": "files"} is used in the output block.
 
-The final block in the JSON command:
+The final block in the command definition (JSON format):
 
 \begin{lstlisting}
 
@@ -249,11 +249,11 @@ In the \texttt{"external-input"} block, external entities from XNAT are defined.
 
 In the \texttt{"output-handlers"} block, we control how the outputs from the command are stored and shown in XNAT after job completion. This output handler tells XNAT to take the result file produced by the command, store it as a resource under the project, and call that section ``Results'' in the UI. The \texttt{"as-a-child-of": "project"} specifies that the results are uploaded back into the XNAT project as new resources.
 
-Finally, the script writes the JSON command file, ensuring that the JSON command is saved in the correct format, ready to be uploaded to XNAT.
+Finally, the script writes the command definition in JSON format, ensuring that the JSON command is saved in the correct format, ready to be uploaded to XNAT.
 
 \section{Upload the Command in XNAT}
 
-After writing the JSON command, the next step is to send it to XNAT. To achieve this, we have to use the appropriate REST API responsible for uploading the container command to XNAT.
+After writing the JSON-based command, the next step is to send it to XNAT. To achieve this, we have to use the appropriate REST API responsible for uploading the container command to XNAT.
 We can find the list of all REST APIs under \texttt{Administer $\rightarrow$ Site Administration $\rightarrow$ Miscellaneous $\rightarrow$ Development Utilities $\rightarrow$ Swagger}.
 To send the command to XNAT, we found that the responsible REST API is \texttt{POST}.\footnote{\url{https://xnat-dev.gwdg.de/xapi/swagger-ui.html\#/command-rest-api}}
 
@@ -276,7 +276,7 @@ def send_json_to_xnat(json_file_path, xnat_url, xnat_user, xnat_password):
         print(f"Failed to upload command: {response.status_code} - {response.text}")
 \end{lstlisting}
 
-This function takes the path that describes the JSON command, the base URL of the XNAT server, and the credentials for authentication. First, it constructs the correct REST API endpoint by appending \texttt{/xapi/commands} to the provided XNAT URL, ensuring that the command is sent to the appropriate API for command registration. It then opens the JSON file, loads its contents, and sends this data as a POST request to the API endpoint using \ac{HTTP} Basic Authentication with the supplied username and password. After making the request, the function examines the server’s response, and in each case provides feedback, helping the user quickly understand whether the command upload succeeded or if further action is needed to resolve an issue.
+This function takes the path that describes the JSON-based command, the base URL of the XNAT server, and the credentials for authentication. First, it constructs the correct REST API endpoint by appending \texttt{/xapi/commands} to the provided XNAT URL, ensuring that the command is sent to the appropriate API for command registration. It then opens the JSON file, loads its contents, and sends this data as a POST request to the API endpoint using \ac{HTTP} Basic Authentication with the supplied username and password. After making the request, the function examines the server’s response, and in each case provides feedback, helping the user quickly understand whether the command upload succeeded or if further action is needed to resolve an issue.
 
 \section{Preparations to Launch the Container}
 
@@ -364,6 +364,8 @@ def launch_container_with_all_files(xnat_host, project_id, command_id, wrapper_n
         print("failure :", response.status_code, response.text)
 \end{lstlisting}
 Figure 3.3 illustrates the steps to implement a container in XNAT.
+
+
 \begin{figure}[ht]
     \centering
     \def\svgwidth{0.9\linewidth}
@@ -371,6 +373,7 @@ Figure 3.3 illustrates the steps to implement a container in XNAT.
     \caption{Diagram: Workflow Steps for the Implementation}
     \label{fig:workflow-steps}
 \end{figure}
+
 
 The figure 3.4 illustrates how the automation script facilitates the process of deploying a container in XNAT. It reduces all the steps.
 
