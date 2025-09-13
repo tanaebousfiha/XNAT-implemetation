@@ -216,10 +216,10 @@ The function looks like this:
 \end{lstlisting}
 The \texttt{def get\_input} function uses a \texttt{while True} loop to keep asking until the user enters input. The \texttt{value.strip()} removes any whitespace from the user input. If the input is valid, the value is returned; if not, the message \texttt{Cannot be empty} will be printed.
 
-\section{The JSON Command}
+\section{The Command Definition in JSON format}
 
-To communicate the Docker image to XNAT, and consequently to run the container in the website, it is necessary to write a JSON command.\footnote{\url{https://wiki.xnat.org/container-service/json-command-definition}}
-Usually, the JSON command is personalized and customized depending on the main idea of the image. But in the automation case, the JSON command must be generalized for all cases, which means no matter which file is selected, the command will still handle it.
+To communicate the Docker image to XNAT, and consequently to run the container in the website, it is necessary to write a command definition in JSON format.\footnote{\url{https://wiki.xnat.org/container-service/json-command-definition}}
+Usually, the JSON-based command definition is personalized and customized depending on the main idea of the image. But in the automation case, the JSON-based command must be generalized for all cases, which means no matter which file is selected, the command will still handle it.
 
 To achieve that, the function used is called \texttt{create\_json\_file}, which builds the configuration dictionary for a Docker-based XNAT command (for the XNAT Container Service), writes it to a \texttt{command.json} file, and returns the filename.
 
@@ -255,7 +255,7 @@ The command line declares the actual command to run inside the container when in
 The mount configures the directory mappings (as Docker volumes) between XNAT and the Docker container. Most of the time, two are used: the input and the output.
 We specified the path \texttt{/input} in the container and indicated whether the container can only read the files (\texttt{Not writable}) or can also write them (\texttt{Writable}).
 
-The second part of the JSON command:
+The second part of command definition in JSON format:
 
 
 \begin{lstlisting}
@@ -292,7 +292,7 @@ The \texttt{"required": true} flag means that if the input is not provided, the 
 
 The same logic applies to the output part. The only additional point to note is the \texttt{"path": "."}, which means the output file will be placed at the top level of the \texttt{/output} directory. To allow more than one output file, the setting \texttt{"type": "files"} is used in the output block.
 
-The final block in the JSON command:
+The final block in the command definition (JSON format):
 
 \begin{lstlisting}
 
@@ -329,7 +329,7 @@ In the \texttt{"external-input"} block, external entities from XNAT are defined.
 
 In the \texttt{"output-handlers"} block, we control how the outputs from the command are stored and shown in XNAT after job completion. This output handler tells XNAT to take the result file produced by the command, store it as a resource under the project, and call that section ``Results'' in the UI. The \texttt{"as-a-child-of": "project"} specifies that the results are uploaded back into the XNAT project as new resources.
 
-Finally, the script writes the JSON command file, ensuring that the JSON command is saved in the correct format, ready to be uploaded to XNAT.
+Finally, the script writes the command definition in JSON format, ensuring that the JSON command is saved in the correct format, ready to be uploaded to XNAT.
 
 \section{Upload the Command in XNAT}
 
@@ -539,7 +539,7 @@ the adoption of this method in different environments, institutions and datasets
 \section{GUI Mockup for Docker Container Automation in XNAT}
 
 For the purpose of creating more accessibility and to generalizability for non technical or experienced users. The Docker automation script developed in this project was visualized as a graphical user interface (GUI) mockup.
-The following mockup does not represent a functional program , but it illustrates how the command line workflow can be illustrated. In other word it a representation of what the result on the Terminal looks like. Consequently it follows the same logical steps as the one on the terminal: (1) configuration of the container, (2)project selection, (3)file discovery,  (4)container launch, and (4) result visualization.
+The following mockup in the Figure 3.7 does not represent a functional program , but it illustrates how the command line workflow can be illustrated. In other word it a representation of what the result on the Terminal looks like. Consequently it follows the same logical steps as the one on the terminal: (1) configuration of the container, (2)project selection, (3)file discovery,  (4)container launch, and (4) result visualization.
 
 
 \begin{figure}[H]
@@ -565,13 +565,13 @@ In this context, automating the Docker Container in XNAT offers a significant ad
     \label{fig:workflowxnat}
 \end{figure}
 
-The figure 3.7 illustrates the structure of the OSA diagnostic pathway in relation to data collection, data driven support, and technical implementation.
+The figure 3.8 illustrates the structure of the OSA diagnostic pathway in relation to data collection, data driven support, and technical implementation.
 The blue column shows the four steps of the German OSA patient pathway. The middle column summarizes the typical health data collected at each stage. And the last column underline the opportunity where machine learning or decision-support methods can be applied. 
 The yellow banner highlights Docker container automation in XNAT  as the technical foundation that enable standardized and reproducible workflows across the steps.
 Sustainability within Somnolink project covers both the technical stability and scientific traceability. Consequently the use of the Docker Containers contribute by offering reproducible computational environments, reducing maintenance demands, and facilitating collaboration across multiple sites. However, conformity to FAIR principles strengthens the long-term reusability of the developed solutions: The Container images are well stored in the Docker Hub (Findable), they are also accessible via standardized interfaces (Accessible), employ interoperable data formats (Interoperable), and are adaptable for use in new contexts (Reusable). This harmonized approach is essential for ensuring sustainable support of the Somnolink project’s objectives. 
 \section{Sustainability of the Automation Script}
 
-Another key strength for the developed automation script is its sustainability and long-term usability. The implemementation is flexibel and allows at the same time to the developers a reuse of the existing framework and modify only components that may need updating. Potential future changes. The Potential future changes can be :
+Another key strength for the developed automation script is its sustainability and long-term usability. The implementation is flexible and allows at the same time to the developers a reuse of the existing framework and modify only components that may need updating. Potential future changes. The Potential future changes can be :
 - Updates to XNAT REST API endpoints.\\
 - Authentication methods.\\
 -  Alterations to the JSON schema for command and wrapper definitions.\\
