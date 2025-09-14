@@ -46,15 +46,22 @@ During the development of the automation script, I closely followed the steps of
 The first function responsible for writing the Dockerfile is called \texttt{def write\_dockerfile}, and it takes three arguments: the target directory for the Dockerfile, the name of the Python script to include, and an optional base Docker image (defaulting to \texttt{python:3.10-slim}, currently the fastest and slimmest image of Docker). The function creates the necessary folder (if it does not already exist), constructs the Dockerfile content, and writes it. The content of the Dockerfile is introduced with string interpolation and contains the base image and several commands such as \texttt{WORKDIR /app} (a working directory) and \texttt{COPY \{script\_filename\} /app/\{script\_filename\}} to copy the user script inside the image. The line \texttt{RUN pip install --no-cache-dir pandas} tells Docker to install the pandas Python library using pip during the build process of the Docker image, which helps reduce the overall image size and avoids unnecessary layers in the build process. The last command of the Dockerfile is \texttt{COPY requirements.txt /app/requirements.txt}, which provides the opportunity for the user to write in a separate text file all the libraries used in the container script, to be installed later during the image build process.
 
 
-The \texttt{CMD} instruction was removed from the Dockerfile because it caused errors when running the container in XNAT. The issue was due to a conflict between the \texttt{CMD} instruction in the Dockerfile and the JSON command configuration, as both included the \texttt{python3} prefix. This led to a duplicate command execution, which caused the container to fail. By removing \texttt{CMD} from the Dockerfile, the execution logic is now fully controlled by XNAT through the JSON command, ensuring a successful launch of the container.
+The \texttt{CMD} instruction was removed from the Dockerfile because it caused errors when running the container in XNAT. The issue was due to a conflict between the \texttt{CMD} instruction in the Dockerfile and the JSON command configuration, as both included the \texttt{python3} prefix. This led to a duplicate command execution, which caused the container to fail. By removing \texttt{CMD} from the Dockerfile, the execution logic is now fully controlled by XNAT through the JSON-based command, ensuring a successful launch of the container.
 
-\begin{lstlisting}[language=bash,caption={Dockerfile}]
-FROM python:3.10-slim
-WORKDIR /app
-COPY script.py /app/script.py
-RUN pip install --no-cache-dir pandas
-COPY requirements.txt /app/requirements.txt
-\end{lstlisting}
+
+\lstinputlisting{automat_f_2.py}
+
+
+
+
+
+
+
+
+
+
+
+
 
 The rest of the \texttt{def write\_dockerfile} ensures that the specified directory exists, then creates and writes a Dockerfile to that location. It constructs the full path to the file, writes the generated content into it, and prints a confirmation message.
 
