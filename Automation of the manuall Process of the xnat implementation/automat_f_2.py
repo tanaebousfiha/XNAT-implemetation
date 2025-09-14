@@ -201,55 +201,31 @@ def send_json_to_xnat(json_file_path, xnat_url, xnat_user, xnat_password):
 
 #-----------------------------------6)Command-Liste------------------------------------------------------------------------------------------------------------
 
-def get_command_id_by_name(xnat_host, xnat_user, xnat_password, command_name):
-    url = f"{xnat_host.rstrip('/')}/xapi/commands"#Baut die vollständige URL zur Command-Liste der XNAT REST-API>>keinen doppelten Schrägstrich gibt
-    resp = requests.get(url, auth=(xnat_user, xnat_password), verify=False)# wird hier die get me request benutzt laut der APIS 
-    if resp.status_code != 200:
-        print(f"Error fetching commands: {resp.status_code}")
-        sys.exit(1)
-    data = resp.json()# # Die Antwort wird als JSON interpretiert
-    if isinstance(data, dict) and "commands" in data:
-        command_list = data["commands"]# # Wenn die Antwort ein Dictionary ist, das "commands" enthält, dann wird es extrahiert
-    else:
-        command_list = data
-    for command in command_list:
-        if command.get("name") == command_name:
-            return command["id"]
-    print("Command not found.")
-    sys.exit(1)
-    #Überprüft, ob das Objekt data ein Dictionary (also eine „dict“-Instanz) ist.
-    
-    
-#-------------------------------------- 8)get_wrapper_id_by_command_name---------------------------------------------------------------------------------
-
-def get_wrapper_id_by_command_name(xnat_host, xnat_user, xnat_password, command_name, wrapper_name):
-    
+def get_command_wrapper_id(xnat_host, xnat_user, xnat_password, command_name, wrapper_name=None):
     url = f"{xnat_host.rstrip('/')}/xapi/commands"
-    resp = requests.get(url, auth=(xnat_user, xnat_password), verify=False)
-
+    try:
+        resp = requests.get(url, auth=(xnat_user, xnat_password), verify=False)
+    except Exception as e:
+        print(f"Verbindungsfehler: {e}")
+        sys.exit(1)
     if resp.status_code != 200:
         print(f"Fehler beim Abrufen der Commands: {resp.status_code}")
         sys.exit(1)
-
     data = resp.json()
-    if isinstance(data, dict) and "commands" in data:
-        commands = data["commands"]
-    else:
-        commands = data
+    commands = data.get("commands", data) if isinstance(data, dict) else data
 
     for command in commands:
         if command.get("name") == command_name:
-            for wrapper in command.get("xnat", []):
-                if wrapper.get("name") == wrapper_name:
-                    return wrapper.get("id") or wrapper_name
-            for wrapper in command.get("wrappers", []):
-                if wrapper.get("name") == wrapper_name:
-                    return wrapper.get("id") or wrapper_name
-
-    print("Kein Wrapper für diesen Command gefunden.")
+            if not wrapper_name:
+                return command.get("id")
+            for wrappers_field in ["xnat", "wrappers"]:
+                for wrapper in command.get(wrappers_field, []):
+                    if wrapper.get("name") == wrapper_name:
+                        return wrapper.get("id") or wrapper_name
+            print("Kein Wrapper für diesen Command gefunden.")
+            sys.exit(1)
+    print("Command nicht gefunden.")
     sys.exit(1)
-
-
 #----------------------9)Wrapper Aktivierung---------------------------------------------
 
 
@@ -449,26 +425,31 @@ def main():
     full_image_name = build_and_push_docker_image(dockerfile_path, local_image_name)
     # Command-JSON erzeugen & hochladen
     json_file_path = create_json_file(full_image_name, os.path.basename(script_path), mod_data)
+
+
+
     send_json_to_xnat(json_file_path, xnat_host, xnat_user, xnat_password)
-    # Command und Wrapper-ID ermitteln
-    command_id = get_command_id_by_name(xnat_host, xnat_user, xnat_password, mod_data["command_name"])
+   
     try:
-        wrapper_id = get_wrapper_id_by_command_name(
+        command_id = get_command_wrapper_id(xnat_host, xnat_user, xnat_password, mod_data["command_name"])
+        wrapper_id = get_command_wrapper_id(
             xnat_host, xnat_user, xnat_password, mod_data["command_name"], wrapper_name
         )
-        print(f"Wrapper already exists: {wrapper_id}")
-    except SystemExit:
-        print("Wrapper not found – continuing.")
+        print(f"Command-ID: {command_id}")
+        print(f"Wrapper-ID: {wrapper_id}")
+    except Exception as e:
+        print(f"Fehler bei der Abfrage von Command/Wrapper ID: {e}")
+        return
     enable_wrapper_sitewide(xnat_host, command_id, wrapper_name, xnat_user, xnat_password)
     enable_wrapper_for_project(xnat_host, project_id, command_id, wrapper_name, xnat_user, xnat_password)
-    # --- ALLE DATEIEN ERMITTELN ---
+
+
     all_files = get_all_files_all_levels(xnat_host, project_id, xnat_user, xnat_password)
     if not all_files:
         print("Keine Dateien im Projekt gefunden.")
         return
-    # -- Container für JEDE Datei starten -
+ 
 
-    # ---- NUR EIN CONTAINER für die erste Datei starten ----
     file_info = all_files[0]
     dateiname = file_info.get("Name")
     print(f"Starte nur einen Container für Datei: {dateiname} (Ebene: {file_info['Ebene']})")
