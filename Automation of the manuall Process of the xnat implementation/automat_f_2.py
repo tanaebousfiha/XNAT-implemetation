@@ -129,37 +129,52 @@ def create_json_file(docker_image, script_filename, mod_data):
             {"name": "input", "path": "/input", "writable": False},
             {"name": "output", "path": "/output", "writable": True}
         ],
-"inputs": [
-  {
-    "name": "input_files",
-    "description": "Input files ",
-    "type": "files",
-    "element_type": "file",
-    "required": True,
-    "mount": "input",
-    "multiple": True,
-  }
-],
-    "outputs": [
-        {
-            "name": "result_file",
-            "type": "file",
-            "description": "Result file output",
-            "mount": "output",
-            "path": "."
-        }
-    ],
-    "xnat": [
-        {
-            "name": wrapper_name,
-            "label": mod_data["label_name"],
-            "description": mod_data["label_description"],
-            "contexts": mod_data["contexts"],
-            "external-inputs": external_inputs,
-            "output-handlers": output_handlers
-        }
-    ]
-}
+        "inputs": [
+            {
+                "name": "input_files",
+                "description": "Input files",
+                "type": "files",
+                "element_type": "file",
+                "required": True,
+                "mount": "input",
+                "multiple": True
+            }
+        ],
+        "outputs": [
+            {
+                "name": "result_file",
+                "type": "file",
+                "description": "Result file output",
+                "mount": "output",
+                "path": "."
+            }
+        ],
+        "xnat": [
+            {
+                "name": wrapper_name,
+                "label": mod_data.get("label_name", ""),
+                "description": mod_data.get("label_description", ""),
+                "contexts": ["xnat:projectData"],
+                "external-inputs": [
+                    {
+                        "name": "project",
+                        "type": "Project",
+                        "required": True,
+                        "load-children": True
+                    }
+                ],
+                "output-handlers": [
+                    {
+                        "name": "output",
+                        "accepts-command-output": "result_file",
+                        "as-a-child-of": "project",
+                        "type": "Resource",
+                        "label": "Results"
+                    }
+                ]
+            }
+        ]
+    }
 
     with open("command.json", "w") as json_out:
         json.dump(json_file, json_out, indent=4)
