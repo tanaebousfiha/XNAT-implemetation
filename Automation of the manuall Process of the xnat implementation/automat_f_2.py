@@ -3,12 +3,12 @@
 #-----------------Bibliotheken----------------------------------------------------------------------------------------------------------------------------
 
 import json 
-import requests 
+import requests  # type: ignore
 import os 
 import subprocess  
 import getpass 
 import sys
-import urllib3
+import urllib3  # type: ignore
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 #-----------------------------------1)dockerfile ausfüllen------------------------------------------------------
@@ -77,8 +77,7 @@ def get_input(prompt):
         "command_description": command_description
     }
 
-# es wiederholt sich weil in der jsoncommand muss mehr als eine varial geschreiben werden
-#und ich wollte nicht dass der user meher mals etwas ähnliches schreibt, deshalb habe ich es so gemacht
+
 #-----------------------------------4)json File erstellen------------------------------------------------------------------
 
 def create_json_file(docker_image, script_filename, mod_data):
@@ -126,7 +125,7 @@ def create_json_file(docker_image, script_filename, mod_data):
         "version": "1.5",
         "type": "docker",
         "image": docker_image,
-        "command-line": f"python3 /app/{script_filename} /input",
+        "command-line": f"python3 /app/{script_filename} /input/#input_file# /output",
         "mounts": [
             {"name": "input", "path": "/input", "writable": False},
             {"name": "output", "path": "/output", "writable": True}
@@ -472,7 +471,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
 
