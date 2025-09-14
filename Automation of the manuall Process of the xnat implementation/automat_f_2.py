@@ -358,21 +358,14 @@ def is_valid_filename(name):
 #---------------------11)Lanch Container------------------------------------------------------------------
 def launch_container_with_all_files(xnat_host, project_id, command_id, wrapper_name,
                                     xnat_user, xnat_password, files):
-    """
-    Startet einen Container mit ALLEN gesammelten Dateien im Projekt (als Leerzeichen-getrennter String!).
-    """
 
     if not files:
         print("Keine Dateien übergeben.")
         return
 
-    # Nur Dateinamen extrahieren
     valid_files = [f for f in files if is_valid_filename(f["Name"])]
     input_file_names = [f["Name"] for f in valid_files]
-
-
-    # ACHTUNG: Leerzeichen-separierter String erforderlich für #input_files# in command-line
-    input_files_str = " ".join(input_file_names)
+    input_files_str = " ".join(input_file_names)  
 
     payload = {
         "project": project_id,
@@ -395,9 +388,9 @@ def launch_container_with_all_files(xnat_host, project_id, command_id, wrapper_n
     print("Status:", response.status_code)
     print("Antwort:", response.text)
     if response.status_code in [200, 201, 202]:
-        print(" Container erfolgreich gestartet mit ALLEN Dateien!")
+        print("Container erfolgreich gestartet mit ALLEN Dateien!")
     else:
-        print(" Fehler beim Container-Start:", response.status_code, response.text)
+        print("Fehler beim Container-Start:", response.status_code, response.text)
 
 
 
