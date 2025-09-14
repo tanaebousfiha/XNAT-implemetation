@@ -16,78 +16,20 @@
 It includes the complete build, push, and wrapper activation process, as well as the execution log showing the files processed by the container.  
 This section serves as a reproducibility record for the workflow described in Section~X.X of the main text.
 
-\begin{lstlisting}
-tanae@mi0082n:~/dockerfile/xnat-osa/Ziel2_osaAutomatisation$ python Projekt.py
-XNAT Username: tanae
-XNAT Password:
-Project ID:  tanae_osa_Predct
-Path to the Python script: test.py
-Name des Commands: Realisation
-Beschreibung des Commands: describes the Realistaion Process
-Dockerfile written to ./Dockerfile
-Docker Hub username (to push the image): tanaebousfiha
-Building Docker image 'realistaion:latest'...
-Image 'realistaion:latest' built successfully.
-Tagging image as 'tanaebousfiha/realistaion:latest'...
-Pushing image to Docker Hub as 'tanaebousfiha/realistaion:latest'...
-Image successfully pushed: tanaebousfiha/realistaion:latest
-Corrected command.json created.
-Uploading command to https://xnat-dev.gwdg.de/xapi/commands
-Command created successfully.
-Command-ID: 637
-Wrapper-ID: 674
-Wrapper 'realistaion_wrapper' wurde global aktiviert.
-Wrapper 'realistaion_wrapper' wurde im Projekt 'tanae_osa_Predct' aktiviert.
-Start the Container.:
-Dateien: ['test.csv', 'DemandPlan_v1.csv', 'Inventory_v2.csv', ... more than 700 files]
-Container succesfully launched with all files!
-\end{lstlisting}
 
-\begin{lstlisting}
 
-Container information
-id	3109
-command-id	637
-status	Failed
-status-time	2025-07-21T15:27:40.263+0200
-wrapper-id	674
-container-id	0bdfa6d7f3606272b4a174756c17a88a9a11bd7dd647c48f42b390a9948097c0
-workflow-id	888476
-user-id	tanae
-project	tanae_osa_Predct
-backend	swarm
-service-id	wbfch6ridtb7wh9lpt3mwt24l
-task-id	82skgik5zeobtzc0pym5g7cty
-node-id	p85nmru26d0z05hk0lspltk4k
-docker-image	tanaebousfiha/realistaion:latest
-command-line	python3 /app/test.py /input/#input_file# /output
-override-entrypoint	false
-subtype	docker
-env	{"XNAT_USER":"e9b1ee79-3479-4278-ac84-34e7d9eefbe4","XNAT_EVENT_ID":"888476","XNAT_WORKFLOW_ID":"888476","XNAT_HOST":"https://xnat-dev.gwdg.de","XNAT_PASS":"******"}
-ports	{}
-swarm-constraints	[]
-auto-remove	false
-container-labels	{}
-secrets	[]
-swarm	true
-Container mounts id	name	writable	xnat-host-path	container-host-path	container-path	input-files
-6199	input	true	/data/xnat/build/46032ed5-a1be-4ba7-9463-c9c667bb6162	/data/xnat/build/46032ed5-a1be-4ba7-9463-c9c667bb6162	/input	[]
-6200	output	true	/data/xnat/build/a4ae6c2d-b25c-49db-a0f8-137bcc3486fc	/data/xnat/build/a4ae6c2d-b25c-49db-a0f8-137bcc3486fc	/output	[]
-Container outputs
-id	name	from-command-output	from-output-handler	type	required	mount	path	label	tags	handled-by
-3100	result_file:output	result_file	output	Resource	false	output	.	Results	[]	project
-Container history
-id	status	entity-type	entity-id	time-recorded	external-timestamp	message	exitCode
-17862	Created	user	tanae	2025-07-21T15:27:31.412+0200	undefined	undefined	undefined
-17863	failed	service	undefined	2025-07-21T15:27:39.983+0200	2025-07-21T13:27:34.722621014Z	started: task: non-zero exit (2)	2
-17864	Finalizing	system	undefined	2025-07-21T15:27:40.137+0200	2025-07-21T15:27:40.137+0200	Processing finished. Uploading files.	undefined
-17865	Failed	system	undefined	2025-07-21T15:27:40.263+0200	2025-07-21T15:27:40.263+0200	started: task: non-zero exit (2)	2
-Container log-paths
-/data/xnat/archive/CONTAINER_EXEC/3109/LOGS/docker/stdout.log
-Container inputs
-id	type	name	sensitive	value
-14816	raw	project	false	tanae_osa_Predct
-14817	raw	input_files	false	test.csv DemandPlan_v1.csv Inventory_v2.csv Location_v3.csv LocationGroup_v2.csv OrderLine_v4.csv result_patient.csv result.csv test_result.txt patient.csv Catalog_v2.csv DemandPlan_v1.csv InventoryLot_v4.csv Order_v3.csv test.csv result.csv Catalog_v2.csv DemandPlan_v1.csv Inventory_v2.csv Location_v3.csv test.csv test.csv 1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-258-j8alyh.dcm 1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-77-1x6bqi9.dcm 1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-272-1t87pe2.dcm 1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-340-1rjxebe.dcm 1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-176-1eof89w.dcm 1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-49-1nrm2vj.dcm  1.2.826.0.1.3680043.8.1055.1.20111102150758591.92402465.76095170-6168-235-hguarq.dcm
-14819	wrapper-external	project	false	/archive/projects/tanae_osa_Predct
-\end{lstlisting}
-The list of the files was shortened.
+
+\lstinputlisting[
+  linerange={36-41},
+  firstnumber=36,
+  caption={Auszug aus \texttt{output\_script.txt}},
+]{content/output_script.txt}
+
+
+
+
+
+
+
+
+
