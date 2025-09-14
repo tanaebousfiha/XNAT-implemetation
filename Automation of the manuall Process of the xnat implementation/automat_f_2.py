@@ -19,9 +19,8 @@ def write_dockerfile(docker_dir, script_filename, docker_base_image="python:3.10
 
 WORKDIR /app
 COPY {script_filename} /app/{script_filename}
+RUN pip install --no-cache-dir pandas
 COPY requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir -r /app/requirements.txt
-CMD ["python3", "/app/{script_filename}"]
 """
     dockerfile_path = os.path.join(docker_dir, "Dockerfile")
     with open(dockerfile_path, "w") as f:
