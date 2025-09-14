@@ -49,7 +49,14 @@ The first function responsible for writing the Dockerfile is called \texttt{def 
 The \texttt{CMD} instruction was removed from the Dockerfile because it caused errors when running the container in XNAT. The issue was due to a conflict between the \texttt{CMD} instruction in the Dockerfile and the JSON command configuration, as both included the \texttt{python3} prefix. This led to a duplicate command execution, which caused the container to fail. By removing \texttt{CMD} from the Dockerfile, the execution logic is now fully controlled by XNAT through the JSON-based command, ensuring a successful launch of the container.
 
 
-\lstinputlisting{automat_f_2.py}
+
+\lstset{inputpath=en/content}
+\lstinputlisting[
+  inputencoding=cp1252, 
+  language=Python
+]{automat_f_2.py}
+
+
 
 
 
