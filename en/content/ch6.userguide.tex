@@ -1,56 +1,49 @@
 \chapter{User Guide}
 To better understand the system created and mostly the motivation behind this automation project. We have inserted a table to list how the the Workflow is working and what are the requirement that the user needs to have in order to run the script.
 
-\newpage
-\makeatletter
-\newcommand\justify{%
-  \let\\\@centercr
-  \rightskip\z@skip
-  \leftskip\z@skip}
-\makeatother
-\begin{center}
-\begin{tabular}{|l>{\justify}p{5cm}|}
-\hline
-System Requirement :&  - Python\\
-                     - Requirement List .txt in the same folder as the automatic script.
-                    - XNAT server\\
-                    - Docker Engine installed and running\\
-                    - Docker Hub Account logged in 
-      \tabularnewline[3mm]
-      \hline
-Script  Name : &   automatic.py
-      \tabularnewline
-\hline
-Required Libraries& requests, json, subprocess, getpass, os, sys, urllib3
-      \tabularnewline
-\hline
-User Inputs (Prompted) :& - XNAT Username\\
-                        - XNAT Password \\
-                        - Project ID \\
-                        - Docker Hub Username\\
-                        - Container Script .py\\
-                        - Command Name and Description\\
-                        - Wrapper Laber and Description 
-                         \tabularnewline
-                          \hline
-      Steps to Follow : & 1. Run the Automatic.py Script\\
-                        2.Enter Prompt\\
-                        3. Wait untill the Conatiner is launched.  \tabularnewline
-\hline
-    What happens Automatically : & - Dockerfile is written\\
-                                 - Docker image is built and Tagged and Pushed.\\
-                                 - Command JSON is generated.\\
-                                 - Command is uploaded to XNAT\\
-                                 - Wrapper is activated side wide and project wide\\
-                                 -Container is launched via REST API
-                                 \tabularnewline
-\hline
-Problems/ Scenarios and Troubleshooting:  & - Pushed failed : Check the logging to Doker Hub\\
-                        - Wrapper not found or failed upload JSON Command: Check the choosed naming of the Commands.\\
-                        - Command already exists: delete manually the old Command. 
-      \tabularnewline
 
-      
+\begin{center}
+\begin{tabular}{|l|p{9cm}|}
+\hline
+\textbf{System Requirements} & 
+- Python installed \newline
+- \texttt{requirements.txt} in the same folder as \texttt{automatic.py} \newline
+- XNAT server accessible \newline
+- Docker Engine installed and running \newline
+- Logged in to Docker Hub \\
+\hline
+\textbf{Script Name} & \texttt{automatic.py} \\
+\hline
+\textbf{Required Libraries} & requests, json, subprocess, getpass, os, sys, urllib3 \\
+\hline
+\textbf{User Inputs (Prompted)} & 
+- XNAT Username \newline
+- XNAT Password \newline
+- Project ID \newline
+- Docker Hub Username \newline
+- Container Script (\texttt{.py}) \newline
+- Command Name and Description \newline
+- Wrapper Label and Description \\
+\hline
+\textbf{Steps to Follow} & 
+1. Run the \texttt{automatic.py} script \newline
+2. Enter the prompted inputs \newline
+3. Wait until the container is launched \\
+\hline
+\textbf{What Happens Automatically} & 
+- Dockerfile is generated \newline
+- Docker image is built, tagged, and pushed \newline
+- Command JSON is generated \newline
+- Command is uploaded to XNAT \newline
+- Wrapper is activated site-wide and project-wide \newline
+- Container is launched via REST API \\
+\hline
+\textbf{Problems / Troubleshooting} & 
+- Push failed: check Docker Hub login \newline
+- Wrapper not found or JSON upload failed: check chosen command naming \newline
+- Command already exists: delete old command manually \newline
+- Container problem uploading files: try running \texttt{ls -al \*} on your output directory and check the container \texttt{stdout} log \\
 \hline
 \end{tabular}
 \end{center}
+
