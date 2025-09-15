@@ -1,8 +1,8 @@
 \chapter{The Analysis of the Second Method: The Pipeline}
 \section{Pipeline Installation and Configuration in XNAT}
 
-Pipeline is a method of implementation for automated data processing in XNAT, using \ac{XML} descriptors and server-side scripts/tools. 
-To implement a pipeline in XNAT, an XML descriptor is required, this descriptor serves as a connector between XNAT and the user script including definitions for metadata, execution steps, conditions, iterations, and outputs—and resource descriptors that specify how scripts or executable are launched with necessary parameters.
+Pipeline is a method of deployment for automated data processing in XNAT, using \ac{XML} descriptors and server-side scripts/tools. 
+To integrate a pipeline in XNAT, an XML descriptor is required, this descriptor serves as a connector between XNAT and the user script including definitions for metadata, execution steps, conditions, iterations, and outputs—and resource descriptors that specify how scripts or executable are launched with necessary parameters.
 During the Pipeline analysis we initially focused on analyzing the implementation process of a OSA prediction based script with the Pipeline method. The Pipeline system requires two components: Pipeline Engine and the XNAT Pipeline Engine Plugin. By default, pipelines are located at /data/home/xnat/pipeline\footnote{\url{https://wiki.xnat.org/documentation/xnat-pipeline-development-schema} last Accessed: 10 September 2025).}   
 
 \begin{lstlisting}[language=XML, caption={Example of a pipeline resource descriptor in XNAT}, label={lst:pipeline-xml}]
@@ -81,20 +81,13 @@ Usability& Requires XML schema knowledge and direct server administration.& Requ
 consistency& Depends on identical server setups and configurations.& High reproducibility is achieved, as all dependencies are within the container.\\ \hline
 Community& limited documentation und less support from XNAT Community& Huge support from XNAT community\\ \hline
 Security& Credentials needed in XML configuration& Isolated container environments\\ \hline
-
-
-
-
-
-
-
-
-
     \end{tabular}
-    \caption{Comprehensive comparison of XNAT Pipeline Method and Docker Container Service}
+    \caption{Comprehensive comparison of XNAT Pipeline Method and Docker Container method}
     \label{tab:pipeline-vs-docker}
 \end{table}
  The table 4.1 has been added to present a direct comparison between the two methods.
 \section{Discussion and Conclusion and future measurements}
-
+comment je peux rendre un truc plus rentable...
+Parler du chmod dand le user guide 
+faire en sorte qu' elle soit plus belle
 
