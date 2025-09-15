@@ -1,0 +1,35 @@
+<PipelineDescription xmlns="http://nrg.wustl.edu/pipeline"
+                     name="OSA_Predict"
+                     description="Predict OSA risk from a CSV file"
+                     version="1.0">
+
+    <xnatInfo>
+        <appliesTo>xnat:mrSessionData</appliesTo>
+        <generatesElements>xnat:resource</generatesElements>
+    </xnatInfo>
+
+    <parameters>
+        <parameter name="input_csv" type="file"/>
+    </parameters>
+
+    <steps>
+        <step id="1" description="Run OSA prediction script">
+            <scriptedCommand>
+                <location>/data/xnat/pipeline/catalog/osa_prediction/OSA_xnat.py</location>
+                <arguments>
+                    <argument>
+                        ^/Pipeline/parameters/parameter[name='input_csv']/values/text()^
+                    </argument>
+                    <argument>
+                        /data/xnat/archive/OsaResults/${project}/${subject}/${session}/osa_result.csv
+                    </argument>
+                </arguments>
+            </scriptedCommand>
+        </step>
+    </steps>
+
+</PipelineDescription>
+
+
+
+
