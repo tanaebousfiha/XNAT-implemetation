@@ -1,6 +1,6 @@
 
 
-\chapter{Implementation}
+\chapter{The Process of Resolving Dependencies for Docker container Startup in XNAT}
 
 The purpose of this chapter is to introduce the system in more detail. A Python script is used to combine all the steps into an automated workflow. The libraries used in this work include: \texttt{requests}\footnote{\url{https://www.w3schools.com/python/module_requests.asp} accessed on 10 August 2025}, \texttt{json}\footnote{\url{https://www.w3schools.com/python/python_json.asp} accessed on 10 August 2025}, \texttt{os}\footnote{\url{https://docs.python.org/3/library/os.html} accessed on 10 August 2025}, \texttt{subprocess}\footnote{\url{https://docs.python.org/3/library/subprocess.html} accessed on 10 August 2025}, \texttt{getpass}\footnote{\url{https://docs.python.org/3/library/getpass.html} accessed on 10 August 2025}, \texttt{sys}\footnote{\url{https://docs.python.org/3/library/sys.html} accessed on 10 August 2025}, and \texttt{urllib3}\footnote{\url{https://urllib3.readthedocs.io/en/stable/} accessed on 10 August 2025}.
 
@@ -38,8 +38,8 @@ Currently, the system is running Docker Engine 28.3.0. The Docker Client version
 
 
 \section{Architecture and organization of the code}
-The automation script is structured into 17 distinct parts, each one responsible for a specific step in the overall workflow.
-During the development of the automation script, I closely followed the steps of the manual process, since I had already tested and completed it manually. This included writing a container script, writing a Dockerfile, building the image, writing a JSON command, and enabling the command first on the website and then on the project, with the last step being the launch of the container. I carefully repeated the same steps during the implementation. In other words, every structured part is composed of a function that is responsible for carrying out a step of the manual process.
+The automation script is structured into 14 distinct parts, each one responsible for a specific step in the overall workflow.
+During the development of the automation script, I closely followed the steps of the manual process, since I had already tested and completed it manually. This included writing a container script, writing a Dockerfile, building the image, writing a JSON format based command, and enabling the command first on the website and then on the project, with the last step being the launch of the container. I carefully repeated the same steps during the deployment steps. In other words, every structured part is composed of a function that is responsible for carrying out a step of the manual process.
  
  \section{The Dockerfile}
  
@@ -62,7 +62,7 @@ The \texttt{CMD} instruction was removed from the Dockerfile because it caused e
 
 \lstset{style=allblack}
 
-
+%----------------------------------------------------------------------------------
 
 \lstset{inputpath=en/content}
 
@@ -77,18 +77,7 @@ The \texttt{CMD} instruction was removed from the Dockerfile because it caused e
 
 \noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L18-L24}
 
-
-
-
-
-
-
-
-
-
-
-
-
+%--------------------------------------------------------------------------------
 
 
 
@@ -123,7 +112,7 @@ When a command is deployed in XNAT and a container is launched, XNAT first check
 The function responsible for this process is \texttt{def build\_docker\_image}, which expects two parameters: the Dockerfile path (dockerfile\_path) and the name of the Docker image to be built (docker\_image\_name). Normally, we build an image in Docker with the command: \texttt{docker build .}
 
 
-In the automation script, the full tag in the format \texttt{dockerhub\_username/image\_name:tag} is provided. This ensures that the image is already linked to the correct Docker Hub name space and can be pushed directly after building.
+In the automation script, the full tag in the format \texttt{dockerhub\_username/docker\_image\_name} is provided. This ensures that the image is already linked to the correct Docker Hub name space and can be pushed directly after building.
 
 
 \lstinputlisting[
@@ -161,12 +150,12 @@ Once the image is built, it must be pushed to Docker Hub. This is done with the 
 
 In a manual workflow, the push would be performed with the command:  \texttt{docker push image\_name}. This assumes that the user is already logged in. In the script, the same command is executed through  \texttt{subprocess.run}.
 
-The key point is that the full image tag is constructed in the required Docker Hub format \texttt{(dockerhub\_username/image\_name:tag)}. This guarantees that the built image is correctly associated with the user’s Docker Hub account, and that XNAT will be able to locate it when launching the container.
+The key point is that the full image tag is constructed in the required Docker Hub format \texttt{(dockerhub\_username/docker\_image\_name)}. This guarantees that the built image is correctly associated with the user’s Docker Hub account, and that XNAT will be able to locate it when launching the container.
 
 \section{The Prompt Function for the Required Input}
 
 This function performs the task of capturing input from the user.
-We have used this function in the script in multiple scenarios. The first was to take the Docker Hub username from the user. To customize the JSON command, we asked the user for the name of the command and its description. Overall, it is also used to take the username and password from the user’s login credentials. The function proceeds through all of these steps while running the script.
+We have used this function in the script in multiple scenarios. The first was to take the Docker Hub username from the user. To customize the JSON format based command, we asked the user for the name of the command and its description. Overall, it is also used to take the username and password from the user’s login credentials. The function proceeds through all of these steps while running the script.
 
 The function looks like this:
  
@@ -238,7 +227,7 @@ The second part of command definition in JSON format:
 This block defines the parameters that a user must provide as an input file when launching the container.
 Let’s break down each field:
 
-The \texttt{"name": "input\_files"} is used in other parts of the JSON as a reference---such as placeholders in the command line. In addition, we add an optional human-friendly description. The \texttt{"type"} indicates that the input accepts more than just text files, scans, or numbers; it specifies that each element in the input is specifically a file through the \texttt{"element"} field.
+The \texttt{"name": "input\_files"} is used in other parts of the JSON as a reference such as placeholders in the command line. In addition, we add an optional human-friendly description. The \texttt{"type"} indicates that the input accepts more than just text files, scans, or numbers; it specifies that each element in the input is specifically a file through the \texttt{"element"} field.
 
 The \texttt{"required": true} flag means that if the input is not provided, the command cannot be run. The mount in this part links the input to a specific mount inside the container. All files provided by the user will appear in the \texttt{/input} directory inside the container. With \texttt{"multiple": true}, it is indicated that the user can upload or select more than one file for this input.
 
@@ -291,10 +280,10 @@ The function responsible for this is \texttt{def send\_json\_to\_xnat}, and it e
 
 This function takes the path that describes the JSON-based command, the base URL of the XNAT server, and the credentials for authentication. First, it constructs the correct REST API endpoint by appending \texttt{/xapi/commands} to the provided XNAT URL, ensuring that the command is sent to the appropriate API for command registration. It then opens the JSON file, loads its contents, and sends this data as a POST request to the API endpoint using \ac{HTTP} Basic Authentication with the supplied username and password. After making the request, the function examines the server’s response, and in each case provides feedback, helping the user quickly understand whether the command upload succeeded or if further action is needed to resolve an issue.
 
-\section{Preparations to Launch the Container}
+\section{Preparations to Launch the Docker Container in XNAT}
 
 The goal of the previous steps is to launch the container in XNAT, but before that we need to perform some preparations. In line with the automation principle, we need to retrieve some information from the XNAT web service, and in this case we use the REST API technique as well. The first information that we need to extract after sending the JSON command to XNAT is the \texttt{Command ID} and the \texttt{Wrapper ID}.
-In order to do that...
+In order to do that:
  
 
 \lstinputlisting[
@@ -330,7 +319,7 @@ The function used in this part is \texttt{def get\_all\_files\_all\_levels}, and
 
 \section{Launch the Container}
 
-Arriving at the well-known part of launching the container, we use the function \texttt{def launch\_container\_with\_all\_files}. This function is designed to automatically launch a container with all the files previously extracted as input. It takes the XNAT server connection details, project and command identifiers, user authentication, the wrapper name, and a list of files to be processed.
+Arriving at the well-known part of launching the Docker Container, we use the function \texttt{def launch\_container\_with\_all\_files}. This function is designed to automatically launch a container with all the files previously extracted as input. It takes the XNAT server connection details, project and command identifiers, user authentication, the wrapper name, and a list of files to be processed.
 
 The function first checks if any files are provided. A payload dictionary is then prepared, mapping the project ID and the input files string to the fields. Next, the function constructs the appropriate URL for launching the command. Before sending the launch request, the function prints diagnostic information, including the chosen files and payload. It then submits a \texttt{POST} request with the payload as JSON and user credentials for authentication. After sending the request, the function reports back to the user about the status and the response.
 
