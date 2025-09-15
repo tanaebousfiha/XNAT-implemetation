@@ -1,29 +1,16 @@
 
+
 \chapter{Introduction}
 
+Artificial intelligence holds significant, largely untapped potential within healthcare. Successful implementation of \ac{AI} could alleviate workload pressures on healthcare professionals while simultaneously enhancing the quality of their work through error reduction and increased precision. Furthermore, AI could empower patients to take a more active role in managing their own health and contribute to a reduction in avoidable hospital admissions.~\cite{aung_promise_2021}
 
+The open-source XNAT archiving system has expanded to include biosignal data and integrated machine learning, allowing AI models to transform it into an active analysis hub through automated processing.~\cite{marcus_extensible_2007}
 
-In healthcare, massive amounts of data are generated~\cite{shilo_axes_2020}, however, studies by Jensen et al. (2012) and Rumsfeld et al. (2016) have shown that, despite its richness, clinical data is often stored in fragmented systems and used for research only sparingly.~\cite{jensen_mining_2012} \cite{rumsfeld_big_2016} Shah (2012) underlined that analyzing this database could accelerate biomedical discoveries\cite{shah_coming_2012}, and storing this data in one place and analyzing it promises great potential for biomedical discoveries. Furthermore, we use the data in machine learning tasks (\ac{ML}) to gain insights. However, preparation of this ML-data science workflow is crucial in order to ensure a correctly trained model. Further, the challenge remains to deploy finished ML-models in an appropriate environment.
+In the Somnolink project, XNAT facilitates interoperable sleep data exchange to improve \ac{OSA} diagnosis and therapy. AI systems integrated within XNAT support early patient identification, treatment planning, and compliance monitoring.~\cite{internetredaktion_somnolink_nodate}.
 
-An available open-source system for archiving data is the Extensible Neuroimaging Archive Toolkit (XNAT)~\cite{marcus_extensible_2007}, which enables the central storage of medical data and biosignals. Its expandable capabilities and modular architecture support a wide range of extensions and integrations.
+Studies on AI tools in clinical research often emphasize particular technical infrastructures, neglecting generalizable implementation strategies within data platforms. For instance, by combining NVIDIA’s Clara Deploy with a customized XNAT, Hawkins et al. (2023) showed how machine-learning pipelines can be integrated into clinical workflows for near real-time processing. This approach transformed XNAT into an active hub for pipeline-driven analysis, with results stored for clinician review~\cite{hawkins_implementation_2023}. Building on this, Satrajit Chakrabarty et al. ~\cite{chakrabarty_deep_2023} presented an end-to-end framework capable of automating MRI scan classification and tumor segmentation using AI-based methods in neuro-oncology studies.
 
-XNAT is used in the Somnolink Project, where the improvement of diagnosis and therapy of obstructive sleep apnea \ac{OSA} is aimed at while ensuring an interoperable sleep data exchange. Working in combination with \ac{AI} systems, OSA patients can be identified at an early stage, therefore a suitable treatment plan can be easily planned and compliance issues can also be identified. For this purpose, the Somnolink project uses XNAT to make clinical sleep data centrally usable with the ability to use the ML-systems directly in XNAT~\cite{internetredaktion_somnolink_nodate}.
-
-Medical imaging platforms such as XNAT are commonly adopted for the consolidated collection, storage, and visualization of patient data. With integrated tools like Jupyter notebooks and \ac{DICOM} viewers, researchers are able to access and inspect datasets. However, whereas these capabilities support investigation and exhibition, they underperform when it comes to deeper, automated data analysis, above all in the context of machine learning. Currently, executing ML models requires extracting data, processing it externally, and then manually reintegrating the results. This disjointed workflow leads to inefficiencies and hinders the smooth deployment of models within the platform. To address this limitation, the present research investigates methods for embedding automated component integrations within XNAT.
-
-While many studies have explored the integration of artificial intelligence tools in clinical research, the focus has often been on specific technical infrastructures rather than on generalizable implementation strategies within data platforms. A notable example is the study by Lorena Escudero Sanchez et al.\cite{escudero_sanchez_integrating_2023}, who demonstrated the integration of AI-based tumor detection in a clinical setting for ovarian cancer research. Their implementation showed that AI models can significantly enhance data-driven diagnostics when embedded into structured research workflows. Similarly, Satrajit Chakrabarty et al.\cite{chakrabarty_deep_2023} presented an end-to-end framework capable of automating \ac{MRI} scan classification and tumor segmentation using AI-based methods in neuro-oncology studies. These works underline the potential of machine learning components to support advanced clinical applications and research workflows.
-
-Despite the flexibility of platforms like XNAT to integrate external tools, including AI modules, pipelines, or plugins, the process often remains complex and manually intensive. While technical integration has been demonstrated in individual use cases, few studies have focused on automating the implementation and execution of machine learning models within XNAT itself. To address this gap, the current work investigates and prototypes possible approaches to make \ac{ML} models directly executable in XNAT, aiming to simplify their deployment and increase accessibility for clinical and research use.
-
-
-
-
-
-
-
-
-
-
+While many studies have implemented AI in healthcare data, few have fully investigated the methods involved. This work contributes to the investigation of machine learning component methods, aiming to identify best practices, limitations, and necessary future measures.
 
 
 
