@@ -1,8 +1,0 @@
-
-\begin{abstract}
-This work investigates existing methods for implementing workflows in the \ac{XNAT}. Building on this analysis hypothesis posits that, can efficiently process. The proposed solution employs a Python script that interacts with the \ac{REST API} to generate a Dockerfile, prompt users for an external container script, and extract files from the open-source XNAT system. The envisioned workflow achieves a ‘Complete’ state in XNAT upon finalization and uploads the processed result files accordingly.
-
-
-Empirical testing demonstrated, however, that extracting files via the REST API was unsuccessful, rendering direct file processing and uploading unfeasible. Analysis of the results revealed a significant interdependence between XNAT’s internal data workflow and the Docker container’s ability to mount and access data. Specifically, comprehensive extraction attempts led to issues with data mounting on the XNAT host, preventing access by the Docker container. Consequently, since the container could not access XNAT’s data repositories directly, the practicality of the proposed approach proved to be context-dependent and ultimately limited in effectiveness. These findings highlight crucial technical constraints in integrating containerized processing workflows within XNAT and underscore the need for improved data access strategies in future developments.
-\end{abstract}
-
