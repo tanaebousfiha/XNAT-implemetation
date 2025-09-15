@@ -1,49 +1,36 @@
 \chapter{User Guide}
 To better understand the system created and mostly the motivation behind this automation project. We have inserted a table to list how the the Workflow is working and what are the requirement that the user needs to have in order to run the script.
 
-
-\begin{center}
-\begin{tabular}{|l|p{9cm}|}
-\hline
-\textbf{System Requirements} & 
-- Python installed \newline
-- \texttt{requirements.txt} in the same folder as \texttt{automatic.py} \newline
-- XNAT server accessible \newline
-- Docker Engine installed and running \newline
-- Logged in to Docker Hub \\
-\hline
-\textbf{Script Name} & \texttt{automatic.py} \\
-\hline
-\textbf{Required Libraries} & requests, json, subprocess, getpass, os, sys, urllib3 \\
-\hline
-\textbf{User Inputs (Prompted)} & 
-- XNAT Username \newline
-- XNAT Password \newline
-- Project ID \newline
-- Docker Hub Username \newline
-- Container Script (\texttt{.py}) \newline
-- Command Name and Description \newline
-- Wrapper Label and Description \\
-\hline
-\textbf{Steps to Follow} & 
-1. Run the \texttt{automatic.py} script \newline
-2. Enter the prompted inputs \newline
-3. Wait until the container is launched \\
-\hline
-\textbf{What Happens Automatically} & 
-- Dockerfile is generated \newline
-- Docker image is built, tagged, and pushed \newline
-- Command JSON is generated \newline
-- Command is uploaded to XNAT \newline
-- Wrapper is activated site-wide and project-wide \newline
-- Container is launched via REST API \\
-\hline
-\textbf{Problems / Troubleshooting} & 
-- Push failed: check Docker Hub login \newline
-- Wrapper not found or JSON upload failed: check chosen command naming \newline
-- Command already exists: delete old command manually \newline
-- Container problem uploading files: try running \texttt{ls -al \*} on your output directory and check the container \texttt{stdout} log \\
-\hline
-\end{tabular}
-\end{center}
-
+\begin{table}[htbp]
+  \centering
+  \caption{System Requirements and Script Details for Automatic Containerization}
+  \label{tab:automatic_script}
+  \begin{tabular}{|l|p{9cm}|}
+  \hline
+  \textbf{System Requirements} & 
+  - Python installed \newline
+  - \texttt{requirements.txt} in the same folder as \texttt{automat\_f\_2.py} \newline
+  - XNAT server accessible \newline
+  - Docker Engine installed and running \newline
+  - Logged in to Docker Hub \\  \hline
+  \textbf{Steps to Follow} & 
+  1. Run the \texttt{automat\_f\_2.py} script \newline
+  2. Enter the prompted inputs \newline
+  3. Wait until the container is launched \\
+  \hline
+  \textbf{What Happens Automatically} & 
+  - Dockerfile is generated \newline
+  - Docker image is built, tagged, and pushed \newline
+  - Command JSON is generated \newline
+  - Command is uploaded to XNAT \newline
+  - Wrapper is activated site-wide and project-wide \newline
+  - Container is launched via REST API \\
+  \hline
+  \textbf{Problems / Troubleshooting} & 
+  - Push failed: check Docker Hub login \newline
+  - Wrapper not found or JSON upload failed: check chosen command naming \newline
+  - Command already exists: delete old command manually \newline
+  - Container problem uploading files: try running \texttt{ls -al \*} on your output directory and check the container \texttt{stdout} log \\
+  \hline
+  \end{tabular}
+\end{table}
