@@ -1,31 +1,46 @@
-
 % !TeX spellcheck = fr_FR
-
 \PassOptionsToPackage{hidelinks}{hyperref}
 
-\documentclass[openany]{book}
+\documentclass[10pt,a4paper,openany]{book} % openany: Kapitel starten auf beliebiger Seite
 
-% Core encoding & language
+% --- Sprache & Encoding ---
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 
-% Tabellen + Listings (listings wird hier mitgeladen)
-\usepackage{booktabs}
-\usepackage{booktabs,array,listings}
+% === SCHRIFTEN (sichtbar anderes Design) ======================
+\usepackage{tgtermes}        % Serif (Text) Times-ähnlich
+\usepackage{newtxmath}       % Mathe passend zu Times
+\usepackage[scaled=0.92]{helvet} % Sans-Serif (Überschriften)
+\usepackage{inconsolata}     % Monospace (Code)
+% ===============================================================
 
-\usepackage{geometry}
+% --- Seitenränder kompakt ---
+\usepackage[a4paper,margin=1.8cm]{geometry}
+
+% --- Grundpakete ---
 \usepackage{graphicx}
 \usepackage{svg}
 \svgsetup{inkscapelatex=true}
 \usepackage{pdfpages}
-
-\usepackage{ltablex}
-\keepXColumns
+\usepackage{booktabs}
 \usepackage{array}
 \usepackage{multirow}
+\usepackage{ltablex}\keepXColumns
+\usepackage{siunitx}
+\usepackage[printonlyused,withpage]{acronym}
+\usepackage[numbers]{natbib}
+\usepackage{fancyhdr}
+\usepackage{comment}
+\usepackage{rotating}
+\usepackage{import}
+\usepackage{pythontex}
+\usepackage{adjustbox}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{hyperref}
 
-% Farben & Listings-Style (für farbige Codeblöcke wie im Screenshot)
+% --- Listings: farbiger Code ---
 \usepackage{xcolor}
 \usepackage{listings}
 
@@ -35,135 +50,96 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 \lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
-    breaklines=true,
-    numbers=left,
-    numbersep=5pt,
-    showstringspaces=false,
-    tabsize=2,
-    frame=single,
-    captionpos=b
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,  % nutzt Inconsolata
+  breaklines=true,
+  numbers=left,
+  numbersep=5pt,
+  showstringspaces=false,
+  tabsize=2,
+  frame=single,
+  captionpos=b
 }
 \lstset{style=mystyle}
 
-\usepackage{siunitx}
-\usepackage[printonlyused,withpage]{acronym}
-\usepackage{cite}
+% --- Überschriften in Sans-Serif (Helvetica, fett) ---
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\bfseries}
 
-% Misc utilities
-\usepackage{setspace}
-\usepackage{marvosym}
-\usepackage{fancyhdr}
-\usepackage{comment}
-\usepackage{rotating}
-\usepackage{import}
-\usepackage{pythontex}
-\usepackage{adjustbox}
-\usepackage{float}
-\usepackage{tikz}
+% ===== keine automatisch eingefügten Leerseiten =====
+\let\cleardoublepage\clearpage
+% ====================================================
 
-%--- pdf/a format ----
-\RequirePackage{filecontents}
-\begin{filecontents*}{\jobname.xmpdata}
-\Title{Document’s title}
-\Author{Author’s name}
-\Language{en-US}
-\Subject{The abstract, or short description.}
-\Keywords{keyword1\sep keyword2\sep keyword3}
-\end{filecontents*}
-\usepackage{colorprofiles}
-\usepackage[a-1b,mathxmp]{pdfx}[2018/12/22]
-\hypersetup{pdfstartview=}
-\usepackage{lipsum}
-
-%--- include custom commands ---
+% --- Deine eigenen Kommandos & Config ---
 \input{commands.tex}
-
-%--- include general configuration ---
 \input{en/content/config}
 
-%--- basic document configuration ---
+% --- Metadaten ---
 \newcommand{\mytype}{Investigation and Prototypical Implementation of Automated Component Integrations in XNAT}
-%\newcommand{\mytype}{Master's Thesis}
-
 \newcommand{\mycourse}{Bachelor}
-%\newcommand{\mycourse}{Internet Technologies and Information Systems}
-
 \newcommand{\myauthor}{Tanae Bousfiha}
 \newcommand{\mydepartment}{HAWK Hochschule für angewandte wissenschaft und kunst 
 \\Institut für Medizinische Informatik der Universitätsmedizin Göttingen}
 \newcommand{\mysubmissiondate}{xx. August 2025}
-%\newcommand{\mythesisid}{201x-xx}
 \newcommand{\myfirstsupervisor}{Prof.Dr. Roman Grothausmann}
-%\newcommand{\mysecondsupervisor}{Philip Zaschke, MSc.}
 
 \begin{document}
 
- \pagenumbering{roman}
- \setcounter{page}{1}
+  \pagenumbering{roman}
+  \setcounter{page}{1}
 
- %--- cover page ---
- \input{content/coverpage}
+  %--- cover page ---
+  \input{content/coverpage}
 
- \input{en/content/ch8.Acknowledgements}
- %--- statement page ---
- \input{content/statement}
+  \input{en/content/ch8.Acknowledgements}
+  %--- statement page ---
+  \input{content/statement}
 
- %--- abstract ---
- \clearpage\phantomsection\pdfbookmark{\abstractname}{abstract}
- \thispagestyle{empty}
- %\input{content/abstract}
+  %--- abstract ---
+  \clearpage\phantomsection\pdfbookmark{\abstractname}{abstract}
+  \thispagestyle{empty}
+  %\input{content/abstract}
 
- %reset acronyms after abstract
- \acresetall
+  % reset acronyms after abstract
+  \acresetall
 
- %--- table of contents ---
- \clearpage\phantomsection\pdfbookmark{\contentsname}{toc}
- \tableofcontents
+  %--- table of contents ---
+  \clearpage\phantomsection\pdfbookmark{\contentsname}{toc}
+  \tableofcontents
 
- %--- list of figures ---
- \listoffigures
- \myemptypage
+  %--- lists ---
+  \listoffigures
+  \listoftables
+  \lstlistoflistings
 
- %--- list of tables ---
- \listoftables
- \myemptypage
+  %--- list of acronyms ---
+  \input{content/acronyms}
 
- %--- list of listings ---
- \lstlistoflistings
- \myemptypage
+  % arabic page numbers
+  \pagenumbering{arabic}
+  \setcounter{page}{1}
 
- %--- list of acronyms ---
- \input{content/acronyms}
- \myemptypage
+  %--- content ---
+  \input{en/content/ch1_introduction}
+  \input{en/content/ch2.Fundamentals}
+  \input{en/content/ch3.docker}
+  \input{en/content/ch4.pipeline}
+  %\input{en/content/ch6.userguide}
+  %\input{en/content/ch7.Conclusion}
 
- %arabic page numbers
- \pagenumbering{arabic}
- \setcounter{page}{1}
+  %--- references ---
+  \bibliographystyle{IEEEtran}
+  \bibliography{content/references}
+  \addcontentsline{toc}{chapter}{\bibname}
 
- \input{en/content/ch1_introduction}
- \input{en/content/ch2.Fundamentals}
- \input{en/content/ch3.docker}
- \input{en/content/ch4.pipeline}
-
- %\input{en/content/ch6.userguide}
- %\input{en/content/ch7.Conclusion}
-
- %--- references ---
- \bibliographystyle{IEEEtran}
- \bibliography{content/references}
- \addcontentsline{toc}{chapter}{\bibname}
- \myemptypage
-
- %--- appendix ---
- \begin{appendix}
-   \input{en/content/appendix}
-   \myemptypage
- \end{appendix}
+  %--- appendix ---
+  \begin{appendix}
+    \input{en/content/appendix}
+  \end{appendix}
 
 \end{document}
+
