@@ -1,35 +1,68 @@
-\documentclass[openany]{book}
-\usepackage{svg}
+% !TeX spellcheck = fr_FR
+\PassOptionsToPackage{hidelinks}{hyperref}
+
+\documentclass[10pt,a4paper,openany]{book} % kompakter
+
+% --- Core encoding & language ---
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-\usepackage{geometry}
+\usepackage{marvosym} % für Symbole wie \Telefon
+
+% --- kompakte Seitenränder ---
+\usepackage[a4paper,margin=1.8cm]{geometry}
+
+% --- Grafik/Tabellen ---
 \usepackage{graphicx}
-\usepackage[pdfa=true]{hyperref}
-\usepackage{cite}
-\usepackage{listings}
-\usepackage[printonlyused,withpage]{acronym}
-\usepackage{siunitx}
+\usepackage{svg}
+\svgsetup{inkscapelatex=true}
+\usepackage{pdfpages}
+\usepackage{ltablex}
+\keepXColumns
+\usepackage{array}
 \usepackage{multirow}
-\usepackage{setspace}
+\usepackage{booktabs}
+
+% --- Farben & Listings (farbiger Code wie im Screenshot) ---
 \usepackage{xcolor}
 \usepackage{listings}
-\usepackage{tabularx}
-\usepackage{marvosym}
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage{pythontex}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  numbers=left,
+  numbersep=5pt,
+  showstringspaces=false,
+  tabsize=2,
+  frame=single,
+  captionpos=b
+}
+\lstset{style=mystyle}
+
+% --- Sonstiges ---
+\usepackage{siunitx}
+\usepackage[printonlyused,withpage]{acronym}
+\usepackage[numbers]{natbib}
 \usepackage{fancyhdr}
 \usepackage{comment}
 \usepackage{rotating}
-\usepackage{pdfpages}
-\svgsetup{inkscapelatex=true}
 \usepackage{import}
+\usepackage{pythontex}
+\usepackage{adjustbox}
+\usepackage{float}
+\usepackage{tikz}
 
-
-
-%--- pdf/a format ----
-% insert metadata about the document here
+% --- pdf/a format ----
 \RequirePackage{filecontents}
 \begin{filecontents*}{\jobname.xmpdata}
 \Title{Document’s title}
@@ -39,24 +72,15 @@
 \Keywords{keyword1\sep keyword2\sep keyword3}
 \end{filecontents*}
 \usepackage{colorprofiles}
-\usepackage[a-1b,mathxmp]{pdfx}[2018/12/22]
-\usepackage[T1]{fontenc}
+\usepackage[a-1b,mathxmp]{pdfx}[2018/12/22] % lädt intern hyperref
 \hypersetup{pdfstartview=}
 \usepackage{lipsum}
-
-
-
-
 
 %--- include custom commands ---
 \input{commands.tex}
 
-
-
 %--- include general configuration ---
 \input{en/content/config}
-
-
 
 %--- basic document configuration ---
 \newcommand{\mytype}{Investigation and Prototypical Implementation of Automated Component Integrations in XNAT}
@@ -65,102 +89,75 @@
 \newcommand{\mycourse}{Bachelor}
 %\newcommand{\mycourse}{Internet Technologies and Information Systems}
 
-
 \newcommand{\myauthor}{Tanae Bousfiha}
 \newcommand{\mydepartment}{HAWK Hochschule für angewandte Wissenschaft und Kunst\\
 Institut für Medizinische Informatik der Universitätsmedizin Göttingen}
 \newcommand{\mysubmissiondate}{31. August 2025}
-%\newcommand{\mythesisid}{201x-xx} %assigned by examination office
-\newcommand{\myexaminer}{Prof .Dr. Roman Grothausmann}
-\newcommand{\myfirstsupervisor}{Prof .Dr. Roman Grothausmann}
+%\newcommand{\mythesisid}{201x-xx}
+\newcommand{\myexaminer}{Prof. Dr. Roman Grothausmann}
+\newcommand{\myfirstsupervisor}{Prof. Dr. Roman Grothausmann}
 \newcommand{\mysecondsupervisor}{Philip Zaschke, MSc.}
 
 \begin{document}
 
  \pagenumbering{roman}
-    \setcounter{page}{1}
+ \setcounter{page}{1}
 
-   %--- cover page ---
-   \input{content/coverpage}
-   
+ %--- cover page ---
+ \input{en/content/coverpage}
 
-    %--- statement page ---
-    \input{content/statement}
-    
+ %--- statement page ---
+ \input{en/content/statement}
 
-    %--- abstract ---
-    \clearpage\phantomsection\pdfbookmark{\abstractname}{abstract}
-    \thispagestyle{empty}
-    \input{content/abstract}
-    
+ %--- abstract (optional) ---
+ %\clearpage\phantomsection\pdfbookmark{\abstractname}{abstract}
+ %\thispagestyle{empty}
+ %\input{en/content/abstract}
 
-    %reset acronyms after abstract
-    \acresetall
+ % reset acronyms after abstract
+ \acresetall
 
-    %--- table of contents ---
-    \clearpage\phantomsection\pdfbookmark{\contentsname}{toc}
-    \tableofcontents
-    
+ %--- table of contents ---
+ \clearpage\phantomsection\pdfbookmark{\contentsname}{toc}
+ \tableofcontents
 
-    %--- list of figures ---
-    \listoffigures
-    \myemptypage
+ %--- list of figures ---
+ \listoffigures
+ \myemptypage
 
-    %--- list of tables ---
-    %\listoftables
-    %\myemptypage
+ %--- list of tables (optional) ---
+ %\listoftables
+ %\myemptypage
 
-    %--- list of listings ---
-    %\lstlistoflistings
-    %\myemptypage
+ %--- list of listings (optional) ---
+ %\lstlistoflistings
+ %\myemptypage
 
-    %--- list of acronyms ---
-    \input{content/acronyms}
-    \myemptypage
+ %--- list of acronyms ---
+ \input{en/content/acronyms}
+ \myemptypage
 
+ % arabic page numbers
+ \pagenumbering{arabic}
+ \setcounter{page}{1}
 
-    %arabic page numbers
-    \pagenumbering{arabic}
-    \setcounter{page}{1}
-    
-    %--- chaper 1..n ---
-    \input{en/content/ch1_introduction}
-    
-    
-    \input{en/content/ch2.Fundamentals}
-    
+ %--- content ---
+ \input{en/content/ch1_introduction}
+ \input{en/content/ch2.Fundamentals}
+ \input{en/content/ch3.System}
+ \input{en/content/ch5_Testingandresult}
+ \input{en/content/ch6.Discussion}
+ \input{en/content/ch7.Conclusion}
 
-    \input{en/content/ch3.System}
-  
+ %--- references ---
+ \bibliographystyle{IEEEtran}
+ \bibliography{en/content/references}
+ \myemptypage
 
-    
-
-    \input{en/content/ch5_Testingandresult}
-    
-
-    \input{en/content/ch6.Discussion}
-    
-
-\input{en/content/ch7.Conclusion}    
-
-   %--- references ---
-    \bibliographystyle{IEEEtran}
-    \bibliography{content/references}
-    \addcontentsline{toc}{chapter}{\bibname}
-    \myemptypage
-    
-   %--- appendix ---
-    \begin{appendix}
-        \input{en/content/appendix}
-        \myemptypage
-    \end{appendix}
-
-
-
+ %--- appendix ---
+ \begin{appendix}
+   \input{en/content/appendix}
+   \myemptypage
+ \end{appendix}
 
 \end{document}
-
-        
-
-
-
