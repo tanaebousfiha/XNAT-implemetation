@@ -1,7 +1,7 @@
 % !TeX spellcheck = fr_FR
 \PassOptionsToPackage{hidelinks}{hyperref}
 
-\documentclass[10pt,a4paper,openany]{book} % kompakter
+\documentclass[10pt,a4paper,openany]{book} % kompakter, openany = keine rechte Seite erzwingen
 
 % --- Core encoding & language ---
 \usepackage[T1]{fontenc}
@@ -84,19 +84,17 @@
 
 %--- basic document configuration ---
 \newcommand{\mytype}{Investigation and Prototypical Implementation of Automated Component Integrations in XNAT}
-%\newcommand{\mytype}{Master's Thesis}
-
 \newcommand{\mycourse}{Bachelor}
-%\newcommand{\mycourse}{Internet Technologies and Information Systems}
-
 \newcommand{\myauthor}{Tanae Bousfiha}
-\newcommand{\mydepartment}{HAWK Hochschule für angewandte Wissenschaft und Kunst\\
+\newcommand{\mydepartment}{HAWK Hochschule für angewandte wissenschaft und kunst\\
 Institut für Medizinische Informatik der Universitätsmedizin Göttingen}
 \newcommand{\mysubmissiondate}{31. August 2025}
-%\newcommand{\mythesisid}{201x-xx}
 \newcommand{\myexaminer}{Prof. Dr. Roman Grothausmann}
 \newcommand{\myfirstsupervisor}{Prof. Dr. Roman Grothausmann}
 \newcommand{\mysecondsupervisor}{Philip Zaschke, MSc.}
+
+% === keine Leerseiten erzwingen ===
+\let\cleardoublepage\clearpage
 
 \begin{document}
 
@@ -123,19 +121,15 @@ Institut für Medizinische Informatik der Universitätsmedizin Göttingen}
 
  %--- list of figures ---
  \listoffigures
- \myemptypage
 
  %--- list of tables (optional) ---
  %\listoftables
- %\myemptypage
 
  %--- list of listings (optional) ---
  %\lstlistoflistings
- %\myemptypage
 
  %--- list of acronyms ---
  \input{en/content/acronyms}
- \myemptypage
 
  % arabic page numbers
  \pagenumbering{arabic}
@@ -152,12 +146,10 @@ Institut für Medizinische Informatik der Universitätsmedizin Göttingen}
  %--- references ---
  \bibliographystyle{IEEEtran}
  \bibliography{en/content/references}
- \myemptypage
 
  %--- appendix ---
  \begin{appendix}
    \input{en/content/appendix}
-   \myemptypage
  \end{appendix}
 
 \end{document}
