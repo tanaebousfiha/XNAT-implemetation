@@ -4,24 +4,20 @@
 An overview of the system and methods used is provided in this chapter, serving as a foundation for the more detailed examination of the approaches that follows. 
 
 \section{The Extensible Neuroimaging Archive Toolkit}
-The Extensible Neuroimaging Archive Toolkit (XNAT)~\cite{marcus_extensible_2007} is an open-source imaging informatics platform developed by the Neuroinformatics Research Group at Washington University. It facilitates common management, productivity, and quality assurance tasks for imaging and associated data. Thanks to its extensibility, XNAT can be used to support a wide range of imaging-based projects.\footnote{\url{https://www.xnat.org/about/} (accessed on 10 August 2025)} Due to the fact that XNAT offers the opportunity to use the power of high-performance computing on your data~\cite{zaschke_extending_2024}, 
-pipeline processing is one of the options that can be done on XNAT, as well as the deployment of Docker containers.
-\\
-Additionally, XNAT has a structured website that is composed of a Dashboard that gives an overview of the site, a Project list that browses or searches available projects, and a Project page where all subjects and their data in this project are located. Along with Subject/Session pages where all details are given, including imaging sessions and scan-level details, as well as the section of scans where all the patient’s scans are found. 
-This structure of XNAT provides the information on where the patient files are stored, including the composed URL for REST API use. A REST API is a type of application programming interface that adheres to the principles of the REST architecture. REST, which stands for Representational State Transfer, defines a set of conventions for designing web APIs in a consistent and scalable way.\footnote{\url{https://www.redhat.com/en/topics/api/what-is-a-rest-api} (accessed on 10 August 2025)}
-\\
+The \ac{XNAT} ~\cite{marcus_extensible_2007} is an open-source imaging informatics platform developed by the Neuroinformatics Research Group at Washington University. It facilitates common management, productivity, and quality assurance tasks for imaging and associated data. Due to the fact that XNAT offers the opportunity to use the power of high-performance computing on your data~\cite{zaschke_extending_2024}, 
+pipeline processing is one of the options that can be done on XNAT, as well as the deployment of Docker Containers.
 
-\section{The REST API}
+
+\section{The \ac{REST API}}
 REST is defined by its architectural contrainst, not by specific protocol or standars, such as API, allowing for various implementation approaches by API developers.
-An API is a set of terminology and standards for building and integrating application software. Those two are the main ingredients to achieve a automation of the analytical methods. \footnote{https://www.redhat.com/en/topics/api/what-is-a-rest-api{last acceed 07.09.2025}}
+An API is a set of terminology and standards for building and integrating application software. Those two are the main ingredients to achieve a automation of the analytical methods.  Luckily, XNAT provides its users with a list of REST APIs that make the exchange between the user and the website possible. 
+ \footnote{https://www.redhat.com/en/topics/api/what-is-a-rest-api{last acceed 07.09.2025}}
 
 \section{The Container}
 A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.\footnote{\url{https://www.docker.com/resources/what-container/} (accessed on 10 August 2025)}
-Docker is a platform that allows certain applications to run in software containers. It was launched in 2013.\footnote{\url{https://fr.wikipedia.org/wiki/Docker\_(logiciel)} (accessed on 10 August 2025)} A Docker container allows the user to deploy any application in any environment without worrying about incompatibility issues, regardless of the machine’s configuration settings.\footnote{\url{https://sematext.com/glossary/docker/} (accessed on 10 August 2025)} Although there are some associated terms that will always be needed when it comes to using or learning about Docker containers.
+Docker is a platform that allows certain applications to run in software containers. It was launched in 2013.\footnote{\url{https://fr.wikipedia.org/wiki/Docker\_(logiciel)} (accessed on 10 August 2025)} A Docker Container allows the user to deploy any application in any environment without worrying about incompatibility issues, regardless of the machine’s configuration settings.\footnote{\url{https://sematext.com/glossary/docker/} (accessed on 10 August 2025)} Although there are some associated terms that will always be needed when it comes to using or learning about Docker Containers.
 One of the most important of them is the Dockerfile. The Dockerfile is a file that contains the build instructions for the image that the Docker Engine (an open-source containerization technology for building and containerizing your applications\footnote{\url{https://docs.docker.com/engine/} (accessed on 10 August 2025)}) will run. Conversely, there are numerous commands that must be written in the Dockerfile in order to create the image. After building the image, we can tag and push the image to Docker Hub. For this purpose, we just have to run some basic simple commands on a terminal.
 \\
-Another element to consider is the REST APIs. A REST API is an application programming interface (API) that follows the design principles of the REST architectural style. REST is short for Representational State Transfer and is a set of rules and guidelines about how you should build a web API.\footnote{\url{https://www.redhat.com/en/topics/api/what-is-a-rest-api} (accessed on 10 August 2025)} Luckily, XNAT provides its users with a list of REST APIs that make the exchange between the user and the website possible. 
-
 \section{Command Definition in JSON format}
 At the same time, if we want XNAT to execute a created Docker image and run a command, a \ac{JSON} command definition in JSON format is needed. 
 
