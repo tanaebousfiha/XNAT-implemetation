@@ -66,20 +66,12 @@ The \texttt{CMD} instruction was removed from the Dockerfile because it caused e
 
 \lstset{inputpath=en/content}
 
-\lstinputlisting[
-  inputencoding=cp1252, 
-  language=Python,
-  firstline=18,
-  lastline=24,
-  caption={Extracted from \texttt{automat\_f\_2.py} (lines 18--24)},
-  label={lst:automat-snippet}
-]{automat_f_2.py}
+\lstinputlisting[ inputencoding=cp1252, 
+language=Python, firstline=18, lastline=24, caption={Extracted from \texttt{automat\_f\_2.py} (lines 18--24)},
+label={lst:automat-snippet} ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L18-L24}
-
-%--------------------------------------------------------------------------------
-
-
+See the corresponding lines on GitHub:\newline
+\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L18-L24}
 
 
 The rest of the \texttt{def write\_dockerfile} ensures that the specified directory exists, then creates and writes a Dockerfile to that location. It constructs the full path to the file, writes the generated content into it, and prints a confirmation message.
@@ -95,7 +87,8 @@ The rest of the \texttt{def write\_dockerfile} ensures that the specified direct
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L25-L29}
+See the corresponding lines on GitHub:\newline  
+\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L25-L29}
 
 
 
@@ -123,7 +116,8 @@ In the automation script, the full tag in the format \texttt{dockerhub\_username
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L38-L46}
+See the corresponding lines on GitHub:\newline
+\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L38-L46}
 
 
 
@@ -142,7 +136,8 @@ Once the image is built, it must be pushed to Docker Hub. This is done with the 
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L48-L55}
+See the corresponding lines on GitHub:\newline
+\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L48-L55}
 
 
 
@@ -167,7 +162,8 @@ The function looks like this:
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L59-L65}
+See the corresponding lines on GitHub:\newline
+\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L59-L65}
 
 
 The \texttt{def get\_input} function uses a \texttt{while True} loop to keep asking until the user enters input. The \texttt{value.strip()} removes any whitespace from the user input. If the input is valid, the value is returned; if not, the message \texttt{Cannot be empty} will be printed.
@@ -199,7 +195,8 @@ Let us start analyzing the first block of the JSON command:
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L120-L131}
+See the corresponding lines on GitHub:\newline
+\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L120-L131}
 
 
 
@@ -221,7 +218,8 @@ The second part of command definition in JSON format:
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L132-L150}
+See the corresponding lines on GitHub:\newline
+\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L132-L150}
 
 
 This block defines the parameters that a user must provide as an input file when launching the container.
@@ -244,7 +242,8 @@ The final block in the command definition (JSON format):
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/c95b34d9d5a4b236f9b482e02258094384623892/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L152-L173}
+See the corresponding lines on GitHub:\newline
+\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/c95b34d9d5a4b236f9b482e02258094384623892/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L152-L173}
 
 
 
@@ -276,7 +275,8 @@ The function responsible for this is \texttt{def send\_json\_to\_xnat}, and it e
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/c95b34d9d5a4b236f9b482e02258094384623892/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L187-L200}
+See the corresponding lines on GitHub:\newline
+\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/c95b34d9d5a4b236f9b482e02258094384623892/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L187-L200}
 
 This function takes the path that describes the JSON-based command, the base URL of the XNAT server, and the credentials for authentication. First, it constructs the correct REST API endpoint by appending \texttt{/xapi/commands} to the provided XNAT URL, ensuring that the command is sent to the appropriate API for command registration. It then opens the JSON file, loads its contents, and sends this data as a POST request to the API endpoint using \ac{HTTP} Basic Authentication with the supplied username and password. After making the request, the function examines the server’s response, and in each case provides feedback, helping the user quickly understand whether the command upload succeeded or if further action is needed to resolve an issue.
 
@@ -294,7 +294,8 @@ In order to do that:
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/a47cafecee7f9e467356ddb9f7939371e3d02e03/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L204-L228}
+See the corresponding lines on GitHub:\newline
+\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/a47cafecee7f9e467356ddb9f7939371e3d02e03/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L204-L228}
 
 
 
@@ -332,7 +333,8 @@ The function first checks if any files are provided. A payload dictionary is the
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/3a565f4b666a5f2938d5a41002049ee87cd33b61/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L359-L393}
+See the corresponding lines on GitHub:\newline
+\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/3a565f4b666a5f2938d5a41002049ee87cd33b61/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L359-L393}
 
 
 
