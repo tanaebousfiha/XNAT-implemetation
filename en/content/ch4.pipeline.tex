@@ -1,8 +1,8 @@
-\chapter{The Analysis of the Second Method: The Pipeline}
-\section{Pipeline Installation and Configuration in XNAT}
+
+\section{Concrete Pipeline Method}
 
 Integrating a pipeline in XNAT requires an \ac{XML} descriptor to connect XNAT and the user script, defining metadata, execution steps, conditions, iterations, outputs, and resource descriptors.
-During the Pipeline analysis we initially focused on analyzing the implementation process of a OSA prediction based script with the Pipeline method. The Pipeline system requires two components: Pipeline Engine and the XNAT Pipeline Engine Plugin. By default, pipelines are located at /data/home/xnat/pipeline
+During the Pipeline analysis we initially focused on analyzing the implementation process of a OSA prediction based script with the Pipeline method. The Pipeline system requires two components: Pipeline Engine and the XNAT Pipeline Engine Plugin. By default, pipelines are located at /data/home/xnat/pipeline \footnote{\url{https://wiki.xnat.org/documentation/installing-pipelines-in-xnat} last accessed 22.09.2025}
 
 
 
@@ -21,51 +21,12 @@ The  Listing 3.1 presents a sample resource descriptor for a Python script, spec
 The commands set up an XML-based pipeline in XNAT. First, , which defines the workflow, is copied to /data/xnat/pipeline/pipelines/my\_pipeline/, where XNAT stores pipeline descriptors. Next, run.sh, the script that executes the workflow, is copied to the same directory so both files are together in the required structure. Finally, chmod +x makes run.sh executable; without this step, XNAT could not run the script and the pipeline would fail.
 \footnote{XNAT Documentation (2025): \url{https://wiki.xnat.org/documentation/installing-pipelines-in-xnat} last Accessed 10 September 2025}
 
-\section{Pipeline Development and Integration in XNAT}
+\subsection{Pipeline Development and Integration in XNAT}
 Unlike the Docker-based approach, setting up a pipeline in XNAT requires more manual steps. First, the pipeline path must be registered under Admin > Pipelines > Register new Pipelines. Then, to allow users to run the pipeline from the XNAT interface, an administrator must edit the relevant data type under Administer > Data Types and add a new action (PipelineScreen\_launch\_pipeline) in the Available Report Actions section, with a display label such as Build or Run Pipeline.\footnote{\url{https://wiki.xnat.org/documentation/installing-pipelines-in-xnat}last accessed 10.09.2025}
 
-\section{The Pipeline and the REST API}
+\subsection{The Pipeline and the REST API}
 With the aim of analyzing the pipeline method more deeply, it is worth noting that XNAT provides several REST API endpoints for managing and running pipelines the most relevant endpoint for automation is \url{POST /pipelines/launch/{pipelineName}} \footnote{\url{://wiki.xnat.org/xnat-api/xnat-pipeline-api} last Accessed 10.09.2025}
 This enables programmatic execution of registered pipelines in XNAT. However, full automation is limited, as endpoints to globally enable a pipeline or assign it to a specific project are missing from the REST API. Thus, while pipeline execution can be automated, deployment and project-level setup still require manual steps.
 
-\section{Evaluating Pipeline and Docker Approaches in XNAT}
-
-For the purpose of evaluating the two methods, we began by compiling a comparative table to provide a clearer understanding of their respective features. 
-
-\begin{table}[H]
-    \centering
-      \begin{tabular}{|>{\centering\arraybackslash}p{4cm}|
-                    >{\centering\arraybackslash}p{5cm}|
-                    >{\centering\arraybackslash}p{5cm}|}
-    \hline
-    \textbf{Aspect} & \textbf{The Pipeline method} & \textbf{Docker Container method}\\ \hline
-     Installation & Requires manual placement of XML descriptors, plugin JARs, and executables on the server& Container image uploaded once (via Docker registry) and configured in XNAT. \\ \hline
-    Configuration & Admin must edit data types, enable actions, and rebuild pipeline engine, require direct access to the server via SSH in order to manually copy the XML
-descriptor and associated scripts to a specific directory (/data/xnat/pipeline/pipelines/)& Minimal configuration through a JSON command; no engine rebuild needed. \\ \hline
-Execution & the Run Pipeline option must be build via Actions menu  & Triggered via Actions menu or REST API, image runs in isolated environment. \\ \hline
-Automation & Limited REST API Supported by XNAT Community, many tasks still require manual steps.& Excellent support of the REST API by XNAT Community. Enabling a complete automation of workflows. \\ \hline
-Deployability and flexibility & Pipelines are highly dependent on the specific XNAT environment and server configuration in which they are deployed. & Docker images can be readily reused in various XNAT installations.\\ \hline
-Preservation & Updating necessitates server access and manual reconfiguration.& Updates can be managed through the construction and deployment of a new image, with no need for direct changes to the server configuration.\\ \hline
-
-Maintenance & Updating requires server access and manual reconfiguration.& Updating requires building and pushing a new image; no direct server changes needed.\\ \hline
-Usability& Requires XML schema knowledge and direct server administration.& Requires Docker knowledge, but easier to reuse prebuilt images.\\ \hline
-consistency& Depends on identical server setups and configurations.& High reproducibility is achieved, as all dependencies are within the container.\\ \hline
-Community& Limited documentation und less support from XNAT Community& Huge support from XNAT community\\ \hline
-Security& Credentials needed in XML configuration& Isolated container environments\\ \hline
-    \end{tabular}
-    \caption{Comprehensive comparison of XNAT Pipeline Method and Docker Container method}
-    \label{tab:pipeline-vs-docker}
-\end{table}
- The table 3.1 has been added to present a direct comparison between the two methods.
- 
-\section{Discussion and Conclusion and future measurements for both method}
 
 
-
-The Docker Container method is determined to be better than the Pipeline method, as shown in the table above the Docker Container is a simplified and secure method.  
-The Docker Container method offers significant advantages over the Pipeline method in XNAT.
-Almost all the steps of the Docker Container are simplified and requiring minimal steps compared to the Pipeline method. Furthermore it provides a better automation through the REST API support.  Furthermore, Docker's usability is improved with prebuilt image reusability, high reproducibility, strong community support, and enhanced security through isolated container environments, ultimately making it a more efficient and manageable solution.
-
-Looking ahead, both methods have potential for future development.\\
-For the Pipeline method, future development should focus on two key areas: Firstly, establishing a secure Pipeline Hub to centralize storage and enhance environmental security. Secondly, integrating XML deployment directly within XNAT would streamline the build process for the "Run Pipeline" option, eliminating the need for SSH access and simplifying overall usability.\\
-Future development of the Docker Container method should focus on: Firstly, enabling direct access to the XNAT database to facilitate comprehensive file processing across the entire project. Secondly, enhancing the JSON command to allow re-uploading processed files to various output locations within XNAT, regardless of the initial file selection. This would ensure that processed files are returned to their original locations, streamlining data management and improving workflow efficiency.

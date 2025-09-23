@@ -1,11 +1,11 @@
-\chapter{The Analysis of the First Method: Docker Container}
+\chapter{Deployment of Methods in XNAT}
+\section{Concrete Docker Method}
 As outlined in the fundamentals, XNAT supports Docker container deployment. Furthermore, the XNAT team provides extensive REST API support, which facilitates the verification of method extensions through an automation script.
 
-\section{Introduction to the Automation Script for the Docker Container Method}
+\subsection{Introduction to the Automation Script for the Docker Container Method}
 The first method analyzed was the Docker Container, and after reviewed the last points supported by XNAT Community, a review of the latest updates from the XNAT Community indicated that automation of Docker Container deployment in XNAT is feasible.
 
-\section{Table of the REST API in the Script}
-
+\subsection{Table of the REST API in the Script}
 In order to summarize all the REST API needed in the script, a summarizing table was created.
 
 \begin{longtable}{|l|p{0.4\textwidth}|p{0.4\textwidth}|}
@@ -66,7 +66,9 @@ The REST API played a crucial role to develop a automatic workflow in the XNAT p
     \label{fig:workflow-steps}
 \end{figure}
 
-\section{The Automation Script}
+\subsection{Architecture and organization of the Code}
+The automation script mirrors the manual workflow in 14 steps. Each part of the script automates a specific step of the manual process, including containerization, image building, command configuration in XNAT, and container launch.
+
 The purpose of this chapter is to introduce the system in more detail. A Python script is used to combine all the steps into an automated workflow. The libraries used in this work include: \texttt{requests}\footnote{\url{https://www.w3schools.com/python/module_requests.asp} accessed on 10 August 2025}, \texttt{json}\footnote{\url{https://www.w3schools.com/python/python_json.asp} accessed on 10 August 2025}, \texttt{os}\footnote{\url{https://docs.python.org/3/library/os.html} accessed on 10 August 2025}, \texttt{subprocess}\footnote{\url{https://docs.python.org/3/library/subprocess.html} accessed on 10 August 2025}, \texttt{getpass}\footnote{\url{https://docs.python.org/3/library/getpass.html} accessed on 10 August 2025}, \texttt{sys}\footnote{\url{https://docs.python.org/3/library/sys.html} accessed on 10 August 2025}, and \texttt{urllib3}\footnote{\url{https://urllib3.readthedocs.io/en/stable/} accessed on 10 August 2025}.
 
 The Python Requests library is the go-to solution for making \ac{HTTP} requests in Python, thanks to its elegant and intuitive API that simplifies the process of interacting with web services and consuming data in the application.\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} accessed on 10 August 2025} The Sys module in Python provides access to variables and functions that interact closely with the Python interpreter and runtime environment.
@@ -87,12 +89,8 @@ Currently, the system is running Docker Engine 28.3.0. The Docker Client version
   \caption{Schema: Core Libraries for Python Scripting in System Integration}
   \label{fig:diagram-core-libraries}
 \end{figure}
-
-
-\section{Architecture and organization of the Code}
-The automation script mirrors the manual workflow in 14 steps. Each part of the script automates a specific step of the manual process, including containerization, image building, command configuration in XNAT, and container launch.
  
-  \section{The Dockerfile}
+  \subsection{The Dockerfile}
  
 The first function responsible for writing the Dockerfile is called \texttt{def write\_dockerfile}, and it takes three arguments: the target directory for the Dockerfile, the name of the Python script to include, and an optional base Docker image (defaulting to \texttt{python:3.10-slim}, currently the fastest and slimmest image of Docker). The function creates the necessary folder (if it does not already exist), constructs the Dockerfile content, and writes it. The content of the Dockerfile is introduced with string interpolation and contains the base image and several commands such as \texttt{WORKDIR /app} (a working directory) and \texttt{COPY \{script\_filename\} /app/\{script\_filename\}} to copy the user script inside the image. The line \texttt{RUN pip install --no-cache-dir pandas} tells Docker to install the pandas Python library using pip during the build process of the Docker image, which helps reduce the overall image size and avoids unnecessary layers in the build process. The last command of the Dockerfile is \texttt{COPY requirements.txt /app/requirements.txt}, which provides the opportunity for the user to write in a separate text file all the libraries used in the container script, to be installed later during the image build process.
 
@@ -126,7 +124,7 @@ The \texttt{CMD} instruction was removed from the Dockerfile because it caused e
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L18-L24}
+\noindent\footnotesize{ See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L18-L24}}
 
 
 
@@ -154,7 +152,7 @@ The rest of the \texttt{def write\_dockerfile} ensures that the specified direct
 
 This function ensures that the Dockerfile is written in an appropriate way and secures that all the dependencies are stored in the external requirements text file. It handles all possible cases and avoids the issues of errors and standard input errors.
 
-\section{Building, Pushing and Tagging the Image}
+\subsection{Building, Pushing and Tagging the Image}
 
 XNAT requires Docker Hub for container deployment. Users must log in to Docker Hub and push their tagged, locally built images before launching containers.
 
@@ -200,7 +198,7 @@ In a manual workflow, the push would be performed with the command:  \texttt{doc
 
 The key point is that the full image tag is constructed in the required Docker Hub format \texttt{(dockerhub\_username/docker\_image\_name)}. This guarantees that the built image is correctly associated with the user’s Docker Hub account, and that XNAT will be able to locate it when launching the container.
 
-\section{The Prompt Function for the Required Input}
+\subsection{The Prompt Function for the Required Input}
 
 This function captures various user inputs required by the script. These include the Docker Hub username, command details for JSON configuration, and login credentials.
 The function looks like this:
@@ -218,7 +216,7 @@ The function looks like this:
 
 The \texttt{def get\_input} function uses a \texttt{while True} loop to keep asking until the user enters input. The \texttt{value.strip()} removes any whitespace from the user input. If the input is valid, the value is returned; if not, the message \texttt{Cannot be empty} will be printed.
 
-\section{The Command Definition in JSON format}
+\subsection{The Command Definition in JSON format}
 
 To communicate the Docker image to XNAT, and consequently to run the container in the website, it is necessary to write a command definition in JSON format.\footnote{\url{ https://wiki.xnat.org/container-service/json-command-definition}}
 Typically, JSON command definitions are customized to the image's specific purpose. However, in this automation, the JSON command is generalized to handle any file input.
@@ -306,7 +304,7 @@ In the \texttt{"output-handlers"} block, we control how the outputs from the com
 
 Finally, the script writes the command definition in JSON format, ensuring that the JSON command is saved in the correct format, ready to be uploaded to XNAT.
 
-\section{Upload the Command in XNAT}
+\subsection{Upload the Command in XNAT}
 
 After writing the JSON-based command, the next step is to send it to XNAT. To achieve this, we have to use the appropriate REST API responsible for uploading the container command to XNAT.
 We can find the list of all REST APIs under \texttt{Administer $\rightarrow$ Site Administration $\rightarrow$ Miscellaneous $\rightarrow$ Development Utilities $\rightarrow$ Swagger}.
@@ -326,7 +324,7 @@ The function responsible for this is \texttt{def send\_json\_to\_xnat}, and it e
 
 This function registers a JSON command with XNAT. It constructs the REST API endpoint, loads the JSON data, sends it via a POST request with HTTP Basic Authentication, and provides feedback on the server's response.
 
-\section{Preparations to Launch the Container}
+\subsection{Preparations to Launch the Container}
 
 To prepare for launching the container in XNAT, the script automatically retrieves the Command ID and Wrapper ID from the XNAT web service using REST APIs.
 Option 3 (Concise and direct): Before launching the container, the script automatically retrieves the Command ID and Wrapper ID from XNAT using REST APIs.
@@ -344,7 +342,7 @@ Option 3 (Concise and direct): Before launching the container, the script automa
 
 This function retrieves the Command ID and Wrapper ID from XNAT, using the hostname, credentials, command name, and wrapper name as inputs. It constructs the REST API endpoint, checks for a successful response, and returns the IDs. If a wrapper name is provided, it searches for a matching wrapper ID. Following ID retrieval, the enable\_wrapper\_sitewide and enable\_wrapper\_for\_project functions enable the command, using a PUT request to the appropriate XNAT REST API endpoint and providing user feedback.
 
-\section{The Extraction of All Files from All Project Structures}
+\subsection{The Extraction of All Files from All Project Structures}
 
 The get\_all\_files\_all\_levels function comprehensively collects all files from an XNAT project's data hierarchy (project, subjects, experiments, scans) using the XNAT REST API (GET). It structures the file information into a dictionary containing the file's level, IDs, name, resource folder, and URI for easy retrieval.
 
@@ -356,7 +354,7 @@ The get\_all\_files\_all\_levels function comprehensively collects all files fro
     \label{fig:enter-label}
 \end{figure}
 
-\section{Launch the Container}
+\subsection{Launch the Container}
 
 The launch\_container\_with\_all\_files function launches a container with extracted files, using XNAT connection details, project/command identifiers, authentication, wrapper name, and the list of files. It creates a payload, constructs the launch URL, sends a POST request with the payload, and reports the status.
 
@@ -386,22 +384,22 @@ Figure 3.3 illustrates the steps to deploy a Docker Container in XNAT.
 \end{figure}
 
 
-The figure 3.4 illustrates how the automation script facilitates the process of deploying a container in XNAT. It reduces all the steps.
+The \autoref{fig:automatic/manuall} illustrates how the automation script facilitates the process of deploying a container in XNAT. It reduces all the steps.
 
 \begin{figure}[ht]
     \centering
     \def\svgwidth{0.9\linewidth}
     \input{compare.pdf_tex}
     \caption{Diagram: Diagram illustrating the difference between the manual and the automatic process}
-    \label{fig:enter-label}
+    \label{fig:automatic/manuall}
 \end{figure}
 
 
 
-\section{Testing the Code}
+\subsection{Testing the Code}
 Initially, the script requests user input for login credentials, Project ID, command name, and description. Following this input, the script automates image building, tagging, pushing, JSON command creation, command enabling, and container launching.
 
-\section{Results on XNAT}
+\subsection{Results on XNAT}
 The result that we came to after testing the code is that all the steps are working correctly, except that the container could not receive any files. With the \ac{Stdout} view we found out that the container received zero files. 
  
 \begin{lstlisting}[numbers=none]
@@ -413,16 +411,20 @@ Keine CSV-Datei in /input gefunden.
 
 
 But interestingly, after searching in the container information, we noticed that the container in fact received the files and that the files are listed in the input part of the container input. 
-Details of the test procedure are described in Appendix A \cite{bousfiha2025appendix}. Due to the fact that the list of files was extremely long, it was shortened. In summary, the container received a huge amount of files.
+Details of the test procedure are described in Appendix 
+\ref{app:Result}. Due to the fact that the list of files was extremely long, it was shortened. In summary, the container received a huge amount of files.
 
-\section{Discussion of the results}
+\subsection{Discussion of the results}
 This chapter outlines implementation challenges, including data transmission failures, REST API inconsistencies, and JSON configuration mismatches. Initial tests revealed the container wasn't receiving input files, confirmed by a "no\_file.txt" test. Further testing with REST API integration within the container also failed to produce file results in XNAT. Adjustments to the JSON command, including credentials and detailed output specifications, were unsuccessful. Adding delays between container executions also didn't resolve the input file issue.
 
-\section{Analysis of the Docker Approach: Current Limitations}
 
-After testing both manual and automated Docker Container workflows, we found several limitations that need further work. A key benefit is automation, allowing single or multiple workflows to be launched via scripts. The approach supports different XNAT structures, but users must configure containers for the desired level. To process all files across a project, extra steps are required: gathering data from all structures and relocating outputs to their original directories. Another advantage is flexible file filtering—containers can be set to process only certain formats (e.g., CSV, TXT, DICOM) through JSON-based commands, enabling precise, project-specific workflows.
 
-\section{The Workflow Data in XNAT}
+
+
+
+
+
+\subsection{The Workflow Data in XNAT}
 
 When running a container manually in XNAT, data is automatically provided, processed, and results are reloaded. The system first generates a JSON specification with script details, inputs, and outputs. XNAT then prepares the relevant data, copies it to a temporary host directory, and mounts it for container access. The container processes the input, produces results, and writes them back to the host.
 
@@ -436,50 +438,12 @@ The diagram below illustrates the workflow data for a clearer understanding.
     \label{fig:workflowxnat}
 \end{figure}
 
-\section{Generalizability of the Docker Automation Method}
-The Docker Container is a powerful way to integrate AI into XNAT, working well with single models and specific data types like CSV or DICOM. However, adapting it to other formats still requires manual adjustments, limiting reusability across projects. To improve generalizability and accessibility especially for non-programming users the method could be extended with a graphical user interface (GUI), making it easier to apply across different institutions, datasets, and environments. 
-\begin{figure}[H]
-    \centering
-    \def\svgwidth{\linewidth} 
-    \input{mockup.pdf_tex}
-    \caption{Mockup example for the automation script}
-    \label{fig:workflowxnat}
-\end{figure}
-
-\subsection{GUI Mockup for Docker Container Automation in XNAT}
-
-To improve accessibility and usability for non-technical users, the Docker automation script was visualized as a GUI mockup. As shown in Figure 3.7, this mockup is not functional but demonstrates how the command-line workflow appears, following the same logical steps: (1) container configuration, (2) project selection, (3) file discovery, (4) container launch, and (5) result visualization.
-
-\section{The Docker Container Approach and the Somnolink Project, sustainability aspects including FAIR criteria}
-\begin{figure}[H]
-    \centering
-    \def\svgwidth{\linewidth} 
-    \input{Somnolink.pdf_tex}
-    \caption{Diagram: XNAT Workflow for Container Integration}
-    \label{fig:workflowxnat}
-\end{figure}
-
-The Somnolink project is a nationwide initiative to improve the treatment and research of obstructive sleep apnea through better data sharing. The obstructive sleep apnea is the most prevalent disorder in clinical sleep laboratories, Therefore, the main goal of the Somnolink project is to improve the diagnosis and therapy of OSA.
-The objectives of the project are aligned for improving the OSA care with the health data typically collected along the official patient pathway, as defined by the German guidelines. This pathway consists of four stages: (1) assessing pre-test probability through medical history and questionnaires, (2) conducting physical examinations in primary care, (3) performing outpatient sleep diagnostics, and (4) carrying out comprehensive sleep laboratory studies. Based on this structure, which data are relevant at each step is identified and proposed how data-driven methods such as machine learning–based decision support systems could assist clinicians in their decision-making. ~\cite{krefting_somnolink_2025}
-In general, the implementation of Docker container technology is becoming increasingly prevalent within the Somnolink Project, due to It is notable that an OSA prediction model can be implemented with a Docker container within XNAT.
-In this context, automating the Docker Container in XNAT offers a significant advantages. It allows the OSA prediction to be executed in a standardized manner. Such a automation is not only reducing the manual intervention, but also ensuring a consistent  workflow and facilitating  the integration of data-driven decision support into clinical practice. Which contribute to fulfilling the aim and the goals of this project.
 
 
-The figure 3.8 illustrates the structure of the OSA diagnostic pathway in relation to data collection, data driven support, and technical implementation.
-The blue column shows the four steps of the German OSA patient pathway. The middle column summarizes the typical health data collected at each stage. And the last column underline the opportunity where machine learning or decision-support methods can be applied. 
-The yellow banner highlights Docker container automation in XNAT  as the technical foundation that enable standardized and reproducible workflows across the steps.
-Sustainability within Somnolink project covers both the technical stability and scientific traceability. Consequently the use of the Docker Containers contribute by offering reproducible computational environments, reducing maintenance demands, and facilitating collaboration across multiple sites. However, conformity to FAIR principles strengthens the long-term reusability of the developed solutions: The Container images are well stored in the Docker Hub (Findable), they are also accessible via standardized interfaces (Accessible), employ interoperable data formats (Interoperable), and are adaptable for use in new contexts (Reusable). This harmonized approach is essential for ensuring sustainable support of the Somnolink project’s objectives. 
-\section{Sustainability of the Automation Script}
 
-Another key strength for the developed automation script is its sustainability and long-term usability. The implementation is flexible and allows at the same time to the developers a reuse of the existing framework and modify only components that may need updating. Potential future changes. The Potential future changes can be :\\
-- Updates to XNAT REST API endpoints.\\
-- Authentication methods.\\
--  Alterations to the JSON-based format schema for command and wrapper definitions.\\
--  Docker base images in case a new better one is deprecated.\\
-- XNAT project structures are extended with new contexts or data types.\\
-However, the core workflow logic remains unaffected. Consequently this promote a efficient maintenance, supports sustainable software development practices.
 
-\section{User Guide}
+
+\subsection{User Guide}
 To better understand the system created and mostly the motivation behind this automation project. We have inserted a table to list how the the Workflow is working and what are the requirement that the user needs to have in order to run the script.
 
 \begin{table}[H]
@@ -515,24 +479,6 @@ To better understand the system created and mostly the motivation behind this au
   \hline
   \end{tabular}
 \end{table}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
