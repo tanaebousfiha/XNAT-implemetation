@@ -8,7 +8,7 @@
 \chapter{Appendix}
 \section{Test Protocol and Results}
 
-\label{app:test}
+\label{app:Result}
 
 \noindent\textbf{Author:} Tanae Bousfiha  
 \noindent\textbf{Date:} August 2025  
@@ -49,7 +49,53 @@ The Container information part:
 
 
 
+\begin{longtable}{|l|p{0.4\textwidth}|p{0.4\textwidth}|}
+    \caption{Overview of XNAT REST API Endpoints used in the automation script} \label{tab:xnat_endpoints} \\
+    \hline
+    \textbf{Method} & \textbf{Endpoint} & \textbf{Purpose} \\
+    \hline
+    \endfirsthead
 
+    \hline
+    \textbf{Method} & \textbf{Endpoint} & \textbf{Purpose} \\
+    \hline
+    \endhead
+
+    POST & \path{/xapi/commands} & Upload a Command (JSON) \\
+    \hline
+    GET  & \path{/xapi/commands} & List all the commands to get the wrapper ID and the command ID \\
+    \hline
+    PUT  & \path{/xapi/commands/{command_id}/wrappers/{wrapper}/enabled} & Enable wrapper site-wide \\
+    \hline
+    POST & \path{/xapi/projects/{project_id}/commands/{command_id}/wrappers/{wrapper}/root/project/launch} & Launch container wrapper in project context \\
+    \hline
+    GET  & \path{/data/projects/{project_id}/resources?format=json} & List all project resources \\
+    \hline
+    GET  & \path{/data/projects/{project_id}/resources/{resource_label}/files?format=json} & List files inside a project resource \\
+    \hline
+    GET  & \path{/data/projects/{project_id}/subjects?format=json} & List all subjects in a project \\
+    \hline
+    GET  & \path{/data/subjects/{subject_id}/resources?format=json} & List subject-level resources \\
+    \hline
+    GET  & \path{/data/subjects/{subject_id}/resources/{resource_label}/files?format=json} & List files inside a subject resource \\
+    \hline
+         & \path{/data/subjects/{subject_id}/resources/{resource_label}/files/{file_name}} & Direct file path (download or reference) \\
+    \hline
+    GET  & \path{/data/projects/{project_id}/experiments?format=json} & List sessions (experiments) in a project \\
+    \hline
+    GET  & \path{/data/experiments/{experiment_id}/resources?format=json} & List session-level resources \\
+    \hline
+    GET  & \path{/data/experiments/{experiment_id}/resources/{resource_label}/files?format=json} & List files in a session resource \\
+    \hline
+         & \path{/data/experiments/{experiment_id}/resources/{resource_label}/files/{file_name}} & Direct file path (download or reference) \\
+    \hline
+    GET  & \path{/data/experiments/{experiment_id}/scans?format=json} & List scans within a session \\
+    \hline
+    GET  & \path{/data/experiments/{experiment_id}/scans/{scan_id}/resources?format=json} & List scan-level resources \\
+    \hline
+    GET  & \path{/data/experiments/{experiment_id}/scans/{scan_id}/resources/{resource_label}/files?format=json} & List files inside a scan resource \\
+    \hline
+\end{longtable}
 
 
 

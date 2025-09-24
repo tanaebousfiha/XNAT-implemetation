@@ -1,62 +1,11 @@
 \chapter{Deployment of Methods in XNAT}
 \section{Concrete Docker Method}
-As outlined in the fundamentals, XNAT supports Docker container deployment. Furthermore, the XNAT team provides extensive REST API support, which facilitates the verification of method extensions through an automation script.
+
 
 \subsection{Introduction to the Automation Script for the Docker Container Method}
-The first method analyzed was the Docker Container, and after reviewed the last points supported by XNAT Community, a review of the latest updates from the XNAT Community indicated that automation of Docker Container deployment in XNAT is feasible.
-
-\subsection{Table of the REST API in the Script}
-In order to summarize all the REST API needed in the script, a summarizing table was created.
-
-\begin{longtable}{|l|p{0.4\textwidth}|p{0.4\textwidth}|}
-    \hline
-    \textbf{Method} & \textbf{Endpoint} & \textbf{Purpose} \\
-    \hline
-    \endfirsthead
-
-    \hline
-    \textbf{Method} & \textbf{Endpoint} & \textbf{Purpose} \\
-    \hline
-    \endhead
-
-    POST & \path{/xapi/commands} & Upload a Command (JSON) \\
-    \hline
-    GET  & \path{/xapi/commands} & List all the commands to get the wrapper ID and the command ID \\
-    \hline
-    PUT  & \path{/xapi/commands/{command_id}/wrappers/{wrapper}/enabled} & Enable wrapper site-wide \\
-    \hline
-    POST & \path{/xapi/projects/{project_id}/commands/{command_id}/wrappers/{wrapper}/root/project/launch} & Launch container wrapper in project context \\
-    \hline
-    GET  & \path{/data/projects/{project_id}/resources?format=json} & List all project resources \\
-    \hline
-    GET  & \path{/data/projects/{project_id}/resources/{resource_label}/files?format=json} & List files inside a project resource \\
-    \hline
-    GET  & \path{/data/projects/{project_id}/subjects?format=json} & List all subjects in a project \\
-    \hline
-    GET  & \path{/data/subjects/{subject_id}/resources?format=json} & List subject-level resources \\
-    \hline
-    GET  & \path{/data/subjects/{subject_id}/resources/{resource_label}/files?format=json} & List files inside a subject resource \\
-    \hline
-         & \path{/data/subjects/{subject_id}/resources/{resource_label}/files/{file_name}} & Direct file path (download or reference) \\
-    \hline
-    GET  & \path{/data/projects/{project_id}/experiments?format=json} & List sessions (experiments) in a project \\
-    \hline
-    GET  & \path{/data/experiments/{experiment_id}/resources?format=json} & List session-level resources \\
-    \hline
-    GET  & \path{/data/experiments/{experiment_id}/resources/{resource_label}/files?format=json} & List files in a session resource \\
-    \hline
-         & \path{/data/experiments/{experiment_id}/resources/{resource_label}/files/{file_name}} & Direct file path (download or reference) \\
-    \hline
-    GET  & \path{/data/experiments/{experiment_id}/scans?format=json} & List scans within a session \\
-    \hline
-    GET  & \path{/data/experiments/{experiment_id}/scans/{scan_id}/resources?format=json} & List scan-level resources \\
-    \hline
-    GET  & \path{/data/experiments/{experiment_id}/scans/{scan_id}/resources/{resource_label}/files?format=json} & List files inside a scan resource \\
-    \hline
-      
-\end{longtable}
-The REST API played a crucial role to develop a automatic workflow in the XNAT platform. The figure 3.1 illustrates the role of the REST API in the automatization
-
+The first method analyzed is the Docker Container. After reviewing the latest updates supported by the XNAT Community, it was confirmed that automating Docker Container deployment in XNAT is feasible.
+XNAT's REST API provides functionality to list projects, subjects within those projects, sessions, and scans. It also allows the extraction of patient files, as well as the retrieval of the command ID and wrapper ID.
+To summarize all the REST APIs used in the automation script, Table A.1 in the Appendix provides a comprehensive overview of each API and its purpose.
 
 \begin{figure}[H]
     \centering
@@ -65,6 +14,11 @@ The REST API played a crucial role to develop a automatic workflow in the XNAT p
     \caption{Diagram: illustrates the role of the REST API in the automatization}
     \label{fig:workflow-steps}
 \end{figure}
+
+
+The REST API played a crucial role to develop a automatic workflow in the XNAT platform. The figure 3.1 illustrates the role of the REST API in the automatization.
+
+
 
 \subsection{Architecture and organization of the Code}
 The automation script mirrors the manual workflow in 14 steps. Each part of the script automates a specific step of the manual process, including containerization, image building, command configuration in XNAT, and container launch.
@@ -77,7 +31,7 @@ Since a JSON-based command is written, the use of the JSON library was necessary
 The Python Subprocess module is a tool that allows running other programs or commands from your Python code. Using the Python Subprocess module resembles executing commands directly on the system computer using Python instead of typing them directly into the command prompt. This module makes it easy to automate Python code.\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} accessed on 10 August 2025}
 Getpass() prompts the user for a password without echoing. The getpass module provides a secure way to handle password prompts where programs interact with the users via the terminal.\footnote{\url{https://www.geeksforgeeks.org/python/getpass-and-getuser-in-python-password-without-echo/} accessed on 10 August 2025}
 
-The urllib3 library was used to disable the InsecureRequestWarning, which is normally shown when Requests connects to a site with an unverified SSL certificate. This approach helps keep the output clean and free of unnecessary warnings during the run of the script.
+The urllib3 library was used to disable the InsecureRequestWarning, which is normally shown when Requests connects to a site with an unverified SSL certificate. This approach helps keep the output clean and free of unnecessary warnings during the run of the script. Figure 3.2 illustrates all the libraries used in the script.
 
 Currently, the system is running Docker Engine 28.3.0. The Docker Client version in use is 20.10.5+dfsg1, which communicates with the Docker Engine to issue commands and manage images and containers. The XNAT web application is running on version 1.9.1.1, as verified through the web interface.
 
