@@ -2,7 +2,7 @@
 \chapter{Testing and results}
 \section{Testing the Code}
 After testing the code, we can see in the beginning \texttt{see the Appendix at the end}, the process actively requests input from the user in order to proceed with the implementation. It started by asking the user for login credentials, then the Project ID that the user wants to process, and lastly, before proceeding with the creation and command sending to XNAT, it asked the user about the command name and the description.
-After receiving all the information, the script commenced building the image, tagging, pushing, writing the JSON command, enabling the command, and lastly launching the container with all files.
+After receiving all the information, the script commenced building the image, tagging, pushing, writing the JSON format based command, enabling the command, and lastly launching the container with all files.
 
 \section{Results on XNAT}
 The result that we came to after testing the code is that all the steps are working correctly, except that the container could not receive any files. With the \ac{STDout} view we found out that the container received zero files. 
