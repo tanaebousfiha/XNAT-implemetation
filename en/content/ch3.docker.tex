@@ -66,7 +66,7 @@ The \texttt{CMD} instruction was removed from the Dockerfile because it caused e
 \lstset{style=allblack}
 
 
-
+\normalsize
 \lstset{inputpath=en/content}
 
 \lstinputlisting[
@@ -80,7 +80,7 @@ The \texttt{CMD} instruction was removed from the Dockerfile because it caused e
 
 \noindent\footnotesize{ See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L18-L24}}
 
-%--------------------------------------
+\normalsize
 
 
 The rest of the \texttt{def write\_dockerfile} ensures that the specified directory exists, then creates and writes a Dockerfile to that location. It constructs the full path to the file, writes the generated content into it, and prints a confirmation message.
@@ -97,7 +97,7 @@ The rest of the \texttt{def write\_dockerfile} ensures that the specified direct
 ]{automat_f_2.py}
 
 \noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L25-L29}
-
+\normalsize
 
 
 
@@ -125,7 +125,7 @@ In the automation script, the full tag in the format \texttt{dockerhub\_username
 ]{automat_f_2.py}
 
 \noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L38-L46}
-
+\normalsize
 
 
 
@@ -143,7 +143,7 @@ Once the image is built, it must be pushed to Docker Hub. This is done with the 
 ]{automat_f_2.py}
 
 \noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L48-L55}
-
+\normalsize
 
 
 
@@ -166,7 +166,7 @@ The function looks like this:
 ]{automat_f_2.py}
 
 \noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L59-L65}
-
+\normalsize
 
 The \texttt{def get\_input} function uses a \texttt{while True} loop to keep asking until the user enters input. The \texttt{value.strip()} removes any whitespace from the user input. If the input is valid, the value is returned; if not, the message \texttt{Cannot be empty} will be printed.
 
@@ -198,7 +198,7 @@ Let us start analyzing the first block of the JSON command:
 ]{automat_f_2.py}
 
 \noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L120-L131}
-
+\normalsize
 
 
 In this block, we are defining the name of the command, adding a description, and specifying the version and the type of the image.
@@ -220,7 +220,7 @@ The second part of command definition in JSON format:
 ]{automat_f_2.py}
 
 \noindent\footnotesize See the corresponding lines on GitHub: \url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L132-L150}
-
+\normalsize
 
 This block defines the parameters that a user must provide as an input file when launching the container.
 Let’s break down each field:
@@ -243,7 +243,7 @@ The final block in the command definition (JSON format):
 ]{automat_f_2.py}
 
 \noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/c95b34d9d5a4b236f9b482e02258094384623892/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L152-L173}
-
+\normalsize
 
 
 
@@ -275,6 +275,7 @@ The function responsible for this is \texttt{def send\_json\_to\_xnat}, and it e
 ]{automat_f_2.py}
 
 \noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/c95b34d9d5a4b236f9b482e02258094384623892/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L187-L200}
+\normalsize
 
 This function registers a JSON command with XNAT. It constructs the REST API endpoint, loads the JSON data, sends it via a POST request with HTTP Basic Authentication, and provides feedback on the server's response.
 
@@ -291,7 +292,7 @@ Option 3 (Concise and direct): Before launching the container, the script automa
 ]{automat_f_2.py}
 
 \noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/a47cafecee7f9e467356ddb9f7939371e3d02e03/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L204-L228}
-
+\normalsize
 
 
 This function retrieves the Command ID and Wrapper ID from XNAT, using the hostname, credentials, command name, and wrapper name as inputs. It constructs the REST API endpoint, checks for a successful response, and returns the IDs. If a wrapper name is provided, it searches for a matching wrapper ID. Following ID retrieval, the enable\_wrapper\_sitewide and enable\_wrapper\_for\_project functions enable the command, using a PUT request to the appropriate XNAT REST API endpoint and providing user feedback.
@@ -322,7 +323,7 @@ The launch\_container\_with\_all\_files function launches a container with extra
 ]{automat_f_2.py}
 
 \noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/3a565f4b666a5f2938d5a41002049ee87cd33b61/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L359-L393}
-
+\normalsize
 
 
 
@@ -363,18 +364,18 @@ Inhalt von /input (rekursiv):
 Keine CSV-Datei in /input gefunden.
 \end{lstlisting}
 
-
+\normalsize
 But interestingly, after searching in the container information, we noticed that the container in fact received the files and that the files are listed in the input part of the container input. 
 Details of the test procedure are described in Appendix 
 \ref{app:Result}. Due to the fact that the list of files was extremely long, it was shortened. In summary, the container received a huge amount of files.
-
+\normalsize
 \subsection{Discussion of the results}
 This chapter outlines implementation challenges, including data transmission failures, REST API inconsistencies, and JSON configuration mismatches. Initial tests revealed the container wasn't receiving input files, confirmed by a "no\_file.txt" test. Further testing with REST API integration within the container also failed to produce file results in XNAT. Adjustments to the JSON command, including credentials and detailed output specifications, were unsuccessful. Adding delays between container executions also didn't resolve the input file issue.
 
 
 
 
-
+\normalsize
 
 
 
@@ -394,7 +395,7 @@ The diagram below illustrates the workflow data for a clearer understanding.
 
 
 
-
+\normalsize
 
 
 \subsection{User Guide}
@@ -435,5 +436,4 @@ To better understand the system created and mostly the motivation behind this au
 \end{table}
 
 
-
-
+\normalsize
