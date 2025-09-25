@@ -4,7 +4,7 @@
 After testing both manual and automated Docker Container workflows, we found several limitations that need further work. A key benefit is automation, allowing single or multiple workflows to be launched via scripts. The approach supports different XNAT structures, but users must configure containers for the desired level. To process all files across a project, extra steps are required: gathering data from all structures and relocating outputs to their original directories. Another advantage is flexible file filtering—containers can be set to process only certain formats (e.g., CSV, TXT, DICOM) through JSON-based commands, enabling precise, project-specific workflows.
 
 \subsection{Generalizability of the Docker Method}
-The Docker Container is a powerful way to integrate AI into XNAT, working well with single models and specific data types like CSV or DICOM. However, adapting it to other formats still requires manual adjustments, limiting reusability across projects. To improve generalizability and accessibility especially for non-programming users the method could be extended with a graphical user interface (GUI), making it easier to apply across different institutions, datasets, and environments. 
+The Docker Container is a suitable way to integrate AI into XNAT, working well with multiple data types like CSV or DICOM. However, adapting it to other formats still requires manual adjustments, limiting reusability across projects. To improve generalizability and accessibility especially for non-programming users the method could be extended with a graphical user interface (GUI), making it easier to apply across different institutions, datasets, and environments. 
 \begin{figure}[H]
     \centering
     \def\svgwidth{\linewidth} 
@@ -47,7 +47,35 @@ However, the core workflow logic remains unaffected. Consequently this promote a
 
 \section{Pipeline method}
 \subsection{Generalizability of the Pipeline}
+
+To generalize a pipeline and to make it transferable to any user, including those limited informatics expertise, presents several challenges.
+Since the method requires manual transfer of the XML descriptor,  and the available endpoints are limited. 
+However, it is possible to design a template for the XML descriptor and create a Python script that collects information from the user and substitutes it into the template. Additionally, a graphical user interface (GUI) could be developed to facilitate inserting the pipeline into XNAT. However, because the REST API offers only limited functionality, such a GUI cannot fully communicate the pipeline to XNAT.
+
+
+
+%Template für XML bauen
+%\url{https://groups.google.com/g/xnat_discussion/c/nFNfCx4K2SA/m/wj8N6VtVAQAJ}
+%\url{https://groups.google.com/g/xnat_discussion/c/-1LlALF1vpQ/m/APPP90ofRzAJ}
+%\url{https://groups.google.com/g/xnat_discussion/c/ewhjL7upJf4/m/0Soz5-sBEzwJ}
+
+
+
 \subsection{The Pipeline Approach and the Somnolink Project, sustainability aspects including FAIR criteria}
+The pipeline approach presents challenges adhering to FAIR principles.
+Pipeline descriptors are stored in locally on the XNAT server and are not systematically indexed or searchable (limited Findability).
+ Accessibility is also restricted, as only administrators have the necessary permissions to manually register and configure the XML files (limited accessibility).
+ Interoperability is limited because the XML descriptors are closely tied to specific XNAT data types (limited interoperability). Additionally, the potential for reuse is also limited, since adapting a pipeline to new contexts necessitates manual transfer of XML files and server access configurations (limited reusability).
+
+
+Somnolink 
+
+
+
+
+
+
+
 \section{Evaluating Pipeline and Docker Approaches in XNAT}
 
 For the purpose of evaluating the two methods, we began by compiling a comparative table to provide a clearer understanding of their respective features. 
@@ -69,7 +97,7 @@ Preservation & Updating necessitates server access and manual reconfiguration.& 
 
 Maintenance & Updating requires server access and manual reconfiguration.& Updating requires building and pushing a new image; no direct server changes needed.\\ \hline
 Usability& Requires XML schema knowledge and direct server administration.& Requires Docker knowledge, but easier to reuse prebuilt images.\\ \hline
-consistency& Depends on identical server setups and configurations.& High reproducibility is achieved, as all dependencies are within the container.\\ \hline
+Consistency& Depends on identical server setups and configurations.& High reproducibility is achieved, as all dependencies are within the container.\\ \hline
 Community& Limited documentation und less support from XNAT Community& Huge support from XNAT community\\ \hline
 Security& Credentials needed in XML configuration& Isolated container environments\\ \hline
     \end{tabular}
@@ -77,6 +105,11 @@ Security& Credentials needed in XML configuration& Isolated container environmen
     \label{tab:pipeline-vs-docker}
 \end{table}
  The table 4.1 has been added to present a direct comparison between the two methods.
+
+
+
+
+
 
 
  
