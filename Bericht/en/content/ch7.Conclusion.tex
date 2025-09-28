@@ -3,11 +3,11 @@
 \chapter{Conclusion}
 
 \section{Conclusion}
-In this work, a framework was developed and automated for executing machine learning models in the open-source medical imaging and biosignals platform XNAT. This paper presented the development and the debugging process involved in integrating a Docker container within the XNAT environment for automated data processing.
+In this work, a framework was developed and automated for executing machine learning models in the open-source medical imaging and biosignals platform XNAT. This paper presented the development and the debugging process involved in integrating a Docker Container within the XNAT environment for automated data processing.
 
 Numerous challenges appeared, first and foremost related to file input handling, container execution context, and the behavior of XNAT's data mounting system. Through repetitive testing, including diagnostic scripting, REST API integration, and JSON command modifications, the core failures became comprehensible; however, a resolution to the underlying issue has not been achieved.
 
-In response to these challenges, several countermeasures were proposed. These include implementing alternative procedures in container scripts and improving the container logs for better diagnostics. Furthermore, the analysis exposed deficiencies in XNAT’s temporary data handling and its limited error reporting capabilities, emphasizing the need for targeted improvements within the platform.
+In response to these challenges, several countermeasures were proposed. These include deploying alternative procedures in container scripts and improving the container logs for better diagnostics. Furthermore, the analysis exposed deficiencies in XNAT’s temporary data handling and its limited error reporting capabilities, emphasizing the need for targeted improvements within the platform.
 
 In a wider context, this work underlines the complexity of integrating containers into clinical research platforms. Despite encountering technical constraints, the findings gained throughout the process contribute valuable knowledge for future container-based workflows in XNAT. The scripts and procedures developed form a pivotal step in establishing data processing pipelines that offer increased reliability and scalability. This work contributes meaningfully to the field of medical informatics. Through this approach, it can be applied to automated patient data processing and medical AI workflows. It also provides a fast and efficient way to create new operations or updates, which can have a significant positive impact on patient diagnosis and patient care in general.
 

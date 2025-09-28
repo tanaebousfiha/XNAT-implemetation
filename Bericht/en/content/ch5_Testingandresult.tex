@@ -1,5 +1,5 @@
 
-\chapter{Testing and results}
+\chapter{Testing and Results}
 \section{Testing the Code}
 After testing the code, we can see in the beginning \texttt{see the Appendix at the end}, the process actively requests input from the user in order to proceed with the implementation. It started by asking the user for login credentials, then the Project ID that the user wants to process, and lastly, before proceeding with the creation and command sending to XNAT, it asked the user about the command name and the description.
 After receiving all the information, the script commenced building the image, tagging, pushing, writing the JSON format based command, enabling the command, and lastly launching the container with all files.
@@ -16,6 +16,6 @@ Keine CSV-Datei in /input gefunden.
 
 
 But interestingly, after searching in the container information, we noticed that the container in fact received the files and that the files are listed in the input part of the container input. 
-Details of the test procedure are described in Appendix A \cite{bousfiha2025appendix}. Due to the fact that the list of files was extremely long, it was shortened. In summary, the container received a huge amount of files.
+Details of the test procedure are described in Appendix A \ref{app:Result}. Due to the fact that the list of files was extremely long, it was shortened. In summary, the container received a huge amount of files.
 
 The results demonstrate two things. First, the automation script with the REST API worked correctly. Second, there is an issue with the container accessing the input files, despite them being listed as received.
