@@ -1,6 +1,0 @@
-Recognizing the path to a Pipeline Descriptor XML file in XNAT:
-what i have tried :
-/data/xnat/home/pipelines/osa_pipeline.xml
-/data/xnat/pipeline/osa_pipeline.xml
-/data/xnat/pipeline/catalog/osa_prediction/osa_pipeline.xml
-/home/tanae/dockerfile/xnat-osa/Ziel3_XNAT ML Plugin/pipeline/osa_pipeline_Engine/osa_prediction/OSA_Predict.xml
