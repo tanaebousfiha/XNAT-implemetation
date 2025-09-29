@@ -1,1 +1,22 @@
 \chapter{Conclusion}
+
+
+%Starting
+This work brings to light the different AI deployment approaches in XNAT. Amongst them the Docker Container method and the Pipeline method. 
+%Result
+The Docker Container method proved to be a method with a easy installation process, and needs a minimal configuration through the JSON based command. Additionally it provides a automation deployment possibility through the big REST API support from XNAT community. The fact that images are stored in Docker Hub and can be reused across various XNAT installations suggests that the Docker Container method is a sustainable approach, aligning with FAIR principles.
+on the other side of the coin, the Docker Container method is heavily reliant on Docker availability and requires Docker expertise.
+
+The Pipeline method proved to be a method with multiple limitations. Since the method requires manual placement of XML descriptors, as well as the admin must extra configure the data types in order to enable the Pipeline on project wide or side wide. Considering that we have unfortunately a limited documentation and less support from XNAT Community the method remains to be non sustainable and not aligning with FAIR principles.
+
+In comparing these two methods, we conclude that the Docker Container method offers significant advantages over the Pipeline method. It also appears to have greater support within the XNAT community.
+
+% Zoom out >>> introducing Deep leaning idea
+This thesis has demonstrated the feasibility of deploying a machine learning component using Docker and Pipeline method within XNAT. 
+While such approaches such as the Docker Container method proved to be effective, thus still limited in term of capturing the full complexity of medical data.
+Conversely, deep learning methods such as convolutional neural networks for imaging and transformers for clinical text are becoming increasingly prominent in healthcare AI.
+By extending the presented container or pipeline based to accommodate these models, future work could be able to create clinically impactful AI workflows in XNAT.
+
+
+
+
