@@ -374,29 +374,8 @@ Details of the test procedure are described in Appendix
 This chapter outlines implementation challenges, including data transmission failures, REST API inconsistencies, and JSON configuration mismatches. Initial tests revealed the container wasn't receiving input files, confirmed by a "no\_file.txt" test. Further testing with REST API integration within the container also failed to produce file results in XNAT. Adjustments to the JSON command, including credentials and detailed output specifications, were unsuccessful. Adding delays between container executions also didn't resolve the input file issue.
 
 
-
-
 \normalsize
 
-
-
-\subsection{The Workflow Data in XNAT}
-
-When running a container manually in XNAT, data is automatically provided, processed, and results are reloaded. The system first generates a JSON specification with script details, inputs, and outputs. XNAT then prepares the relevant data, copies it to a temporary host directory, and mounts it for container access. The container processes the input, produces results, and writes them back to the host.
-
-While containers can handle many files (with limits adjustable via ulimit), this approach exposes a key issue: containers lack direct access to the XNAT database. Instead, data copying and mounting may cause host memory or disk space problems, especially with large datasets. In testing, failures occurred even with small datasets, suggesting the issue is not only due to size or resource limits.
-The diagram below illustrates the workflow data for a clearer understanding.  
-\begin{figure}[ht]
-    \centering
-    \def\svgwidth{\linewidth} 
-    \input{xnat.pdf_tex}
-    \caption{Diagram: XNAT Workflow for Container Integration}
-    \label{fig:workflowxnat}
-\end{figure}
-
-
-
-\normalsize
 
 
 \subsection{User Guide}
