@@ -16,27 +16,26 @@ To summarize all the REST APIs used in the automation script, Table A.1 in the A
 \end{figure}
 
 
-The REST API played a crucial role to develop a automatic workflow in the XNAT platform. The figure \ref{fig:workflow-steps}illustrates the role of the REST API in the automatization.
+The REST API played a crucial role to develop a automatic workflow in the XNAT platform. The figure \ref{fig:workflow-steps} illustrates the role of the REST API in the automatization.
 
 
 
 \subsection{Architecture and Organization of the Code}
 The automation script mirrors the manual workflow in 14 steps. Each part of the script automates a specific step of the manual process, including containerization, image building, command configuration in XNAT, and container launch.
 
-The purpose of this chapter is to introduce the system in more detail. A Python script is used to combine all the steps into an automated workflow. The libraries used in this work include: \texttt{requests}\footnote{\url{https://www.w3schools.com/python/module_requests.asp} last accessed on 10 August 2025}, \texttt{json}\footnote{\url{https://www.w3schools.com/python/python_json.asp} last accessed on 10 August 2025}, \texttt{os}\footnote{\url{https://docs.python.org/3/library/os.html} last accessed on 10 August 2025}, \texttt{subprocess}\footnote{\url{https://docs.python.org/3/library/subprocess.html} last accessed on 10 August 2025}, \texttt{getpass}\footnote{\url{https://docs.python.org/3/library/getpass.html} last accessed on 10 August 2025}, \texttt{sys}\footnote{\url{https://docs.python.org/3/library/sys.html} last accessed on 10 August 2025}, and \texttt{urllib3}\footnote{\url{https://urllib3.readthedocs.io/en/stable/} last accessed on 10 August 2025}.
+The purpose of this chapter is to introduce the system in more detail. A Python script is used to combine all the steps into an automated workflow. The libraries used in this work include: \texttt{requests}\footnote{\url{https://www.w3schools.com/python/module_requests.asp} last accessed 10.08.2025}, \texttt{json}\footnote{\url{https://www.w3schools.com/python/python_json.asp} last accessed 10.08.2025}, \texttt{os}\footnote{\url{https://docs.python.org/3/library/os.html} last accessed 10.08.2025}, \texttt{subprocess}\footnote{\url{https://docs.python.org/3/library/subprocess.html} last accessed 10.08.2025}, \texttt{getpass}\footnote{\url{https://docs.python.org/3/library/getpass.html} last accessed 10.08.2025}, \texttt{sys}\footnote{\url{https://docs.python.org/3/library/sys.html} last accessed 10.08.2025}, and \texttt{urllib3}\footnote{\url{https://urllib3.readthedocs.io/en/stable/} last accessed 10.08.2025}.
 
-The Python Requests library is the go-to solution for making \ac{HTTP} requests in Python, thanks to its elegant and intuitive API that simplifies the process of interacting with web services and consuming data in the application.\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} last accessed on 10 August 2025} The Sys module in Python provides access to variables and functions that interact closely with the Python interpreter and runtime environment.
+The Python Requests library is the go-to solution for making \ac{HTTP} requests in Python, thanks to its elegant and intuitive API that simplifies the process of interacting with web services and consuming data in the application\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} last accessed 10.08.2025}. The Sys module in Python provides access to variables and functions that interact closely with the Python interpreter and runtime environment.
 
 Since a JSON-based command is written, the use of the JSON library was necessary. JSON is a syntax for storing and exchanging data. It is text, written with JavaScript Object Notation.\footnote{W3Schools, Python JSON}
-The python Subprocess module is a tool that allows running other programs or commands from your python code. Using the Python Subprocess module resembles executing commands directly on the system computer using python instead of typing them directly into the command prompt. This module makes it easy to automate Python code.\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} last accessed 10 August 2025}
-Getpass() prompts the user for a password without echoing. The getpass module provides a secure way to handle password prompts where programs interact with the users via the terminal.\footnote{\url{https://www.geeksforgeeks.org/python/getpass-and-getuser-in-python-password-without-echo/} last accessed on 10 August 2025}
+The Python Subprocess module is a tool that allows running other programs or commands from your Python code. Using the Python Subprocess module resembles executing commands directly on the system computer using Python instead of typing them directly into the command prompt. This module makes it easy to automate Python code\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} last accessed 10.08.2025}.
+Getpass() prompts the user for a password without echoing. The getpass module provides a secure way to handle password prompts where programs interact with the users via the terminal\footnote{\url{https://www.geeksforgeeks.org/python/getpass-and-getuser-in-python-password-without-echo/} last accessed 10.08.2025}.
 
-The urllib3 library was used to disable the InsecureRequestWarning, which is normally shown when Requests connects to a site with an unverified SSL certificate. This approach helps keep the output clean and free of unnecessary warnings during the run of the script. Figure 3.2 illustrates all the libraries used in the script.
+The urllib3 library was used to disable the InsecureRequestWarning, which is normally shown when Requests connects to a site with an unverified SSL certificate. This approach helps keep the output clean and free of unnecessary warnings during the run of the script. Figure \ref{fig:diagram-core-libraries} illustrates all the libraries used in the script.
 
 Currently, the system is running Docker Engine 28.3.0. The Docker Client version in use is 20.10.5+dfsg1, which communicates with the Docker Engine to issue commands and manage images and containers. The XNAT web application is running on version 1.9.1.1, as verified through the web interface.
 
-
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \def\svgwidth{0.8\linewidth}
   \input{lib.pdf_tex}
@@ -46,7 +45,7 @@ Currently, the system is running Docker Engine 28.3.0. The Docker Client version
  
   \subsection{The Dockerfile}
  
-The first function responsible for writing the Dockerfile is called \texttt{def write\_dockerfile}, and it takes three arguments: the target directory for the Dockerfile, the name of the Python script to include, and an optional base Docker image (defaulting to \texttt{python:3.10-slim\footnote{\url{https://hub.docker.com/layers/library/python/3.10-slim/images/sha256-0d15918ecae76250659ae3036ad1fc898f801f6cb803860bdf0cc4b27fe316dc}}}, currently the fastest and slimmest image of Docker). The function creates the necessary folder (if it does not already exist), constructs the Dockerfile content, and writes it. The content of the Dockerfile is introduced with string interpolation and contains the base image and several commands such as \texttt{WORKDIR /app} (a working directory) and \texttt{COPY \{script\_filename\} /app/\{script\_filename\}} to copy the user script inside the image. The line \texttt{RUN pip install --no-cache-dir pandas} tells Docker to install the pandas Python library using pip during the build process of the Docker image, which helps reduce the overall image size and avoids unnecessary layers in the build process. The last command of the Dockerfile is \texttt{COPY requirements.txt /app/requirements.txt}, which provides the opportunity for the user to write in a separate text file all the libraries used in the container script, to be installed later during the image build process.
+The first function responsible for writing the Dockerfile is called \texttt{def write\_dockerfile}, and it takes three arguments: the target directory for the Dockerfile, the name of the Python script to include, and an optional base Docker image (defaulting to \texttt{python:3.10-slim\footnote{\url{https://hub.docker.com/layers/library/python/3.10-slim/images/sha256-0d15918ecae76250659ae3036ad1fc898f801f6cb803860bdf0cc4b27fe316dc}{ last accessed 27.09.2025}}}, currently the fastest and slimmest image of Docker). The function creates the necessary folder (if it does not already exist), constructs the Dockerfile content, and writes it. The content of the Dockerfile is introduced with string interpolation and contains the base image and several commands such as \texttt{WORKDIR /app} (a working directory) and \texttt{COPY \{script\_filename\} /app/\{script\_filename\}} to copy the user script inside the image. The line \texttt{RUN pip install --no-cache-dir pandas} tells Docker to install the pandas Python library using pip during the build process of the Docker image, which helps reduce the overall image size and avoids unnecessary layers in the build process. The last command of the Dockerfile is \texttt{COPY requirements.txt /app/requirements.txt}, which provides the opportunity for the user to write in a separate text file all the libraries used in the container script, to be installed later during the image build process.
 
 
 The \texttt{CMD} instruction was removed from the Dockerfile because it caused errors when running the container in XNAT. The issue was due to a conflict between the \texttt{CMD} instruction in the Dockerfile and the JSON command configuration, as both included the \texttt{python3} prefix. This led to a duplicate command execution, which caused the container to fail. By removing \texttt{CMD} from the Dockerfile, the execution logic is now fully controlled by XNAT through the JSON-based command, ensuring a successful launch of the Docker Container.
@@ -172,7 +171,7 @@ The \texttt{def get\_input} function uses a \texttt{while True} loop to keep ask
 
 \subsection{The Command Definition in JSON Format}
 
-To communicate the Docker image to XNAT, and consequently to run the container in the website, it is necessary to write a command definition in JSON format.\footnote{\url{ https://wiki.xnat.org/container-service/json-command-definition} last accessed 24.09.29.2025}
+To communicate the Docker image to XNAT, and consequently to run the container in the website, it is necessary to write a command definition in JSON format.\footnote{\url{ https://wiki.xnat.org/container-service/json-command-definition} last accessed 24.09.2025}
 Typically, JSON command definitions are customized to the image's specific purpose. However, in this automation, the JSON command is generalized to handle any file input.
 
 To achieve that, the function used is called \texttt{create\_json\_file}, which builds the configuration dictionary for a Docker-based XNAT command (for the XNAT Container Service), writes it to a \texttt{command.json} file, and returns the filename.
@@ -299,14 +298,14 @@ This function retrieves the Command ID and Wrapper ID from XNAT, using the hostn
 
 \subsection{The Extraction of All Files from All Project Structures}
 
-The get\_all\_files\_all\_levels function comprehensively collects all files from an XNAT project's data hierarchy (project, subjects, experiments, scans) using the XNAT REST API (GET). It structures the file information into a dictionary containing the file's level, IDs, name, resource folder, and URI for easy retrieval.
+The get\_all\_files\_all\_levels function comprehensively collects all files from an XNAT project's data hierarchy (project, subjects, experiments, scans) using the XNAT REST API (GET). It structures the file information into a dictionary containing the file's level, IDs, name, resource folder. The figure \ref{fig:extraction} illustrates all the extraction of all the files from a project structure in XNAT.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \def\svgwidth{0.9\linewidth}
     \input{extraction.pdf_tex}
     \caption{Diagram: The Extraction of files from all the project structure}
-    \label{fig:enter-label}
+    \label{fig:extraction}
 \end{figure}
 
 \subsection{Launch the Container}
@@ -327,35 +326,34 @@ The launch\_container\_with\_all\_files function launches a container with extra
 
 
 
-Figure 3.3 illustrates the steps to deploy a Docker Container in XNAT and the figure 3.4 represents the workflow steps for the Docker Container deployment within XNAT.
+The figure \ref{fig:workflow-steps} illustrates the steps to deploy a Docker Container in XNAT.
 
-
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \def\svgwidth{0.9\linewidth}
     \input{steps.pdf_tex}
-    \caption{Diagram: Workflow Steps for the Docker Container Deployment in XNAT}
+    \caption{Diagram: Deployment steps for the Docker Container in XNAT}
     \label{fig:workflow-steps}
 \end{figure}
 
 
-The \autoref{fig:automatic/manuall} illustrates how the automation script facilitates the process of deploying a container in XNAT. It reduces all the steps.
+The figure \ref{fig:automatic/manuall} illustrates how the automation script facilitates the process of deploying a container in XNAT. It reduces all the steps.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \def\svgwidth{0.9\linewidth}
     \input{compare1.pdf_tex}
-    \caption{Diagram: Diagram illustrating the difference between the manual and the automatic process}
+    \caption{Diagram: the difference between the manual and the automatic process}
     \label{fig:automatic/manuall}
 \end{figure}
 
 
 
 \subsection{Testing the Code}
-Initially, the script requests user input for login credentials, Project ID, command name, and description. Following this input, the script automates image building, tagging, pushing, JSON command creation, command enabling, and container launching.
+Initially, the script requests user input for login credentials, project ID, command name, and description. Following this input, the script automates image building, tagging, pushing, JSON based command creation, command enabling, and container launching.
 
 \subsection{Results on XNAT}
-The result that we came to after testing the code is that all the steps are working correctly, except that the container could not receive any files. With the \ac{Stdout} view we found out that the container received zero files. The container output is shown in Listing \ref{lst:stdout}.
+The result that we came to after testing the code is that all the steps are working correctly, except that the container could not receive any files. With the \ac{Stdout} view we found out that the container received zero files. The Docker Container output is shown in Listing \ref{lst:stdout}.
  
 \begin{lstlisting}[numbers=none, caption={stdout in XNAT}, label={lst:stdout}]
 View stdout (from file)
@@ -371,7 +369,7 @@ Details of the test procedure are described in Appendix
 \ref{app:Result}. Due to the fact that the list of files was extremely long, it was shortened. In summary, the container received a huge amount of files.
 \normalsize
 \subsection{Discussion of the Results}
-This chapter outlines implementation challenges, including data transmission failures, REST API inconsistencies, and JSON configuration mismatches. Initial tests revealed the container wasn't receiving input files, confirmed by a "no\_file.txt" test. Further testing with REST API integration within the container also failed to produce file results in XNAT. Adjustments to the JSON command, including credentials and detailed output specifications, were unsuccessful. Adding delays between container executions also didn't resolve the input file issue.
+This chapter outlines deployment challenges, including data transmission failures, REST API inconsistencies, and JSON configuration mismatches. Initial tests revealed the container wasn't receiving input files, confirmed by a "no\_file.txt" test. Further testing with REST API integration within the Docker Container also failed to produce file results in XNAT. Adjustments to the JSON command, including credentials and detailed output specifications, were unsuccessful. Adding delays between container executions also didn't resolve the input file issue.
 
 
 \normalsize
@@ -379,17 +377,17 @@ This chapter outlines implementation challenges, including data transmission fai
 
 
 \subsection{User Guide}
-To better understand the system created and mostly the motivation behind this automation project. We have inserted the table 3.1 to list how the the Workflow is working and what are the requirement that the user needs to have in order to run the script. 
+To better understand the system created and mostly the motivation behind this automation project. We have inserted the table \ref{tab:automatic_script} to list how the the Workflow is working and what are the requirement that the user needs to have in order to run the script. 
 
 \begin{table}[H]
   \centering
-  \caption{System Requirements and Script Details for Automatic Containerization}
+  \caption{ User guide for Automatic Containerization}
   \label{tab:automatic_script}
   \begin{tabular}{|l|p{9cm}|}
   \hline
   \textbf{System Requirements} & 
   - Python installed \newline
-  - \texttt{requirements.txt} in the same folder as \texttt{automat\_f\_2.py} \newline
+  -\texttt{requirements.txt} in the same folder as \texttt{automat\_f\_2.py} \newline
   - XNAT server accessible \newline
   - Docker Engine installed and running \newline
   - Logged in to Docker Hub \\  \hline
