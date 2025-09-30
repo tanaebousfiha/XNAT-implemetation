@@ -1,10 +1,45 @@
-\chapter{Comprehensive Analyse}
+\chapter{Comprehensive Analysis}
 \section{Docker Method}
 
-After testing both manual and automated Docker Container workflows, we found several limitations that need further work. A key benefit is automation, allowing single or multiple workflows to be launched via scripts. The approach supports different XNAT structures, but users must configure containers for the desired level. To process all files across a project, extra steps are required: gathering data from all structures and relocating outputs to their original directories. Another advantage is flexible file filtering—containers can be set to process only certain formats (e.g., CSV, TXT, DICOM) through JSON-based commands, enabling precise, project-specific workflows.
+
+%result and discussion 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+After testing both manual and automated Docker Container workflows, we found several limitations that need further work. A key benefit is automation, allowing single or multiple workflows to be launched via scripts. The approach supports different XNAT structures, but users must configure containers for the desired project data level. To process all files across a project, extra steps are required: gathering data from all structures and relocating outputs to their original directories. Another advantage is flexible file filtering—containers can be set to process only certain formats (e.g., CSV, TXT, DICOM) through JSON-based commands, enabling precise, project-specific workflows.
 
 \subsection{Generalizability of the Docker Method}
-The Docker Container is a suitable way to integrate AI into XNAT, working well with multiple data types like CSV or DICOM. However, adapting it to other formats still requires manual adjustments, limiting reusability across projects. To improve generalizability and accessibility especially for non-programming users the method could be extended with a graphical user interface (GUI), making it easier to apply across different institutions, datasets, and environments. 
+The Docker Container is a suitable way to integrate AI into XNAT, working well with multiple data types like CSV or DICOM. 
+
+However, adapting it to other formats still requires manual adjustments, limiting reusability across projects.
+
+
+
+
+To improve generalizability and accessibility especially for non-programming users the method could be extended with a graphical user interface (GUI), making it easier to apply across different institutions, datasets, and environments. 
+
+
+
 \begin{figure}[H]
     \centering
     \def\svgwidth{\linewidth} 
@@ -15,7 +50,7 @@ The Docker Container is a suitable way to integrate AI into XNAT, working well w
 \normalsize
 \subsubsection{GUI Mockup for Docker Container Automation in XNAT}
 
-To improve accessibility and usability for non-technical users, the Docker automation script was visualized as a GUI mockup. As shown in Figure 3.7, this mockup is not functional but demonstrates how the command-line workflow appears, following the same logical steps: (1) container configuration, (2) project selection, (3) file discovery, (4) container launch, and (5) result visualization.
+To improve accessibility and usability for non-technical users, the Docker automation script was visualized as a GUI mockup. As shown in Figure 3.7, this mockup demonstrates how the command-line workflow appears, following the same logical steps: (1) container configuration, (2) project selection, (3) file discovery, (4) container launch, and (5) result visualization.
 \subsection{The Docker Container Approach and the Somnolink Project, Sustainability Aspects Including FAIR Criteria}
 \begin{figure}[H]
     \centering
@@ -25,10 +60,11 @@ To improve accessibility and usability for non-technical users, the Docker autom
     \label{fig:workflowxnat}
 \end{figure}
 
-The Somnolink project is a nationwide initiative to improve the treatment and research of obstructive sleep apnea through better data sharing. The obstructive sleep apnea is the most prevalent disorder in clinical sleep laboratories, Therefore, the main goal of the Somnolink project is to improve the diagnosis and therapy of OSA.
-The objectives of the project are aligned for improving the OSA care with the health data typically collected along the official patient pathway, as defined by the German guidelines. This pathway consists of four stages: (1) assessing pre-test probability through medical history and questionnaires, (2) conducting physical examinations in primary care, (3) performing outpatient sleep diagnostics, and (4) carrying out comprehensive sleep laboratory studies. Based on this structure, which data are relevant at each step is identified and proposed how data-driven methods such as machine learning–based decision support systems could assist clinicians in their decision-making ~\cite{krefting_somnolink_2025}.
-In general, the implementation of Docker container technology is becoming increasingly prevalent within the Somnolink Project, due to It is notable that an OSA prediction model can be implemented with a Docker container within XNAT.
-In this context, automating the Docker Container in XNAT offers a significant advantages. It allows the OSA prediction to be executed in a standardized manner. Such a automation is not only reducing the manual intervention, but also ensuring a consistent  workflow and facilitating  the integration of data-driven decision support into clinical practice. Which contribute to fulfilling the aim and the goals of this project.
+The Somnolink project is a nationwide initiative to improve the treatment and research of obstructive sleep apnea through better data sharing. The obstructive sleep apnea is the most prevalent disorder in clinical sleep laboratories. Therefore, the main goals of the Somnolink project are (1) improvement of availability of sleep data at point of care, (2) improvement of the early diagnosis and (3) personalized therapy of OSA and (4) therapy adherence prediction.
+The objectives of the project are aligned with the health data typically collected along the usual patient pathway. It consists of four stages: (1) assessing pre-test probability through medical history and questionnaires, (2) conducting physical examinations in primary care, (3) performing outpatient sleep diagnostics, and (4) carrying out comprehensive sleep laboratory studies. Based on this structure, which data are relevant at each step is identified and ML models are proposed that could assist clinicians in their decision-making ~\cite{krefting_somnolink_2025}. A central hub consisting of XNAT will manage the sleep data among the patient pathway and the AI models as a second opinion.
+
+In general, the implementation of Docker container technology is becoming increasingly prevalent within the Somnolink Project, due to it is notable that the models can be implemented with a Docker container within XNAT.
+In this context, automating the Docker Container in XNAT offers a significant advantages. It allows the Somnolink predictions to be executed in a standardized manner. Such an automation not only reduces the manual intervention, but also ensures a consistent  workflow and facilitating the integration of data-driven decision support into clinical practice, which contribute to the project goals.
 
 
 The figure 3.8 illustrates the structure of the OSA diagnostic pathway in relation to data collection, data driven support, and technical implementation.
@@ -78,7 +114,7 @@ Within the Somnolink project, the pipeline could play a great role as workflow  
 
 \section{Evaluating Pipeline and Docker Approaches in XNAT}
 
-For the purpose of evaluating the two methods, we began by compiling a comparative table to provide a clearer understanding of their respective features. 
+For the purpose of evaluating the two methods, we began by compiling a comparative table to provide a clearer understanding of their respective features.
 
 \begin{table}[H]
     \centering
