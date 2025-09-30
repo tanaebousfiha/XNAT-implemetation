@@ -1,5 +1,5 @@
 \chapter{Deployment of Methods in XNAT}
-\section{Concrete Docker Method}
+\section{The Docker Method}
 
 
 \subsection{Introduction to the Automation Script for the Docker Container Method}
@@ -16,7 +16,7 @@ To summarize all the REST APIs used in the automation script, Table A.1 in the A
 \end{figure}
 
 
-The REST API played a crucial role to develop a automatic workflow in the XNAT platform. The figure 3.1 illustrates the role of the REST API in the automatization.
+The REST API played a crucial role to develop a automatic workflow in the XNAT platform. The figure \ref{fig:workflow-steps}illustrates the role of the REST API in the automatization.
 
 
 
@@ -355,14 +355,15 @@ The \autoref{fig:automatic/manuall} illustrates how the automation script facili
 Initially, the script requests user input for login credentials, Project ID, command name, and description. Following this input, the script automates image building, tagging, pushing, JSON command creation, command enabling, and container launching.
 
 \subsection{Results on XNAT}
-The result that we came to after testing the code is that all the steps are working correctly, except that the container could not receive any files. With the \ac{Stdout} view we found out that the container received zero files. 
+The result that we came to after testing the code is that all the steps are working correctly, except that the container could not receive any files. With the \ac{Stdout} view we found out that the container received zero files. The container output is shown in Listing \ref{lst:stdout}.
  
-\begin{lstlisting}[numbers=none]
+\begin{lstlisting}[numbers=none, caption={stdout in XNAT}, label={lst:stdout}]
 View stdout (from file)
 Inhalt von /input (rekursiv):
 /input: []
 Keine CSV-Datei in /input gefunden.
 \end{lstlisting}
+
 
 \normalsize
 But interestingly, after searching in the container information, we noticed that the container in fact received the files and that the files are listed in the input part of the container input. 
@@ -399,7 +400,7 @@ The diagram below illustrates the workflow data for a clearer understanding.
 
 
 \subsection{User Guide}
-To better understand the system created and mostly the motivation behind this automation project. We have inserted a table to list how the the Workflow is working and what are the requirement that the user needs to have in order to run the script.
+To better understand the system created and mostly the motivation behind this automation project. We have inserted the table 3.1 to list how the the Workflow is working and what are the requirement that the user needs to have in order to run the script. 
 
 \begin{table}[H]
   \centering
