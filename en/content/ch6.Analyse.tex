@@ -179,6 +179,9 @@ After comparing both approaches in terms of installation, configuration, automat
 - Consistent and reproducible runs (all dependencies included). \\
 - Large community support. \\
 - Secure via isolated container environment. \\
+- Full automation achievable, including processing of all
+project files or selected files.\\
+- 
 } \\
 \hline
 \textbf{Disadvantages} &
@@ -188,12 +191,15 @@ After comparing both approaches in terms of installation, configuration, automat
 - Requires XML schema knowledge. \\
 - Limited automation support. \\
 - Low portability (depends on local server setup).\\
+- No automation could be achieved, neither processing of all project files nor selected.\\
 }
 &
 \parbox[t]{6cm}{
 - Requires Docker knowledge. \\
 - Depends on Docker availability, if the Docker server is blocked or encounters a problem, the images are not recognized within XNAT. \\
-- Requires knowledge of regular expressions in case file filtering is needed.
+- Requires knowledge of regular expressions in case file filtering is needed.\\
+- Lack access to the database. \\
+- The mounting of extracted files consumes a significant amount of storage space, leading to space limitations.\\
 } \\
 \hline
 \end{tabular}
