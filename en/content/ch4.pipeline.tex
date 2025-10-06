@@ -1,9 +1,7 @@
 
-\section{The Pipeline Method}
+\section{Pipeline Method}
 
-Integrating a Pipeline in XNAT requires an \ac{XML} descriptor to connect XNAT and the user script, defining metadata, execution steps, conditions, iterations, outputs, and resource descriptors.
-During the Pipeline analysis we initially focused on analyzing the implementation process of a OSA prediction based script with the pipeline method. The Pipeline system requires two components: Pipeline Engine and the XNAT Pipeline Engine Plugin. By default, Pipelines are located at /data/home/xnat/pipeline \footnote{\url{https://wiki.xnat.org/documentation/installing-pipelines-in-xnat} last accessed 22.09.2025}
-
+Integrating a pipeline in XNAT requires an Extensible Markup Language (XML) descriptor to connect the XNAT with the defined external script. As in the fundamentals cited the XML descriptor defines the Pipeline execution steps among them the input, the output. In this work, the pipeline approach was analyzed using an OSA (Obstructive Sleep Apnea) prediction script as a use case.
 \normalsize
 
 \lstinputlisting[
@@ -16,14 +14,34 @@ During the Pipeline analysis we initially focused on analyzing the implementatio
 
 \noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/f1ea7a23800a9a1dbd2ca8f5a79685f9ab3f04bb/XNAT%20ML%20Plugin/osa_pipeline.xml#L1-L31}
 \normalsize
+The  Listing \ref{lst:automat-snippet} presents a sample resource descriptor for a Python script, specifying its location, command prefix, and input arguments such as configuration file. First, which defines the workflow, is copied to /data/xnat/pipeline/pipelines/my\_pipeline/, where XNAT stores pipeline descriptors. 
 
-The  Listing \ref{lst:automat-snippet} presents a sample resource descriptor for a Python script, specifying its location, command prefix, and input arguments such as configuration file, XNAT host, user credentials (with password marked as sensitive), and log file path. 
-The commands set up an XML-based pipeline in XNAT. First, which defines the workflow, is copied to /data/xnat/pipeline/pipelines/my\_pipeline/, where XNAT stores pipeline descriptors. Next, \texttt{run.sh}, the script that executes the workflow, is copied to the same directory so both files are together in the required structure. Finally, \texttt{chmod +x} makes \texttt{run.sh} executable, without this step XNAT could not run the script and the pipeline would fail.
-\footnote{\url{https://wiki.xnat.org/documentation/installing-pipelines-in-xnat} last accessed 10.09.2025}
-\normalsize
-\subsection{Pipeline Development and Integration in XNAT}
+The XNAT pipeline system consist of two main components: \\
+the Pipeline Engine, which executes workflow definitions, and the XNAT Pipeline Engine Plugin, which enables interaction with the XNAT interface.
+By default, pipelines are stored in the directory /data/xnat/home/pipeline/. During the initial setup, the Pipeline Engine is initialized via a Secure Shell (SSH) session by running
+<PIPELINE\_HOME>/setup.sh YOUR\_ADMIN\_EMAIL\_ID YOUR\_SMTP\_SERVER,
+which generates the configuration file pipeline.config. This file contains essential parameters such as the site identifier and administrator email address\footnote{\url{https://wiki.xnat.org/documentation/installing-pipelines-in-xnat} last accessed 10.09.2025}.\\
+Usually a complete Pipeline in XNAT is composed of three XML configuration layers:\\
+First a resource descriptor: which defines the executable component (e.g., a Python or shell script). \\
+Second parameters File, which provides concrete runtime values for these input arguments, such as configuration files.\\
+Third pipeline Descriptor, which  specifies which scripts to execute, in which order, and how the outputs should be handled \footnote{\url{https://groups.google.com/g/xnat_discussion/c/ewhjL7upJf4/m/0Soz5-sBEzwJ} last accessed 06.10.2025}.\\
+
+\subsection{Pipeline workflow in XNAT}
+When a pipeline is launched, first XNAT reads the pipeline Descriptor XML, identifies the recourse descriptor, substitutes the variables defined in the Parameters File, and then executes the specified commands. The outputs are automatically captured and stored as XNAT resources.
 Unlike the Docker-based approach, setting up a pipeline in XNAT requires more manual steps. First, the pipeline path must be registered under Admin > Pipelines > Register new Pipelines. Then, to allow users to run the pipeline from the XNAT interface, an administrator must edit the relevant data type under Administer > Data Types and add a new action (PipelineScreen\_launch\_pipeline) in the available report actions section, with a display label such as Build or Run Pipeline.\footnote{\url{https://wiki.xnat.org/documentation/installing-pipelines-in-xnat} last accessed 10.09.2025}
 \normalsize
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection{The Pipeline and the REST API}
 With the aim of analyzing the Pipeline method more deeply, it is worth noting that XNAT provides several REST API endpoints for managing and running Pipelines the most relevant endpoint for automation is \url{POST /pipelines/launch/{pipelineName}} \footnote{\url{://wiki.xnat.org/xnat-api/xnat-pipeline-api} last accessed 10.09.2025}
 This enables programmatic execution of registered Pipelines in XNAT. However, full automation is limited, as endpoints to globally enable a Pipeline or assign it to a specific project are missing from the REST API. However, while Pipeline execution can be automated, deployment and project-level setup still require manual steps.
