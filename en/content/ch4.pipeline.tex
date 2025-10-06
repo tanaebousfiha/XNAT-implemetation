@@ -26,6 +26,23 @@ First a resource descriptor: which defines the executable component (e.g., a Pyt
 Second parameters File, which provides concrete runtime values for these input arguments, such as configuration files.\\
 Third pipeline Descriptor, which  specifies which scripts to execute, in which order, and how the outputs should be handled \footnote{\url{https://groups.google.com/g/xnat_discussion/c/ewhjL7upJf4/m/0Soz5-sBEzwJ} last accessed 06.10.2025}.\\
 
+The figure \ref{fig:pipeline} defines the essentials element to run a pipeline in XNAT. 
+
+
+
+\begin{figure}[H]
+    \centering
+    \def\svgwidth{0.9\linewidth}
+    \input{pipeline.pdf_tex}
+    \caption{Diagram: Conceptual diagram of the XNAT Pipeline Engine workflow.}
+    \label{fig:pipeline}
+\end{figure}
+
+
+
+
+
+
 \subsection{Pipeline workflow in XNAT}
 When a pipeline is launched, first XNAT reads the pipeline Descriptor XML, identifies the recourse descriptor, substitutes the variables defined in the Parameters File, and then executes the specified commands. The outputs are automatically captured and stored as XNAT resources.
 Unlike the Docker-based approach, setting up a pipeline in XNAT requires more manual steps. First, the pipeline path must be registered under Admin > Pipelines > Register new Pipelines. Then, to allow users to run the pipeline from the XNAT interface, an administrator must edit the relevant data type under Administer > Data Types and add a new action (PipelineScreen\_launch\_pipeline) in the available report actions section, with a display label such as Build or Run Pipeline.\footnote{\url{https://wiki.xnat.org/documentation/installing-pipelines-in-xnat} last accessed 10.09.2025}
