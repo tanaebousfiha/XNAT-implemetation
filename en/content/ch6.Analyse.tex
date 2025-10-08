@@ -130,6 +130,10 @@ For the purpose of evaluating the two methods, we began by compiling a comparati
 \end{table}
 
  The table \ref{tab:pipeline-vs-docker} has been added to present a direct comparison between the two methods.
+
+
+
+
  
  \subsection{Advantages and Disadvantages of the Methods}
 
@@ -138,47 +142,58 @@ After comparing both approaches in terms of installation, configuration, automat
 \begin{table}[htbp]
 \centering
 \caption{Advantages and disadvantages of the Pipeline method and Docker Container method in XNAT.}
+\label{tab:adv-disadv}
 \renewcommand{\arraystretch}{1.3}
-\begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
+\begin{tabular}{|p{3cm}|p{3cm}|p{5cm}|p{4cm}|}
 \hline
-\textbf{Aspect} & \textbf{Pipeline Method} & \textbf{Docker Container Method} \\
+\textbf{Aspect} & \textbf{Pipeline Method} & \textbf{Docker Container Method} & \textbf{Automatization of the Docker method} \\
 \hline
 \textbf{Advantages} &
-\parbox[t]{6cm}{
-- Fully compatible with older XNAT versions\footnote{\url{https://wiki.xnat.org/documentation/xnat-1-7-5-3-release-notes{ last accessed 28.09.2025}}}.\\
+\parbox[t]{3cm}{
+- Fully compatible with older XNAT versions\footnote{\url{https://wiki.xnat.org/documentation/xnat-1-7-5-3-release-notes} last accessed 28.09.2025}.\\
 - Can execute external applications and shell scripts~\cite{jansen_extending_2015}.
 }
 &
-\parbox[t]{6cm}{
--Easy installation (upload once). \\
--Minimal configuration via JSON-based command. \\
--Strong REST API support enabling full automation. \\
--Highly reusable across XNAT servers. \\
--Easier updates by building and pushing a new image. \\
--Consistent and reproducible runs (all dependencies included). \\
--Large community support. \\
--Secure via isolated container environment. \\
--Full automation achievable, including processing of all
-project files or selected files.\\
--The fact that the Docker images are stored on Docker Hub means they can be used in different clinics and research institutions.\\ 
+\parbox[t]{5cm}{
+- Easy installation (Docker Engine). \\
+- Minimal configuration via JSON-based command.\\
+- Highly reusable across XNAT servers. \\
+- Easier updates by building and pushing a new image. \\
+- Large community support.\\
+- Secure via isolated container environment. \\
+- Docker images stored on Docker Hub can be used in different clinics and research institutions.\\
+}
+&
+\parbox[t]{4cm}{
+- No configuration needed. \\
+- Extremely low knowledge requirement (only need to write a requirements file). \\
+- All manual steps automated. \\
+- The script asks simple questions. \\
+- Time saving compared to the manual Docker method. \\
+- Images reusable across environments and institutes. \\
+- Images securely stored in Docker Hub and within XNAT.\\
 } \\
 \hline
 \textbf{Disadvantages} &
-\parbox[t]{6cm}{
--Requires manual placement of XML descriptors and scripts. \\
--Needs server access for installation and updates. \\
--Requires XML schema knowledge. \\
--Limited automation support. \\
--Low portability (depends on local server setup).\\
--No automation could be achieved, neither processing of all project files nor selected.\\
+\parbox[t]{3cm}{
+- Requires manual placement of XML descriptors.\\
+- Needs server access for installation and updates.\\
+- Requires XML schema knowledge.\\
+- Limited automation support and no automation achievable.\\
 }
 &
 \parbox[t]{6cm}{
--Requires Docker knowledge. \\
--Depends on Docker availability, if the Docker server is blocked or encounters a problem, the images are not recognized within XNAT. \\
--Requires knowledge of regular expressions in case file filtering is needed.\\
--Lack access to the database. \\
--The mounting of extracted files consumes a significant amount of storage space, leading to space limitations.\\
+- Requires Docker knowledge. \\
+- Depends on Docker availability \\if Docker is blocked or fails, \\images are not recognized\\ within XNAT. \\
+- Requires regular expression\\ knowledge for file filtering. \\
+- Limited access to the database. \\
+- Mounting extracted files \\ consumes significant \\storage space.\\
+}
+&
+\parbox[t]{4cm}{
+- Works better with launching multiple containers. \\
+- Problems launching a single container. \\
+- For specific file processing, the JSON command in the script must be adjusted with an extra matcher.
 } \\
 \hline
 \end{tabular}
