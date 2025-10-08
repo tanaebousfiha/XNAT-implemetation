@@ -95,32 +95,40 @@ Pipeline descriptors are stored in locally on the XNAT server and are not system
 For the purpose of evaluating the two methods, we began by compiling a comparative table to provide a clearer understanding of their respective features.
 
 \begin{table}[H]
+  \centering
   \caption{Comprehensive comparison of XNAT Pipeline method and Docker Container method.}
-    \centering
-      \begin{tabular}{|>{\centering\arraybackslash}p{4cm}|
-                    >{\centering\arraybackslash}p{5cm}|
-                    >{\centering\arraybackslash}p{5cm}|}
+  \label{tab:pipeline-vs-docker}
+
+  \begin{tabular}{|>{\centering\arraybackslash}p{2cm}|
+                      >{\centering\arraybackslash}p{4cm}|
+                      >{\centering\arraybackslash}p{4cm}|
+                      >{\centering\arraybackslash}p{4cm}|}
     \hline
-    \textbf{Aspect} & \textbf{The Pipeline method} & \textbf{Docker Container method}\\ \hline
-     Installation & Requires manual placement of XML descriptors, plugin JARs\footnote{\url{https://wiki.xnat.org/documentation/installing-the-pipeline-engine} last accessed 07.10.2025}, and executables on the server.& Container image uploaded once (via Docker registry) and configured in XNAT. \\ \hline
-    Configuration & Admin must edit data types, enable actions, and rebuild Pipeline engine, require direct access to the server in order to manually copy the XML
-descriptor and associated scripts to a specific directory (/data/xnat/pipeline/pipelines/).& Minimal configuration through a JSON command, no engine rebuild needed. \\ \hline
-Execution & the Run Pipeline option must be build via actions menu. & Triggered via actions menu or REST API, image runs in isolated environment. \\ \hline
-Automation & Limited REST API Supported by XNAT Community, many tasks still require manual steps.& Excellent support of the REST API by XNAT Community. Enabling a complete automation of workflows. \\ \hline
+    \textbf{Aspect} & \textbf{The Pipeline method} & \textbf{Docker Container method} & \textbf{Automatization of the Docker method}\\ \hline
+    
+    
+    Installation & Requires manual placement of XML descriptors, plugin JARs\footnote{\url{https://wiki.xnat.org/documentation/installing-the-pipeline-engine} last accessed 07.10.2025}, and executables on the server. & Container image uploaded once (via Docker registry) and configured in XNAT. & The automatization script must be launched and the Docker Engine must be installed and started up as well. \\ \hline
+    
 
-Workflow automation achievement & No automation possible due to lack of REST API support. & Full automation achievable, from writing the Dockerfile to launching the container, including processing of all project files or selected files. \\ \hline
+    
+    Configuration & Admin must edit data types, enable actions, and rebuild Pipeline engine, require direct access to the server in order to manually copy the XML descriptor and associated scripts to a specific directory. & Minimal configuration through a JSON command, no engine rebuild needed. & No need for any configuration, the script carries the workflow to the end. \\ \hline
+    
+    Execution & The Run Pipeline option must be built via actions menu. & Triggered via actions menu or REST API, image runs in isolated environment. & The Docker Container is enabled automatically sitewide and project wide too. \\ \hline
 
-Deployability and flexibility & Pipelines are highly dependent on the specific XNAT environment and server configuration in which they are deployed. & Docker images can be readily reused in various XNAT installations.\\ \hline
-Preservation & Updating necessitates server access and manual reconfiguration.& Updates can be managed through the construction and deployment of a new image, with no need for direct changes to the server configuration.\\ \hline
-
-Maintenance & Requires server access and manual reconfiguration.& Updating requires building and pushing a new image, no direct server changes needed.\\ \hline
-Usability& Requires XML schema knowledge and direct server administration.& Requires Docker knowledge, but easier to reuse prebuilt images, through running basics commands on terminal.\\ \hline
-Consistency& Depends on identical server setups and configurations.& High reproducibility is achieved, as all dependencies are within the container.\\ \hline
-Community& Limited documentation and less support from XNAT Community.& Huge support from XNAT community.\\ \hline
-Security& Credentials needed in XML configuration.& Isolated container environments.\\ \hline
-    \end{tabular}
-    \label{tab:pipeline-vs-docker}
+    Deployability and flexibility & Pipelines are highly dependent on the specific XNAT environment and server configuration in which they are deployed. & Docker images can be reused in various XNAT installations and environment. & Automatically deploying within XNAT, after that the images can be reused in different environment. \\ \hline
+    
+    Maintenance & Requires server access and manual reconfiguration. & Updating requires building and pushing a new image, no direct server changes needed. & Old image can be deleted and then creating new images with updated external script.\\ \hline
+    
+    Usability & Requires XML schema knowledge and direct server administration. & Requires Docker knowledge, but easier to reuse prebuilt images, through running basic commands on terminal. & Extreme low knowledge requirement (except writing a requirement file and answering the script questions. \\ \hline
+    
+    Consistency & Depends on identical server setups and configurations. & High reproducibility is achieved, as all dependencies are within the container. & All dependencies are within the container, since the user has written the requirement file separately. \\ \hline
+    
+    Community & Limited documentation and less support from XNAT Community. & Huge support from XNAT community. & Big support of the REST API. \\ \hline
+    
+    Security & Credentials needed in XML configuration. & Isolated container environments. & Isolated container environments. \\ \hline
+  \end{tabular}
 \end{table}
+
  The table \ref{tab:pipeline-vs-docker} has been added to present a direct comparison between the two methods.
  
  \subsection{Advantages and Disadvantages of the Methods}
