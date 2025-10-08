@@ -94,8 +94,7 @@
 
   %--- cover page ---
   \input{content/coverpage}
-
-  \input{en/content/ch8.Acknowledgements}
+  
   %--- statement page ---
   \input{content/statement}
 
@@ -128,14 +127,16 @@
   \input{en/content/ch2.Fundamentals}
   \input{en/content/ch3.docker}
   \input{en/content/ch4.pipeline}
-  %\input{en/content/ch6.userguide}
-  %\input{en/content/ch7.Conclusion}
+  \input{en/content/ch6.Analyse}
+  \input{en/content/ch7.Conclusion}
 
   %--- references ---
   \bibliographystyle{IEEEtran}
   \bibliography{content/references}
   \addcontentsline{toc}{chapter}{\bibname}
 
+  \newpage
+ \input{en/content/ch8.Acknowledgements}
   %--- appendix ---
   \begin{appendix}
     \input{en/content/appendix}
