@@ -111,10 +111,7 @@
   \clearpage\phantomsection\pdfbookmark{\contentsname}{toc}
   \tableofcontents
 
-  %--- lists ---
-  \listoffigures
-  \listoftables
-  \lstlistoflistings
+
 
   %--- list of acronyms ---
   \input{content/acronyms}
@@ -131,18 +128,21 @@
   \input{en/content/ch6.Analyse}
   \input{en/content/ch7.Conclusion}
 
-  %--- references ---
+ %--- references ---
   \bibliographystyle{IEEEtran}
   \bibliography{content/references}
   \addcontentsline{toc}{chapter}{\bibname}
 
-
-
-
-
+  %--- lists ---
+  \listoffigures
+  \listoftables
+  \lstlistoflistings
 
   \newpage
  \input{en/content/ch8.Acknowledgements}
+
+
+
   %--- appendix ---
   \begin{appendix}
     \input{en/content/appendix}
