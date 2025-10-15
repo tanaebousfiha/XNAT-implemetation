@@ -16,18 +16,17 @@ The \autoref{fig:workflow} explains the workflow data in XNAT.
     \label{fig:workflow}
 \end{figure}
 
-%-------------------------------------------------------------------------
 
+The Docker Container method is a suitable way to integrate AI into XNAT, working well with multiple data types and its recommended from the XNAT Documentation to launch jobs with the Docker Container method. However the method proved to have capabilities and limitations.
 
-The Docker Container method is a suitable way to integrate AI into XNAT, working well with multiple data types like CSV or DICOM. However the method proved to have capabilities and limitations.
-Docker container automation allows users to select specific files and launch the container. This automation also enables users to configure containers for a desired project data level (e.g., project, subject, scans), select files within that level, and process them with the container.
-After testing both manual and automated Docker Container workflows, we identified several limitations requiring further attention. 
-Containers do not have direct access to the database by default.
+With the Docker Container method we could achieve a complete automatization of the workflow from creating the Dockerfile to launching the container. 
+With the automatization we could select a specific file or more handle it to the container and the result file transfer was successful.
+This automation also enables users to configure containers for a desired project data level (e.g., project, subject, scans), select files within that level, and process them with the container.
+However, when only one context(project) is defined, and the container was charged with all project levels files, this one couldn't receive any file from the REST API call, even though the files were listed in the container information but still no successful transfer of files.  
 
-
-
-
-
+Since it was confirmed from a Senior Software Developer in XNAT team developers that the containers do not have direct access to the database by default and the only way to do it is this by passing credentials to the container (or using some sort of secret store like Vault or Keycloak). This method is though not recommended because the developer warned that the action is unwise and even if the security problems are ignored there is no insignificant chance of causing a harm.
+XNAT relies on a database to keep track of projects, subjects, sessions, files, etc. If this database is modified or interfered manually , XNAT might not understand the state of its own data anymore and things may appear missing or inconsistent in the UI or in the worst case breaks the the database altogether, meaning XNAT might stop working entirely.
+It was also warned that even trying to connect directly the container to the XNAT database from inside the container it probably not work too. Because the PostgreSQL has security restriction that control which machines can connect to it, furthermore only specific IP addresses or networks that are allowed to connect with it. Which would completely break containers running under Docker Swarm or Kubernetes~\cite{database}. Which confirms why the container couldn't receive any file when he was provided with data coming from other contexts than the one defined in the JSON command. 
 
 
 
@@ -48,7 +47,7 @@ To improve accessibility and usability for non-technical users, the Docker Conta
     \label{fig:mockup}
 \end{figure}
 \normalsize
-\subsection{The Docker Container Approach and the Somnolink Project, Sustainability Aspects Including FAIR Criteria}
+\subsection{The Docker Container Approach and the Somnolink Project}
 
 The Somnolink project is a nationwide initiative to improve the treatment and research of obstructive sleep apnea through better data sharing. The obstructive sleep apnea is the most prevalent disorder in clinical sleep laboratories. Therefore, the main goals of the Somnolink project are (1) improvement of availability of sleep data at point of care, (2) improvement of the early diagnosis and (3) personalized therapy of OSA and (4) therapy adherence prediction.
 The objectives of the project are aligned with the health data typically collected along the usual patient pathway. It consists of four stages: (1) assessing pre-test probability through medical history and questionnaires, (2) conducting physical examinations in primary care, (3) performing outpatient sleep diagnostics, and (4) carrying out comprehensive sleep laboratory studies. Based on this structure, which data are relevant at each step is identified and ML models are proposed that could assist clinicians in their decision-making ~\cite{krefting_somnolink_2025}. A central hub consisting of XNAT will manage the sleep data among the patient pathway and the AI models as a second opinion.
@@ -71,6 +70,7 @@ Sustainability within Somnolink project covers both the technical stability and 
 Another key strength for the developed automation script is its sustainability and long-term usability. The implementation is flexible and allows at the same time to the developers a reuse of the existing framework and modify only components that may need updating. Potential future changes may include updates to XNAT REST API endpoints, the introduction of new authentication methods, or alterations to the JSON-based schema for command and wrapper definitions. Additionally, existing Docker base images could become deprecated, or XNAT project structures might be extended with new contexts or data types. However, the core workflow logic would remain unaffected.
 
 \section{Pipeline method}
+
 \subsection{Generalizability of the Pipeline}
 \normalsize
 To generalize a pipeline and to make it transferable to any user, including those limited informatics expertise, presents several challenges.
@@ -107,7 +107,7 @@ For the purpose of evaluating the two methods, we began by compiling a comparati
                       >{\centering\arraybackslash}p{4cm}|
                       >{\centering\arraybackslash}p{4cm}|}
     \hline
-    \textbf{Aspect} & \textbf{The Pipeline method} & \textbf{Docker Container method} & \textbf{Automatization of the Docker method}\\ \hline
+    \textbf{Aspect} & \textbf{The Pipeline method} & \textbf{Docker Container method} & \textbf{Docker method with Automatization }\\ \hline
     
     
     Installation & Requires manual placement of XML descriptors, plugin JARs\footnote{\url{https://wiki.xnat.org/documentation/installing-the-pipeline-engine} last accessed 07.10.2025}, and executables on the server. & Container image uploaded once (via Docker registry) and configured in XNAT. & The automatization script must be launched and the Docker Engine must be installed and started up as well. \\ \hline
@@ -126,7 +126,7 @@ For the purpose of evaluating the two methods, we began by compiling a comparati
     
     Consistency & Depends on identical server setups and configurations. & High reproducibility is achieved, as all dependencies are within the container. & All dependencies are within the container, since the user has written the requirement file separately. \\ \hline
     
-    Community & Limited documentation and less support from XNAT Community. & Huge support from XNAT community. & Big support of the REST API. \\ \hline
+    Community & Limited documentation and less support from XNAT Community. & Huge support from XNAT community. & Big support as well. \\ \hline
     
     Security & Credentials needed in XML configuration. & Isolated container environments. & Isolated container environments. \\ \hline
   \end{tabular}
@@ -138,7 +138,7 @@ For the purpose of evaluating the two methods, we began by compiling a comparati
 
 
  
- \subsection{Advantages and Disadvantages of the Methods}
+\subsection{Advantages and Disadvantages of the Methods}
 
 After comparing both approaches in terms of installation, configuration, automation, and maintenance (see ~\autoref{tab:pipeline-vs-docker}), a summary of their main advantages and disadvantages is provided in ~\autoref{tab:docker_pipeline}.
 
@@ -153,8 +153,8 @@ After comparing both approaches in terms of installation, configuration, automat
 \hline
 \textbf{Advantages} &
 \parbox[t]{3cm}{
-- Fully compatible with older XNAT versions\footnote{\url{https://wiki.xnat.org/documentation/xnat-1-7-5-3-release-notes} last accessed 28.09.2025}.\\
-- Can execute external applications and shell scripts~\cite{jansen_extending_2015}.
+- Fully compatible with older XNAT versions~\cite{Pipelinecompatible}.\\
+- The execution of external applications and shell scripts is possible ~\cite{jansen_extending_2015}.
 }
 &
 \parbox[t]{5cm}{
@@ -183,8 +183,8 @@ After comparing both approaches in terms of installation, configuration, automat
 - Needs server access for installation and updates.\\
 - Requires XML schema knowledge.\\
 - Limited automation support and no automation achievable.\\
-- The pipeline has to be  removed or disabled after the running, to prevent users from running this pipeline in the future\footnote{\url{https://wiki.xnat.org/documentation/adding-and-configuring-pipelines-for-your-project} last accessed 12.10.2025}.\\
-- The pipeline is not a preferred way to launch jobs in XNAT\footnote{\url{https://wiki.xnat.org/xnat-tools/xnat-pipeline-engine-plugin} last accessed 12.10.2025}.
+- The pipeline has to be  removed or disabled after the running, to prevent users from running this pipeline in the future~\cite{addingpipeline}.\\
+- The pipeline is not a preferred way to launch jobs in XNAT.\\
 
 }
 &
@@ -192,7 +192,7 @@ After comparing both approaches in terms of installation, configuration, automat
 - Requires Docker knowledge. \\
 - Depends on Docker availability \\if Docker is blocked or fails, \\images are not recognized\\ within XNAT. \\
 - Requires regular expression\\ knowledge for file filtering. \\
-- Limited access to the database. \\
+- No access to the database. \\
 - Mounting extracted files \\ consumes significant \\storage space.\\
 }
 &

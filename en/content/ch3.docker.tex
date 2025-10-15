@@ -1,15 +1,16 @@
 \chapter{Deployment of Methods in XNAT}
 \section{The Docker Method}
-
+This chapter provides an analysis and an explanation of the automation script.
 
 \subsection{Introduction to the Automation Script for the Docker Container Method}
-The first method analyzed is the Docker Container. After reviewing the latest updates supported by the XNAT Community, it was confirmed that automating Docker Container deployment in XNAT is feasible.
+Generally these are the following steps to deploy a Docker Container in XNAT manually: writings a external script and building the image and pushing it to Docker Hub, following with writing a appropriate JSON command and deploying it in XNAT server then enabling it side with and project wide then finally launching the Docker Container. 
+After reviewing the latest updates supported by the XNAT Community, it was confirmed that automating Docker Container deployment in XNAT is feasible.
 XNAT's REST API provides functionality to list projects, subjects within those projects, sessions, and scans. It also allows the extraction of patient files, as well as the retrieval of the command \ac{ID} and wrapper \ac{ID}.
 To summarize all the REST APIs used in the automation script, Table A.1 in the Appendix provides a comprehensive overview of each API and its purpose.
 
 \begin{figure}[H]
     \centering
-    \def\svgwidth{0.9\linewidth}
+    \def\svgwidth{0.4\linewidth}
     \input{RESTAPI.pdf_tex}
     \caption{ Diagram: Illustrates the role of the REST API in automation.}
     \label{fig:RESTAPI}
@@ -21,21 +22,18 @@ The REST API played a crucial role in developing an automatic workflow in the XN
 
 
 \subsection{Architecture and Organization of the Code}
-The automation script mirrors the manual workflow in 14 steps. Each part of the script automates a specific step of the manual process, including containerization, image building, command configuration in XNAT, and container launch.
+The automation script mirrors the manual workflow in 14 steps. Each part of the script automates a specific step of the manual process, including containerization, image building, command configuration in XNAT, and container launch. A Python script is used to combine all the steps into an automated workflow. The libraries used in this work include: \texttt{requests}~\cite{request}, \texttt{json}~\cite{pythonjson}, \texttt{os}~\cite{os}, \texttt{subprocess}~\cite{subprocess}, \texttt{getpass}~\cite{getpass}, \texttt{sys}~\cite{sys}, and \texttt{urllib3}~\cite{urllib3}. 
 
-The purpose of this chapter is to introduce the system in more detail. A Python script is used to combine all the steps into an automated workflow. The libraries used in this work include: \texttt{requests}\footnote{\url{https://www.w3schools.com/python/module_requests.asp} last accessed 10.08.2025}, \texttt{json}\footnote{\url{https://www.w3schools.com/python/python_json.asp} last accessed 10.08.2025}, \texttt{os}\footnote{\url{https://docs.python.org/3/library/os.html} last accessed 10.08.2025}, \texttt{subprocess}\footnote{\url{https://docs.python.org/3/library/subprocess.html} last accessed 10.08.2025}, \texttt{getpass}\footnote{\url{https://docs.python.org/3/library/getpass.html} last accessed 10.08.2025}, \texttt{sys}\footnote{\url{https://docs.python.org/3/library/sys.html} last accessed 10.08.2025}, and \texttt{urllib3}\footnote{\url{https://urllib3.readthedocs.io/en/stable/} last accessed 10.08.2025}.
+The Python Requests library is the go-to solution for making \ac{HTTP} requests in Python. The Sys module in Python provides access to variables and functions that interact closely with the Python interpreter and runtime environment.
+Since a JSON-based command is written, the use of the JSON library was necessary. Using the Python Subprocess module resembles executing commands directly on the system computer using Python instead of typing them directly into the command prompt~\cite{subprocess1}.
+The getpass module provides a secure way to handle password prompts where programs interact with the users via the terminal~\cite{getpass1}. 
 
-The Python Requests library is the go-to solution for making \ac{HTTP} requests in Python, thanks to its elegant and intuitive API that simplifies the process of interacting with web services and consuming data in the application\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} last accessed 10.08.2025}. The Sys module in Python provides access to variables and functions that interact closely with the Python interpreter and runtime environment.
-Since a JSON-based command is written, the use of the JSON library was necessary. JSON is a syntax for storing and exchanging data. It is text, written with JavaScript Object Notation.
-The Python Subprocess module is a tool that allows running other programs or commands from your Python code. Using the Python Subprocess module resembles executing commands directly on the system computer using Python instead of typing them directly into the command prompt. This module makes it easy to automate Python code\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} last accessed 10.08.2025}.
-
-Getpass() prompts the user for a password without echoing. The getpass module provides a secure way to handle password prompts where programs interact with the users via the terminal\footnote{\url{https://www.geeksforgeeks.org/python/getpass-and-getuser-in-python-password-without-echo/} last accessed 10.08.2025}.
-The urllib3 library was used to disable the Insecure Request Warning, which is normally shown when Requests connects to a site with an unverified SSL certificate. This approach helps keep the output clean and free of unnecessary warnings during the run of the script. The \autoref{fig:diagram-core-libraries} illustrates all the libraries used in the script.
-Currently, the system is running Docker Engine 28.3.0. The Docker Client version in use is 20.10.5+dfsg1, which communicates with the Docker Engine to issue commands and manage images and containers. The XNAT web application is running on version 1.9.1.1, as verified through the web interface.
+The urllib3 library was used to disable the Insecure Request Warning, which is normally shown when Requests connects to a site with an unverified SSL certificate. The \autoref{fig:diagram-core-libraries} illustrates all the libraries used in the script.
+The system runs Docker Engine 28.3.0, using Docker Client 20.10.5+dfsg1 for management. The XNAT web application is running version 1.9.1.1.
 
 \begin{figure}[H]
   \centering
-  \def\svgwidth{0.8\linewidth}
+  \def\svgwidth{0.4\linewidth}
   \input{lib.pdf_tex}
   \caption{Schema: Core Libraries for Python Scripting in System Integration.}
   \label{fig:diagram-core-libraries}
@@ -43,10 +41,8 @@ Currently, the system is running Docker Engine 28.3.0. The Docker Client version
  
   \subsection{The Dockerfile}
  
-The first function responsible for writing the Dockerfile is called \texttt{def write\_dockerfile}, and it takes three arguments: the target directory for the Dockerfile, the name of the Python script to include, and an optional base Docker image (defaulting to \texttt{python:3.10-slim\footnote{\url{https://hub.docker.com/layers/library/python/3.10-slim/images/sha256-0d15918ecae76250659ae3036ad1fc898f801f6cb803860bdf0cc4b27fe316dc}{ last accessed 27.09.2025}}}, currently the fastest and slimmest image of Docker). The function creates the necessary folder (if it does not already exist), constructs the Dockerfile content, and writes it. The content of the Dockerfile is introduced with string interpolation and contains the base image and several commands such as \texttt{WORKDIR /app} (a working directory) and \texttt{COPY \{script\_filename\} /app/\{script\_filename\}} to copy the user script inside the image. The line \texttt{RUN pip install --no-cache-dir pandas} tells Docker to install the pandas Python library using pip during the build process of the Docker image, which helps reduce the overall image size and avoids unnecessary layers in the build process. The last command of the Dockerfile is \texttt{COPY requirements.txt /app/requirements.txt}, which provides the opportunity for the user to write in a separate text file all the libraries used in the container script, to be installed later during the image build process.
+The first function responsible for writing the Dockerfile is called \texttt{def write\_dockerfile}, and it takes three arguments: the target directory for the Dockerfile, the name of the Python script to include, and an optional base Docker image (defaulting to \texttt{python:3.10-slim}~\cite{Dockerbaseimage}). The function creates the necessary folder (if it does not already exist), constructs the Dockerfile content, and writes it. The content of the Dockerfile is introduced with string interpolation and contains the base image and several commands such as \texttt{WORKDIR /app} (a working directory) and \texttt{COPY \{script\_filename\} /app/\{script\_filename\}} to copy the user script inside the image. The line \texttt{RUN pip install --no-cache-dir pandas} tells Docker to install the pandas Python library using pip during the build process of the Docker image, which helps reduce the overall image size and avoids unnecessary layers in the build process. The last command of the Dockerfile is \texttt{COPY requirements.txt /app/requirements.txt}, which provides the opportunity for the user to write in a separate text file all the libraries used in the container script, to be installed later during the image build process.
 
-
-The \texttt{CMD} instruction was removed from the Dockerfile because it caused errors when running the container in XNAT. The issue was due to a conflict between the \texttt{CMD} instruction in the Dockerfile and the JSON command configuration, as both included the \texttt{python3} prefix. This led to a duplicate command execution, which caused the container to fail. By removing \texttt{CMD} from the Dockerfile, the execution logic is now fully controlled by XNAT through the JSON-based command, ensuring a successful launch of the Docker Container.
 
 
 \lstdefinestyle{allblack}{
@@ -78,7 +74,7 @@ The \texttt{CMD} instruction was removed from the Dockerfile because it caused e
 \noindent\footnotesize{ See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L18-L24}}
 
 \normalsize
-
+ The \texttt{CMD} instruction was removed from the Dockerfile because it caused errors when running the container in XNAT. The issue was due to a conflict between the \texttt{CMD} instruction in the Dockerfile and the JSON command configuration, as both included the \texttt{python3} prefix. This led to a duplicate command execution, which caused the container to fail. By removing \texttt{CMD} from the Dockerfile, the execution logic is now fully controlled by XNAT through the JSON-based command, ensuring a successful launch of the Docker Container.
 
 The rest of the \texttt{def write\_dockerfile} ensures that the specified directory exists, then creates and writes a Dockerfile to that location. It constructs the full path to the file, writes the generated content into it, and prints a confirmation message.
 
@@ -107,47 +103,20 @@ This function ensures that the Dockerfile is written in an appropriate way and s
 
 XNAT requires Docker Hub for container deployment. Users must have Docker Hub account. 
 
-The function responsible for this process is \texttt{def build\_docker\_image}, which expects two parameters: the Dockerfile path (dockerfile\_path) and the name of the Docker image to be built (docker\_image\_name). Normally, we build an image in Docker with the command: \texttt{docker build .}.
-
-
-In the automation script, the full tag in the format \texttt{dockerhub\_username/docker\_image\_name} is provided. This ensures that the image is already linked to the correct Docker Hub name space and can be pushed directly after building.
-
-
 \lstinputlisting[
   inputencoding=cp1252,  language=Python,
-  firstline=38,
-  lastline=46,
-  caption={Extracted from \texttt{automat\_f\_2.py} (lines 38--46)},
+  firstline=32,
+  lastline=49,
+  caption={Extracted from \texttt{automat\_f\_2.py} (lines 32--49)},
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L38-L46}
+\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/3a565f4b666a5f2938d5a41002049ee87cd33b61/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L32-L49}
 \normalsize
+\\
+The function in the Listing 3.3 builds and pushes a Docker image to Docker Hub. It first prompts the user to enter their Docker Hub username and, if provided, constructs a full image tag in the format <username>/<image\_name>. it uses the \texttt{subprocess} module to run a Docker build command with the specified Dockerfile, capturing any output or errors. If the build fails, the script exits with an error message, otherwise, it proceeds to push the built image to Docker Hub using another docker push command. After a successful push, the function prints a confirmation message and returns the full image tag.
 
 
-
-
-
-
-Here, \texttt{subprocess.run} invokes the docker build command. The option \texttt{ -f dockerfile\_path} specifies which Dockerfile to use, while \texttt{-t full\_tag} sets the name and tag of the image. The final dot (.) indicates that the current directory will be used as the build context.
-Once the image is built, it must be pushed to Docker Hub. This is done with the following block:
-\lstinputlisting[
-  inputencoding=cp1252,  language=Python,
-  firstline=48,
-  lastline=55,
-  caption={Extracted from \texttt{automat\_f\_2.py} (lines 48--55)},
-  label={lst:automat-snippet}
-]{automat_f_2.py}
-
-\noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L48-L55}
-\normalsize
-
-
-
-
-In a manual workflow, the push would be performed with the command:  \texttt{docker push image\_name}. This assumes that the user is already logged in. In the script, the same command is executed through  \texttt{subprocess.run}.
-
-The key point is that the full image tag is constructed in the required Docker Hub format \texttt{(dockerhub\_username/docker\_image\_name)}. This guarantees that the built image is correctly associated with the user’s Docker Hub account, and that XNAT will be able to locate it when launching the container.
 
 \subsection{The Prompt Function for the Required Input}
 
@@ -169,7 +138,7 @@ The \texttt{def get\_input} function uses a \texttt{while True} loop to keep ask
 
 \subsection{The Command Definition in JSON Format}
 
-To communicate the Docker image to XNAT, and consequently to run the container in the website, it is necessary to write a command definition in JSON format.\footnote{\url{ https://wiki.xnat.org/container-service/json-command-definition} last accessed 24.09.2025}
+To communicate the Docker image to XNAT, and consequently to run the container in the website, it is necessary to write a command definition in JSON format~\cite{JSONCommand}.
 Typically, JSON command definitions are customized to the image's specific purpose. However, in this automation, the JSON command is generalized to handle any file input.
 
 To achieve that, the function used is called \texttt{create\_json\_file}, which builds the configuration dictionary for a Docker-based XNAT command (for the XNAT container Service), writes it to a \texttt{command.json} file, and returns the filename.
@@ -259,7 +228,7 @@ Finally, the script writes the command definition in JSON format, ensuring that 
 
 After writing the JSON-based command, the next step is to send it to XNAT. To achieve this, we have to use the appropriate REST API responsible for uploading the container command to XNAT.
 We can find the list of all REST APIs under \texttt{Administer $\rightarrow$ Site Administration $\rightarrow$ Miscellaneous $\rightarrow$ Development Utilities $\rightarrow$ Swagger}.
-To send the command to XNAT, we found that the responsible REST API is \texttt{POST}.\footnote{\url{https://xnat-dev.gwdg.de/xapi/swagger-ui.html\#/command-rest-api} last accessed 24.09.2025}
+To send the command to XNAT, we found that the responsible REST API is \texttt{POST}~\cite{ContainerRESTAPILIST}.
 
 The function responsible for this is \texttt{def send\_json\_to\_xnat}, and it expects four parameters: \texttt{json\_file\_path, xnat\_url, xnat\_user, xnat\_password}. When working with REST APIs, we first have to build the URL endpoint for XNAT’s command registration.
  
@@ -300,7 +269,7 @@ The get\_all\_files\_all\_levels function comprehensively collects all files fro
 
 \begin{figure}[H]
     \centering
-    \def\svgwidth{0.9\linewidth}
+    \def\svgwidth{0.7\linewidth}
     \input{extraction.pdf_tex}
     \caption{Diagram: The extraction of files from the entire project structure.}
     \label{fig:extraction}
@@ -328,7 +297,7 @@ The \autoref{fig:workflow-steps} illustrates the steps to deploy a Docker Contai
 
 \begin{figure}[H]
     \centering
-    \def\svgwidth{0.9\linewidth}
+    \def\svgwidth{0.7\linewidth}
     \input{steps.pdf_tex}
     \caption{Diagram: Deployment steps for the Docker Container in XNAT.}
     \label{fig:workflow-steps}
@@ -339,7 +308,7 @@ The \autoref{fig:automatic/manuall} illustrates how the automation script facili
 
 \begin{figure}[H]
     \centering
-    \def\svgwidth{0.9\linewidth}
+    \def\svgwidth{0.8\linewidth}
     \input{compare1.pdf_tex}
     \caption{Diagram: The difference between the manual and the automatic process.}
     \label{fig:automatic/manuall}
@@ -366,8 +335,10 @@ But interestingly, after searching in the container information, we noticed that
 Details of the test procedure are described in Appendix 
 \autoref{app:Result}. Due to the fact that the list of files was extremely long, it was shortened. In summary, the container received a huge amount of files.
 \normalsize
-\subsection{Discussion of the Results}
-This chapter outlines deployment challenges, including data transmission failures, REST API inconsistencies, and JSON configuration mismatches. Initial tests revealed the container wasn't receiving input files, confirmed by a "no\_file.txt" test. Further testing with REST API integration within the Docker Container also failed to produce file results in XNAT. Adjustments to the JSON command, including credentials and detailed output specifications, were unsuccessful. Adding delays between container executions also didn't resolve the input file issue.
+\subsection{Deployment Challenges}
+ In this part the deployment challenges are outlined, including data transmission failures, REST API inconsistencies, and JSON configuration mismatches. Initial tests revealed the container wasn't receiving input files, confirmed by a "no\_file.txt" test. Further testing with REST API integration within the Docker Container also failed to produce  file results in XNAT. Adjustments to the JSON command, including credentials and detailed output specifications, were unsuccessful. Adding delays between container executions also didn't resolve the input file issue.
+ The process of extracting all the files in project levels and hand them to the Docker Container placed on top of the project level was unsuccessful, since the Docker Container couldn't receive any file. Conversely the process of setting one Container pro project level and extracting only the files on the container level not from any other project level was successful since the container could receive and produce result files. However more then one container was launched.
+ The deployment challenges are discussed and more in details in chapter 4. 
 
 
 \normalsize
