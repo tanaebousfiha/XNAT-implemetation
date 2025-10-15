@@ -2,21 +2,21 @@
 
 \chapter{Deployment}
 
-The purpose of this chapter is to introduce the system in more detail. A Python script is used to combine all the steps into an automated workflow. The libraries used in this work include: \texttt{requests}\footnote{\url{https://www.w3schools.com/python/module_requests.asp} accessed 10.08.2025}, \texttt{json}\footnote{\url{https://www.w3schools.com/python/python_json.asp} accessed 10.08.2025}, \texttt{os}\footnote{\url{https://docs.python.org/3/library/os.html} accessed on 10 August 2025}, \texttt{subprocess}\footnote{\url{https://docs.python.org/3/library/subprocess.html} accessed 10.08.2025}, \texttt{getpass}\footnote{\url{https://docs.python.org/3/library/getpass.html} accessed 10.08.2025}, \texttt{sys}\footnote{\url{https://docs.python.org/3/library/sys.html} accessed 10.08.2025}, and \texttt{urllib3}\footnote{\url{https://urllib3.readthedocs.io/en/stable/} accessed 10.08.2025}.
+The purpose of this chapter is to introduce the system in more detail. A Python script is used to combine all the steps into an automated workflow. The libraries used in this work include: \texttt{requests}~\cite{request}, \texttt{json}~\cite{pythonjson}, \texttt{os}~\cite{os}, \texttt{subprocess}~\cite{subprocess}, \texttt{getpass}~\cite{getpass}, \texttt{sys}~\cite{sys}, and \texttt{urllib3}~\cite{urllib3}.
 
-The use of the requests library was for creating the interaction with the web services of XNAT. The Python Requests library is the go-to solution for making HTTP requests in Python, thanks to its elegant and intuitive API that simplifies the process of interacting with web services and consuming data in the application.\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} accessed 10.08.2025} 
-The \texttt{sys} module in Python gives programmers access to interpreter-specific variables and functions, allowing interaction with the Python runtime environment.\footnote{\url{https://docs.python.org/3/library/sys.html} accessed 23.08.2025}
+The use of the requests library was for creating the interaction with the web services of XNAT. The Python Requests library is the go-to solution for making HTTP requests in Python, thanks to its elegant and intuitive API that simplifies the process of interacting with web services and consuming data in the application~\cite{subprocess1}. 
+The \texttt{sys} module in Python gives programmers access to interpreter-specific variables and functions, allowing interaction with the Python runtime environment~\cite{sys}.
 
 
 
 
 Since a JSON command is written, the use of the JSON library was necessary. 
 JSON (JavaScript Object Notation) is a compact text based
- format used to structure, store, and exchange data between applications.\footnote{W3Schools. Python JSON. Available at: \url{https://www.w3schools.com/python/python_json.asp} accessed 23.08.2025}
+ format used to structure, store, and exchange data between applications~\cite{pythonjson}.
 
-The Python subprocess module is a tool that allows running other programs or commands from your Python code. Using the Python Subprocess module resembles executing commands directly on the system computer using Python instead of typing them directly into the command prompt. This module makes it easy to automate Python code.\footnote{\url{https://www.datacamp.com/tutorial/python-subprocess} accessed 10.08.2025}
+The Python subprocess module is a tool that allows running other programs or commands from your Python code. Using the Python Subprocess module resembles executing commands directly on the system computer using Python instead of typing them directly into the command prompt. This module makes it easy to automate Python code~\cite{subprocess1}.
 
-The \texttt{getpass} module in Python allows users to enter passwords in the terminal without showing the input, therefore ensuring confidentiality.\footnote{\url{https://ijrpr.com/uploads/V2ISSUE8/IJRPR1011.pdf} accessed 23.08.2025}
+The \texttt{getpass} module in Python allows users to enter passwords in the terminal without showing the input, therefore ensuring confidentiality~\cite{getpass}.
 
 
 The urllib3 library was used to disable the InsecureRequestWarning, which is normally shown when Requests connects to a site with an unverified SSL certificate. This approach helps keep the output clean and free of unnecessary warnings during the run of the script.
@@ -26,7 +26,7 @@ Currently, the system is running Docker Engine 28.3.0. The Docker Client version
 
 \begin{figure}[ht]
   \centering
-  \def\svgwidth{0.8\linewidth}
+  \def\svgwidth{0.4\linewidth}
   \input{lib.pdf_tex}
   \caption{Schema: Core Libraries for Python Scripting in System Integration}
   \label{fig:diagram-core-libraries}
@@ -185,7 +185,7 @@ The \texttt{def get\_input} function uses a \texttt{while True} loop to keep ask
 
 \section{The Command Definition in JSON Format}
 
-To communicate the Docker image to XNAT, and consequently to run the container in the website, it is necessary to write a command definition in JSON format.\footnote{\url{ https://wiki.xnat.org/container-service/json-command-definition}{ accessed 23.08.2025}}
+To communicate the Docker image to XNAT, and consequently to run the container in the website, it is necessary to write a command definition in JSON format~\cite{JSONCommand}.
 Usually, the JSON-based command definition is personalized and customized depending on the main idea of the image. But in the automation case, the JSON-based command must be generalized for all cases, which means no matter which file is selected, the command will still handle it.
 
 To achieve that, the function used is called \texttt{create\_json\_file}, which builds the configuration dictionary for a Docker-based XNAT command (for the XNAT Container Service), writes it to a \texttt{command.json} file, and returns the filename.
@@ -275,7 +275,7 @@ Finally, the script writes the command definition in JSON format, ensuring that 
 
 After writing the JSON-based command, the next step is to send it to XNAT. To achieve this, we have to use the appropriate REST API responsible for uploading the container command to XNAT.
 We can find the list of all REST APIs under \texttt{Administer $\rightarrow$ Site Administration $\rightarrow$ Miscellaneous $\rightarrow$ Development Utilities $\rightarrow$ Swagger}.
-To send the command to XNAT, we found that the responsible REST API is \texttt{POST}.\footnote{\url{https://xnat-dev.gwdg.de/xapi/swagger-ui.html\#/command-rest-api}{accessed 23.08.2025}}
+To send the command to XNAT, we found that the responsible REST API is \texttt{POST}~\cite{ContainerRESTAPILIST}.
 
 The function responsible for this is \texttt{def send\_json\_to\_xnat}, and it expects four parameters: \texttt{json\_file\_path, xnat\_url, xnat\_user, xnat\_password}. When working with REST APIs, we first have to build the URL endpoint for XNAT’s command registration.
  
@@ -318,7 +318,7 @@ After receiving the Command ID and the Wrapper ID, we proceed by enabling the co
 
 \section{The Extraction of All Files from All Project Structures}
 
-The function used in this part is \texttt{def get\_all\_files\_all\_levels}, and it collects all the files in the project data hierarchy (project, subjects, experiments/sessions, and scans) from an XNAT system using its REST API. We used the REST API endpoint \texttt{GET} for the extraction. The function proceeds by authenticating with the XNAT server using the provided user credentials and starts by gathering project-level files, querying all resource folders at the project root and listing every file found within them. At every step, the function structures each file into a dictionary containing hierarchical information (such as the level—project, subject, experiment, scan—and the relevant IDs), the file name, the resource folder it was found in, and an absolute URI for straightforward retrieval. By the end, it returns a comprehensive list of all file records across all levels in the project.\footnote{\url{ https://wiki.xnat.org/documentation/strategies-for-xnat-image-data-storage}{ accessed 25.08.2025}}. Figure 3.2 explains the hierarchy where the files are stored.
+The function used in this part is \texttt{def get\_all\_files\_all\_levels}, and it collects all the files in the project data hierarchy (project, subjects, experiments/sessions, and scans) from an XNAT system using its REST API. We used the REST API endpoint \texttt{GET} for the extraction. The function proceeds by authenticating with the XNAT server using the provided user credentials and starts by gathering project-level files, querying all resource folders at the project root and listing every file found within them. At every step, the function structures each file into a dictionary containing hierarchical information (such as the level—project, subject, experiment, scan—and the relevant IDs), the file name, the resource folder it was found in, and an absolute URI for straightforward retrieval. By the end, it returns a comprehensive list of all file records across all levels in the project~\cite{hiearchiexnat}. Figure 3.2 explains the hierarchy where the files are stored.
 
 \begin{figure}[ht]
     \centering
