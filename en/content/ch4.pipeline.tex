@@ -56,34 +56,34 @@ To gain a better understanding of the pipeline approach, \autoref{tab:pipeline} 
   1.Pipeline Engine installed. \newline
   2.Pipeline Engine Plugin installed \newline
   3.Create and configure the pipeline descriptor components. \newline
-  4.Make sure the resource descriptor, parameter file, and pipeline descriptor are located in the same directory under the Pipeline Home path: \texttt{/data/xnat/pipeline/pipelines/my\_pipeline/} \newline
-  5.Ensure Secure Shell (SSH) access is available and the pipeline script has execution permission using: chmod +x my\_pipeline.xml. 
+  $\bullet$ Make sure the resource descriptor, parameter file, and pipeline descriptor are located in the same directory under the Pipeline Home path: \texttt{/data/xnat/pipeline/pipelines/my\_pipeline/} \newline
+  $\bullet$ Ensure Secure Shell (SSH) access is available and the pipeline script has execution permission using: chmod +x my\_pipeline.xml. 
    \\  \hline
   \textbf{Enabling the Pipeline in XNAT} & 
-    1.In XNAT interface, go to Administer → Pipelines. Provide the full path to your pipeline directory. \newline
-    2.Then navigate to Administer -> Data Types.\newline
-    3.Click on the desired data type element. \newline
-    4.Click Edit in the top-right corner of the modal window.\newline
-    5. Under Available Report Actions, add the following values:\newline
-    - Name: PipelineScreen\_launch\_pipeline\newline
+    $\bullet$ In XNAT interface, go to Administer → Pipelines. Provide the full path to your pipeline directory. \newline
+    $\bullet$ Then navigate to Administer -> Data Types.\newline
+    $\bullet$ Click on the desired data type element. \newline
+    $\bullet$ Click Edit in the top-right corner of the modal window.\newline
+    $\bullet$ Under Available Report Actions, add the following values:\newline
+    -Name: PipelineScreen\_launch\_pipeline\newline
     -Display Name: Build\newline
     -Popup: always\newline
-    -Secure Access: edit\newline
+    -Secure Access: edit
   \\ \hline
   \textbf{Launching the Pipeline} & 
-   -Manually: From the data type page, click Run/Build Pipeline. \newline
-   -Programmatically via REST API.\newline
+   $\bullet$ Manually: From the data type page, click Run/Build Pipeline. \newline
+   $\bullet$ Programmatically via REST API.\newline
    -Once the pipeline starts, you will receive an notification confirming the launch or completion~\cite{pipelinrunning}
    \\
   \hline
   \textbf{Problems / Troubleshooting} & 
-  -Pipeline not found:\newline
+  $\bullet$ Pipeline not found:\newline
     Ensure all pipeline descriptor files are correctly placed in the Pipeline Home directory. \newline
-  -Pipeline failed execution:
+  $\bullet$ Pipeline failed execution:
    Re-run the following command to reset file permissions:\newline
     chmod +x my\_pipeline.xml
   -Check logs: Review the XNAT logs for details\newline
-  -Incorrect pipeline registration: Verify that the pipeline path is correctly configured under Administer -> Pipelines.
+  $\bullet$ Incorrect pipeline registration: Verify that the pipeline path is correctly configured under Administer -> Pipelines.
   
   \\
   \hline
