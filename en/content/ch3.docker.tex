@@ -3,7 +3,7 @@
 This chapter provides an analysis and an explanation of the automation script.
 
 \subsection{Introduction to the Automation Script for the Docker Container Method}
-Generally these are the following steps to deploy a Docker Container in XNAT manually: writings a external script and building the image and pushing it to Docker Hub, following with writing a appropriate JSON command and deploying it in XNAT server then enabling it side with and project wide then finally launching the Docker Container. 
+Generally these are the following steps to deploy a Docker Container in XNAT manually: writings a external script and building the image and pushing it to Docker Hub, following with writing a appropriate JSON command and deploying it in XNAT server then enabling the command side wide and project wide then finally launching the Docker Container. 
 After reviewing the latest updates supported by the XNAT Community, it was confirmed that automating Docker Container deployment in XNAT is feasible.
 XNAT's REST API provides functionality to list projects, subjects within those projects, sessions, and scans. It also allows the extraction of patient files, as well as the retrieval of the command \ac{ID} and wrapper \ac{ID}.
 To summarize all the REST APIs used in the automation script, Table A.1 in the Appendix provides a comprehensive overview of each API and its purpose.
@@ -17,18 +17,17 @@ To summarize all the REST APIs used in the automation script, Table A.1 in the A
 \end{figure}
 
 
-The REST API played a crucial role in developing an automatic workflow in the XNAT platform. The \autoref{fig:RESTAPI} illustrates the role of the REST API in the automatization.
+The \autoref{fig:RESTAPI} illustrates the role of the REST API in the automatization.
 
 
 
 \subsection{Architecture and Organization of the Code}
-The automation script mirrors the manual workflow in 14 steps. Each part of the script automates a specific step of the manual process, including containerization, image building, command configuration in XNAT, and container launch. A Python script is used to combine all the steps into an automated workflow. The libraries used in this work include: \texttt{requests}~\cite{request}, \texttt{json}~\cite{pythonjson}, \texttt{os}~\cite{os}, \texttt{subprocess}~\cite{subprocess}, \texttt{getpass}~\cite{getpass}, \texttt{sys}~\cite{sys}, and \texttt{urllib3}~\cite{urllib3}. 
+The automation script mirrors the manual workflow in 14 steps. Each part of the script automates a specific step of the manual process.  
+The Python Requests~\cite{request} library is the go-to solution for making \ac{HTTP} requests in Python. The Sys module~\cite{sys} in Python provides access to variables and functions that interact closely with the Python interpreter and runtime environment.
+Since a JSON-based command is written, the use of the JSON library~\cite{pythonjson} was necessary. Using the Python Subprocess~\cite{subprocess} module resembles executing commands directly on the system computer using Python. The os enables the use of operating system dependent functionality~\cite{os}.   
+The getpass module provides a secure way to handle password prompts where programs interact with the users via the terminal~\cite{getpass}. 
 
-The Python Requests library is the go-to solution for making \ac{HTTP} requests in Python. The Sys module in Python provides access to variables and functions that interact closely with the Python interpreter and runtime environment.
-Since a JSON-based command is written, the use of the JSON library was necessary. Using the Python Subprocess module resembles executing commands directly on the system computer using Python instead of typing them directly into the command prompt~\cite{subprocess1}.
-The getpass module provides a secure way to handle password prompts where programs interact with the users via the terminal~\cite{getpass1}. 
-
-The urllib3 library was used to disable the Insecure Request Warning, which is normally shown when Requests connects to a site with an unverified SSL certificate. The \autoref{fig:diagram-core-libraries} illustrates all the libraries used in the script.
+The urllib3~\cite{urllib3} library was used to disable the Insecure Request Warning, which is normally shown when Requests connects to a site with an unverified SSL certificate. The \autoref{fig:diagram-core-libraries} illustrates all the libraries used in the script.
 The system runs Docker Engine 28.3.0, using Docker Client 20.10.5+dfsg1 for management. The XNAT web application is running version 1.9.1.1.
 
 \begin{figure}[H]
@@ -74,9 +73,9 @@ The first function responsible for writing the Dockerfile is called \texttt{def 
 \noindent\footnotesize{ See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L18-L24}}
 
 \normalsize
- The \texttt{CMD} instruction was removed from the Dockerfile because it caused errors when running the container in XNAT. The issue was due to a conflict between the \texttt{CMD} instruction in the Dockerfile and the JSON command configuration, as both included the \texttt{python3} prefix. This led to a duplicate command execution, which caused the container to fail. By removing \texttt{CMD} from the Dockerfile, the execution logic is now fully controlled by XNAT through the JSON-based command, ensuring a successful launch of the Docker Container.
 
-The rest of the \texttt{def write\_dockerfile} ensures that the specified directory exists, then creates and writes a Dockerfile to that location. It constructs the full path to the file, writes the generated content into it, and prints a confirmation message.
+
+The rest of the function creates and writes the Dockerfile to the specified directory, confirming successful completion.
 
 
 
@@ -97,7 +96,7 @@ The rest of the \texttt{def write\_dockerfile} ensures that the specified direct
 
 
 
-This function ensures that the Dockerfile is written in an appropriate way and secures that all the dependencies are stored in the external requirements text file. It handles all possible cases and avoids the issues of errors and standard input errors.
+The function creates valid Dockerfiles and manages external dependencies to prevent errors.
 
 \subsection{Building, Pushing and Tagging the Image}
 
@@ -134,23 +133,12 @@ The function looks like this:
 \noindent\footnotesize See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/e3c1a547dc8241c4a24f651549069ee042c62393/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L59-L65}
 \normalsize
 
-The \texttt{def get\_input} function uses a \texttt{while True} loop to keep asking until the user enters input. The \texttt{value.strip()} removes any whitespace from the user input. If the input is valid, the value is returned, if not, the message \texttt{Cannot be empty} will be printed.
+The \texttt{def get\_input} function uses a \texttt{while True} loop to keep asking until the user enters input.
 
 \subsection{The Command Definition in JSON Format}
 
-To communicate the Docker image to XNAT, and consequently to run the container in the website, it is necessary to write a command definition in JSON format~\cite{JSONCommand}.
-Typically, JSON command definitions are customized to the image's specific purpose. However, in this automation, the JSON command is generalized to handle any file input.
-
+To communicate the Docker image to XNAT, it is necessary to write a command definition in JSON format~\cite{JSONCommand}.
 To achieve that, the function used is called \texttt{create\_json\_file}, which builds the configuration dictionary for a Docker-based XNAT command (for the XNAT container Service), writes it to a \texttt{command.json} file, and returns the filename.
-
-The function expects three parameters:
-
-\texttt{docker\_image}: The Docker image to use (string).
-
-\texttt{script\_filename}: The name of the Python script inside the container (string).
-
-\texttt{mod\_data}: A dictionary holding user-provided metadata (names, descriptions, etc.).
-
 Let us start analyzing the first block of the JSON command:
 
 
@@ -292,18 +280,6 @@ The launch\_container\_with\_all\_files function launches a container with extra
 \normalsize
 
 
-
-The \autoref{fig:workflow-steps} illustrates the steps to deploy a Docker Container in XNAT.
-
-\begin{figure}[H]
-    \centering
-    \def\svgwidth{0.7\linewidth}
-    \input{steps.pdf_tex}
-    \caption{Diagram: Deployment steps for the Docker Container in XNAT.}
-    \label{fig:workflow-steps}
-\end{figure}
-
-
 The \autoref{fig:automatic/manuall} illustrates how the automation script facilitates the process of deploying a container in XNAT. It reduces all the steps.
 
 \begin{figure}[H]
@@ -320,7 +296,7 @@ The \autoref{fig:automatic/manuall} illustrates how the automation script facili
 Initially, the script requests user input for login credentials, project ID, command name, and description. Following this input, the script automates image building, tagging, pushing, JSON based command creation, command enabling, and container launching.
 
 \subsection{Results on XNAT}
-The result that we came to after testing the code is that all the steps are working correctly, except that the container could not receive any files. With the \ac{Stdout} view we found out that the container received zero files. The Docker Container output is shown in the \autoref{lst:stdout}.
+The result that we came to after testing the code is that all the steps are automated correctly, except that the container could not receive any files. With the \ac{Stdout} view we found out that the container received zero files. The Docker Container output is shown in the \autoref{lst:stdout}.
  
 \begin{lstlisting}[numbers=none, caption={stdout in XNAT.}, label={lst:stdout}]
 View stdout (from file)
@@ -336,9 +312,8 @@ Details of the test procedure are described in Appendix
 \autoref{app:Result}. Due to the fact that the list of files was extremely long, it was shortened. In summary, the container received a huge amount of files.
 \normalsize
 \subsection{Deployment Challenges}
- In this part the deployment challenges are outlined, including data transmission failures, REST API inconsistencies, and JSON configuration mismatches. Initial tests revealed the container wasn't receiving input files, confirmed by a "no\_file.txt" test. Further testing with REST API integration within the Docker Container also failed to produce  file results in XNAT. Adjustments to the JSON command, including credentials and detailed output specifications, were unsuccessful. Adding delays between container executions also didn't resolve the input file issue.
- The process of extracting all the files in project levels and hand them to the Docker Container placed on top of the project level was unsuccessful, since the Docker Container couldn't receive any file. Conversely the process of setting one Container pro project level and extracting only the files on the container level not from any other project level was successful since the container could receive and produce result files. However more then one container was launched.
- The deployment challenges are discussed and more in details in chapter 4. 
+ In this part the deployment challenges are outlined. Initial tests revealed the container wasn't receiving input files, confirmed by a "no\_file.txt" test. Further testing with REST API integration within the Docker Container also failed to produce file results in XNAT. Adjustments to the JSON command, including credentials and detailed output specifications, were unsuccessful. Adding delays between container executions also didn't resolve the input file issue.
+Two deployment strategies were tested. Passing all project files to a single Docker container failed due to file transfer issues. Deploying individual containers per project, each processing only local files, was successful, though it resulted in multiple container instances. Chapter 4 provides a detailed discussion of these deployment challenges. 
 
 
 \normalsize
@@ -346,7 +321,7 @@ Details of the test procedure are described in Appendix
 
 
 \subsection{User Guide}
-To better understand the system created and mostly the motivation behind this automation project. We have inserted the \autoref{tab:automatic_script} to list how the the workflow is working and what are the requirement that the user needs to have in order to run the script. 
+To better understand the system created, a user guide was inserted \autoref{tab:automatic_script} to list how the the workflow is working and what are the requirement that the user needs to have in order to run the script. 
 
 \begin{table}[H]
   \centering

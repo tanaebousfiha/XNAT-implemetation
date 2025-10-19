@@ -4,7 +4,7 @@ Providing a full comparison and disadvantage and advantages for both method.
 \section{Docker Method}
 \subsection{The Docker Container Workflow in XNAT}
 
-When running a Docker Container manually in XNAT, data is automatically provided, processed, and results are reloaded. The system first generates a JSON specification with script details, inputs, and outputs. XNAT then prepares the relevant data, copies it to a temporary host directory, and mounts it for container access. The Docker container processes the input, produces results, and writes them back to the host.
+XNAT automates data flow for manually run Docker containers. It generates a JSON specification, prepares and mounts data, and reloads the container's results.
 The diagram below illustrates the workflow data for a clearer understanding.  
 The \autoref{fig:workflow} explains the workflow data in XNAT.
 
@@ -17,17 +17,10 @@ The \autoref{fig:workflow} explains the workflow data in XNAT.
 \end{figure}
 
 
-The Docker Container method is a suitable way to integrate AI into XNAT, working well with multiple data types and its recommended from the XNAT Documentation to launch jobs with the Docker Container method. However the method proved to have capabilities and limitations.
+The Docker Container method is a suitable way to integrate AI into XNAT, working well with multiple data types and its recommended from the XNAT Documentation to launch jobs with the Docker Container method. Complete workflow automation was achieved with the Docker Container method, enabling users to select and transfer specific files to the container at various project data levels. However, the REST API call failed to transfer all project-level files to a single container, despite the files being listed in the container information.  
 
-With the Docker Container method we could achieve a complete automatization of the workflow from creating the Dockerfile to launching the container. 
-With the automatization we could select a specific file or more handle it to the container and the result file transfer was successful.
-This automation also enables users to configure containers for a desired project data level (e.g., project, subject, scans), select files within that level, and process them with the container.
-However, when only one context(project) is defined, and the container was charged with all project levels files, this one couldn't receive any file from the REST API call, even though the files were listed in the container information but still no successful transfer of files.  
-
-Since it was confirmed from a Senior Software Developer in XNAT team developers that the containers do not have direct access to the database by default and the only way to do it is this by passing credentials to the container (or using some sort of secret store like Vault or Keycloak). This method is though not recommended because the developer warned that the action is unwise and even if the security problems are ignored there is no insignificant chance of causing a harm.
-XNAT relies on a database to keep track of projects, subjects, sessions, files, etc. If this database is modified or interfered manually , XNAT might not understand the state of its own data anymore and things may appear missing or inconsistent in the UI or in the worst case breaks the the database altogether, meaning XNAT might stop working entirely.
-It was also warned that even trying to connect directly the container to the XNAT database from inside the container it probably not work too. Because the PostgreSQL has security restriction that control which machines can connect to it, furthermore only specific IP addresses or networks that are allowed to connect with it. Which would completely break containers running under Docker Swarm or Kubernetes~\cite{database}. Which confirms why the container couldn't receive any file when he was provided with data coming from other contexts than the one defined in the JSON command. 
-
+A senior XNAT developer confirmed that containers lack direct database access by default, requiring credential passing (or a secret store like Vault or Keycloak). However, this approach is strongly discouraged due to potential security risks and the possibility of causing harm to the database. Direct container-database connection is unlikely due to PostgreSQL's IP restrictions, which would break containers in Docker Swarm/Kubernetes and explains why the container couldn't receive files from different contexts.
+While the senior developer confirmed that retrieving files via REST API during container execution is a valid approach, no files were successfully transferred to the container in practice~\cite{database}.
 
 
 
@@ -37,9 +30,9 @@ To improve generalizability and accessibility especially for non-programming use
 \normalsize
 \subsubsection{GUI Mockup for Docker Container Automation in XNAT}
 \normalsize
-To improve accessibility and usability for non-technical users, the Docker Container  automation script was visualized as a GUI mockup. As shown in the \autoref{fig:mockup}, this mockup demonstrates how the command-line workflow appears, following the same logical steps: (1) container configuration, (2) project selection, (3) file discovery, (4) container launch, and (5) result visualization.
+To improve accessibility and usability for non-technical users, the Docker Container  automation script was visualized as a GUI mockup. As shown in the \autoref{fig:mockup}, this mockup demonstrates how the command-line workflow appears, following the same logical steps: (1) Login credentials, (2) Python script path, (3) Description of the command, (4) Project ID, and (5) Launching the container.
 \normalsize
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \def\svgwidth{\linewidth} 
     \input{mockup.pdf_tex}
@@ -49,7 +42,8 @@ To improve accessibility and usability for non-technical users, the Docker Conta
 \normalsize
 \subsection{The Docker Container Approach and the Somnolink Project}
 
-The Somnolink project is a nationwide initiative to improve the treatment and research of obstructive sleep apnea through better data sharing. The obstructive sleep apnea is the most prevalent disorder in clinical sleep laboratories. Therefore, the main goals of the Somnolink project are (1) improvement of availability of sleep data at point of care, (2) improvement of the early diagnosis and (3) personalized therapy of OSA and (4) therapy adherence prediction.
+The Somnolink project aims to improve obstructive sleep apnea (OSA) treatment and research by enhancing data sharing nationwide. Its primary goals include improving data availability, early diagnosis, personalized therapy, and therapy adherence prediction for OSA, the most common disorder in sleep labs.
+
 The objectives of the project are aligned with the health data typically collected along the usual patient pathway. It consists of four stages: (1) assessing pre-test probability through medical history and questionnaires, (2) conducting physical examinations in primary care, (3) performing outpatient sleep diagnostics, and (4) carrying out comprehensive sleep laboratory studies. Based on this structure, which data are relevant at each step is identified and ML models are proposed that could assist clinicians in their decision-making ~\cite{krefting_somnolink_2025}. A central hub consisting of XNAT will manage the sleep data among the patient pathway and the AI models as a second opinion.
 \begin{figure}[H]
     \centering
@@ -59,17 +53,18 @@ The objectives of the project are aligned with the health data typically collect
     \label{fig:somnolink}
 \end{figure}
 
-In general, the implementation of Docker container technology is becoming increasingly prevalent within the Somnolink Project, due to it is notable that the models can be implemented with a Docker container within XNAT.
-In this context, automating the Docker Container in XNAT offers a significant advantages. It allows the Somnolink predictions to be executed in a standardized manner. Such an automation not only reduces the manual intervention, but also ensures a consistent  workflow and facilitating the integration of data-driven decision support into clinical practice, which contribute to the project goals.\\
+The increasing adoption of Docker containers within the Somnolink Project allows for model implementation within XNAT. Automating these containers standardizes the execution of Somnolink predictions, reducing manual effort, ensuring workflow consistency, and facilitating data-driven clinical decision support, thereby supporting the project's objectives.\\
 The \autoref{fig:somnolink} illustrates the structure of the OSA diagnostic pathway in relation to data collection, data driven support, and technical implementation.
 The blue column shows the four steps of the German OSA patient pathway. The middle column summarizes the typical health data collected at each stage. And the last column underline the opportunity where machine learning or decision-support methods can be applied. 
-The yellow banner highlights Docker container automation in XNAT  as the technical foundation that enable standardized and reproducible workflows across the steps.
+The yellow banner highlights Docker container automation in XNAT as the technical foundation that enable standardized and reproducible workflows across the steps.
 
 \subsection{Sustainability Aspects of the Docker Container Including FAIR Criteria}
-Sustainability within Somnolink project covers both the technical stability and scientific traceability. Consequently the use of the Docker Containers contribute by offering reproducible computational environments, reducing maintenance demands, and facilitating collaboration across multiple sites. However, conformity to FAIR principles strengthens the long-term reusability of the developed solutions: The Container images are well stored in the Docker Hub (Findable), they are also accessible via standardized interfaces (Accessible), employ interoperable data formats (Interoperable), and are adaptable for use in new contexts (Reusable). This harmonized approach is essential for ensuring sustainable support of the Somnolink project’s objectives. 
+Sustainability within Somnolink project covers both the technical stability and scientific traceability. Consequently the use of the Docker Containers contribute by offering reproducible computational environments, reducing maintenance demands, and facilitating collaboration across multiple sites. However, conformity to FAIR principles strengthens the long-term reusability of the developed solutions: The Container images are well stored in the Docker Hub (Findable), they are also accessible via standardized interfaces (Accessible), employ interoperable data formats (Interoperable), and are adaptable for use in new contexts (Reusable). 
 Another key strength for the developed automation script is its sustainability and long-term usability. The implementation is flexible and allows at the same time to the developers a reuse of the existing framework and modify only components that may need updating. Potential future changes may include updates to XNAT REST API endpoints, the introduction of new authentication methods, or alterations to the JSON-based schema for command and wrapper definitions. Additionally, existing Docker base images could become deprecated, or XNAT project structures might be extended with new contexts or data types. However, the core workflow logic would remain unaffected.
 
 \section{Pipeline method}
+\subsection{Pipeline Workflow in XNAT}
+When a pipeline is launched, first XNAT reads the pipeline Descriptor XML, identifies the recourse descriptor, substitutes the variables defined in the Parameters File, and then executes the specified commands. The outputs are automatically captured and stored as XNAT resources.
 
 \subsection{Generalizability of the Pipeline}
 \normalsize
@@ -147,7 +142,7 @@ After comparing both approaches in terms of installation, configuration, automat
 \caption{Advantages and disadvantages of the Pipeline method and Docker Container method in XNAT.}
 \label{tab:adv-disadv}
 \renewcommand{\arraystretch}{1.3}
-\begin{tabular}{|p{3cm}|p{3cm}|p{5cm}|p{4cm}|}
+\begin{tabular}{|p{2cm}|p{5cm}|p{4cm}|p{3cm}|}
 \hline
 \textbf{Aspect} & \textbf{Pipeline Method} & \textbf{Docker Container Method} & \textbf{Automatization of the Docker method} \\
 \hline
@@ -209,10 +204,7 @@ After comparing both approaches in terms of installation, configuration, automat
 
 \section{Measures for the Future for both Methods}
 
-The Docker Container method is determined to be better than the Pipeline method, as shown in the table above the Docker Container is a simplified and secure method.  
-The Docker Container method offers significant advantages over the Pipeline method in XNAT.
-Almost all the steps of the Docker Container are simplified and requiring minimal steps compared to the Pipeline method. Furthermore it provides a better automation through the REST API support.  Furthermore, Docker's usability is improved with prebuilt image reusability, high reproducibility, strong community support, and enhanced security through isolated container environments, ultimately making it a more efficient and manageable solution.
-
-Looking ahead, both methods have potential for future development.\\
-For the Pipeline method, future development should focus on two key areas: Firstly, establishing a secure pipeline Hub to centralize storage and enhance environmental security. Secondly, integrating XML deployment directly within XNAT would streamline the build process for the "Run Pipeline" option, eliminating the need for server access and simplifying overall usability.\\
+For the Pipeline method, future development should focus on three key areas: Firstly, establishing a secure pipeline Hub to centralize storage and enhance environmental security. Secondly, integrating XML deployment directly within XNAT would streamline the build process for the "Run Pipeline" option, eliminating the need for server access and simplifying overall usability. Thirdly supporting more REST API endpoints.\\
 Future development of the Docker Container method should focus on: Firstly, enabling direct access to the XNAT database to facilitate comprehensive file processing across the entire project. Secondly, enhancing the JSON command to allow re-uploading processed files to various output locations within XNAT, regardless of the initial file selection. This would ensure that processed files are returned to their original locations, streamlining data management and improving workflow efficiency.
+
+

@@ -4,29 +4,28 @@
 An overview of the system and methods used is provided in this chapter, serving as a foundation for the more detailed examination of the approaches that follows. 
 
 \section{The Extensible Neuroimaging Archive Toolkit}
-The \ac{XNAT} ~\cite{marcus_extensible_2007} is an open-source imaging informatics platform developed by the Neuroinformatics Research Group at Washington University. It facilitates common management, productivity, and quality assurance tasks for imaging and associated data. Due to the fact that XNAT offers the opportunity to use the power of high-performance computing on your data~\cite{zaschke_extending_2024}, 
+The \ac{XNAT} ~\cite{marcus_extensible_2007} is an open-source imaging informatics platform. It facilitates common management, productivity, and quality assurance tasks for imaging and associated data. Due to the fact that XNAT offers the opportunity to use the power of high-performance computing on your data~\cite{zaschke_extending_2024}, 
  the Pipeline processing is one of the options that can be done on XNAT, as well as the deployment of Docker Containers.
 
 
 \section{The REST API}
 \ac{REST} is defined by its architectural constraints, not by specific protocol or standars, such as API, allowing for various deployment approaches by API developers.
-An \ac{API} is a set of terminology and standards for building and integrating application software. Those two are the main ingredients to achieve a automation of the analytical methods.  Luckily, XNAT provides its users with a list of REST APIs that make the exchange between the user and the website possible
+An \ac{API} is a set of terminology and standards for building and integrating application software. Those two are the main ingredients to achieve a automation of the analytical methods.
  ~\cite{REST_API}.
 
 \section{The Docker Container}
 A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another~\cite{DockerContainer}.
-A Docker Container allows the user to deploy any application in any environment without worrying about incompatibility issues, regardless of the machine’s configuration settings~\cite{what_is_Docker_Container}. Although, there are some associated terms that will always be needed when it comes to using or learning about Docker Containers.
-One of the most important of them is the Dockerfile. The Dockerfile is a file that contains the build instructions for the image that the Docker Engine (an open-source containerization technology for building and containerizing your applications will run~\cite{DockerEngine}.
+A Docker Container allows the user to deploy any application in any environment without worrying about incompatibility issues, regardless of the machine’s configuration settings~\cite{what_is_Docker_Container}. The Dockerfile is a file that contains the build instructions for the image that the Docker Engine (an open-source containerization technology for building and containerizing your applications will run~\cite{DockerEngine}.
 \\
 \section{Command Definition in JSON Format}
-At the same time, if we want XNAT to execute a created Docker image and run a command, a \ac{JSON} command definition in JSON format is needed. The command definition in JSON format is a structured set of properties that defines the Docker image, which enables XNAT to execute the command correctly. In other words, this command definition in JSON format (written in JSON) can be seen as a configuration for XNAT. When defining a command for XNAT in JSON format, the Docker image and a clear, human-readable name are specified, along with the exact command-line invocation, what input files are required and where they are mounted, how those inputs are selected from XNAT, and what outputs are produced and where they should be uploaded back into XNAT~\cite{JSONCommand}.
+\ac{JSON} command is a structured set of properties that defines the Docker image, which enables XNAT to execute the command correctly. In other words, this command definition in JSON format (written in JSON) can be seen as a configuration for XNAT~\cite{JSONCommand}.
 
 \section{Pipeline in XNAT}
-Pipelines in XNAT are efficient lightweight applications that can be run on the project data to facilitate sophisticated processing tasks or leverage the computational power of extensive computing clusters. After integrating the pipeline in project data, we can set up project-based workflows with project-specific and experiment-specific parameters, track a pipeline and send email notifications, and capture provenance information as the pipeline executes~\cite{Pipeline}. The pipelines are used for tasks like converting DICOM to NIFTI, performing image quality assessment (QA), correcting MRI bias fields, and running advanced analyses such as the FreeSurfer Pipeline~\cite{xnat-pipelines}.
+Pipelines in XNAT are efficient lightweight applications that can be run on the project data to facilitate sophisticated processing tasks or leverage the computational power of extensive computing clusters~\cite{Pipeline}.
 
 \section{The Pipeline Descriptor}
 
-Pipelines are identified by using a pipeline descriptor and resource descriptors. A resource descriptor describes an executable. An executable is identified by its name, its location, and the arguments that it takes~\cite{XNAT_Pipeline_Development_Schema}. In other words, the Pipeline Descriptor is a recipe of the pipeline that tells XNAT exactly what a pipeline is, what input is needed, and where the output should be located, ensuring a seamless integration in XNAT.
+Pipelines are identified by using a pipeline descriptor and resource descriptors. A resource descriptor describes an executable. An executable is identified by its name, its location, and the arguments that it takes~\cite{XNAT_Pipeline_Development_Schema}. 
 
 
 
