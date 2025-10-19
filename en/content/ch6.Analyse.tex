@@ -141,60 +141,60 @@ After comparing both approaches in terms of installation, configuration, automat
 \centering
 \caption{Advantages and disadvantages of the Pipeline method and Docker Container method in XNAT.}
 \label{tab:adv-disadv}
-\renewcommand{\arraystretch}{1.3}
-\begin{tabular}{|p{2cm}|p{5cm}|p{4cm}|p{3cm}|}
+\renewcommand{\arraystretch}{4}
+\begin{tabular}{|p{1cm}|p{3cm}|p{5cm}|p{5cm}|}
 \hline
-\textbf{Aspect} & \textbf{Pipeline Method} & \textbf{Docker Container Method} & \textbf{Automatization of the Docker method} \\
+\textbf{Aspect} & \textbf{Pipeline Method} & \textbf{Docker Container Method} & \textbf{Automatization(Docker method)} \\
 \hline
-\textbf{Advantages} &
+\textbf{Advan-tages} &
 \parbox[t]{3cm}{
-- Fully compatible with older XNAT versions~\cite{Pipelinecompatible}.\\
-- The execution of external applications and shell scripts is possible ~\cite{jansen_extending_2015}.
+$\bullet$ Fully compatible with older XNAT versions~\cite{Pipelinecompatible}.\\
+$\bullet$ Execution of external applications and shell scripts is possible ~\cite{jansen_extending_2015}.
 }
 &
 \parbox[t]{5cm}{
-- Easy installation (Docker Engine). \\
-- Minimal configuration via JSON-based command.\\
-- Highly reusable across XNAT servers. \\
-- Easier updates by building and pushing a new image. \\
-- Large community support.\\
-- Secure via isolated container environment. \\
-- Docker images stored on Docker Hub can be used in different clinics and research institutions.\\
+$\bullet$ Easy installation (Docker Engine). \\
+$\bullet$ Minimal configuration via JSON-based command.\\
+$\bullet$ Highly reusable across XNAT servers. \\
+$\bullet$ Easier updates by building and pushing a new image. \\
+$\bullet$ Large community support.\\
+$\bullet$ Secure via isolated container environment. \\
+$\bullet$ Docker images stored on Docker Hub can be used in different clinics and research institutions.\\
 }
 &
 \parbox[t]{4cm}{
-- No configuration needed. \\
-- Extremely low knowledge requirement (only need to write a requirements file). \\
-- All manual steps automated. \\
-- The script asks simple questions. \\
-- Time saving compared to the manual Docker method. \\
-- Images reusable across environments and institutes. \\
-- Images securely stored in Docker Hub and within XNAT.\\
+$\bullet$ No configuration needed. \\
+$\bullet$ Extremely low knowledge requirement . \\
+$\bullet$ All manual steps automated. \\
+$\bullet$ The script asks simple questions. \\
+$\bullet$ Time saving compared to the manual Docker method. \\
+$\bullet$ Images reusable across environments and institutes. \\
+$\bullet$ Images securely stored in Docker Hub and within XNAT.\\
 } \\
 \hline
-\textbf{Disadvantages} &
+\textbf{Disadv-antages} &
 \parbox[t]{3cm}{
-- Requires manual placement of XML descriptors.\\
-- Needs server access for installation and updates.\\
-- Requires XML schema knowledge.\\
-- Limited automation support and no automation achievable.\\
-- The pipeline has to be  removed or disabled after the running, to prevent users from running this pipeline in the future~\cite{addingpipeline}.\\
-- The pipeline is not a preferred way to launch jobs in XNAT.\\
+$\bullet$ Requires manual placement of XML descriptors.\\
+$\bullet$ Needs server access for installation and updates.\\
+$\bullet$ Requires XML schema knowledge.\\
+$\bullet$ Limited automation support and no automation achievable.\\
+$\bullet$ The pipeline has to be  removed or disabled after the running~\cite{addingpipeline}.\\
+$\bullet$ The pipeline is not a preferred way to launch jobs in XNAT.\\
 
 }
 &
 \parbox[t]{6cm}{
-- Requires Docker knowledge. \\
-- Depends on Docker availability \\if Docker is blocked or fails, \\images are not recognized\\ within XNAT. \\
-- Requires regular expression\\ knowledge for file filtering. \\
-- No access to the database. \\
-- Mounting extracted files \\ consumes significant \\storage space.\\
+$\bullet$ Requires Docker knowledge. \\
+$\bullet$ Depends on Docker availability \\if Docker is blocked or fails, \\images are not recognized\\ within XNAT. \\
+$\bullet$ Requires regular expression\\ knowledge for file filtering. \\
+$\bullet$ No access to the database. \\
+
 }
 &
 \parbox[t]{4cm}{
-- Works better with launching multiple containers. \\
-- Problems launching a single container. \\
-- For specific file processing, the JSON command in the script must be adjusted with an extra matcher.
+$\bullet$ Works better with launching multiple containers. \\
+$\bullet$ Problems launching a single container. \\
+$\bullet$ For specific file processing, the JSON command in the script must be adjusted with an extra matcher.
 } \\
 \hline
 \end{tabular}
