@@ -63,61 +63,11 @@ def get_input(prompt):
             return value
         else:
             print("Cannot be empty.")
-
-
-    # Zusätzliche Eingaben einholen:
-    command_name = input("Name des Commands: ")
-    command_description = input("Beschreibung des Commands: ")
-    
-    # Ausgabe oder Rückgabe eines Dictionaries mit den benötigten Werten
-    return {
-        "selected_context": selected_context,
-        "command_name": command_name,
-        "command_description": command_description
-    }
-
-
 #-----------------------------------4)json File erstellen------------------------------------------------------------------
 
 def create_json_file(docker_image, script_filename, mod_data):
     wrapper_name = mod_data["command_name"].replace(" ", "_").lower() + "_wrapper"
-
-    # Mapping Kontext >>external-input + as-a-child-of
-    context_mappings = {
-        "xnat:projectData": {"input_name": "project", "input_type": "Project", "child_of": "project"},
-        
-    }
-
-    # Dynamische Listen
-    external_inputs = []
-    output_handlers = []
-    used_inputs = set()  # Duplikate vermeiden
-#Mehrfachauswahlen sammeln und dabei Duplikate automatisch ausfiltern
-    for context in mod_data["contexts"]:
-        mapping = context_mappings.get(context)
-        if not mapping:
-            continue  # unbekannter Kontext wird übersprungen
-
-        # External input nur einmal pro Name
-        input_key = (mapping["input_name"], mapping["input_type"])
-        if input_key not in used_inputs:
-            external_inputs.append({
-                "name": mapping["input_name"],
-                "type": mapping["input_type"],
-                "required": True
-            })
-            used_inputs.add(input_key)
-
-        output_handlers.append({
-            "name": "output",
-            "accepts-command-output": "result_file",
-            "as-a-child-of": mapping["child_of"],
-            "type": "Resource",
-            "label": "Results",
-            "format": "csv"
-        })
-
-    # JSON zusammenbauen
+    
     json_file = {
         "name": mod_data["command_name"],
         "description": mod_data["command_description"],
@@ -162,6 +112,16 @@ def create_json_file(docker_image, script_filename, mod_data):
                         "required": True,
                         "load-children": True
                     }
+                ],
+                "output-handlers": [
+                    {
+                   "name": "output",
+                   "accepts-command-output": "result_file",
+                   "as-a-child-of": "project",
+                   "type": "Resource",
+                   "label": "Results",
+                   "tags": []
+                   }
                 ],
                 "output-handlers": [
                     {
@@ -351,10 +311,6 @@ def get_all_files_all_levels(xnat_host, project_id, xnat_user, xnat_password):
 #---------------------------------------------------------------------------------------------------------
 def is_valid_filename(name):
     return "(" not in name and ")" not in name
-
-# valid_files = [f for f in files if is_valid_filename(f["Name"])]
-
-
 #---------------------11)Lanch Container------------------------------------------------------------------
 def launch_container_with_all_files(xnat_host, project_id, command_id, wrapper_name,
                                     xnat_user, xnat_password, files):
@@ -459,7 +415,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
 
