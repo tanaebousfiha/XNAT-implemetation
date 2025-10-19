@@ -1,7 +1,6 @@
 
 
 #-----------------Bibliotheken----------------------------------------------------------------------------------------------------------------------------
-
 import json 
 import requests
 import os 
@@ -15,8 +14,8 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def write_dockerfile(docker_dir, script_filename, docker_base_image="python:3.10-slim"):
     
-    dockerfile_content = f"""FROM {docker_base_image}
-
+    dockerfile_content = f"""
+FROM {docker_base_image}
 WORKDIR /app
 COPY {script_filename} /app/{script_filename}
 RUN pip install --no-cache-dir pandas
@@ -179,9 +178,7 @@ def get_command_wrapper_id(xnat_host, xnat_user, xnat_password, command_name, wr
 
 
 def enable_wrapper_sitewide(xnat_host, command_id, wrapper_name, xnat_user, xnat_password):
-    """
-    Aktiviert den Wrapper global (für alle Projekte).
-    """
+   
     url = f"{xnat_host.rstrip('/')}/xapi/commands/{command_id}/wrappers/{wrapper_name}/enabled"
     resp = requests.put(url, auth=(xnat_user, xnat_password), verify=False)
 
@@ -194,9 +191,7 @@ def enable_wrapper_sitewide(xnat_host, command_id, wrapper_name, xnat_user, xnat
 
 #----------------------------------------------------------------------------------------------------------------
 def enable_wrapper_for_project(xnat_host, project_id, command_id, wrapper_name, xnat_user, xnat_password):
-    """
-    Aktiviert den Wrapper für ein bestimmtes Projekt.
-    """
+    
     url = f"{xnat_host.rstrip('/')}/xapi/projects/{project_id}/commands/{command_id}/wrappers/{wrapper_name}/enabled"
     resp = requests.put(url, auth=(xnat_user, xnat_password), verify=False)
 
@@ -208,7 +203,7 @@ def enable_wrapper_for_project(xnat_host, project_id, command_id, wrapper_name, 
         print(f"Fehler beim Aktivieren für das Projekt: {resp.status_code} - {resp.text}")
 
 #----------------------------------------10)get_input_file-------------------------------------------
-#Je nachdem, welcher Kontext gewählt wird, wird die Datei aus diesem Kontext geholt. 
+
 
 def get_all_files_all_levels(xnat_host, project_id, xnat_user, xnat_password):
     session = requests.Session()
@@ -404,6 +399,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
