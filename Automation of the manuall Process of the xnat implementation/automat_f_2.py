@@ -113,16 +113,7 @@ def create_json_file(docker_image, script_filename, mod_data):
                         "load-children": True
                     }
                 ],
-                "output-handlers": [
-                    {
-                   "name": "output",
-                   "accepts-command-output": "result_file",
-                   "as-a-child-of": "project",
-                   "type": "Resource",
-                   "label": "Results",
-                   "tags": []
-                   }
-                ],
+                
                 "output-handlers": [
                     {
                         "name": "output",
