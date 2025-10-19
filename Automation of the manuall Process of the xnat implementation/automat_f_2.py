@@ -3,12 +3,12 @@
 #-----------------Bibliotheken----------------------------------------------------------------------------------------------------------------------------
 
 import json 
-import requests  # type: ignore
+import requests
 import os 
 import subprocess  
 import getpass 
 import sys
-import urllib3  # type: ignore
+import urllib3 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 #-----------------------------------1)dockerfile ausfüllen------------------------------------------------------
@@ -54,8 +54,6 @@ def build_and_push_docker_image(dockerfile_path, docker_image_name):
     print(f"Image successfully pushed: {full_tag}")
     return full_tag
 #-----------------------------------3)User-Input----------------------------------------- -----------------------------------------   
-
-#prepare the input for the json command :https://www.digitalocean.com/community/tutorials/how-to-receive-user-input-python
 def get_input(prompt):
     while True:
         value = input(prompt)
@@ -74,7 +72,7 @@ def create_json_file(docker_image, script_filename, mod_data):
         "version": "1.5",
         "type": "docker",
         "image": docker_image,
-        "command-line": f"python3 /app/{script_filename} /input/#input_file# /output",
+        "command-line": f"python3 /app/{script_filename} /input/output",
         "mounts": [
             {"name": "input", "path": "/input", "writable": False},
             {"name": "output", "path": "/output", "writable": True}
