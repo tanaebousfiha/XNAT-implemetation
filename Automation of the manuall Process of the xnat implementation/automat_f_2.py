@@ -92,8 +92,7 @@ def create_json_file(docker_image, script_filename, mod_data):
                 "name": "result_file",
                 "type": "file",
                 "description": "Result file output",
-                "mount": "output",
-                "path": "."
+                "mount": "output"
             }
         ],
         "xnat": [
@@ -107,7 +106,7 @@ def create_json_file(docker_image, script_filename, mod_data):
                         "name": "project",
                         "type": "Project",
                         "required": True,
-                        "load-children": True
+                        "load-children": False
                     }
                 ],
                 
@@ -399,5 +398,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
