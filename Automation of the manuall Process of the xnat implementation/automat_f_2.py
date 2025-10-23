@@ -17,7 +17,6 @@ WORKDIR /app
 COPY {script_filename} /app/{script_filename}
 RUN pip install --no-cache-dir pandas
 COPY requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir -r /app/requirements.txt || echo "No requirements.txt found, skipping"
 """
     dockerfile_path = os.path.join(docker_dir, "Dockerfile")
     with open(dockerfile_path, "w") as f:
@@ -98,7 +97,7 @@ def create_json_file(docker_image, script_filename, mod_data):
         "name": wrapper_name,
         "label": mod_data.get("label_name", ""),
         "description": mod_data.get("label_description", ""),
-        "contexts": ["xnat:projectData"],  # Projekt-Level
+        "contexts": ["xnat:projectData"], 
         "external-inputs": [
             {"name": "project", "type": "Project", "required": True, "load-children": True},
             {"name": "subject", "type": "Subject", "required": False, "load-children": True},
@@ -274,19 +273,17 @@ def main():
     enable_wrapper_for_project(xnat_host, project_id, command_id, wrapper_name, xnat_user, xnat_password)
 
     # Dateien abrufen
-    files = []  # TODO: Hier müssen Dateien aus XNAT Projekt geladen werden
-    # Beispiel:
-    # files = [{"Name": "example1.csv"}, {"Name": "example2.csv"}]
+    files = []  
+  
 
-    launch_container(
+    launch_container()
     xnat_host=xnat_host,
     project_id=project_id,
     command_id=command_id,
     wrapper_name=wrapper_name,
     xnat_user=xnat_user,
     xnat_password=xnat_password,
-    files=None  # keine Dateien
-)
+    files=None 
 
 
 if __name__ == "__main__":
