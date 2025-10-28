@@ -41,9 +41,10 @@ To improve accessibility and usability for non-technical users, the Docker Conta
 \normalsize
 \subsection{The Docker Container approach and the Somnolink project}
 
-The Somnolink project aims to improve obstructive sleep apnea (OSA) treatment and research by enhancing data sharing nationwide. Its primary goals include improving data availability, early diagnosis, personalized therapy, and therapy adherence prediction for OSA.
-
-The objectives of the project are aligned with the health data typically collected along the usual patient pathway. It consists of four stages: (1) assessing pre-test probability through medical history and questionnaires, (2) conducting physical examinations in primary care, (3) performing outpatient sleep diagnostics, and (4) carrying out comprehensive sleep laboratory studies. Based on this structure, which data are relevant at each step is identified and ML models are proposed that could assist clinicians in their decision-making ~\cite{krefting_somnolink_2025}. A central hub consisting of XNAT will manage the sleep data among the patient pathway and the AI models as a second opinion.
+The Somnolink project aims to improve obstructive sleep apnea (OSA) diagnose and  treatment and research by enhancing data sharing nationwide~\cite{krefting_somnolink_2025}. The primary goal of the project is to improve the diagnosis, treatment and adherence to treatment of patients with obstructive sleep apnea by using medical informatics and medical data science methods~\cite{aimsomnilink}.
+In order to achieve this goal method of informatics and ML-based decisions support system are being used. 
+The data source is chosen based on clinical practice, and the OSA patient pathway follows the four-step diagnostic process : (1) assessment of the pretest probability via anamnesis and questionnaires, (2) physical examination, (3) sleep diagnostics by an outpatient sleep specialist, (4) comprehensive diagnostics in a sleep lab ~\cite{krefting_somnolink_2025}.
+The \autoref{fig:somnolink} illustrates the structure of the OSA diagnostic pathway in relation to data collection, and data science and ML support.
 \begin{figure}[H]
     \centering
     \def\svgwidth{\linewidth} 
@@ -52,8 +53,16 @@ The objectives of the project are aligned with the health data typically collect
     \label{fig:somnolink}
 \end{figure}
 
-The usage of Docker containers within the Somnolink Project allows for model implementation within XNAT. Automating these containers standardizes the execution of Somnolink predictions, reducing manual effort, ensuring workflow consistency, and facilitating data-driven clinical decision support, thereby supporting the project's objectives.\\
-The \autoref{fig:somnolink} illustrates the structure of the OSA diagnostic pathway in relation to data collection, data driven support, and technical implementation.
+The fact that the proposed solution for the Somnolink approaches is the ML-based screening of inpatient for OSA, and ML-based therapy response prediction, ML-based prediction of therapy discontinuation risk, the usage of Docker Containers within the Somnolink Project could facilitate the achievement of the project goals, by allowing model implementation within XNAT. Additionally  automating these containers workflows standardizes the execution of Somnolink predictions, reducing manual effort, ensuring workflow consistency, thereby supporting the project's objectives.\\
+
+
+
+
+
+
+
+
+
 \subsection{Sustainability Aspects of the Docker Container Including FAIR Criteria}
 
 According to Wilkinson et al. ~\cite{FAIR}, "The FAIR guiding principles describe distinct considerations for contemporary data publishing environments with respect to supporting both manual and automated deposition, exploration, sharing, and reuse."
@@ -100,55 +109,17 @@ However, it is possible to design a template for the XML descriptor and create a
 
 \subsection{The pipeline approach and the Somnolink project, sustainability aspects including FAIR criteria}
 The pipeline approach presents challenges adhering to FAIR principles.
-Pipeline descriptors are stored in locally on the XNAT server and are not systematically indexed or searchable.
- Accessibility is also restricted, as only administrators have the necessary permissions to manually register and configure the XML files.
- Interoperability is limited because the XML descriptors are closely tied to specific XNAT data types. Additionally, the potential for reuse is also limited, since adapting a pipeline to new contexts necessitates manual transfer of XML files and server access configurations. Within the Somnolink project, the pipeline could play a great role as workflow  facilitating the structured execution of analysis steps in the Obstructive Sleep Apnea (OSA) diagnostic. By defining a sequence of processing tasks on a manual procedure. However, the practical use of pipelines is limited, as they require direct server access and technical configuration, which makes the pipeline more suitable for developers or system administrators than for clinicians, therefore reducing the the ability of a method to be use easily across different hospitals, research centers, or clinical teams, not just by a few developers with server access.
+Pipeline descriptors are stored in locally on the XNAT server and are not searchable.
+Accessibility is also restricted, as only administrators have the necessary permissions to manually register and configure the XML files.
+Additionally, the potential for reuse is also limited, since adapting a pipeline to new contexts necessitates manual transfer of XML files and server access configurations. 
+After creating and successfully testing the pipeline, the pipeline owners can secure their pipeline descriptors using file system permissions, so that they can be accessed or transmitted by the owner. However the other users must configure all other steps to integrate the pipeline on their own XNAT.
+The practical use of pipelines is limited, as they require direct server access and technical configuration, which makes the pipeline not suitable for developers, system administrators or clinicians.
 
 
 \section{Evaluating pipeline and Docker approaches in XNAT}
 
 For the purpose of evaluating the two methods, i began by compiling a comparative table to provide a clearer understanding of their respective features.
 
-\begin{table}[H]
-  \centering
-  \caption{Comprehensive comparison of XNAT Pipeline method and Docker Container method.}
-  \label{tab:pipeline-vs-docker}
-
-  \begin{tabular}{|>{\centering\arraybackslash}p{2cm}|
-                      >{\centering\arraybackslash}p{4cm}|
-                      >{\centering\arraybackslash}p{4cm}|
-                      >{\centering\arraybackslash}p{4cm}|}
-    \hline
-    \textbf{Aspect} & \textbf{The Pipeline method} & \textbf{Docker Container method} & \textbf{Docker method with Automatization }\\ \hline
-    
-    
-    Installation & Requires manual placement of XML descriptors, plugin JARs~\cite{installpipeline}, and executables on the server. & Container image uploaded once (via Docker registry) and configured in XNAT. & The automatization script must be launched and the Docker Engine must be installed and started up as well. \\ \hline
-    
-
-    
-    Configuration & Admin must edit data types, enable actions, and rebuild Pipeline engine, require direct access to the server in order to manually copy the XML descriptor and associated scripts to a specific directory. & Minimal configuration through a JSON command, no engine rebuild needed. & No need for any configuration, the script carries the workflow to the end. \\ \hline
-    
-    Execution & The Run Pipeline option must be built via actions menu. & Triggered via actions menu or REST API, image runs in isolated environment. & The Docker Container is enabled automatically sitewide and project wide too. \\ \hline
-
-    Deployability and flexibility & Pipelines are highly dependent on the specific XNAT environment and server configuration in which they are deployed. & Docker images can be reused in various XNAT installations and environment. & Automatically deploying within XNAT, after that the images can be reused in different environment. \\ \hline
-    
-    Maintenance & Requires server access and manual reconfiguration. & Updating requires building and pushing a new image, no direct server changes needed. & Old image can be deleted and then creating new images with updated external script.\\ \hline
-    
-    Usability & Requires XML schema knowledge and direct server administration. & Requires Docker knowledge, but easier to reuse prebuilt images, through running basic commands on terminal. & Extreme low knowledge requirement (except writing a requirement file and answering the script questions. \\ \hline
-    
-    Consistency & Depends on identical server setups and configurations. & High reproducibility is achieved, as all dependencies are within the container. & All dependencies are within the container, since the user has written the requirement file separately. \\ \hline
-    
-    
-    Security & Credentials needed in XML configuration. & Isolated container environments. & Isolated container environments. \\ \hline
-  \end{tabular}
-\end{table}
-
- The table \ref{tab:pipeline-vs-docker} presents a direct comparison between the two methods.
-
-
-
-
- 
 \subsection{Advantages and disadvantages of the methods}
 
 After comparing both approaches in terms of installation, configuration, automation, and maintenance (see ~\autoref{tab:pipeline-vs-docker}), a summary of their main advantages and disadvantages is provided in ~\autoref{tab:docker_pipeline}.
@@ -221,6 +192,39 @@ $\bullet$ Selecting a XNAT level and launching with selected file is the success
 \section{Measures for the future for both methods}
 
 For the Pipeline method, future development should focus on three key areas: Firstly, establishing a secure pipeline Hub to centralize storage and enhance environmental security. Secondly, integrating XML deployment directly within XNAT would streamline the build process for the "Run Pipeline" option, eliminating the need for server access and simplifying overall usability. Thirdly supporting more REST API endpoints.\\
-Future development of the Docker Container method should focus on: Firstly, enabling direct access to the XNAT database to facilitate comprehensive file processing across the entire project. Secondly, enhancing the JSON command to allow re-uploading processed files to various output locations within XNAT, regardless of the initial file selection. This would ensure that processed files are returned to their original locations, streamlining data management and improving workflow efficiency. And lastly implementing the GUI mockup for the automation.
+Future development of the Docker Container method should focus on: Firstly, enabling direct access to the XNAT database to facilitate comprehensive file processing across the entire project. Secondly, enhancing the JSON command to allow re-uploading processed files to various output locations within XNAT, regardless of the initial file selection. This would ensure that processed files are returned to their original locations. And lastly implementing the GUI mockup for the automation.
 Additionally it is preferable to create a new REST API endpoint for launching containers, within this one a placement for the \texttt{input files} are given, since i faced a problem with communicating the files to the container with REST API, in order to avoid communicating the files through a payload, and obviously this would not be successful if the mounting is restricted for only the defined context. 
 
+\begin{table}[H]
+  \centering
+  \caption{Comprehensive comparison of XNAT Pipeline method and Docker Container method.}
+  \label{tab:pipeline-vs-docker}
+
+  \begin{tabular}{|>{\centering\arraybackslash}p{2cm}|
+                      >{\centering\arraybackslash}p{4cm}|
+                      >{\centering\arraybackslash}p{4cm}|
+                      >{\centering\arraybackslash}p{4cm}|}
+    \hline
+    \textbf{Aspect} & \textbf{The Pipeline method} & \textbf{Docker Container method} & \textbf{Docker method with Automatization }\\ \hline
+    
+    
+    Installation & Requires manual placement of XML descriptors, plugin JARs~\cite{installpipeline}, and executables on the server. & Container image uploaded once (via Docker registry) and configured in XNAT. & The automatization script must be launched and the Docker Engine must be installed and started up as well. \\ \hline
+    
+
+    
+    Configuration & Admin must edit data types, enable actions, and rebuild Pipeline engine, require direct access to the server in order to manually copy the XML descriptor and associated scripts to a specific directory. & Minimal configuration through a JSON command, no engine rebuild needed. & No need for any configuration, the script carries the workflow to the end. \\ \hline
+    
+    Execution & The Run Pipeline option must be built via actions menu. & Triggered via actions menu or REST API, image runs in isolated environment. & The Docker Container is enabled automatically sitewide and project wide too. \\ \hline
+
+    Deployability and flexibility & Pipelines are highly dependent on the specific XNAT environment and server configuration in which they are deployed. & Docker images can be reused in various XNAT installations and environment. & Automatically deploying within XNAT, after that the images can be reused in different environment. \\ \hline
+    
+    Maintenance & Requires server access and manual reconfiguration. & Updating requires building and pushing a new image, no direct server changes needed. & Old image can be deleted and then creating new images with updated external script.\\ \hline
+    
+    Usability & Requires XML schema knowledge and direct server administration. & Requires Docker knowledge, but easier to reuse prebuilt images, through running basic commands on terminal. & Extreme low knowledge requirement (except writing a requirement file and answering the script questions. \\ \hline
+    
+    
+    Security & Credentials needed in XML configuration. & Isolated container environments. & Isolated container environments. \\ \hline
+  \end{tabular}
+\end{table}
+
+ The table \ref{tab:pipeline-vs-docker} presents a direct comparison between the two methods.
