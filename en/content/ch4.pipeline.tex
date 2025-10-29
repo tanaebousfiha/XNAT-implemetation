@@ -1,5 +1,5 @@
 
-\section{Pipeline Method}
+\section{Pipeline method}
 In this work, the pipeline approach was analyzed using an OSA (Obstructive Sleep Apnea) prediction script as a use case.
 \normalsize
 
@@ -20,11 +20,11 @@ The XNAT pipeline system consist of two main components: \\
 the Pipeline Engine, which executes workflow definitions, and the XNAT Pipeline Engine Plugin, which enables interaction with the XNAT interface.
 By default, pipelines are stored in the directory /data/xnat/home/pipeline/. During the initial setup, the Pipeline Engine is initialized via a Secure Shell (SSH) session by running
 <PIPELINE\_HOME>/setup.sh YOUR\_ADMIN\_EMAIL\_ID YOUR\_SMTP\_SERVER,
-which generates the configuration file pipeline.config. This file contains essential parameters such as the site identifier and administrator email address~\cite{installpipeline}.\\
+which generates the configuration file pipeline.config. This file contains essential parameters such as the site identifier and administrator email address~\cite{configpip}.\\
 Usually a complete Pipeline in XNAT is composed of three XML configuration layers:\\
 First a resource descriptor: which defines the executable component. \\
-Second parameters File, which provides concrete runtime values for these input arguments, such as configuration files.\\
-Third pipeline Descriptor, which  specifies which scripts to execute, in which order, and how the outputs should be handled~\cite{pipelinediscussion}. The \autoref{fig:pipeline} defines the essentials element to run a pipeline in XNAT. 
+Second parameters XML, which provides concrete input parameters values for these input arguments, such as configuration files.\\
+Third pipeline Descriptor(XML), which  specifies which scripts to execute, in which order, and how the outputs should be handled. It a sort of "xmlized" version of the script~\cite{pipelinediscussion}. The \autoref{fig:pipeline} defines the essentials element to run a pipeline in XNAT. 
 \begin{figure}[H]
     \centering
     \def\svgwidth{0.7\linewidth}
@@ -38,13 +38,13 @@ Third pipeline Descriptor, which  specifies which scripts to execute, in which o
 
 
 
-\subsection{The Pipeline and the REST API}
+\subsection{The pipeline and the REST API}
 
 
 The POST /pipelines/launch/pipelineName endpoint~\cite{pipelinerestapi} in XNAT's REST API1
  enables automated execution of registered pipelines. However, the lack of endpoints for global pipeline enablement and project assignment means that deployment and project-level setup require manual configuration.
 
-\section{User Guide for the Pipeline Approach}
+\section{User guide for the pipeline approach}
 To gain a better understanding of the pipeline approach, \autoref{tab:pipeline} provides an explanation of all the steps involved in this approach.
 \begin{table}[H]
   \centering
@@ -73,7 +73,7 @@ To gain a better understanding of the pipeline approach, \autoref{tab:pipeline} 
   \textbf{Launching the Pipeline} & 
    $\bullet$ Manually: From the data type page, click Run/Build Pipeline. \newline
    $\bullet$ Programmatically via REST API.\newline
-   -Once the pipeline starts, you will receive an notification confirming the launch or completion~\cite{pipelinrunning}
+   $\bullet$ Once the pipeline starts, you will receive a notification confirming the launch or completion~\cite{pipelinrunning}.
    \\
   \hline
   \textbf{Problems / Troubleshooting} & 
@@ -82,8 +82,8 @@ To gain a better understanding of the pipeline approach, \autoref{tab:pipeline} 
   $\bullet$ Pipeline failed execution:
    Re-run the following command to reset file permissions:\newline
     chmod +x my\_pipeline.xml
-  -Check logs: Review the XNAT logs for details\newline
-  $\bullet$ Incorrect pipeline registration: Verify that the pipeline path is correctly configured under Administer -> Pipelines.
+  -Check logs: Review the XNAT logs for details.\newline
+  $\bullet$ Incorrect pipeline registration: Verify that the pipeline path is correctly configured: Administer -> Pipelines.
   
   \\
   \hline

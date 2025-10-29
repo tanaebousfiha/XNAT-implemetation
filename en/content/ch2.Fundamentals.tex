@@ -5,27 +5,26 @@ An overview of the system and methods used is provided in this chapter, serving 
 
 \section{The Extensible Neuroimaging Archive Toolkit}
 The \ac{XNAT} ~\cite{marcus_extensible_2007} is an open-source imaging informatics platform. It facilitates common management, productivity, and quality assurance tasks for imaging and associated data. Due to the fact that XNAT offers the opportunity to use the power of high-performance computing on your data~\cite{zaschke_extending_2024}, 
- the Pipeline processing is one of the options that can be done on XNAT, as well as the deployment of Docker Containers.
+ the pipeline processing is one of the options that can be done on XNAT, as well as the deployment of Docker containers.
 
 
 \section{The REST API}
 \ac{REST} is defined by its architectural constraints, not by specific protocol or standars, such as API, allowing for various deployment approaches by API developers.
-An \ac{API} is a set of terminology and standards for building and integrating application software. Those two are the main ingredients to achieve a automation of the analytical methods.
- ~\cite{REST_API}.
+An \ac{API} is a set of terminology and standards for building and integrating application software~\cite{REST_API}.
 
-\section{The Docker Container}
+\section{The Docker container}
 A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another~\cite{DockerContainer}.
-A Docker Container allows the user to deploy any application in any environment without worrying about incompatibility issues, regardless of the machine’s configuration settings~\cite{what_is_Docker_Container}. The Dockerfile is a file that contains the build instructions for the image that the Docker Engine (an open-source containerization technology for building and containerizing your applications will run~\cite{DockerEngine}.
+Regardless of the host machine's configuration, Docker containers allow users to deploy any application without the worry of incompatibility problems~\cite{what_is_Docker_Container}. The Dockerfile is a file that contains the build instructions for the image~\cite{Dockerfile} that the Docker Engine( an open-source containerization technology for building and containerizing your applications will run~\cite{DockerEngine}).
 \\
-\section{Command Definition in JSON Format}
+\section{Command definition in JSON format}
 \ac{JSON} command is a structured set of properties that defines the Docker image, which enables XNAT to execute the command correctly. In other words, this command definition in JSON format (written in JSON) can be seen as a configuration for XNAT~\cite{JSONCommand}.
 
 \section{Pipeline in XNAT}
 Pipelines in XNAT are efficient lightweight applications that can be run on the project data to facilitate sophisticated processing tasks or leverage the computational power of extensive computing clusters~\cite{Pipeline}.
 
-\section{The Pipeline Descriptor}
+\section{The pipeline descriptor}
 
-Pipelines are identified by using a pipeline descriptor and resource descriptors. A resource descriptor describes an executable. An executable is identified by its name, its location, and the arguments that it takes~\cite{XNAT_Pipeline_Development_Schema}. 
+Pipelines are identified by using a pipeline descriptor and resource descriptors. A resource descriptor defines an executable by specifying its name, location, and the arguments it accepts~\cite{XNAT_Pipeline_Development_Schema}. 
 
 
 
