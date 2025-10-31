@@ -2,7 +2,7 @@
 This chapter conducts the comprehensive analysis for both methods Docker Container and Pipeline. 
 A full comparison with and disadvantages and advantages for both methods are presented.
 \section{Docker Method}
-\subsection{The Docker Container workflow in XNAT}
+\subsection{The Docker container workflow in XNAT}
 
 XNAT provides data flow for manually run Docker containers. It generates a JSON specification, prepares and mounts data, and reloads the container's results.
 The diagram below illustrates the workflow data for a clearer understanding.  
@@ -12,12 +12,12 @@ The \autoref{fig:workflow} explains the workflow data in XNAT.
     \centering
     \def\svgwidth{\linewidth} 
     \input{xnat.pdf_tex}
-    \caption{Diagram: XNAT Workflow for Container Integration.}
+    \caption{Diagram: XNAT workflow for container integration.}
     \label{fig:workflow}
 \end{figure}
 
 \subsection{Generalizability of the Docker method}
-The Docker Container method is a suitable way to integrate AI into XNAT, working well with multiple data types and its recommended from the XNAT Documentation to launch jobs with the Docker Container method. Complete workflow automation was achieved with the Docker Container method, enabling users to select and transfer specific files to the container at various project data levels. However, the REST API call failed to transfer all project-level files to a single container, despite the files being listed in the container information.  
+The Docker container method is a suitable way to integrate AI into XNAT, working well with multiple data types and its recommended from the XNAT Documentation to launch jobs with the Docker container method~\cite{pipepreference}. Complete workflow automation was achieved with the Docker container method, enabling users to select and transfer specific files to the container at various project data levels. However, the REST API call failed to transfer all project-level files to a single container, despite the files being listed in the container information.  
 
 A senior XNAT developer confirmed that containers lack direct database access by default, requiring credential passing (or a secret store like Vault or Keycloak)~\cite{database}. However, this approach is strongly discouraged due to potential security risks and the possibility of causing harm to the database. Direct container-database connection is unlikely due to PostgreSQL's IP restrictions, which would break containers in Docker Swarm/Kubernetes and explains why the container couldn't receive files.
 While the senior developer confirmed that retrieving files via REST API during container execution is a valid approach, no files were successfully transferred or mounted to the container in practice. 
@@ -33,7 +33,7 @@ To improve generalizability and accessibility especially for non-programming use
     \centering
     \def\svgwidth{\linewidth} 
     \input{mockup.pdf_tex}
-    \caption{ Mockup Example for the Automation Script.}
+    \caption{ Mockup example for the Docker automation script.}
     \label{fig:mockup}
 \end{figure}
 \normalsize
@@ -51,7 +51,7 @@ The \autoref{fig:somnolink} illustrates the structure of the OSA diagnostic path
     \label{fig:somnolink}
 \end{figure}
 
-The fact that the proposed solution for the Somnolink approaches is the ML-based screening of inpatient for OSA, and ML-based therapy response prediction, ML-based prediction of therapy discontinuation risk, the usage of Docker Containers within the Somnolink Project could facilitate the achievement of the project goals, by allowing model implementation within XNAT. Additionally  automating these containers workflows standardizes the execution of Somnolink predictions, reducing manual effort, ensuring workflow consistency, thereby supporting the project's objectives.\\
+The fact that the proposed solution for the Somnolink approaches is the ML-based screening of inpatient for OSA, and ML-based therapy response prediction, ML-based prediction of therapy discontinuation risk, the usage of Docker containers within the Somnolink Project could facilitate the achievement of the project goals, by allowing model implementation within XNAT. Additionally  automating these containers workflows standardizes the execution of Somnolink predictions, reducing manual effort, ensuring workflow consistency, thereby supporting the project's objectives.\\
 
 
 
@@ -61,10 +61,9 @@ The fact that the proposed solution for the Somnolink approaches is the ML-based
 
 
 
-\subsection{Sustainability Aspects of the Docker Container Including FAIR Criteria}
+\subsection{Sustainability aspects of the Docker container including FAIR criteria}
 
-According to Wilkinson et al. ~\cite{FAIR}, "The FAIR guiding principles describe distinct considerations for contemporary data publishing environments with respect to supporting both manual and automated deposition, exploration, sharing, and reuse."
-The use of the Docker Containers contributes by offering reproducible computational environments, reducing maintenance demands, and facilitating collaboration in XNAT. However, analyzing this method concerning the FAIR criteria reveals the following:\\
+According to Wilkinson et al. ~\cite{FAIR}, "The FAIR guiding principles describe distinct considerations for contemporary data publishing environments with respect to supporting both manual and automated deposition, exploration, sharing, and reuse." The Docker container method is a suitable way to integrate AI within XNAT. However, analyzing this method concerning the FAIR criteria reveals the following:\\
 The Docker images are assigned a globally unique and persistent identifier. Their metadata describes the container’s purpose, version, build date, author, and dependencies. Additionally they are registered or stored in Docker Hub and can be stored in XNAT as well (Findable).
 The Docker images are also accessible via standardized interfaces and they are retrievable using open and standardized protocols (HTTPS, REST API). At the same time the images could be secured with private access. Even with the output file deleted from XNAT, the preserved metadata (container name, ID, container version, etc.) allows future researchers to verify the result's existence, understand its origin, and regenerate the data by re-running the workflow(Accessible). Standardized data formats and XNAT-compatible schemas in container outputs ensure seamless integration with other tools and enhance dataset compatibility(Interoperable). While Docker containers include detailed metadata promoting reuse, the image owner retains the right to make the image private, limiting accessibility (Reusable)~\cite{FAIR}.
 
@@ -91,7 +90,7 @@ However, it is possible to design a template for the XML descriptor and create a
 The pipeline approach presents challenges adhering to FAIR principles.
 Pipeline descriptors are stored in locally on the XNAT server and are not searchable.
 Accessibility is also restricted, as only administrators have the necessary permissions to manually register and configure the XML files.
-Additionally, the potential for reuse is also limited, since adapting a pipeline to new contexts necessitates manual transfer of XML files and server access configurations. 
+Additionally, the potential for reuse is also limited, since adapting a pipeline to new contexts necessitates manual transfer of XML files and server access configurations, plugins and JARs constructions. 
 After creating and successfully testing the pipeline, the pipeline owners can secure their pipeline descriptors using file system permissions, so that they can be accessed or transmitted by the owner. However, the other users must configure all other steps to integrate the pipeline on their own XNAT.
 The practical use of pipelines is limited, as they require direct server access and technical configuration, which makes the pipeline not suitable for developers, system administrators or clinicians.
 
@@ -125,7 +124,7 @@ $\bullet$ Minimal configuration via JSON-based command.\\
 $\bullet$ Reusable across XNAT servers. \\
 $\bullet$ Easier updates by building and pushing a new image. \\
 $\bullet$ Secure via isolated container environment. \\
-$\bullet$ Docker images stored on Docker Hub.\\
+$\bullet$ Docker images stored on Docker Hub and can be stored within the JSON based command in XNAT.\\
 }
 &
 \parbox[t]{3cm}{
@@ -143,7 +142,7 @@ $\bullet$ Images securely stored in Docker Hub and within the JSON command in XN
 $\bullet$ Requires manual placement of XML descriptors.\\
 $\bullet$ Needs server access for installation and updates.\\
 $\bullet$ Requires XML schema knowledge.\\
-$\bullet$ Limited automation support and no automation achievable.\\
+$\bullet$ Limited automation support (no automation achievable).\\
 $\bullet$ The pipeline has to be removed or disabled after the running~\cite{addingpipeline}.\\
 $\bullet$ The pipeline is not a preferred way to launch jobs in XNAT~\cite{pipepreference}.\\
 
@@ -152,13 +151,13 @@ $\bullet$ The pipeline is not a preferred way to launch jobs in XNAT~\cite{pipep
 \parbox[t]{6cm}{
 $\bullet$ Requires Docker knowledge. \\
 $\bullet$ Depends on Docker availability \\if Docker is blocked or fails, \\images are not recognized\\ within XNAT. \\
-$\bullet$ Requires regular expression\\ knowledge for file filtering. \\
+$\bullet$ Requires Regular expressions\\ knowledge for files selection. \\
 $\bullet$ No access to the database. \\
 
 }
 &
 \parbox[t]{4cm}{
-
+$\bullet$ Could or must be sometimes updated.\\
 $\bullet$ For specific file processing, the JSON command in the script must be adjusted, extended or modified.\\
 $\bullet$ Selecting a XNAT level and launching with selected file is the successful model achieved. 
 } \\
@@ -187,19 +186,19 @@ Additionally, it is preferable to create a new REST API endpoint for launching c
     \textbf{Aspect} & \textbf{The Pipeline method} & \textbf{Docker Container method} & \textbf{Docker method with Automatization }\\ \hline
     
     
-    Installation & Requires manual placement of XML descriptors, plugin JARs~\cite{installpipeline}, and executables on the server. & Container image uploaded once (via Docker registry) and configured in XNAT. & The automatization script must be launched and the Docker Engine must be installed and started up as well. \\ \hline
+    Installation & Requires manual placement of XML descriptors, plugin JARs~\cite{installpipeline}, and executables on the server. & Docker Engine required for the image building and must be started up. & The automatization script must be launched and the Docker Engine must be installed and started up as well. \\ \hline
     
 
     
     Configuration & Admin must edit data types, enable actions, and rebuild Pipeline engine, require direct access to the server in order to manually copy the XML descriptor and associated scripts to a specific directory. & Minimal configuration through a JSON command, no engine rebuild needed. & No need for any configuration, the script carries the workflow to the end. \\ \hline
     
-    Execution & The Run Pipeline option must be built via actions menu. & Triggered via actions menu or REST API, image runs in isolated environment. & The Docker Container is enabled automatically sitewide and project wide too. \\ \hline
+    Execution & The Run Pipeline option must be built via actions menu. & Triggered via actions menu or REST API, image runs in isolated environment. & The Docker container is enabled automatically sitewide and project wide too. \\ \hline
 
     Deployability and flexibility & Pipelines are highly dependent on the specific XNAT environment and server configuration in which they are deployed. & Docker images can be reused in various XNAT installations and environment. & Automatically deploying within XNAT, after that the images can be reused in different environment. \\ \hline
     
     Maintenance & Requires server access and manual reconfiguration. & Updating requires building and pushing a new image, no direct server changes needed. & Old image can be deleted and then creating new images with updated external script.\\ \hline
     
-    Usability & Requires XML schema knowledge and direct server administration. & Requires Docker knowledge, but easier to reuse prebuilt images, through running basic commands on terminal. & Extreme low knowledge requirement (except writing a requirement file and answering the script questions. \\ \hline
+    knowledge requirement & Requires XML schema knowledge and direct server administration. & Requires Docker knowledge, but easier to reuse prebuilt images, through running basic commands on terminal. & Extreme low knowledge requirement (except writing a requirement file and answering the script questions. \\ \hline
 
     
     Storage & The pipeline can be stored on the server and must be deleted after the launch in XNAT. & Docker images can be stored in Docker Hub and within the command in XNAT. & Automatically handled by the script, and stored in Docker Hub and the command within XNAT. \\ \hline

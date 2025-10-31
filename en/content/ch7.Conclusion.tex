@@ -2,7 +2,7 @@
 
 
 %Starting
-This work brings to light two different AI deployment approaches in XNAT. 
+This work brings to light the Docker container method and the pipeline as two different AI deployment approaches in XNAT. 
 %Result
 %how can the Docker Container method be automated in XNAT?
 The process of automating the Docker Container deployment in XNAT was feasible by automating all the manual steps. However, i have faced the problem, that XNAT failed to mount the extracted files from other XNAT project levels to the container. Conversely the pipeline automation was unpracticable, due to insufficient Endpoint support.   \\
@@ -12,8 +12,8 @@ The Docker Containers are well suitable for the Somnolink project, supporting di
 Pipelines seem to offer less potential and sustainability for Somnolink.
 %what measurements can be applied to improve and optimize both methods for future implementations?
 The pipeline future development consists to establish a secure pipeline Hub, for centralized storage and enhanced security. Integrating XML deployment directly within XNAT to facilitate the "Run pipeline build" and eliminate server access requirements. Lastly support more REST API endpoints.
-for Docker Container approach future development consist to enable direct database access for a better file processing. The deployment of GUI mockup automation. Lastly create a new REST API endpoint for launching containers with specified input file locations to avoid payload communication issues and mounting restrictions.
-The investigation proved that, the Docker Container method, despite limitations, is currently more effective, FAIR, sustainable, and beneficial for Somnolink project.
+for Docker container approach future development consist to enable direct database access for a better file processing. The deployment of GUI mockup automation. Lastly create a new REST API endpoint for launching containers with specified input file locations to avoid payload communication issues and mounting restrictions.
+The investigation proved that, the Docker container method, despite limitations, is currently more effective, FAIR, sustainable, and beneficial for Somnolink project.
 
 
 

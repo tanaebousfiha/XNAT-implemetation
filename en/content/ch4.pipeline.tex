@@ -41,10 +41,10 @@ Third pipeline Descriptor(XML), which  specifies which scripts to execute, in wh
 \subsection{The pipeline and the REST API}
 
 
-The POST /pipelines/launch/pipelineName endpoint~\cite{pipelinerestapi} in XNAT's REST API1
+The POST /pipelines/launch/pipelineName endpoint~\cite{pipelinerestapi} in XNAT's REST API
  enables automated execution of registered pipelines. However, the lack of endpoints for global pipeline enablement and project assignment means that deployment and project-level setup require manual configuration.
 
-\section{User guide for the pipeline approach}
+\section{User Guide for the pipeline approach}
 To gain a better understanding of the pipeline approach, \autoref{tab:pipeline} provides an explanation of all the steps involved in this approach.
 \begin{table}[H]
   \centering
@@ -72,7 +72,7 @@ To gain a better understanding of the pipeline approach, \autoref{tab:pipeline} 
   \\ \hline
   \textbf{Launching the Pipeline} & 
    $\bullet$ Manually: From the data type page, click Run/Build Pipeline. \newline
-   $\bullet$ Programmatically via REST API.\newline
+   $\bullet$ Programmatically via REST API (only after the full pipeline integration possible).\newline
    $\bullet$ Once the pipeline starts, you will receive a notification confirming the launch or completion~\cite{pipelinrunning}.
    \\
   \hline

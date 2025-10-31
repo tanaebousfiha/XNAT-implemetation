@@ -2,8 +2,8 @@
 \section{The Docker method}
 This chapter provides an analysis and an explanation of the automation script.
 
-\subsection{Introduction to the automation script for the Docker Container method}
-Generally, these are the following steps to deploy a Docker Container in XNAT manually: writings a external script and building the image and pushing it to Docker Hub, following with writing a appropriate JSON command and deploying it in XNAT server then enabling the command side wide and project wide then finally launching the Docker Container. 
+\subsection{Introduction to the automation script for the Docker container method}
+Generally, these are the following steps to deploy a Docker container in XNAT manually: writings a external script and building the image and pushing it to Docker Hub, following with writing a appropriate JSON command and deploying it in XNAT server then enabling the command side wide and project wide then finally launching the Docker container. 
 After reviewing the latest updates supported by the XNAT Community, it was confirmed that automating Docker Container deployment in XNAT is feasible.
 XNAT's REST API provides functionality to list projects, subjects within those projects, sessions, and scans. It also allows the extraction of patient files, as well as the retrieval of the command \ac{ID} and wrapper \ac{ID}.
 To summarize all the REST APIs used in the automation script, Table A.1 in the Appendix provides a comprehensive overview of each API and its purpose.
@@ -12,7 +12,7 @@ To summarize all the REST APIs used in the automation script, Table A.1 in the A
     \centering
     \def\svgwidth{0.4\linewidth}
     \input{RESTAPI.pdf_tex}
-    \caption{ Diagram: Illustrates the role of the REST API in automation.}
+    \caption{ Diagram: Illustrates the role of the REST API in automation process.}
     \label{fig:RESTAPI}
 \end{figure}
 
@@ -34,7 +34,8 @@ The system runs Docker Engine 28.3.0, using Docker Client 20.10.5+dfsg1 for mana
   \centering
   \def\svgwidth{0.4\linewidth}
   \input{lib.pdf_tex}
-  \caption{Schema: Core Libraries for Python Scripting in System Integration.}
+  \caption{Schema: Core Libraries for Python S
+  scripting in system integration.}
   \label{fig:diagram-core-libraries}
 \end{figure}
  
@@ -286,7 +287,7 @@ Details of the test procedure are described in Appendix
 \autoref{app:Result}. Due to the fact that the list of files was extremely long, it was shortened. In summary, the container couldn't receive any file.
 \normalsize
 \subsection{Deployment challenges}
- In this part the deployment challenges are outlined. Initial tests revealed the container wasn't receiving input files, confirmed by a "no\_file.txt" test. Further testing with REST API integration within the Docker Container also failed to produce file results in XNAT. Adjustments to the JSON command, including credentials and detailed output specifications, were unsuccessful. Adding delays between container executions also didn't resolve the input file issue.
+ In this part the deployment challenges are outlined. Initial tests revealed the container wasn't receiving input files, confirmed by a "no\_file.txt" test. Further testing with REST API integration within the Docker container also failed to produce file results in XNAT. Adjustments to the JSON command, including credentials and detailed output specifications, were unsuccessful. Adding delays between container executions also didn't resolve the input file issue.
 To circumvent issues with file extraction via REST API calls, the input and mount parameters in the JSON command were modified to include all necessary files. Despite this adjustment, the container failed to receive output files. Subsequently, the container launch method was altered from a string to a URL, yet the file reception issue persisted. As an alternative approach, REST API calls were removed, and an external script using PyXNAT was developed to extract and supply all files to the container. However, this strategy was also unsuccessful. In summary, XNAT failed to mount any files  from other project level to the container.
 
 Two deployment strategies were tested. Passing all project files to a single Docker container failed due to file transfer issues. Deploying individual containers per project, each processing only local files, was successful, though it resulted in multiple container instances. Chapter 4 provides a detailed discussion of these deployment challenges. 
@@ -296,18 +297,18 @@ Two deployment strategies were tested. Passing all project files to a single Doc
 
 
 
-\subsection{User Guide for docker automation}
+\subsection{User Guide for Docker automation}
 To better understand the system created, a user guide was inserted \autoref{tab:automatic_script} to list how the workflow is working and what are the requirement that the user needs to have in order to run the script. 
 
 \begin{table}[H]
   \centering
-  \caption{ User guide for Automatic Containerization.}
+  \caption{ User guide for automation Docker container script.}
   \label{tab:automatic_script}
   \begin{tabular}{|l|p{9cm}|}
   \hline
   \textbf{System Requirements} & 
   - Python installed. \newline
-  - \texttt{requirements.txt} in the same folder as \texttt{automat\_f\_2.py}. \newline
+  -\texttt{requirements.txt} in the same folder as \texttt{automat\_f\_2.py}. \newline
   - XNAT server accessible. \newline
   - Docker Engine installed and running. \newline
   - Logged in to Docker Hub. \\  \hline
