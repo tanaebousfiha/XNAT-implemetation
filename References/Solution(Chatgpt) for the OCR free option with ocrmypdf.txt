@@ -1,0 +1,18 @@
+Problem finding a free OCR for the .png files
+Solution with Chatgpt.
+Used at first a python script with Import >>ocrmypdf
+and then had Problem with the bib install in VS 
+switched to Terminal:
+first downloaded the following commands:
+ 
+mkdir -p ~/ghostscript_build
+mv ~/XNAT-implemetation/Bachelor\ thesis/References/References\ with\ DOI/ghostscript-10.06.0 ~/ghostscript_build/
+cd ~/ghostscript_build/ghostscript-10.06.0
+
+then :
+./configure
+make -j$(nproc)
+sudo make install
+
+Solution for converting the .png to pdf with OCR
+Link to the Chat: https://chatgpt.com/share/6904e9ff-cbdc-800d-a0f6-3ef24a0584f8
