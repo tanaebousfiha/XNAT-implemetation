@@ -1,0 +1,78 @@
+@article{shilo_axes_2020,
+  author       = {Shilo, Smadar and Rossman, Hagai and Segal, Eran},
+  title        = {Axes of a Revolution: Challenges and Promises of Big Data in Healthcare},
+  journal      = {Nature Medicine},
+  volume       = {26},
+  number       = {1},
+  pages        = {29--38},
+  month        = jan,
+  year         = {2020},
+  note = {\url{https://doi.org/10.1038/s41591-019-0727-5}},
+}
+
+
+@incollection{ahad_case_2025,
+  author       = {Dwivedi, Bhanu and Newar, Nandini and Mahajan, Amiti and Jimmy, Abha Susan},
+  title        = {Case Studies of Blockchain and AI Integration in Medical Systems},
+  booktitle    = {AI and Blockchain Applications for Privacy and Security in Smart Medical Systems},
+  editor       = {Ahad, Abdul and Ullah, Farhan},
+  publisher    = {IGI Global},
+  pages        = {133--160},
+  month        = apr,
+  year         = {2025},
+  note ={\url{https://doi.org/10.4018/979-8-3373-0593-6.ch006}},
+  
+}
+
+
+@article{escudero_sanchez_integrating_2023,
+  author       = {Escudero Sanchez, Lorena and Buddenkotte, Thomas and Al Sa’d, Mohammad and McCague, Cathal and Darcy, James and Rundo, Leonardo and Samoshkin, Alex and Graves, Martin J. and Hollamby, Victoria and Browne, Paul and Crispin-Ortuzar, Mireia and Woitek, Ramona and Sala, Evis and Schönlieb, Carola-Bibiane and Doran, Simon J. and Öktem, Ozan},
+  title        = {Integrating Artificial Intelligence Tools in the Clinical Research Setting: The Ovarian Cancer Use Case},
+  journal      = {Diagnostics},
+  volume       = {13},
+  number       = {17},
+  pages        = {2813},
+  month        = aug,
+  year         = {2023},
+ note = {\url{https://doi.org/10.3390/diagnostics13172813}},
+}
+
+
+
+@article{rumsfeld_big_2016,
+  author       = {Rumsfeld, John S. and Joynt, Karen E. and Maddox, Thomas M.},
+  title        = {Big Data Analytics to Improve Cardiovascular Care: Promise and Challenges},
+  journal      = {Nature Reviews Cardiology},
+  volume       = {13},
+  number       = {6},
+  pages        = {350--359},
+  month        = jun,
+  year         = {2016},
+  note = {\url{https://doi.org/10.1038/nrcardio.2016.42}},
+}
+
+
+@article{shah_coming_2012,
+  author       = {Shah, Nigam H. and Tenenbaum, Jessica D.},
+  title        = {The Coming Age of Data-Driven Medicine: Translational Bioinformatics' Next Frontier},
+  journal      = {Journal of the American Medical Informatics Association},
+  volume       = {19},
+  number       = {e1},
+  pages        = {e2--e4},
+  month        = jun,
+  year         = {2012},
+  note = {\url{https://doi.org/10.1136/amiajnl-2012-000969}},
+}
+
+@article{jensen_mining_2012,
+  author       = {Jensen, Peter B. and Jensen, Lars J. and Brunak, Søren},
+  title        = {Mining Electronic Health Records: Towards Better Research Applications and Clinical Care},
+  journal      = {Nature Reviews Genetics},
+  volume       = {13},
+  number       = {6},
+  pages        = {395--405},
+  month        = may,
+  year         = {2012},
+  note     = {\url{https://doi.org/10.1038/nrg3208}},
+}
+
