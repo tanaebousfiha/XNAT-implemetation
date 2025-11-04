@@ -34,7 +34,7 @@ The system runs Docker Engine 28.3.0, using Docker Client 20.10.5+dfsg1 for mana
   \centering
   \def\svgwidth{0.4\linewidth}
   \input{lib.pdf_tex}
-  \caption{Schema: Core Libraries for Python S
+  \caption{Schema: Core Libraries for Python
   scripting in system integration.}
   \label{fig:diagram-core-libraries}
 \end{figure}
@@ -119,7 +119,7 @@ The \texttt{def get\_input} function uses a \texttt{while True} loop to keep ask
 
 To communicate the Docker image to XNAT, it is necessary to write a command definition in JSON format~\cite{JSONCommand}.
 To achieve that, the function used is called \texttt{create\_json\_file}, which builds the configuration dictionary for a Docker-based XNAT command (for the XNAT container Service), writes it to a \texttt{command.json} file, and returns the filename.
-Let us start analyzing the first block of the JSON command:
+The first block of the JSON command:
 
 
 
@@ -203,12 +203,11 @@ The function responsible for this is \texttt{def send\_json\_to\_xnat}, and it e
 \noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/671bb82071b3219341205d0e1ddd9f5a54a1fad0/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L135-L140}
 \normalsize
 
-This function registers a JSON command with XNAT. It constructs the REST API endpoint, loads the JSON data, sends it via a POST request with HTTP Basic Authentication, and provides feedback on the server's response.
+This function registers a JSON command with XNAT. It constructs the REST API endpoint, loads the JSON data, sends it via a POST request with HTTP Basic authentication, and provides feedback on the server's response.
 
 \subsection{Preparations to launch the container}
 
 To prepare for launching the container in XNAT, the script automatically retrieves the command ID and wrapper ID from the XNAT web service using REST APIs.
-Before launching the container, the script automatically retrieves the command ID and wrapper ID from XNAT using REST APIs.
 \lstinputlisting[
   inputencoding=cp1252,  language=Python,
   firstline=151,
@@ -223,9 +222,10 @@ Before launching the container, the script automatically retrieves the command I
 
 This function retrieves the command ID and wrapper ID from XNAT, using the hostname, credentials, command name, and wrapper name as inputs. It constructs the REST API endpoint, checks for a successful response, and returns the IDs. If a wrapper name is provided, it searches for a matching wrapper ID. Following ID retrieval, the enable\_wrapper\_sitewide and enable\_wrapper\_for\_project functions enable the command, using a PUT request to the appropriate XNAT REST API endpoint and providing user feedback.
 
-\subsection{The Extraction of all files from all project structures}
-This step can be optional if in the json command the input and the mount are extend defined(see the permanent link: \url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/c78830e555376d23396bbcf57155b4f64c23aa48/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L151-L171}
+\subsection{The Extraction of all files from all project levels}
+This step can be optional if in the json command the input and the mount are extend defined (see the permanent link: \url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/c78830e555376d23396bbcf57155b4f64c23aa48/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L151-L171}
 \normalsize
+\\
 If we define the mount and the input is no need for additional REST API calls.
 For the experiment i extracted all the files via REST API calls.
 The \autoref{fig:extraction} illustrates all the extraction of all the files from a project structure in XNAT.
@@ -271,7 +271,7 @@ The \autoref{fig:automatic/manuall} illustrates how the automation script facili
 Initially, the script requests user input for login credentials, project ID, command name, and description. Following this input, the script automates image building, tagging, pushing, JSON based command creation, command enabling, and container launching.
 
 \subsection{Results on XNAT}
-The result that we came to after testing the code is that all the steps are automated correctly, except that the container could not receive any files. With the \ac{Stdout} view we found out that the container received zero files. The Docker Container output is shown in the \autoref{lst:stdout}.
+The result that we came to after testing the code is that all the steps are automated correctly, except that the container could not receive any files. With the \ac{Stdout} view we found out that the container received zero files. The Docker container output is shown in the \autoref{lst:stdout}.
  
 \begin{lstlisting}[numbers=none, caption={stdout in XNAT.}, label={lst:stdout}]
 View stdout (from file)
@@ -288,7 +288,7 @@ Details of the test procedure are described in Appendix
 \normalsize
 \subsection{Deployment challenges}
  In this part the deployment challenges are outlined. Initial tests revealed the container wasn't receiving input files, confirmed by a "no\_file.txt" test. Further testing with REST API integration within the Docker container also failed to produce file results in XNAT. Adjustments to the JSON command, including credentials and detailed output specifications, were unsuccessful. Adding delays between container executions also didn't resolve the input file issue.
-To circumvent issues with file extraction via REST API calls, the input and mount parameters in the JSON command were modified to include all necessary files. Despite this adjustment, the container failed to receive output files. Subsequently, the container launch method was altered from a string to a URL, yet the file reception issue persisted. As an alternative approach, REST API calls were removed, and an external script using PyXNAT was developed to extract and supply all files to the container. However, this strategy was also unsuccessful. In summary, XNAT failed to mount any files  from other project level to the container.
+To circumvent issues with file extraction via REST API calls, the input and mount parameters in the JSON command were modified to include all necessary files. Despite this adjustment, the container failed to receive output files. Subsequently, the container launch method was altered from a string to a URL, yet the file reception issue persisted. As an alternative approach, REST API calls were removed, and an external script using \ac{Pyxnat}~\cite{pyxnat} was developed to extract and supply all files to the container. However, this strategy was also unsuccessful. In summary, XNAT failed to mount any files  from other project level to the container.
 
 Two deployment strategies were tested. Passing all project files to a single Docker container failed due to file transfer issues. Deploying individual containers per project, each processing only local files, was successful, though it resulted in multiple container instances. Chapter 4 provides a detailed discussion of these deployment challenges. 
 
@@ -302,7 +302,7 @@ To better understand the system created, a user guide was inserted \autoref{tab:
 
 \begin{table}[H]
   \centering
-  \caption{ User guide for automation Docker container script.}
+  \caption{ User Guide for automation Docker container script.}
   \label{tab:automatic_script}
   \begin{tabular}{|l|p{9cm}|}
   \hline

@@ -37,7 +37,7 @@ To improve generalizability and accessibility especially for non-programming use
     \label{fig:mockup}
 \end{figure}
 \normalsize
-\subsection{The Docker Container approach and the Somnolink project}
+\subsection{The Docker container approach and the Somnolink project}
 
 The Somnolink project aims to improve obstructive sleep apnea (OSA) diagnose and  treatment and research by enhancing data sharing nationwide~\cite{krefting_somnolink_2025}. The primary goal of the project is to improve the diagnosis, treatment and adherence to treatment of patients with obstructive sleep apnea by using medical informatics and medical data science methods~\cite{aimsomnilink}.
 In order to achieve this goal method of informatics and ML-based decisions support system are being used. 
@@ -63,7 +63,7 @@ The fact that the proposed solution for the Somnolink approaches is the ML-based
 
 \subsection{Sustainability aspects of the Docker container including FAIR criteria}
 
-According to Wilkinson et al. ~\cite{FAIR}, "The FAIR guiding principles describe distinct considerations for contemporary data publishing environments with respect to supporting both manual and automated deposition, exploration, sharing, and reuse." The Docker container method is a suitable way to integrate AI within XNAT. However, analyzing this method concerning the FAIR criteria reveals the following:\\
+According to Wilkinson et al. ~\cite{FAIR}, "The FAIR guiding principles describe distinct considerations for contemporary data publishing environments with respect to supporting both manual and automated deposition, exploration, sharing, and reuse.", analyzing the Docker container method concerning the FAIR criteria reveals the following:\\
 The Docker images are assigned a globally unique and persistent identifier. Their metadata describes the container’s purpose, version, build date, author, and dependencies. Additionally they are registered or stored in Docker Hub and can be stored in XNAT as well (Findable).
 The Docker images are also accessible via standardized interfaces and they are retrievable using open and standardized protocols (HTTPS, REST API). At the same time the images could be secured with private access. Even with the output file deleted from XNAT, the preserved metadata (container name, ID, container version, etc.) allows future researchers to verify the result's existence, understand its origin, and regenerate the data by re-running the workflow(Accessible). Standardized data formats and XNAT-compatible schemas in container outputs ensure seamless integration with other tools and enhance dataset compatibility(Interoperable). While Docker containers include detailed metadata promoting reuse, the image owner retains the right to make the image private, limiting accessibility (Reusable)~\cite{FAIR}.
 
@@ -105,12 +105,12 @@ After comparing both approaches in terms of installation, configuration, automat
 
 \begin{table}[htbp]
 \centering
-\caption{Advantages and disadvantages of the Pipeline method and Docker container method in XNAT.}
+\caption{Advantages and disadvantages of the pipeline method and Docker container method in XNAT.}
 \label{tab:adv-disadv}
 \renewcommand{\arraystretch}{4}
 \begin{tabular}{|p{1cm}|p{3cm}|p{5cm}|p{4cm}|}
 \hline
-\textbf{Aspect} & \textbf{Pipeline Method} & \textbf{Docker Container Method} & \textbf{Automatization (Docker method)} \\
+\textbf{Aspect} & \textbf{Pipeline method} & \textbf{Docker container method} & \textbf{Automatization (Docker method)} \\
 \hline
 \textbf{Advan-tages} &
 \parbox[t]{3cm}{
@@ -170,12 +170,12 @@ $\bullet$ Selecting a XNAT level and launching with selected file is the success
 \section{Measures for the future for both methods}
 
 For the Pipeline method, future development should focus on three key areas: Firstly, establishing a secure pipeline Hub to centralize storage and enhance environmental security. Secondly, integrating XML deployment directly within XNAT would streamline the build process for the "Run Pipeline" option, eliminating the need for server access and simplifying overall usability. Thirdly supporting more REST API endpoints.\\
-Future development of the Docker Container method should focus on: Firstly, enabling direct access to the XNAT database to facilitate comprehensive file processing across the entire project. Secondly, enhancing the JSON command to allow re-uploading processed files to various output locations within XNAT, regardless of the initial file selection. This would ensure that processed files are returned to their original locations. And lastly implementing the GUI mockup for the automation.
-Additionally, it is preferable to create a new REST API endpoint for launching containers, within this one a placement for the \texttt{input files} are given, since i faced a problem with communicating the files to the container with REST API, in order to avoid communicating the files through a payload, and obviously this would not be successful if the mounting is restricted for only the defined context. 
+Future development of the Docker Container method should focus on: Firstly, enabling direct access to the XNAT database to facilitate comprehensive file processing across the entire project. Secondly, enhancing the JSON command to allow re-uploading processed files to various output locations within XNAT, regardless of the initial file selection. This would ensure that processed files are returned to their original locations. Additionally, implementing the GUI mockup for the automation.
+Lastly, it is preferable to create a new REST API endpoint for launching containers, within this one a placement for the \texttt{input files} are given, since i faced a problem with communicating the files to the container with REST API, in order to avoid communicating the files through a payload, and obviously this would not be successful if the mounting is restricted for only the defined context. 
 
 \begin{table}[htbp]
   \centering
-  \caption{Comprehensive comparison of XNAT Pipeline method and Docker Container method.}
+  \caption{Comprehensive comparison of XNAT pipeline method and Docker container method.}
   \label{tab:pipeline-vs-docker}
 
   \begin{tabular}{|>{\centering\arraybackslash}p{2cm}|
@@ -183,10 +183,10 @@ Additionally, it is preferable to create a new REST API endpoint for launching c
                       >{\centering\arraybackslash}p{4cm}|
                       >{\centering\arraybackslash}p{4cm}|}
     \hline
-    \textbf{Aspect} & \textbf{The Pipeline method} & \textbf{Docker Container method} & \textbf{Docker method with Automatization }\\ \hline
+    \textbf{Aspect} & \textbf{The Pipeline method} & \textbf{Docker container method} & \textbf{Docker method with Automatization }\\ \hline
     
     
-    Installation & Requires manual placement of XML descriptors, plugin JARs~\cite{installpipeline}, and executables on the server. & Docker Engine required for the image building and must be started up. & The automatization script must be launched and the Docker Engine must be installed and started up as well. \\ \hline
+    Installation & Requires manual placement of XML descriptors, plugin JARs~\cite{installpipeline}. & Docker Engine required for the image building and must be started up. & The automatization script must be launched and the Docker Engine must be installed and started up. \\ \hline
     
 
     
@@ -194,7 +194,7 @@ Additionally, it is preferable to create a new REST API endpoint for launching c
     
     Execution & The Run Pipeline option must be built via actions menu. & Triggered via actions menu or REST API, image runs in isolated environment. & The Docker container is enabled automatically sitewide and project wide too. \\ \hline
 
-    Deployability and flexibility & Pipelines are highly dependent on the specific XNAT environment and server configuration in which they are deployed. & Docker images can be reused in various XNAT installations and environment. & Automatically deploying within XNAT, after that the images can be reused in different environment. \\ \hline
+    Deployability and flexibility & Pipelines are dependent on the specific XNAT environment and server configuration in which they are deployed. & Docker images can be reused in various XNAT installations and environment. & Automatically deploying within XNAT, after that the images can be reused in different environment. \\ \hline
     
     Maintenance & Requires server access and manual reconfiguration. & Updating requires building and pushing a new image, no direct server changes needed. & Old image can be deleted and then creating new images with updated external script.\\ \hline
     
