@@ -2,18 +2,20 @@
 
 
 %Starting
-This work brings to light the Docker container method and the pipeline as two different AI deployment approaches in XNAT. 
+This work brings to light the Docker container method and the Pipeline as two different AI deployment approaches in XNAT. 
 %Result
 %how can the Docker Container method be automated in XNAT?
-The process of automating the Docker container deployment in XNAT was feasible by automating all the manual steps. However, i have faced the problem, that XNAT failed to mount the extracted files from other XNAT project levels to the container. Conversely the pipeline automation was unpracticable, due to insufficient Endpoint support.   \\
+The process of automating the Docker container deployment in XNAT was feasible by automating all the manual steps. However, I have faced the problem, that XNAT failed to mount the extracted files from other XNAT project levels to the container. Conversely the pipeline automation was unpracticable, due to insufficient endpoint support. 
+These findings directly address the thesis' core research question concerning the viability of containerized AI deployment in XNAT, demonstrating the feasibility of Docker containers while highlighting the limitations of the pipeline approach.
+
 While the pipeline method requires manual server access, XML configuration/placement, and manual editing for integration, The Docker container method simplifies the deployment to three steps (command addition and enabling). Docker image building requires no credentials or server access, and images can be stored in GitHub or XNAT, unlike pipeline XML descriptors that are limited to user servers.\\
 %what arethe strengths, limitations, and sustainability implications of both approaches in relation to the Somnolink project and the FAIR principles?
-The Docker Containers are well suitable for the Somnolink project, supporting diagnostic, treatment and adherence goals. Their strength lies in ease use and minimal XNAT configuration. Image updates involve rebuilding and repushing, with storage and searchability in GitHub or XNAT. Because it's automatable, FAIR-compliant, and adaptable to a generalized mockup, this method is suitable, allowing future changes via updates without core code modification.\\
+The Docker containers are well suitable for the Somnolink project, supporting diagnostic, treatment and adherence goals. Their strength lies in ease use and minimal XNAT configuration. Image updates involve rebuilding and repushing, with storage and searchability in GitHub or XNAT. Because it's automatable, FAIR-compliant, and adaptable to a generalized mockup, this method is suitable, allowing future changes via updates without core code modification.\
 Pipelines seem to offer less potential and sustainability for Somnolink.
 %what measurements can be applied to improve and optimize both methods for future implementations?
-The pipeline future development consists to establish a secure pipeline Hub, for centralized storage and enhanced security. Integrating XML deployment directly within XNAT to facilitate the "Run pipeline build" and eliminate server access requirements. Lastly support more REST API endpoints.
+The Pipeline future development consists to establish a secure Pipeline Hub, for centralized storage and enhanced security. Integrating XML deployment directly within XNAT to facilitate the "Run pipeline build" and eliminate server access requirements. Lastly support more REST API endpoints.
 For Docker container approach future development consist to enable direct database access for a better file processing. The deployment of GUI mockup automation. Lastly create a new REST API endpoint for launching containers with specified input file locations to avoid payload communication issues and mounting restrictions.
-The investigation proved that, the Docker container method, despite limitations, is currently more effective, FAIR, sustainable, and beneficial for Somnolink project.
+Therefore, this thesis concludes that the Docker container method represents the most viable AI deployment strategy for the Somnolink project at this time, comprehensively addressing the initial research questions
 
 
 
