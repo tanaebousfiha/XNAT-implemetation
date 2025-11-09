@@ -2,7 +2,7 @@
 #-----------------Bibliotheken----------------------------------------------------------------------------------------------------------------------------
 import json 
 import requests  # type: ignore 
-import os #Arbeiten mit Dateien und Pfaden
+import os 
 import subprocess 
 import getpass 
 import sys
