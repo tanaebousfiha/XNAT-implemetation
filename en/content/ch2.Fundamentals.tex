@@ -13,16 +13,16 @@ The \ac{XNAT} ~\cite{marcus_extensible_2007} is an open-source imaging informati
 An \ac{API} is a set of terminology and standards for building and integrating application software~\cite{REST_API}.
 
 \section{The Docker container}
-A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another~\cite{DockerContainer}.
-Regardless of the host machine's configuration, Docker containers allow users to deploy any application without the worry of incompatibility problems~\cite{what_is_Docker_Container}. The Dockerfile is a file that contains the build instructions for the image~\cite{Dockerfile} that the Docker Engine( an open-source containerization technology for building and containerizing your applications will run~\cite{DockerEngine}).
+A container is a standard software package that bundles code with everything it needs to run, allowing applications to operate quickly and reliably regardless of the computing environment~\cite{DockerContainer}. The Dockerfile is a file that contains the build instructions for the image~\cite{Dockerfile} that the Docker Engine (an open-source containerization technology for building and containerizing your applications will run~\cite{DockerEngine}).
 \\
 \section{Command definition in JSON format}
-\ac{JSON} command is a structured set of properties that defines the Docker image, which enables XNAT to execute the command correctly. In other words, this command definition in JSON format (written in JSON) can be seen as a configuration for XNAT~\cite{JSONCommand}.
+\ac{JSON} command is a structured set of properties that defines the Docker image, which enables XNAT to execute the command correctly~\cite{JSONCommand}. In other words, this command definition in JSON format (written in JSON) can be seen as a configuration for XNAT.
+While this thesis adopts the term 'JSON Command' as it appears in the XNAT documentation, it is crucial to note that JSON fundamentally represents a data format. The documentation employs this terminology, but it does not reflect the nature of JSON itself~\cite{jsonwiki}.
 
-\section{Pipeline in XNAT}
+\section{Pipelines in XNAT}
 Pipelines in XNAT are efficient lightweight applications that can be run on the project data to facilitate sophisticated processing tasks or leverage the computational power of extensive computing clusters~\cite{Pipeline}.
 
-\section{The pipeline descriptor}
+\section{The Pipeline descriptor}
 
 Pipelines are identified by using a pipeline descriptor and resource descriptors. A resource descriptor defines an executable by specifying its name, location, and the arguments it accepts~\cite{XNAT_Pipeline_Development_Schema}. 
 
