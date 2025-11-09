@@ -1,48 +1,25 @@
-'''
-This script is desingned to achied a automatisation of xnat container sevice.
-The skript folows different steps to achieve this purpose:
-1.ask the users tor the input of the external skript 
-2.create a Dockerfile with the skript and the base name of the docker image 
-3. build the docker image and tag it and pushe it to the docker hub 
-4.create a command json file with theh docker image and the skript name
-now we start using REST APIS from xnat to upload the command json file
-5.send the command json file to xnat 
-6.get the command id from xnat 
-7.get the wrapper id from xnat or create a new wrapper if it does not exist
-8.enable the wrapper sitewide and for the project
-9.get the input file from the session
-10.launch the container with the input file and the wrapper
-this script is desingned to achied a automatisation of xnat container sevice
----------------------------------------------------------------------------------------------------------------------------------
-to use the skript you need to have the following requirements:
-1. Docker installed and running
-2. Python 3.10 or higher installed
-3. XNAT server running and accessible with admin rights 
-4. Docker hub account to push the image
-5. An external python skript that you want to run in the container
->>The script must be a valid python script with the .py extension
-'''
 
 #-----------------Bibliotheken----------------------------------------------------------------------------------------------------------------------------
-import json # wir brauchen json für xnat damit er den Command anlegen kann
-import requests  # type: ignore # # für die Kommunikation mit der XNAT-API
+import json 
+import requests  # type: ignore 
 import os #Arbeiten mit Dateien und Pfaden
-import subprocess  # # für die Ausführung von Docker-Befehlen
-import getpass #Passwort-Eingabe im Terminal ohne Anzeige
-import sys#Für sys.exit() bei Fehlern
-import urllib3# type: ignore #Wird von requests genutzt – hier zur Abschaltung von Warnungen
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)# Deaktiviert SSL-Warnungen, wenn XNAT ohne gültiges Zertifikat läuft
+import subprocess 
+import getpass 
+import sys
+import urllib3 # type: ignore 
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 #-----------------------------------1)dockerfile ausfüllen------------------------------------------------------
-
-#hier wird die dockerfile erstellt und mit dem Skript und erfüllt
 def write_dockerfile(docker_dir, script_filename, docker_base_image="python:3.10-slim"):
-    dockerfile_content = f"""FROM {docker_base_image}
-
+    dockerfile_content = f"""
+    
+FROM {docker_base_image}
 WORKDIR /app
 COPY {script_filename} /app/{script_filename}
 RUN pip install --no-cache-dir pandas
+COPY requirements.txt /app/requirements.txt
+
 """
 
     os.makedirs(docker_dir, exist_ok=True)
@@ -51,34 +28,23 @@ RUN pip install --no-cache-dir pandas
         f.write(dockerfile_content)
     print(f"Dockerfile written to {dockerfile_path}")
     return dockerfile_path
-
-#CMD weglassen>>Fehler entsteht(runing contaienr in xnat),weil im Dockerfile und in der command.json "python3" jeweils als Prefix stehen und es dadurch zu einer doppelten Übergabe kommt.
-
 #--------------------------------------2)Image bauen>>pushen>>taggen --------------------------------------
 
 def build_and_push_docker_image(dockerfile_path, docker_image_name):
-
     dockerhub_username = input("Docker Hub username (to push the image): ").strip()
     if not dockerhub_username:
         print("No Docker Hub username provided. Skipping push.")
-        return docker_image_name  
+        return None
 
-    #>>Ersat form zum : docker build -f Dockerfile -t docker_image_name .
-    print(f"Building Docker image '{docker_image_name}'...")
-    build_result = subprocess.run(["docker", "build", "-f", dockerfile_path, "-t", docker_image_name, "."],  capture_output=True, text=True)
+    full_tag = f"{dockerhub_username}/{docker_image_name}"
+    print(f"Building Docker image '{full_tag}'...")
+    build_result = subprocess.run(
+        ["docker", "build", "-f", dockerfile_path, "-t", full_tag, "."],
+        capture_output=True, text=True)
     if build_result.returncode != 0:
         print(f"Build failed:\n{build_result.stderr}")
         sys.exit(1)
-    print(f"Image '{docker_image_name}' built successfully.")
-
-# docker build -t image name  .
- #-------------------------------/Tagen/-------------------------------------------------------------------------------
-    full_tag = f"{dockerhub_username}/{docker_image_name}"
-    print(f"Tagging image as '{full_tag}'...")
-    tag_result = subprocess.run(["docker", "tag", docker_image_name, full_tag], capture_output=True, text=True)
-    if tag_result.returncode != 0:
-        print(f"Tagging failed:\n{tag_result.stderr}")
-        sys.exit(1)
+    print(f"Image '{full_tag}' built successfully.")
 
     print(f"Pushing image to Docker Hub as '{full_tag}'...")
     push_result = subprocess.run(["docker", "push", full_tag], capture_output=True, text=True)
@@ -87,13 +53,8 @@ def build_and_push_docker_image(dockerfile_path, docker_image_name):
         sys.exit(1)
 
     print(f"Image successfully pushed: {full_tag}")
-    return full_tag  
-
-#docker tag imagename 
-#docker push imagename 
-#-----------------------------------3)User-Input----------------------------------------- -----------------------------------------   
-
-#prepare the input for the json command :
+    return full_tag 
+#-----------------------------------3)User-Input----------------------------------------------------------------------------------
 def get_input(prompt):
     while True:
         value = input(prompt)
@@ -101,19 +62,17 @@ def get_input(prompt):
             return value
         else:
             print("Cannot be empty.")
-
+#---------------------------------------------------------------------------------------------------------
 def modification():
     context_options = [
-        ("xnat:subjectData", "Subject-Ebene (Patientenebene)"),
-        ("xnat:mrSessionData", "MRI-Session-Ebene (häufigste Session-Ebene)"),
+        ("xnat:subjectData", "Subject-Ebene"),
+        ("xnat:mrSessionData", "MRI-Session-Ebene"),
         ("xnat:petSessionData", "PET-Session-Ebene"),
         ("xnat:ctSessionData", "CT-Session-Ebene"),
-        ("xnat:sessionData", "Allgemeine Session (für alle Modalitäten)"),
-        ("xnat:imageScanData", "Scan-Ebene innerhalb einer Session"),
-        ("xnat:resource", "Resource-Ebene (z.B. für Datei-Uploads direkt)"),
+        ("xnat:imageScanData", "Scan-Ebene"),
         ("xnat:projectData", "Projekt-Ebene"),
     ]
-    print("\nWähle einen Kontext:")#https://www.coursera.org/tutorials/enumerate-python
+    print("\nWähle einen Kontext:")
     for i, (context, options) in enumerate(context_options, 1):
         print(f"{i} : {context},{options}")
     while True:
@@ -127,19 +86,16 @@ def modification():
         except Exception:
             print("Ungültige Eingabe. Bitte erneut versuchen.")
 
-    # Zusätzliche Eingaben einholen:
+   
     command_name = input("Name des Commands: ")
     command_description = input("Beschreibung des Commands: ")
     
-    # Ausgabe oder Rückgabe eines Dictionaries mit den benötigten Werten
+    
     return {
         "selected_context": selected_context,
         "command_name": command_name,
         "command_description": command_description
     }
-
-# es wiederholt sich weil in der jsoncommand muss mehr als eine varial geschreiben werden
-#und ich wollte nicht dass der user meher mals etwas ähnliches schreibt, deshalb habe ich es so gemacht
 #-----------------------------------4)json File erstellen-------------------------------
 
 def create_json_file(docker_image, script_filename, mod_data):
@@ -152,9 +108,7 @@ def create_json_file(docker_image, script_filename, mod_data):
         "xnat:mrSessionData": {"input_name": "session", "input_type": "Session", "child_of": "session"},
         "xnat:petSessionData": {"input_name": "session", "input_type": "Session", "child_of": "session"},
         "xnat:ctSessionData": {"input_name": "session", "input_type": "Session", "child_of": "session"},
-        "xnat:sessionData": {"input_name": "session", "input_type": "Session", "child_of": "session"},
         "xnat:imageScanData": {"input_name": "scan", "input_type": "Scan", "child_of": "scan"},
-        "xnat:resource": {"input_name": "resource", "input_type": "Resource", "child_of": "resource"},
     }
 
     # Dynamische Listen
@@ -213,7 +167,7 @@ def create_json_file(docker_image, script_filename, mod_data):
                 "type": "file",
                 "description": "Result file output",
                 "mount": "output",
-                "path": "result.csv"
+                
             }
         ],
         "xnat": [
@@ -253,14 +207,14 @@ def send_json_to_xnat(json_file_path, xnat_url, xnat_user, xnat_password):
 #-----------------------------------6)Command-Liste------------------------------------------------------------------------------------------------------------
 
 def get_command_id_by_name(xnat_host, xnat_user, xnat_password, command_name):
-    url = f"{xnat_host.rstrip('/')}/xapi/commands"#Baut die vollständige URL zur Command-Liste der XNAT REST-API>>keinen doppelten Schrägstrich gibt
-    resp = requests.get(url, auth=(xnat_user, xnat_password), verify=False)# wird hier die get me request benutzt laut der APIS 
+    url = f"{xnat_host}/xapi/commands"
+    resp = requests.get(url, auth=(xnat_user, xnat_password), verify=False) 
     if resp.status_code != 200:
         print(f"Error fetching commands: {resp.status_code}")
         sys.exit(1)
-    data = resp.json()# # Die Antwort wird als JSON interpretiert
+    data = resp.json()
     if isinstance(data, dict) and "commands" in data:
-        command_list = data["commands"]# # Wenn die Antwort ein Dictionary ist, das "commands" enthält, dann wird es extrahiert
+        command_list = data["commands"]
     else:
         command_list = data
     for command in command_list:
@@ -270,59 +224,38 @@ def get_command_id_by_name(xnat_host, xnat_user, xnat_password, command_name):
     sys.exit(1)
 
 #----------------------7)Wrapper auslesen/erstellen------------------------------------------------------------------------------------------------------------
-def get_command_id(xnat_host, xnat_user, xnat_password, command_id):
-    url = f"{xnat_host.rstrip('/')}/xapi/commands/{command_id}"#url wird zusammengebaut, um die spezifischen Informationen für den Command zu erhalten
-    resp = requests.get(url, auth=(xnat_user, xnat_password), verify=False)#GET-Anfrage an die XNAT-API gesendet
-    if resp.status_code != 200:
-        print(f"Fehler beim Abrufen des Commands: {resp.status_code}")
-        sys.exit(1)# # Überprüfen des Statuscodes der Antwort
-    cmd = resp.json()# # Die Antwort wird als JSON interpretiert
-    outputs = cmd.get("outputs", [])# # Extrahieren der Outputs aus dem Command
-    external_inputs = []# # Initialisieren der externen Inputs
-    derived_inputs = []# # Initialisieren der abgeleiteten Inputs
-    for wrapper in cmd.get("xnat", []):# # Durchlaufen der "xnat"-Sektion des Commands
-        external_inputs = wrapper.get("external-inputs", [])
-        derived_inputs = wrapper.get("derived-inputs", [])
-        break  # Nur den ersten Wrapper verwenden
-    return outputs, external_inputs, derived_inputs# # Rückgabe der Outputs, externen Inputs und abgeleiteten Inputs
-#-------------------------------------- 8)get_wrapper_id_by_command_name---------------------------------------------------------------------------------
-
-def get_wrapper_id_by_command_name(xnat_host, xnat_user, xnat_password, command_name, wrapper_name):
-    
-    url = f"{xnat_host.rstrip('/')}/xapi/commands"
-    resp = requests.get(url, auth=(xnat_user, xnat_password), verify=False)
-
+def get_command_wrapper_id(xnat_host, xnat_user, xnat_password, command_name, wrapper_name=None):
+    url = f"{xnat_host}/xapi/commands"
+    try:
+        resp = requests.get(url, auth=(xnat_user, xnat_password), verify=False)
+    except Exception as e:
+        print(f"Verbindungsfehler: {e}")
+        sys.exit(1)
     if resp.status_code != 200:
         print(f"Fehler beim Abrufen der Commands: {resp.status_code}")
         sys.exit(1)
-
     data = resp.json()
-    if isinstance(data, dict) and "commands" in data:
-        commands = data["commands"]
-    else:
-        commands = data
+    commands = data.get("commands", data) if isinstance(data, dict) else data
 
     for command in commands:
         if command.get("name") == command_name:
-            for wrapper in command.get("xnat", []):
-                if wrapper.get("name") == wrapper_name:
-                    return wrapper.get("id") or wrapper_name
-            for wrapper in command.get("wrappers", []):
-                if wrapper.get("name") == wrapper_name:
-                    return wrapper.get("id") or wrapper_name
-
-    print("Kein Wrapper für diesen Command gefunden.")
+            if not wrapper_name:
+                return command.get("id")
+            for wrappers_field in ["xnat", "wrappers"]:
+                for wrapper in command.get(wrappers_field, []):
+                    if wrapper.get("name") == wrapper_name:
+                        return wrapper.get("id") or wrapper_name
+            print("Kein Wrapper für diesen Command gefunden.")
+            sys.exit(1)
+    print("Command nicht gefunden.")
     sys.exit(1)
-
 
 #----------------------9)Wrapper Aktivierung---------------------------------------------
 
 
 def enable_wrapper_sitewide(xnat_host, command_id, wrapper_name, xnat_user, xnat_password):
-    """
-    Aktiviert den Wrapper global (für alle Projekte).
-    """
-    url = f"{xnat_host.rstrip('/')}/xapi/commands/{command_id}/wrappers/{wrapper_name}/enabled"
+
+    url = f"{xnat_host}/xapi/commands/{command_id}/wrappers/{wrapper_name}/enabled"
     resp = requests.put(url, auth=(xnat_user, xnat_password), verify=False)
 
     if resp.status_code == 200:
@@ -334,10 +267,8 @@ def enable_wrapper_sitewide(xnat_host, command_id, wrapper_name, xnat_user, xnat
 
 
 def enable_wrapper_for_project(xnat_host, project_id, command_id, wrapper_name, xnat_user, xnat_password):
-    """
-    Aktiviert den Wrapper für ein bestimmtes Projekt.
-    """
-    url = f"{xnat_host.rstrip('/')}/xapi/projects/{project_id}/commands/{command_id}/wrappers/{wrapper_name}/enabled"
+    
+    url = f"{xnat_host}/xapi/projects/{project_id}/commands/{command_id}/wrappers/{wrapper_name}/enabled"
     resp = requests.put(url, auth=(xnat_user, xnat_password), verify=False)
 
     if resp.status_code == 200:
@@ -348,23 +279,17 @@ def enable_wrapper_for_project(xnat_host, project_id, command_id, wrapper_name, 
         print(f"Fehler beim Aktivieren für das Projekt: {resp.status_code} - {resp.text}")
 
 #----------------------------------------10)get_input_file-------------------------------------------
-#Je nachdem, welcher Kontext gewählt wird, wird die Datei aus diesem Kontext geholt. 
 
-def get_input_file(xnat_host, entity_id, entity_type, xnat_user, xnat_password, scan_id=None):
-    """
-    Holt alle Dateien vom angegebenen XNAT-Objekt (Session, Subject, Project, etc.)
-    und lässt den Benutzer eine Datei auswählen.
-    """
-
+def get_input_files(xnat_host, entity_id, entity_type, xnat_user, xnat_password, scan_id=None):
     # REST-Pfad je nach Kontexttyp
     if entity_type == "project":
-        base_url = f"{xnat_host.rstrip('/')}/data/projects/{entity_id}/resources"
+        base_url = f"{xnat_host}/data/projects/{entity_id}/resources"
     elif entity_type == "subject":
-        base_url = f"{xnat_host.rstrip('/')}/data/subjects/{entity_id}/resources"
+        base_url = f"{xnat_host}/data/subjects/{entity_id}/resources"
     elif entity_type in ["session", "experiment"]:
-        base_url = f"{xnat_host.rstrip('/')}/data/experiments/{entity_id}/resources"
+        base_url = f"{xnat_host}/data/experiments/{entity_id}/resources"
     elif entity_type == "scan" and scan_id:
-        base_url = f"{xnat_host.rstrip('/')}/data/experiments/{entity_id}/scans/{scan_id}/resources"
+        base_url = f"{xnat_host}/data/experiments/{entity_id}/scans/{scan_id}/resources"
     else:
         print("Unbekannter oder nicht unterstützter Entitätstyp.")
         return None
@@ -379,13 +304,13 @@ def get_input_file(xnat_host, entity_id, entity_type, xnat_user, xnat_password, 
     all_files = []
 
     for resource in resources:
-        res_label = resource["label"]#jede Ressource muss ein Label haben 
-        file_url = f"{base_url}/{res_label}/files"#URL wird so gebaut, dass sie auf die Datei-API der jeweiligen Ressource zeigt.
+        res_label = resource["label"]
+        file_url = f"{base_url}/{res_label}/files"
         file_resp = requests.get(file_url, auth=(xnat_user, xnat_password), verify=False)
         if file_resp.status_code != 200:
             continue
 
-        files = file_resp.json().get("ResultSet", {}).get("Result", [])#Jede Datei wird als Dictionary mit folgenden Feldern
+        files = file_resp.json().get("ResultSet", {}).get("Result", [])
         for f in files:
             all_files.append({
                 "name": f["Name"],
@@ -397,19 +322,27 @@ def get_input_file(xnat_host, entity_id, entity_type, xnat_user, xnat_password, 
         print("Keine Dateien gefunden.")
         return None
 
-    # Benutzer wählt Datei aus
+    
     print("\nVerfügbare Dateien:")
     for n, f in enumerate(all_files):
         print(f"{n + 1}: {f['name']} (Resource: {f['resource']})")
 
     while True:
-        choice = input("Welche Datei soll verwendet werden? Gib die Nummer ein: ")
-        if choice.isdigit() and 1 <= int(choice) <= len(all_files):#Sicherstellt>die Eingabe innerhalb der möglichen Dateiindizes liegt.
-            selected = all_files[int(choice) - 1]#Die Liste all_files ist nullbasiert (erster Eintrag ist an Index 0), daher wird 1 abgezogen.
-            print(f"Ausgewählte Datei: {selected['name']}")
-            return selected
-        else:
-            print("Ungültige Auswahl.")
+        choice = input("Welche Dateien sollen verwendet werden? Gib die Nummern durch Komma getrennt ein: ")
+        selected_files = []
+        try:
+            indices = [int(c.strip()) for c in choice.split(",")]
+            valid = all(1 <= i <= len(all_files) for i in indices)
+            if valid:
+                selected_files = [all_files[i - 1] for i in indices]
+                print("Ausgewählte Dateien:")
+                for f in selected_files:
+                    print(f" - {f['name']}")
+                return selected_files
+        except ValueError:
+            pass
+        print("Ungültige Auswahl, bitte Nummern korrekt eingeben (z.B. 1,3,5).")
+
 
 
 #---------------------11)Lanch Container-----------------------------------------
@@ -418,7 +351,7 @@ def launch_container_rest(xnat_host, project_id, command_id, wrapper_name,
                           entity_id, xnat_user, xnat_password, input_file_info,
                           entity_type="session", scan_id=None):
 
-    headers = {"Content-Type": "application/json"}#Server>>Der Inhalt (body) dieser Anfrage ist im JSON-Format 
+    headers = {"Content-Type": "application/json"}
    
 
     root_path_mapping = {
@@ -483,129 +416,93 @@ def main():
     xnat_host = "https://xnat-dev.gwdg.de"
     docker_base_image = "python:3.10"
 
+    # 1. Credentials & inputs
     xnat_user = get_input("XNAT Username: ")
     xnat_password = getpass.getpass("XNAT Password: ")
     project_id = get_input("Project ID: ").strip()
     script_path = get_input("Path to the Python script: ")
 
-    # 1. Hole die Basisdaten/Eingaben
+    # 2. Get command metadata
     mod_data = modification()
-
-    # 2. Ergänze die nötigen Felder für downstream
     mod_data["contexts"] = [mod_data["selected_context"]]
     mod_data["label_name"] = mod_data["command_name"]
     mod_data["label_description"] = mod_data["command_description"]
-    wrapper_name = mod_data["command_name"].replace(" ", "_").lower() + "_wrapper"#Generiert teschnische Bezeichung fuer einen xnat wrapper 
+    wrapper_name = mod_data["command_name"].replace(" ", "_").lower() + "_wrapper"
 
-    # 3. Jetzt kann überall darauf zugegriffen werden
+    # 3. Build Docker image
     dockerfile_path = write_dockerfile(".", os.path.basename(script_path), docker_base_image)
-    local_image_name = f"{mod_data['command_name'].lower().replace(' ', '_')}:latest"
+    local_image_name = f"{mod_data['command_name'].lower().replace(' ', '_')}"
     full_image_name = build_and_push_docker_image(dockerfile_path, local_image_name)
 
+    # 4. Create & upload command JSON
     json_file_path = create_json_file(full_image_name, os.path.basename(script_path), mod_data)
     send_json_to_xnat(json_file_path, xnat_host, xnat_user, xnat_password)
 
+    # 5. Get command & wrapper IDs
     command_id = get_command_id_by_name(xnat_host, xnat_user, xnat_password, mod_data["command_name"])
-
     try:
-        wrapper_id = get_wrapper_id_by_command_name(
-            xnat_host, xnat_user, xnat_password, mod_data["command_name"], wrapper_name
-        )
+        wrapper_id = get_command_wrapper_id(xnat_host, xnat_user, xnat_password, mod_data["command_name"], wrapper_name)
         print(f"Wrapper already exists: {wrapper_id}")
     except SystemExit:
-        print(" Wrapper not found ")
-        outputs, external_inputs, derived_inputs = get_command_id(
-            xnat_host, xnat_user, xnat_password, command_id
-        )
+        print("Wrapper not found; will create it automatically")
 
+    # 6. Enable wrapper
     enable_wrapper_sitewide(xnat_host, command_id, wrapper_name, xnat_user, xnat_password)
     enable_wrapper_for_project(xnat_host, project_id, command_id, wrapper_name, xnat_user, xnat_password)
 
+    # 7. Map contexts to XNAT entity types
     CONTEXT_ENTITY_MAPPING = {
         "xnat:projectData": {"entity_type": "project", "id_label": "Project ID"},
         "xnat:subjectData": {"entity_type": "subject", "id_label": "Subject ID"},
         "xnat:mrSessionData": {"entity_type": "session", "id_label": "Session ID"},
         "xnat:petSessionData": {"entity_type": "session", "id_label": "Session ID"},
         "xnat:ctSessionData": {"entity_type": "session", "id_label": "Session ID"},
-        "xnat:sessionData": {"entity_type": "session", "id_label": "Session ID"},
         "xnat:imageScanData": {"entity_type": "scan", "id_label": "Session ID + Scan ID"},
-        "xnat:resource": {"entity_type": "resource", "id_label": "Resource (not supported)"}
     }
 
     first_context = mod_data["contexts"][0]
     context_info = CONTEXT_ENTITY_MAPPING.get(first_context)
-
     if not context_info:
         print(f"Unbekannter Kontext: {first_context}. Abbruch.")
         return
 
     entity_type = context_info["entity_type"]
 
+    # 8. Ask user for entity IDs
     if entity_type == "scan":
         session_id = get_input("Gib die Session-ID ein: ")
         scan_id = get_input("Gib die Scan-ID ein: ")
-        input_file_info = get_input_file(
+        input_file_info = get_input_files(
             xnat_host, session_id, entity_type, xnat_user, xnat_password, scan_id=scan_id
         )
         container_entity_id = session_id
-
-    elif entity_type in ["session", "subject", "project"]:
+    else:
         entity_id = get_input(f"Gib die {context_info['id_label']} ein: ")
-        input_file_info = get_input_file(
+        input_file_info = get_input_files(
             xnat_host, entity_id, entity_type, xnat_user, xnat_password
         )
         container_entity_id = entity_id
-        scan_id = None  # wird nicht gebraucht
+        scan_id = None
 
-    else:
-        print("Dieser Kontext wird aktuell nicht unterstützt.")
-        return
-
+    # 9. Launch container
     if input_file_info:
-        launch_container_rest(
-            xnat_host,
-            project_id,
-            command_id,
-            wrapper_name,
-            container_entity_id,
-            xnat_user,
-            xnat_password,
-            input_file_info,
-            entity_type=entity_type,
-            scan_id=scan_id if entity_type == "scan" else None
-        )
+        if input_file_info:
+         launch_container_rest(
+        xnat_host,
+        project_id,
+        command_id,
+        wrapper_name,
+        container_entity_id,
+        xnat_user,
+        xnat_password,
+        input_file_info[0],
+        entity_type=entity_type,
+        scan_id=scan_id if entity_type == "scan" else None
+    )
+
     else:
         print("Keine Datei ausgewählt. Containerstart abgebrochen.")
 
 
 if __name__ == "__main__":
     main()
-
-
-
-#Quellen:
-'''
-https://wiki.xnat.org/container-service/container-service-api
-https://www.datacamp.com/tutorial/python-subprocess
-Docker ofiziel Dokumentation>https://docs.docker.com/engine/reference/commandline/build/
-with open write>>https://docs.python.org/3/library/functions.html#open
-Dockerinhlat>>https://docs.docker.com/reference/dockerfile/#from
-https://docs.docker.com/reference/dockerfile/#workdir
-https://docs.docker.com/reference/dockerfile/#copy
-https://docs.docker.com/reference/dockerfile/#run
-https://docs.docker.com/build/building/best-practices/
-https://docs.python.org/3/library/subprocess.html#subprocess.run
-https://docs.python.org/3/library/subprocess.html#subprocess.CompletedProcess.returncode
-https://docs.docker.com/reference/cli/docker/image/tag/
-https://docs.docker.com/reference/cli/docker/image/push/
-https://wiki.xnat.org/container-service/json-command-definition
-
-#here is the APIS XNAT dokumentation 
-#https://wiki.xnat.org/container-service/container-service-api
-#https://wiki.xnat.org/container-service/container-command-json
-https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status
-https://requests.readthedocs.io/en/latest/user/quickstart/#make-a-request
-https://wiki.xnat.org/container-service/container-service-api#ContainerServiceAPI-Commands
-https://wiki.xnat.org/container-service/container-service-api#ContainerServiceAPI-Commands
-
-'''
