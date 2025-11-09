@@ -1,6 +1,6 @@
 \chapter{Deployment of methods in XNAT}
 \section{The Docker method}
-This chapter provides an explanation of the Docker Container approach and the deployment of a script for automated container creation and execution at XNAT.
+This chapter provides an explanation of the Docker container approach and the deployment of a script for automated container creation and execution at XNAT.
 
 \subsection{Introduction to the automation script for the Docker container method}
 Generally, these are the following steps to deploy a Docker container in XNAT manually: writing an external script, building the image and pushing it to Docker Hub, following with writing a appropriate JSON command and deploying it in XNAT server then enabling the command side wide and project wide then finally launching the Docker container. 
@@ -282,10 +282,10 @@ Details of the test procedure are described in Appendix
 \autoref{app:Result}. Due to the fact that the list of files was extremely long, it was shortened. In summary, the container couldn't receive any file.
 \normalsize
 \subsection{Deployment challenges}
- In this part the deployment challenges are outlined. Initial tests revealed the container wasn't receiving input files, confirmed by a "no\_file.txt" test. Further testing with REST API integration within the Docker container also failed to produce file results in XNAT. Adjustments to the JSON command, including credentials and detailed output specifications, were unsuccessful. Adding delays between container executions also didn't resolve the input file issue.
+ In this part the deployment challenges are outlined. Initial tests revealed the container wasn't receiving input files, confirmed by a "no\_file.txt" test. Further testing with REST API integration within the Docker container also failed to produce file results in XNAT. Adjustments to the JSON command, including credentials and detailed output specifications, were unsuccessful.
 To circumvent issues with file extraction via REST API calls, the input and mount parameters in the JSON command were modified to include all necessary files. Despite this adjustment, the container failed to receive output files. Subsequently, the container launch method was altered from a string to a URL, yet the file reception issue persisted. As an alternative approach, REST API calls were removed, and an external script using \ac{Pyxnat}~\cite{pyxnat} was developed to extract and supply all files to the container. However, this strategy was also unsuccessful. In summary, XNAT failed to mount any files  from other project level to the container.
 
-Two deployment strategies were tested. Passing all project files to a single Docker container failed due to file transfer issues. Deploying individual containers per project, each processing only local files, was successful, though it resulted in multiple container instances. Chapter 4 provides a detailed discussion of these deployment challenges. 
+Two deployment strategies were tested. Passing all project files to a single Docker container failed due to file transfer issues. Deploying individual containers per project level, each processing only local files, was successful, though it resulted in multiple container instances. Chapter 4 provides a detailed discussion of these deployment challenges. 
 
 
 \normalsize

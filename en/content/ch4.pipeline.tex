@@ -1,6 +1,6 @@
 
 \section{Pipeline method}
-In this work, the pipeline approach was analyzed using an OSA (Obstructive Sleep Apnea) prediction script as a use case.
+In this work, the pipeline approach was investigated using an OSA (Obstructive Sleep Apnea) prediction script as a use case.
 \normalsize
 
 \lstinputlisting[
@@ -29,7 +29,7 @@ Third pipeline Descriptor(XML), which  specifies which scripts to execute, in wh
     \centering
     \def\svgwidth{0.7\linewidth}
     \input{pipeline.pdf_tex}
-    \caption{ Diagram: Conceptual diagram of the XNAT pipeline workflow.}
+    \caption{ Diagram: Conceptual diagram of the XNAT Pipeline workflow.}
     \label{fig:pipeline}
 \end{figure}
 
@@ -38,11 +38,11 @@ Third pipeline Descriptor(XML), which  specifies which scripts to execute, in wh
 
 
 
-\subsection{The pipeline and the REST API}
+\subsection{The Pipeline and the REST API}
 
 
 The POST /pipelines/launch/pipelineName endpoint~\cite{pipelinerestapi} in XNAT's REST API
- enables automated execution of registered pipelines. However, the lack of endpoints for global pipeline enablement and project assignment means that deployment and project-level setup require manual configuration.
+ enables automated execution of registered pipelines. However, the lack of endpoints for global pipeline enablement and project assignment means that deployment and project-level setup requires manual configuration.
 
 \section{User Guide for the pipeline approach}
 To gain a better understanding of the pipeline approach, \autoref{tab:pipeline} provides an explanation of all the steps involved in this approach.

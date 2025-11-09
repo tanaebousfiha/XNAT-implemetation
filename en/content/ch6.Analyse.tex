@@ -27,7 +27,7 @@ XNAT was able to mount files from the same context but not able to mount the fil
 \normalsize
 \subsubsection{GUI Mockup for Docker Container automation in XNAT}
 \normalsize
-To improve generalizability and accessibility especially for non-programming users the method could be extended with a graphical user interface (GUI), making it easier to apply across different institutions, datasets, and environments.  As shown in the \autoref{fig:mockup}, this mockup demonstrates how the command-line workflow appears, following the same logical steps: (1) Login credentials, (2) Python script path, (3) Description of the command, (4) Project ID, and (5) Launching the container.
+To improve generalizability and accessibility especially for non-programming users the method could be extended with a graphical user interface (GUI), making it easier to apply across different institutions and environments.  As shown in the \autoref{fig:mockup}, this mockup demonstrates how the command-line workflow appears, following the same logical steps: (1) Login credentials, (2) Python script path, (3) Description of the command, (4) Project ID, and (5) Launching the container.
 \normalsize
 \begin{figure}[H]
     \centering
@@ -89,7 +89,7 @@ However, it is possible to design a template for the XML descriptor and create a
 
 \subsection{The pipeline approach and the Somnolink project, sustainability aspects including FAIR criteria}
 The pipeline approach presents challenges adhering to FAIR principles.
-Pipeline descriptors are stored in locally on the XNAT server and are not searchable.
+Pipeline descriptors are stored in locally on the server and are not searchable.
 Accessibility is also restricted, as only administrators have the necessary permissions to manually register and configure the XML files.
 Additionally, the potential for reuse is also limited, since adapting a pipeline to new contexts necessitates manual transfer of XML files and server access configurations, plugins and JARs constructions. 
 After creating and successfully testing the pipeline, the pipeline owners can secure their pipeline descriptors using file system permissions, so that they can be accessed or transmitted by the owner. However, the other users must configure all other steps to integrate the pipeline on their own XNAT.
@@ -144,7 +144,7 @@ $\bullet$ Requires manual placement of XML descriptors.\\
 $\bullet$ Needs server access for installation and updates.\\
 $\bullet$ Requires XML schema knowledge.\\
 $\bullet$ Limited automation support (no automation achievable).\\
-$\bullet$ The pipeline has to be removed or disabled after the running~\cite{addingpipeline}.\\
+$\bullet$ The Pipeline has to be removed or disabled after the running~\cite{addingpipeline}.\\
 $\bullet$ The pipeline is not a preferred way to launch jobs in XNAT~\cite{pipepreference}.\\
 
 }
@@ -152,14 +152,14 @@ $\bullet$ The pipeline is not a preferred way to launch jobs in XNAT~\cite{pipep
 \parbox[t]{6cm}{
 $\bullet$ Requires Docker knowledge. \\
 $\bullet$ Depends on Docker availability \\if Docker is blocked or fails, \\images are not recognized\\ within XNAT. \\
-$\bullet$ Requires Regular expressions\\ knowledge for files selection. \\
+$\bullet$ Requires regular expressions\\ knowledge for files selection. \\
 $\bullet$ No access to the database. \\
 
 }
 &
 \parbox[t]{4cm}{
 $\bullet$ Could or must be sometimes updated.\\
-$\bullet$ For specific file processing, the JSON command in the script must be adjusted, extended or modified.\\
+$\bullet$ For specific file processing, the JSON command in the script must be adjusted, extended or modified (regular expression).\\
 $\bullet$ Selecting a XNAT level and launching with selected file is the successful model achieved. 
 } \\
 \hline
@@ -171,7 +171,7 @@ $\bullet$ Selecting a XNAT level and launching with selected file is the success
 \section{Measures for the future for both methods}
 
 For the Pipeline method, future development should focus on three key areas: Firstly, establishing a secure pipeline Hub to centralize storage and enhance environmental security. Secondly, integrating XML deployment directly within XNAT would streamline the build process for the "Run Pipeline" option, eliminating the need for server access and simplifying overall usability. Thirdly supporting more REST API endpoints.\\
-Future development of the Docker Container method should focus on: Firstly, enabling direct access to the XNAT database to facilitate comprehensive file processing across the entire project. Secondly, enhancing the JSON command to allow re-uploading processed files to various output locations within XNAT, regardless of the initial file selection. This would ensure that processed files are returned to their original locations. Additionally, implementing the GUI mockup for the automation.
+Future development of the Docker container method should focus on: Firstly, enabling direct access to the XNAT database to facilitate comprehensive file processing across the entire project. Secondly, enhancing the JSON command to allow re-uploading processed files to various output locations within XNAT, regardless of the initial file selection. This would ensure that processed files are returned to their original locations. Additionally, implementing the GUI mockup for the automation.
 Lastly, it is preferable to create a new REST API endpoint for launching containers, within this one a placement for the \texttt{input files} are given, since I faced a problem with communicating the files to the container with REST API, in order to avoid communicating the files through a payload, and obviously this would not be successful if the mounting is restricted for only the defined context. 
 
 \begin{table}[htbp]
