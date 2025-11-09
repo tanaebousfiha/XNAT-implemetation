@@ -1,13 +1,11 @@
-
-
 #-----------------Bibliotheken----------------------------------------------------------------------------------------------------------------------------
 import json 
-import requests # type: ignore
+import requests
 import os 
 import subprocess  
 import getpass 
 import sys
-import urllib3 # type: ignore
+import urllib3 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 #-----------------------------------1)dockerfile ausfüllen------------------------------------------------------
@@ -131,9 +129,9 @@ def create_json_file(docker_image, script_filename, mod_data):
 
 #---------------------5)Command zu XNAT senden---------------------------------------------------------------------------------------------------------------
 
-def send_json_to_xnat(json_file_path, xnat_host, xnat_user, xnat_password): 
+def send_json_to_xnat(json_file_path, xnat_url, xnat_user, xnat_password): 
 
-    url = f"{xnat_host}/xapi/commands"
+    url = f"{xnat_url}/xapi/commands"
     print(f"Uploading command to {url}")
     with open(json_file_path, "r") as f:
         response = requests.post(url, auth=(xnat_user, xnat_password), json=json.load(f))
@@ -173,7 +171,9 @@ def get_command_wrapper_id(xnat_host, xnat_user, xnat_password, command_name, wr
             sys.exit(1)
     print("Command nicht gefunden.")
     sys.exit(1)
-#----------------------9)Wrapper Aktivierung----------------------------------------------------------------------
+#----------------------9)Wrapper Aktivierung---------------------------------------------
+
+
 def enable_wrapper_sitewide(xnat_host, command_id, wrapper_name, xnat_user, xnat_password):
    
     url = f"{xnat_host}/xapi/commands/{command_id}/wrappers/{wrapper_name}/enabled"
@@ -335,13 +335,13 @@ def launch_container_with_all_files(xnat_host, project_id, command_id, wrapper_n
 def main():
     xnat_host = "https://xnat-dev.gwdg.de"
     docker_base_image = "python:3.10"
-    
+    # Benutzerabfrage
     xnat_user = get_input("XNAT Username: ")
     xnat_password = getpass.getpass("XNAT Password: ")
     project_id = get_input("Project ID: ").strip()
     script_path = get_input("Path to the Python script: ").strip()
-
-    
+    # Command/Wrapper-Daten erfassen
+    # Collect command/label/description from user
     mod_data = {}
     mod_data["command_name"] = get_input("Name des Commands: ")
     mod_data["command_description"] = get_input("Beschreibung des Commands: ")
@@ -349,13 +349,14 @@ def main():
     mod_data["label_name"] = mod_data["command_name"]
     mod_data["label_description"] = mod_data["command_description"]
     wrapper_name = mod_data["command_name"].replace(" ", "_").lower() + "_wrapper"
-
+    # Docker-Image bauen & pushen
     dockerfile_path = write_dockerfile(".", os.path.basename(script_path), docker_base_image)
-    local_image_name = f"{mod_data['command_name'].lower().replace(' ', '_')}"
+    local_image_name = f"{mod_data['command_name'].lower().replace(' ', '_')}:latest"
     full_image_name = build_and_push_docker_image(dockerfile_path, local_image_name)
-
     # Command-JSON erzeugen & hochladen
     json_file_path = create_json_file(full_image_name, os.path.basename(script_path), mod_data)
+
+
 
     send_json_to_xnat(json_file_path, xnat_host, xnat_user, xnat_password)
    
@@ -378,6 +379,11 @@ def main():
         print("Keine Dateien im Projekt gefunden.")
         return
  
+
+    file_info = all_files[0]
+    dateiname = file_info.get("Name")
+    print(f"Starte nur einen Container für Datei: {dateiname} (Ebene: {file_info['Ebene']})")
+
     launch_container_with_all_files(
         xnat_host=xnat_host,
         project_id=project_id,
@@ -390,4 +396,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
