@@ -1,13 +1,11 @@
 \chapter{Deployment of methods in XNAT}
 \section{The Docker method}
-This chapter provides an analysis and an explanation of the automation script.
+This chapter provides an explanation of the Docker Container approach and the deployment of a script for automated container creation and execution at XNAT.
 
 \subsection{Introduction to the automation script for the Docker container method}
-Generally, these are the following steps to deploy a Docker container in XNAT manually: writings a external script and building the image and pushing it to Docker Hub, following with writing a appropriate JSON command and deploying it in XNAT server then enabling the command side wide and project wide then finally launching the Docker container. 
-After reviewing the latest updates supported by the XNAT Community, it was confirmed that automating Docker Container deployment in XNAT is feasible.
+Generally, these are the following steps to deploy a Docker container in XNAT manually: writing an external script, building the image and pushing it to Docker Hub, following with writing a appropriate JSON command and deploying it in XNAT server then enabling the command side wide and project wide then finally launching the Docker container. 
+After reviewing the latest updates supported by the XNAT Community, it was confirmed that automating Docker container deployment in XNAT is feasible.
 XNAT's REST API provides functionality to list projects, subjects within those projects, sessions, and scans. It also allows the extraction of patient files, as well as the retrieval of the command \ac{ID} and wrapper \ac{ID}.
-To summarize all the REST APIs used in the automation script, Table A.1 in the Appendix provides a comprehensive overview of each API and its purpose.
-
 \begin{figure}[H]
     \centering
     \def\svgwidth{0.4\linewidth}
@@ -16,11 +14,8 @@ To summarize all the REST APIs used in the automation script, Table A.1 in the A
     \label{fig:RESTAPI}
 \end{figure}
 
-
+To summarize all the REST APIs used in the automation script, Table A.1 in the Appendix provides a comprehensive overview of each API and its purpose.
 The \autoref{fig:RESTAPI} illustrates the role of the REST API in the automatization.
-
-
-
 \subsection{Architecture and organization of the code}
 The automation script mirrors the manual workflow in 14 steps. Each part of the script automates a specific step of the manual process.  
 The Python Requests~\cite{request} library is the go-to solution for making \ac{HTTP} requests in Python. The Sys module~\cite{sys} in Python provides access to variables and functions that interact closely with the Python interpreter and runtime environment.
@@ -65,13 +60,13 @@ The first function responsible for writing the Dockerfile is called \texttt{def 
 \lstinputlisting[
   inputencoding=cp1252, 
   language=Python,
-  firstline=18,
-  lastline=22,
-  caption={Extracted from \texttt{automat\_f\_2.py} (lines 18--22)},
+  firstline=16,
+  lastline=20,
+  caption={Extracted from \texttt{automat\_f\_2.py} (lines 16--20)},
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize{ See the corresponding lines on GitHub:\url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/671bb82071b3219341205d0e1ddd9f5a54a1fad0/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L18-L22}}
+\noindent\footnotesize{ See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/a399e52da1d7806090dfa230a760009a125d6e0f/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L16-L20}}
 
 \normalsize
 
@@ -84,13 +79,13 @@ XNAT requires Docker Hub for container deployment. Users must have Docker Hub ac
 
 \lstinputlisting[
   inputencoding=cp1252,  language=Python,
-  firstline=37,
-  lastline=48,
-  caption={Extracted from \texttt{automat\_f\_2.py} (lines 37--48)},
+  firstline=35,
+  lastline=46,
+  caption={Extracted from \texttt{automat\_f\_2.py} (lines 35--46)},
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/671bb82071b3219341205d0e1ddd9f5a54a1fad0/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L37-L48}
+\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/a399e52da1d7806090dfa230a760009a125d6e0f/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L35-L46}
 \normalsize
 \\
 The function in the Listing 3.3 builds and pushes a Docker image to Docker Hub. It first prompts the user to enter their Docker Hub username and, if provided, constructs a full image tag in the format <username>/<image\_name>. it uses the \texttt{subprocess} module to run a Docker build command with the specified Dockerfile, capturing any output or errors. If the build fails, the script exits with an error message, otherwise, it proceeds to push the built image to Docker Hub using another docker push command. After a successful push, the function prints a confirmation message and returns the full image tag.
@@ -104,13 +99,13 @@ The function looks like this:
  
 \lstinputlisting[
   inputencoding=cp1252,  language=Python,
-  firstline=56,
-  lastline=62,
-  caption={Extracted from \texttt{automat\_f\_2.py} (lines 56--62)},
+  firstline=54,
+  lastline=58,
+  caption={Extracted from \texttt{automat\_f\_2.py} (lines 54--58)},
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/671bb82071b3219341205d0e1ddd9f5a54a1fad0/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L56-L62}
+\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/a399e52da1d7806090dfa230a760009a125d6e0f/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L54-L58}
 \normalsize
 
 The \texttt{def get\_input} function uses a \texttt{while True} loop to keep asking until the user enters input.
@@ -118,47 +113,47 @@ The \texttt{def get\_input} function uses a \texttt{while True} loop to keep ask
 \subsection{The command definition in JSON format}
 
 To communicate the Docker image to XNAT, it is necessary to write a command definition in JSON format~\cite{JSONCommand}.
-To achieve that, the function used is called \texttt{create\_json\_file}, which builds the configuration dictionary for a Docker-based XNAT command (for the XNAT container Service), writes it to a \texttt{command.json} file, and returns the filename.
+To achieve that, the function used is called \texttt{create\_json\_file}, which builds the configuration dictionary for a Docker-based XNAT command (for the XNAT container service), writes it to a \texttt{command.json} file, and returns the filename.
 The first block of the JSON command:
 
 
 
 \lstinputlisting[
   inputencoding=cp1252,  language=Python,
-  firstline=69,
-  lastline=78,
-  caption={Extracted from \texttt{automat\_f\_2.py} (lines 69--78)},
+  firstline=67,
+  lastline=75,
+  caption={Extracted from \texttt{automat\_f\_2.py} (lines 67--75)},
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/671bb82071b3219341205d0e1ddd9f5a54a1fad0/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L69-L78}
+\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/a399e52da1d7806090dfa230a760009a125d6e0f/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L67-L75}
 \normalsize
 
 
-In this block, we are defining the name of the command, adding a description, and specifying the version and the type of the image.
+In this block, the name of the command is defined, adding a description, and specifying the version and the type of the image.
 The command-line runs the Python script located at /app/{script\_filename}, passing /input/output as an argument.
 
 The mount configures the directory mappings (as Docker volumes) between XNAT and the Docker container. Most of the time, two are used: the input and the output.
-We specified the path \texttt{/input} in the container and indicated whether the container can only read the files (\texttt{Not writable}) or can also write them (\texttt{Writable}).
+I specified the path \texttt{/input} in the container and indicated whether the container can only read the files (\texttt{Not writable}) or can also write them (\texttt{Writable}).
 
 The second part of command definition in JSON format:
 
 
 \lstinputlisting[
   inputencoding=cp1252,  language=Python,
-  firstline=79,
-  lastline=96,
-  caption={Extracted from \texttt{automat\_f\_2.py} (lines 79--96)},
+  firstline=77,
+  lastline=93,
+  caption={Extracted from \texttt{automat\_f\_2.py} (lines 77--93)},
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub: \url{ https://github.com/tanaebousfiha/XNAT-implemetation/blob/671bb82071b3219341205d0e1ddd9f5a54a1fad0/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L79-L96}
+\noindent\footnotesize See the corresponding lines on GitHub: \url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/a399e52da1d7806090dfa230a760009a125d6e0f/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L77-L93}
 \normalsize
 
 This block defines the parameters that a user must provide as an input file when launching the container.
 Let’s break down each field:
 
-The \texttt{"name": "input\_files"} is used in other parts of the JSON as a reference such as placeholders in the command line. In addition, we add an optional human-friendly description. The \texttt{"type"} indicates that the input accepts more than just text files, scans, or numbers; it specifies that each element in the input is specifically a file through the \texttt{"element"} field.
+The \texttt{"name": "input\_files"} is used in other parts of the JSON as a reference such as placeholders in the command line. In addition, we add an optional human-friendly description. The \texttt{"type"} indicates that the input accepts more than just text files, scans, or numbers.
 
 The \texttt{"required": true} flag means that if the input is not provided, the command cannot be run. The mount in this part links the input to a specific mount inside the container. All files provided by the user will appear in the \texttt{/input} directory inside the container. With \texttt{"multiple": true}, it is indicated that the user can upload or select more than one file for this input.
 The final block in the command definition (JSON format):
@@ -166,13 +161,13 @@ The final block in the command definition (JSON format):
 
 \lstinputlisting[
   inputencoding=cp1252,  language=Python,
-  firstline=99,
-  lastline=120,
-  caption={Extracted from \texttt{automat\_f\_2.py} (lines 99--120)},
+  firstline=98,
+  lastline=117,
+  caption={Extracted from \texttt{automat\_f\_2.py} (lines 98--117)},
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/671bb82071b3219341205d0e1ddd9f5a54a1fad0/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L99-L120}
+\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/a399e52da1d7806090dfa230a760009a125d6e0f/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L98-L117}
 \normalsize
 
 The wrapper name is the technical name of the command inside XNAT. The \texttt{"label": mod\_data["label\_name"]} is a human-readable name shown in the XNAT \ac{UI}. The \texttt{"description": mod\_data["label\_description"]} is a description for the tool/wrapper, shown when users browse tools in XNAT. The \texttt{"context"} specifies where we want the container to appear in the XNAT interface. Since the main idea was to have one container on top of the structure of XNAT, here \texttt{["xnat:projectData"]} means this command is available at the project level.
@@ -194,13 +189,13 @@ The function responsible for this is \texttt{def send\_json\_to\_xnat}, and it e
  
 \lstinputlisting[
   inputencoding=cp1252,  language=Python,
-  firstline=135,
-  lastline=140,
-  caption={Extracted from \texttt{automat\_f\_2.py} (lines 135--140)},
+  firstline=134,
+  lastline=137,
+  caption={Extracted from \texttt{automat\_f\_2.py} (lines 134--137)},
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/671bb82071b3219341205d0e1ddd9f5a54a1fad0/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L135-L140}
+\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/a399e52da1d7806090dfa230a760009a125d6e0f/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L134-L137}
 \normalsize
 
 This function registers a JSON command with XNAT. It constructs the REST API endpoint, loads the JSON data, sends it via a POST request with HTTP Basic authentication, and provides feedback on the server's response.
@@ -210,24 +205,24 @@ This function registers a JSON command with XNAT. It constructs the REST API end
 To prepare for launching the container in XNAT, the script automatically retrieves the command ID and wrapper ID from the XNAT web service using REST APIs.
 \lstinputlisting[
   inputencoding=cp1252,  language=Python,
-  firstline=151,
-  lastline=171,
-  caption={Extracted from \texttt{automat\_f\_2.py} (lines 151--171)},
+  firstline=149,
+  lastline=169,
+  caption={Extracted from \texttt{automat\_f\_2.py} (lines 149--169)},
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/c78830e555376d23396bbcf57155b4f64c23aa48/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L151-L171}
+\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/a399e52da1d7806090dfa230a760009a125d6e0f/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L149-L169}
 \normalsize
 
 
 This function retrieves the command ID and wrapper ID from XNAT, using the hostname, credentials, command name, and wrapper name as inputs. It constructs the REST API endpoint, checks for a successful response, and returns the IDs. If a wrapper name is provided, it searches for a matching wrapper ID. Following ID retrieval, the enable\_wrapper\_sitewide and enable\_wrapper\_for\_project functions enable the command, using a PUT request to the appropriate XNAT REST API endpoint and providing user feedback.
 
 \subsection{The Extraction of all files from all project levels}
-This step can be optional if in the json command the input and the mount are extend defined (see the permanent link: \url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/c78830e555376d23396bbcf57155b4f64c23aa48/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L151-L171}
+This step can be optional if in the json command the input and the mount are extend defined (see the permanent link: \url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/4108c0602944bdda25da6324604b80af20a8a397/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L67-L120}
 \normalsize
 \\
 If we define the mount and the input is no need for additional REST API calls.
-For the experiment i extracted all the files via REST API calls.
+For the experiment I extracted all the files via REST API calls.
 The \autoref{fig:extraction} illustrates all the extraction of all the files from a project structure in XNAT.
 
 
@@ -251,7 +246,7 @@ The launch\_container\_with\_all\_files function launches a container with extra
   label={lst:automat-snippet}
 ]{automat_f_2.py}
 
-\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/c78830e555376d23396bbcf57155b4f64c23aa48/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L296-L312}
+\noindent\footnotesize See the corresponding lines on GitHub:\url{https://github.com/tanaebousfiha/XNAT-implemetation/blob/a399e52da1d7806090dfa230a760009a125d6e0f/Automation%20of%20the%20manuall%20Process%20of%20the%20xnat%20implementation/automat_f_2.py#L296-L312}
 \normalsize
 
 
