@@ -8,8 +8,6 @@ import getpass
 import sys
 import urllib3 # type: ignore 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-
 #-----------------------------------1)dockerfile ausfüllen------------------------------------------------------
 def write_dockerfile(docker_dir, script_filename, docker_base_image="python:3.10-slim"):
     dockerfile_content = f"""
@@ -127,7 +125,8 @@ def create_json_file(docker_image, script_filename, mod_data):
             external_inputs.append({
                 "name": mapping["input_name"],
                 "type": mapping["input_type"],
-                "required": True
+                "required": True,
+                "load-children": False
             })
             used_inputs.add(input_key)
 
@@ -137,7 +136,6 @@ def create_json_file(docker_image, script_filename, mod_data):
             "as-a-child-of": mapping["child_of"],
             "type": "Resource",
             "label": "Results",
-            "format": "csv"
         })
 
     # JSON zusammenbauen
