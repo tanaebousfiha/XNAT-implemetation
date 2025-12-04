@@ -83,12 +83,8 @@ def modification():
             break
         except Exception:
             print("Ungültige Eingabe. Bitte erneut versuchen.")
-
-   
     command_name = input("Name des Commands: ")
     command_description = input("Beschreibung des Commands: ")
-    
-    
     return {
         "selected_context": selected_context,
         "command_name": command_name,
@@ -204,23 +200,6 @@ def send_json_to_xnat(json_file_path, xnat_url, xnat_user, xnat_password):
 
 #-----------------------------------6)Command-Liste------------------------------------------------------------------------------------------------------------
 
-def get_command_id_by_name(xnat_host, xnat_user, xnat_password, command_name):
-    url = f"{xnat_host}/xapi/commands"
-    resp = requests.get(url, auth=(xnat_user, xnat_password), verify=False) 
-    if resp.status_code != 200:
-        print(f"Error fetching commands: {resp.status_code}")
-        sys.exit(1)
-    data = resp.json()
-    if isinstance(data, dict) and "commands" in data:
-        command_list = data["commands"]
-    else:
-        command_list = data
-    for command in command_list:
-        if command.get("name") == command_name:
-            return command["id"]
-    print("Command not found.")
-    sys.exit(1)
-
 #----------------------7)Wrapper auslesen/erstellen------------------------------------------------------------------------------------------------------------
 def get_command_wrapper_id(xnat_host, xnat_user, xnat_password, command_name, wrapper_name=None):
     url = f"{xnat_host}/xapi/commands"
@@ -325,7 +304,7 @@ def get_input_files(xnat_host, entity_id, entity_type, xnat_user, xnat_password,
     for n, f in enumerate(all_files):
         print(f"{n + 1}: {f['name']} (Resource: {f['resource']})")
 
-    while True:
+    while True:#Startet eine Endlosschleife
         choice = input("Welche Dateien sollen verwendet werden? Gib die Nummern durch Komma getrennt ein: ")
         selected_files = []
         try:
@@ -340,8 +319,6 @@ def get_input_files(xnat_host, entity_id, entity_type, xnat_user, xnat_password,
         except ValueError:
             pass
         print("Ungültige Auswahl, bitte Nummern korrekt eingeben (z.B. 1,3,5).")
-
-
 
 #---------------------11)Lanch Container-----------------------------------------
 
@@ -437,7 +414,7 @@ def main():
     send_json_to_xnat(json_file_path, xnat_host, xnat_user, xnat_password)
 
     # 5. Get command & wrapper IDs
-    command_id = get_command_id_by_name(xnat_host, xnat_user, xnat_password, mod_data["command_name"])
+    command_id = get_command_wrapper_id(xnat_host, xnat_user, xnat_password, mod_data["command_name"])
     try:
         wrapper_id = get_command_wrapper_id(xnat_host, xnat_user, xnat_password, mod_data["command_name"], wrapper_name)
         print(f"Wrapper already exists: {wrapper_id}")
